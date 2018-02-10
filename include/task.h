@@ -50,7 +50,8 @@
 /// pointers warning
 typedef void (*task_fn_pointer_input_t)(void *);
 /// default task type
-typedef void (*task_fn_t)(void);
+/// @author Stephen Szymczak
+typedef void (*task_t)(void);
 
  /** The number of tasks that can be added to the task queue or task schedule or task trigger list
  *
@@ -60,8 +61,8 @@ typedef void (*task_fn_t)(void);
  *
  */
 
-#ifndef MAX_TASK_LENGTH
-#define MAX_TASK_LENGTH 20
+#ifndef TASK_MAX_LENGTH
+#define TASK_MAX_LENGTH 20
 #endif
 
 
@@ -115,7 +116,7 @@ void SystemTick(void);
  * to avoid compiler warning about
  * @param pointer pointer to pass to the task when run. Set to 0 if the task has no input
  */
-void Task_Queue(task_fn_t fn, void * pointer);
+void Task_Queue(task_t fn, void * pointer);
 
 /**
  * @brief Adds task to be scheduled for execution
@@ -142,15 +143,15 @@ void Task_Queue(task_fn_t fn, void * pointer);
  * @param delay Delay before the task is first run
  * @param period Period of how often the task is run (0 no rescheduling)
  */
-int8_t Task_Schedule(task_fn_t fn, void * pointer,
-        tint_t delay, tint_t period);
+int8_t Task_Schedule(task_t fn, void * pointer,
+        uint32_t delay, uint32_t period);
 
 /** @brief Sets a task to run whenever the task queue is empty / no tasks due to run
  *
  * @param fn Function Pointer - must have no return value and no input.
  * @return 0 normally, 1 if a previous idle task was just overwritten
  */
-int8_t Task_SetIdleTask(task_fn_t fn);
+int8_t Task_SetIdleTask(task_t fn);
 
 
 /**
@@ -173,7 +174,7 @@ int8_t Task_SetIdleTask(task_fn_t fn);
  * @param pointer Input Pointer, if the function has no input pointer or if you
  * want to remove all fn functions regardless of the pointer then make pointer 0
  */
-void Task_Remove(task_fn_t fn, void * pointer);
+void Task_Remove(task_t fn, void * pointer);
 
 /** Wait a set number of milliseconds and run queued or scheduled tasks while
  * waiting
@@ -188,14 +189,14 @@ void Task_Remove(task_fn_t fn, void * pointer);
  *
  * @param wait  time amount for the wait
  */
-void WaitMs(tint_t wait);
+void WaitMs(uint32_t wait);
 
 /** Checks if a task is scheduled or queued
  * 
  * @param fn function to look for
  * @return 1 if task is scheduled or queued, 0 if not
  */
-uint8_t Task_IsScheduled(task_fn_t fn);
+uint8_t Task_IsScheduled(task_t fn);
 
 /** Update the period of an existing task
  * 
@@ -203,7 +204,7 @@ uint8_t Task_IsScheduled(task_fn_t fn);
  * @param period new period
  * @param update_next_time 0 - don't rescheule the next run, 1 reschedule the next run base on the new period
  */
-void Task_ChangePeriod(task_fn_t fn, tint_t period, uint8_t update_next_time);
+void Task_ChangePeriod(task_t fn, uint32_t period, uint8_t update_next_time);
 
 /** @}*/
 
