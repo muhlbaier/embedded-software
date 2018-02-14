@@ -41,7 +41,9 @@
 #warning "USE_MODULE_TASK not defined in system.h. Other modules won't be able to utilize this module."
 #endif
 
+#ifdef USE_MODULE_SUBSYS
 #include "subsys.h"
+#endif
 
 // Make sure timing.h is included
 #include "timing.h"

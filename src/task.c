@@ -1,12 +1,13 @@
 #include "task.h"
 #include "list.h"
+#include "hal_general.h"
 
 typedef struct {
-    task_fn_t fn; // function pointer to task
+    task_t fn; // function pointer to task
     void * pointer; // optional pointer parameter for task (0 if not used)
     uint32_t time; // time to execute (if scheduled) or time added (if queued)
     uint32_t period; // 0 for non-periodic, period in ms otherwise
-}task_struct_t
+}task_struct_t;
 
 // use the provided macro to create a task_t array, list_links_t array, and list_t for the tasks
 LIST_ALLOCATE(task_struct_t, task_list, TASK_MAX_LENGTH);
@@ -42,7 +43,7 @@ void Task_Init(void) {
     // make sure the timing module is initialized
     Timing_Init();
     // use the provided macro to initialize the list module (List_Init())
-    LIST_INIT(&task_list, TASK_MAX_LENGTH, sizeof(task_struct_t));
+    LIST_INIT(task_list, TASK_MAX_LENGTH, sizeof(task_struct_t));
     List_SetSortFunction(&task_list, SortTask);
     List_SetIdentifyFunction(&task_list, IdentifyTask);
     // Reset the idle task
@@ -53,7 +54,7 @@ void Task_Init(void) {
 
 void SystemTick(void) {
     task_struct_t * task_ptr;
-    task_fn_t fn_ptr;
+    task_t fn_ptr;
     // check if any tasks need to be linked into the queue
     List_Link(&task_list);
 
@@ -137,14 +138,14 @@ void Task_Remove(task_t fn, void * pointer) {
     // find the first task that matches in the entire task_array
     // this is because the task that is running may not be on the list and may
     // want to remove itself
-    for(i = 0; i < MAX_TASK_LENGTH; i++) {
-        if(task_array[i].fn == fn && ((task_array[i].pointer == pointer) || pointer == 0 )) {
-            task_ptr = &task_array[i];
+    for(i = 0; i < TASK_MAX_LENGTH; i++) {
+        if(task_list_array[i].fn == fn && ((task_list_array[i].pointer == pointer) || pointer == 0 )) {
+            task_ptr = &task_list_array[i];
             break;
         }
     }
     // if no task matches then i would be MAX_TASK_LENGTH
-    while (i < MAX_TASK_LENGTH) {
+    while (i < TASK_MAX_LENGTH) {
         // clear the function pointer so SystemTick will know if the task it is 
         // running was removed
         task_ptr->fn = 0; 
@@ -154,9 +155,9 @@ void Task_Remove(task_t fn, void * pointer) {
         // added multiple tasks with the same input pointer
         if(pointer) break;
         // look for the next match
-        for(; i < MAX_TASK_LENGTH; i++) {
-            if(task_array[i].fn == fn) {
-                task_ptr = &task_array[i];
+        for(; i < TASK_MAX_LENGTH; i++) {
+            if(task_list_array[i].fn == fn) {
+                task_ptr = &task_list_array[i];
                 break;
             }
         }

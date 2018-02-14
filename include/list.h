@@ -14,11 +14,9 @@
 
 #include "library.h"
 
-#ifndef USE_MODULE_LIST
-#warning "USE_MODULE_LIST not defined in system.h. Other modules won't be able to utilize this module."
-#endif
-
+#ifdef USE_MODULE_SUBSYS
 #include "subsys.h"
+#endif
 
 /**
  * defines a function pointer called sort_fn_t with two inputs and one output uint8_t, 

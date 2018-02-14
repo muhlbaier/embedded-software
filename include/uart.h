@@ -36,7 +36,9 @@
 #warning "USE_MODULE_UART not defined in system.h. Other modules won't be able to utilize this module."
 #endif
 
+#ifdef USE_MODULE_SUBSYS
 #include "subsys.h"
+#endif
 
 #ifdef USE_MODULE_TASK
 #include "task.h"
@@ -47,8 +49,6 @@
 #endif
 
 #include "buffer.h"
-
-#include "char_receiver_list.h"
 
 /** NOTE:  This enumeration has to occur BEFORE the include for
  * the hal_uart.h because hal_uart.h includes this uart.h file
@@ -162,7 +162,7 @@ void UART_Tick(void);
  * @param fn - function pointer to receiver function: void ReceiverName(char c)
  * @return -1 if channel is out of range, -2 if receiver list is full, 0 if successful
  */
-int8_t UART_RegisterReceiver(uint8_t channel, charReceiver_t fn);
+int8_t UART_RegisterReceiver(uint8_t channel, void(*fn)(uint8_t));
 
 /**
  * @brief Unregister a receiver added by UART_RegisterReceiver()
@@ -170,7 +170,7 @@ int8_t UART_RegisterReceiver(uint8_t channel, charReceiver_t fn);
  * @param channel - UART channel to unregister receiver on
  * @param fn - function pointer to receiver function: void ReceiverName(char c)
  */
-void UART_UnregisterReceiver(uint8_t channel, charReceiver_t fn);
+void UART_UnregisterReceiver(uint8_t channel, void(*fn)(uint8_t));
 
 /**
  * @brief Register callback function to handle UART errors
