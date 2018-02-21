@@ -371,7 +371,7 @@ void UART_Init(uint8_t channel) {
 
 void UART_Tick(void){
     uint8_t c;
-    volatile unsigned int i;
+    volatile unsigned int i, j;
     volatile unsigned int b;
 
     // Handle any received data
@@ -387,8 +387,8 @@ void UART_Tick(void){
                 while(b--){
                     c = Buffer_Dequeue(uart[i].rx);
 					// call receivers
-					for(i = 0; i < uart[i].receiverList->size; i++){
-						uart[i].receiverList->receivers[i](c);
+					for(j = 0; j < uart[i].receiverList->size; j++){
+						uart[i].receiverList->receivers[j](c);
 					}
                 }
             }
@@ -444,7 +444,7 @@ int8_t UART_Write(uint8_t channel, uint8_t * data, uint16_t length) {
 // this module could be used without buffer_printf if these functions are
 // not used. Flag added to make it easy to not require buffer_printf
 #ifdef _BUFFER_PRINTF_H_
-void UART_Printf(uint8_t channel, char * str,...){
+void UART_printf(uint8_t channel, char * str,...){
     // variable argument list type
     va_list vars;
     // initialize the variable argument list pointer by specifying the

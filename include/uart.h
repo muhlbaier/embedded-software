@@ -32,12 +32,8 @@
 // Get library configuration
 #include "system.h"
 
-#ifndef USE_MODULE_UART
-#warning "USE_MODULE_UART not defined in system.h. Other modules won't be able to utilize this module."
-#endif
-
-#ifdef USE_MODULE_SUBSYS
-#include "subsys.h"
+#ifdef USE_MODULE_SUBSYSTEM
+#include "subsystem.h"
 #endif
 
 #ifdef USE_MODULE_TASK
@@ -119,7 +115,7 @@ int8_t UART_Write(uint8_t channel, uint8_t * data, uint16_t length);
  * @param str - formatted string
  * @param ... - variable list of replacement data
  */
-void UART_Printf(uint8_t channel, char * str, ...);
+void UART_printf(uint8_t channel, char * str, ...);
 
 /**
  * @brief print formatted string to UART

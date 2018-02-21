@@ -25,9 +25,9 @@
  * The function should return 1 when the first item should go before the second item (i.e. sort(first_item, second_item)) 
  *
  */
-typedef uint8_t(*sort_fn_t)(void*, void*);
+typedef uint8_t(*list_sort_fn_t)(void*, void*);
 
-typedef uint8_t(*identify_fn_t)(void*, void*);
+typedef uint8_t(*list_identify_fn_t)(void*, void*);
 
 typedef struct list_link_t {
     void* item_ptr; ///< item_ptr
@@ -56,8 +56,8 @@ typedef struct list_t {
     list_link_t* links; ///< links
     uint16_t* item_array; ///< item_array
     uint16_t item_size; ///< item_size
-    sort_fn_t sort_fn; ///< sort_fn
-    identify_fn_t identify_fn; ///< identify_fn
+    list_sort_fn_t sort_fn; ///< sort_fn
+    list_identify_fn_t identify_fn; ///< identify_fn
     // the following overhead members are only needed
     // to make the list module faster
 

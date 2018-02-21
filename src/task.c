@@ -44,8 +44,8 @@ void Task_Init(void) {
     Timing_Init();
     // use the provided macro to initialize the list module (List_Init())
     LIST_INIT(task_list, TASK_MAX_LENGTH, sizeof(task_struct_t));
-    List_SetSortFunction(&task_list, SortTask);
-    List_SetIdentifyFunction(&task_list, IdentifyTask);
+    List_SetSortFunction(&task_list, (list_sort_fn_t)SortTask);
+    List_SetIdentifyFunction(&task_list, (list_identify_fn_t)IdentifyTask);
     // Reset the idle task
     idle_task = 0;
     // schedule the timer to be rolled over

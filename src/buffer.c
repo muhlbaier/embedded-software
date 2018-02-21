@@ -13,8 +13,6 @@ void Buffer_Enqueue(buffer_t *buffer, uint8_t data) {
 	if(buffer->rear > buffer->buffer_end) buffer->rear = buffer->buffer_start;
 	// put data onto rear location
 	*buffer->rear = data;
-	// Increment the size of the buffer
-	buffer->size++;
 	
 	/*	If front = rear and the buffer is not empty then overwrite what is on
 		the front, this allows use as a revolving circular buffer for receivers */
@@ -27,6 +25,9 @@ void Buffer_Enqueue(buffer_t *buffer, uint8_t data) {
 		buffer->size--;
 	}
 	
+	// Increment the size of the buffer
+	buffer->size++;
+
 	// If there is a callback, call it
 	if(buffer->Callback) buffer->Callback(buffer);
 

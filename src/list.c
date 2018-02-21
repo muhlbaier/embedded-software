@@ -54,12 +54,11 @@ void List_Init(list_t* list, uint16_t item_size, void* item_array,
     }
 }
 
-void List_SetSortFunction(list_t* list, uint8_t(*sort_fn)(void* a, void* b)) {
+void List_SetSortFunction(list_t* list, list_sort_fn_t sort_fn) {
     list->sort_fn = sort_fn;
 }
 
-void List_SetIdentifyFunction(list_t* list,
-        uint8_t(*identify_fn)(void* identifier, void* item)) {
+void List_SetIdentifyFunction(list_t* list, list_identify_fn_t identify_fn) {
     list->identify_fn = identify_fn;
 }
 
