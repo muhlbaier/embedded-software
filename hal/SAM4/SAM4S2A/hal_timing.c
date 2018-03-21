@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "system.h"
+#include "project_settings.h"
 #include "macros.h"
 #include <sysclk.h>
 

@@ -6,7 +6,7 @@
  */
 #include <string.h>
 #include "strings.h"
-#include "system.h"
+#include "project_settings.h"
 #include "subsystem.h"
 
 #include "timing.h"
@@ -16,7 +16,7 @@
 #endif
 
 #if SUBSYSTEM_IO == SUBSYSTEM_IO_NONE
-#warning "You have included subsystem.c in your project, but don't use it. Either set SUBSYSTEM_IO in system.h or remove subsystem.c from your project"
+#warning "You have included subsystem.c in your project, but don't use it. Either set SUBSYSTEM_IO in project_settings.h or remove subsystem.c from your project"
 #endif
 
 static void Receiver(uint8_t c);

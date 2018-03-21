@@ -1,6 +1,6 @@
 #include <strings.h>
 
-#include "system.h"
+#include "project_settings.h"
 #include "game.h"
 #include "uart.h"
 #include "subsystem.h"
@@ -19,11 +19,11 @@ static int16_t game_selected = -1;
 
 #ifndef PLAYER1_UART
 #ifndef SUBSYSTEM_UART
-#error "You must define what UART number the terminal is using in system.h: #define SUBSYS_UART num"
+#error "You must define what UART number the terminal is using in project_settings.h: #define SUBSYS_UART num"
 #endif
 #define PLAYER1_UART SUBSYSTEM_UART
 #endif
-// if you try to use a 2 player game without PLAYER2_UART defined in system.h
+// if you try to use a 2 player game without PLAYER2_UART defined in project_settings.h
 // then just double print to player1's terminal
 #ifndef PLAYER2_UART
 #define PLAYER2_UART PLAYER1_UART
@@ -101,7 +101,9 @@ void Game_Init(void) {
     static uint8_t init_flag = 0;
     if (init_flag) return;
     init_flag = 1;
-    game_id = Subsystem_Init("game", (version_t) 0x01010001U, Game_Callback);
+    version_t game_version;
+    game_version.word = 0x01010001U;
+    game_id = Subsystem_Init("game", game_version, Game_Callback);
 #ifdef USE_MODULE_GAME_CONTROLLER
     // if the controller module exists then add button callbacks for selecting
     // games (this is done in Game_GameOver() so just call that)

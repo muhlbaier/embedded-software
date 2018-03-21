@@ -6,7 +6,7 @@ volatile uint32_t time_ms, rollover_time;
 /*************************************
  * HAL Function Declarations
  *************************************/
-void hal_timing_Init(void);
+void hal_Timing_Init(void);
 
 #define TimingISR() time_ms++
 

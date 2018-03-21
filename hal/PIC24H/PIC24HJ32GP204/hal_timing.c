@@ -2,7 +2,7 @@
 #error "Don't add this file in your project directly, it will be included by timing.c"
 #endif
 #include <stdint.h>
-#include "system.h"
+#include "project_settings.h"
 #include "macros.h"
 
 // if peripheral clock not set default to FCPU

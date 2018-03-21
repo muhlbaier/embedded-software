@@ -34,7 +34,7 @@ void Buffer_vprintf(buffer_t * buf, char * str, va_list vars) {
                 str++;
                 continue;
             case 'c': // char
-#if defined __XC32__ || defined __UVISION_VERSION || defined MSPGCC
+#if defined __XC32__ || defined __UVISION_VERSION || defined MSPGCC || defined __GNUC__
                 Buffer_Enqueue(buf, va_arg(vars, int));
 #else
                 Buffer_Enqueue(buf, va_arg(vars, char));

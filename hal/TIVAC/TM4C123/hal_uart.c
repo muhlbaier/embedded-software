@@ -8,7 +8,7 @@
 #include "hal_uart.h"
 #include "inc/hw_uart.h"
 #include "inc/hw_types.h"
-#include "system.h"
+#include "project_settings.h"
 #include "uart.h"
 
 void hal_UART0_ISR(void);

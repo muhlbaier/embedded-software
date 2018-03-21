@@ -1,5 +1,5 @@
 #include <stdint.h>
-#include "system.h"
+#include "project_settings.h"
 #include "hal_spi.h"
 
 #include "spi.h"

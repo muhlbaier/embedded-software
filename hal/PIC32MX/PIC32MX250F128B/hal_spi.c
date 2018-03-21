@@ -1,6 +1,6 @@
 #include <xc.h>
 #include <stdint.h>
-#include "system.h"
+#include "project_settings.h"
 #include "spi.h"
 #include "macros.h"
 

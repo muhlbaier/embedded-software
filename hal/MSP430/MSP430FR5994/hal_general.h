@@ -2,7 +2,7 @@
 #define _HAL_GENERAL_
 
 #include <msp430.h>
-#include "system.h"
+#include "project_settings.h"
 
 #define Nop() _NOP()
 

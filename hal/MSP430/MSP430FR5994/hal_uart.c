@@ -8,7 +8,7 @@
 #include <msp430.h>
 #include <stdint.h>
 #include "hal_uart.h"
-#include "system.h"
+#include "project_settings.h"
 
 
 void hal_UART_Enable(uint8_t channel){

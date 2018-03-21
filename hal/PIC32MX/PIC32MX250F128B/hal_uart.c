@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include "hal_general.h"
 #include "uart.h"
-#include "system.h"
+#include "project_settings.h"
 #include "macros.h"
 
 #define UART1 1

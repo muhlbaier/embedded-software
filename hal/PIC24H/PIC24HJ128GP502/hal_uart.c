@@ -3,7 +3,7 @@
 #include "hal_general.h"
 #include "hal_uart.h"
 #include "uart.h"
-#include "system.h"
+#include "project_settings.h"
 #include "macros.h"
 
 

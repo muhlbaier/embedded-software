@@ -10,7 +10,7 @@
 #define _LIST_H_
 
 #include <stdint.h>
-#include "system.h"
+#include "project_settings.h"
 
 #include "library.h"
 

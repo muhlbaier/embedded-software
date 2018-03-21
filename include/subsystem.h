@@ -5,7 +5,7 @@
  *
  * This module is intended to assist in logging and or management of modules
  * via a command line. The user should define one of the following IO methods
- * in system.h:
+ * in project_settings.h:
  * 
  * - #define SUBSYSTEM_IO SUBSYSTEM_IO_NONE dummy IO methods. Useful to disable
  * logging without removing all the log function calls
@@ -35,13 +35,13 @@
 
 #include "library.h"
 
-// Define these before including system.h so system.h can see them
+// Define these before including project_settings.h so project_settings.h can see them
 #define SUBSYSTEM_IO_NONE 0
 #define SUBSYSTEM_IO_UART 1
 #define SUBSYSTEM_IO_PRINTF 2
-#define SUBSYSTEM_IO_CUSTOM 255 // if the user sets this, they are responsible for creating the macro hooks to the IO layer in their system.h file
+#define SUBSYSTEM_IO_CUSTOM 255 // if the user sets this, they are responsible for creating the macro hooks to the IO layer in their project_settings.h file
 
-#include "system.h"
+#include "project_settings.h"
 
 enum log_level {
     LOG_OFF = 0,
@@ -64,7 +64,7 @@ enum log_level {
 
 #if SUBSYSTEM_IO != SUBSYSTEM_IO_NONE
 #ifndef USE_MODULE_SUBSYSTEM
-#warning "USE_MODULE_SUBSYSTEM not defined in system.h. Other modules won't be able to utilize this module."
+#warning "USE_MODULE_SUBSYSTEM not defined in project_settings.h. Other modules won't be able to utilize this module."
 #endif
 #endif
 
@@ -88,10 +88,10 @@ enum log_level {
 #elif SUBSYSTEM_IO == SUBSYSTEM_IO_UART
     #include "uart.h"
     #ifndef USE_MODULE_BUFFER_PRINTF
-        #error "This module requires optional UART functionality provided by buffer_printf. Please declare USE_MODULE_BUFFER_PRINTF in system.h"
+        #error "This module requires optional UART functionality provided by buffer_printf. Please declare USE_MODULE_BUFFER_PRINTF in project_settings.h"
     #endif
     #ifndef SUBSYSTEM_UART
-        #error "You must define what UART number the terminal is using in system.h: #define SUBSYS_UART num"
+        #error "You must define what UART number the terminal is using in project_settings.h: #define SUBSYS_UART num"
     #endif
     #define Subsystem_printf(str, ...) UART_printf(SUBSYSTEM_UART, str, ##__VA_ARGS__)
     #define Subsystem_vprintf(str, arg) UART_vprintf(SUBSYSTEM_UART, str, arg)

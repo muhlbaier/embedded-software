@@ -1,12 +1,12 @@
 #ifndef _LIBRARY_H_
 #define _LIBRARY_H_
-
+ 
 /** @mainpage Embedded Library
  *
  * @section getting_started Getting Started With Using the Library
  * To use this library:
  * - add the desired modules (.c files) to your project and include the
- * corresponding header files (.h files) in system.h (you must create system.h).
+ * corresponding header files (.h files) in project_settings.h (you must create project_settings.h).
  * - add the \ include directory to the compilers include directories
  * - add the \ hal \ hal_includes directory to the compilers include directories
  * - add the \ hal \ processor_family \ processor_number directory to the
@@ -24,10 +24,10 @@
  * - timing.c (used by the task management module)
  * - uart.c
  *
- * Your system.h may look something like the following:
+ * Your project_settings.h may look something like the following:
  * @code
-#ifndef _SYSTEM_H_
-#define _SYSTEM_H_
+#ifndef _PROJECT_SETTINGS_H_
+#define _PROJECT_SETTINGS_H_
 
 // include the library header
 #include "library.h"
@@ -55,7 +55,7 @@
  * The main for this project may look something like this:
 @code
 #include "library.h" // for useful macros and int defs
-#include "system.h"
+#include "project_settings.h"
 #include "timing.h"
 #include "task.h"
 #include "uart.h"

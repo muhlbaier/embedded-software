@@ -31,7 +31,7 @@
  * @version 0.1 Initial implementation
  * @version 1.0 Made Push and Pop interrupt safe
  * @version 1.1 Added PushData
- * @version 1.2 Added and corrected documentation, removed include "system.h"
+ * @version 1.2 Added and corrected documentation, removed include "project_settings.h"
  * @version 1.3 Changed char to uint8_t for the data bytes and updated method names to Buffer_[] and Push/Pop to Enqueue/Dequeue
  * @{
  */

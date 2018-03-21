@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include "hal_general.h"
 #include "uart.h"
-#include "system.h"
+#include "project_settings.h"
 #include "macros.h"
 
 #include "hal_uart.h"
@@ -14,7 +14,7 @@
 #define Set_U2Rx_PPS(pin) RPINR9bits.U2RXR = pin
 #define Set_U3Rx_PPS(pin) RPINR8bits.U3RXR = pin
 
-// defaults for PPS if not set in system.h
+// defaults for PPS if not set in project_settings.h
 #ifndef UART2_TX_PIN
 #define UART2_TX_PIN 1
 #endif
@@ -52,10 +52,10 @@ void hal_UART_Init(uint8_t channel, uint32_t baud) {
             U1STA = 0b1001010000000000;
             break;
         case UART2_CH:
-            Set_U2Tx_PPS(UART2_TX_PIN);       // UART2_TX_PIN should be defined in system.h
+            Set_U2Tx_PPS(UART2_TX_PIN);       // UART2_TX_PIN should be defined in project_settings.h
                                               // e.g. #define UART2_TX_PIN PRB10
                                               // Options are RP: D3 G7 F4 D11 F0 B1 E5 C13 B3 F3
-            Set_U2Rx_PPS(UART2_RX_PIN);       // UART2_RX_PIN should be defined in system.h
+            Set_U2Rx_PPS(UART2_RX_PIN);       // UART2_RX_PIN should be defined in project_settings.h
                                               // Options are RP: D2 G8 F4 D10 F1 B9 B10 C14 B5 F2
             IPC14bits.U2RXIP = UART_INTERRUPT_PRIORITY;
             IPC14bits.U2TXIP = UART_INTERRUPT_PRIORITY;
@@ -65,10 +65,10 @@ void hal_UART_Init(uint8_t channel, uint32_t baud) {
             U2STA = 0b1001010000000000;
             break;
         case UART3_CH:
-            Set_U3Tx_PPS(UART3_TX_PIN);       // UART3_TX_PIN should be defined in system.h
+            Set_U3Tx_PPS(UART3_TX_PIN);       // UART3_TX_PIN should be defined in project_settings.h
                                               // e.g. #define UART3_TX_PIN PRB10
                                               // Options are RP: D2 G8 F4 D10 C14 B5
-            Set_U3Rx_PPS(UART3_RX_PIN);       // UART3_RX_PIN should be defined in system.h
+            Set_U3Rx_PPS(UART3_RX_PIN);       // UART3_RX_PIN should be defined in project_settings.h
                                               // Options are RP: D3 G7 F5 D11 F0 B1 E5 C13 B3 F2
             IPC14bits.U3RXIP = UART_INTERRUPT_PRIORITY;
             IPC15bits.U3TXIP = UART_INTERRUPT_PRIORITY;

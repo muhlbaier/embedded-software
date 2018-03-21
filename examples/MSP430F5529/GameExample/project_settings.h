@@ -1,12 +1,12 @@
 /*
- * system.h
+ * project_settings.h
  *
  *  Created on: Feb 21, 2018
  *      Author: Michael
  */
 
-#ifndef SYSTEM_H_
-#define SYSTEM_H_
+#ifndef PROJECT_SETTINGS_H
+#define PROJECT_SETTINGS_H
 
 #define FCPU 24000000
 
@@ -26,4 +26,4 @@
 
 #define TASK_MAX_LENGTH 50
 
-#endif /* SYSTEM_H_ */
+#endif /* PROJECT_SETTINGS_H */

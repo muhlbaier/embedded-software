@@ -2,7 +2,7 @@
 #define _TIMING_H_
 
 #include <stdint.h>
-#include "system.h"
+#include "project_settings.h"
 
 /** @file
  * @defgroup timing Timing module

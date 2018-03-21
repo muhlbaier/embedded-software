@@ -12,26 +12,26 @@
 #include "hal_uart.h"
 #include "uart.h"
 #include "hal_pin_macros.h"
-#include "system.h"
+#include "project_settings.h"
 
 void hal_UART_ConfigClock(uint8_t channel, uint32_t baud);
 
 // Provide user warnings for selecting pins
 #ifdef USE_UART0
 	#ifndef UART0_TX_GPIO
-		#error "Must define UART0_TX_GPIO and UART0_RX_GPIO in system.h if you are using UART0. Ex. #define UART0_TX_GPIO 1"
+		#error "Must define UART0_TX_GPIO and UART0_RX_GPIO in project_settings.h if you are using UART0. Ex. #define UART0_TX_GPIO 1"
 	#endif
 	#ifndef UART0_RX_GPIO
-		#error "Must define UART0_TX_GPIO and UART0_RX_GPIO in system.h if you are using UART0. Ex. #define UART0_RX_GPIO 2"
+		#error "Must define UART0_TX_GPIO and UART0_RX_GPIO in project_settings.h if you are using UART0. Ex. #define UART0_RX_GPIO 2"
 	#endif
 #endif
 
 #ifdef USE_UART1
 	#ifndef UART1_TX_GPIO
-		#error "Must define UART1_TX_GPIO and UART1_RX_GPIO in system.h if you are using UART1. Ex. #define UART1_TX_GPIO 1"
+		#error "Must define UART1_TX_GPIO and UART1_RX_GPIO in project_settings.h if you are using UART1. Ex. #define UART1_TX_GPIO 1"
 	#endif
 	#ifndef UART1_RX_GPIO
-		#error "Must define UART1_TX_GPIO and UART1_RX_GPIO in system.h if you are using UART1. Ex. #define UART1_RX_GPIO 2"
+		#error "Must define UART1_TX_GPIO and UART1_RX_GPIO in project_settings.h if you are using UART1. Ex. #define UART1_RX_GPIO 2"
 	#endif
 #endif
 

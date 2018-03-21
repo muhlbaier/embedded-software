@@ -1,6 +1,6 @@
 #include <msp430.h>
 #include <stdint.h>
-#include "system.h"
+#include "project_settings.h"
 #include "i2c.h"
 
 typedef enum state_t {

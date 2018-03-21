@@ -15,11 +15,11 @@
 #define _HAL_SPI_H_
 
 #include <stdint.h>
-#include "system.h"
+#include "project_settings.h"
 
 /** @brief spi settings structure
  *
- * @warning structure had to be above system.h include in order for compiler to find it ???
+ * @warning structure had to be above project_settings.h include in order for compiler to find it ???
  */
 typedef struct hal_spi_settings_t {
 	uint8_t char7bit : 1; ///< char7bit

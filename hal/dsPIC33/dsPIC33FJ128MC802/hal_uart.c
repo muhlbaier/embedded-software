@@ -14,7 +14,7 @@
 #include "hal_general.h"
 #include "hal_uart.h"
 #include "uart.h"
-#include "system.h"
+#include "project_settings.h"
 #include "macros.h"
 
 #define UART1_RX_PIN 0b01010 //UART1 RX = Pin 21 = RP10 

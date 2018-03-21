@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "system.h"
+#include "project_settings.h"
 
 /* Initializes a timer peripheral with a period
 of 1ms. For Cortex-M cores we can use the built-in

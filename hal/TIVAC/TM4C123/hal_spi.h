@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "system.h"
+#include "project_settings.h"
 #include "driverlib/ssi.h"
 #include "inc/hw_ssi.h"
 #include "inc/hw_memmap.h"

@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include "hal_general.h"
 #include "uart.h"
-#include "system.h"
+#include "project_settings.h"
 #include "macros.h"
 
 #include "hal_uart.h"
@@ -17,7 +17,7 @@
 #define Set_U3Rx_PPS(pin) U3RXR = CAT2(IN_PIN_PPS2_, pin)
 #define Set_U4Rx_PPS(pin) U4RXR = CAT2(IN_PIN_PPS4_, pin)
 
-// defaults for PPS if not set in system.h
+// defaults for PPS if not set in project_settings.h
 #ifndef UART1_TX_PIN
 #define UART1_TX_PIN RPD3
 #endif
@@ -59,10 +59,10 @@ void hal_UART_Init(uint8_t channel, uint32_t baud) {
     SetBaud(channel, baud);
     switch (channel) {
         case UART1_CH:
-            Set_U1Tx_PPS(UART1_TX_PIN);       // UART1_TX_PIN should be defined in system.h
+            Set_U1Tx_PPS(UART1_TX_PIN);       // UART1_TX_PIN should be defined in project_settings.h
                                               // e.g. #define UART1_TX_PIN PRB10
                                               // Options are RP: D3 G7 F4 D11 F0 B1 E5 C13 B3 F3
-            Set_U1Rx_PPS(UART1_RX_PIN);       // UART1_RX_PIN should be defined in system.h
+            Set_U1Rx_PPS(UART1_RX_PIN);       // UART1_RX_PIN should be defined in project_settings.h
                                               // Options are RP: D2 G8 F4 D10 F1 B9 B10 C14 B5 F2
             IPC7bits.U1IP = UART_INTERRUPT_PRIORITY;
             // interrupt when transmit buffer is empty, enable RX and TX, rx interrupt
@@ -71,10 +71,10 @@ void hal_UART_Init(uint8_t channel, uint32_t baud) {
             U1STA = 0b1001010000000000;
             break;
         case UART2_CH:
-            Set_U2Tx_PPS(UART2_TX_PIN);       // UART2_TX_PIN should be defined in system.h
+            Set_U2Tx_PPS(UART2_TX_PIN);       // UART2_TX_PIN should be defined in project_settings.h
                                               // e.g. #define UART2_TX_PIN PRB10
                                               // Options are RP: D3 G7 F4 D11 F0 B1 E5 C13 B3 F3
-            Set_U2Rx_PPS(UART2_RX_PIN);       // UART2_RX_PIN should be defined in system.h
+            Set_U2Rx_PPS(UART2_RX_PIN);       // UART2_RX_PIN should be defined in project_settings.h
                                               // Options are RP: D2 G8 F4 D10 F1 B9 B10 C14 B5 F2
             IPC9bits.U2IP = UART_INTERRUPT_PRIORITY;
             // interrupt when transmit buffer is empty, enable RX and TX, rx interrupt
@@ -83,10 +83,10 @@ void hal_UART_Init(uint8_t channel, uint32_t baud) {
             U2STA = 0b1001010000000000;
             break;
         case UART3_CH:
-            Set_U3Tx_PPS(UART3_TX_PIN);       // UART3_TX_PIN should be defined in system.h
+            Set_U3Tx_PPS(UART3_TX_PIN);       // UART3_TX_PIN should be defined in project_settings.h
                                               // e.g. #define UART3_TX_PIN PRB10
                                               // Options are RP: D2 G8 F4 D10 C14 B5
-            Set_U3Rx_PPS(UART3_RX_PIN);       // UART3_RX_PIN should be defined in system.h
+            Set_U3Rx_PPS(UART3_RX_PIN);       // UART3_RX_PIN should be defined in project_settings.h
                                               // Options are RP: D3 G7 F5 D11 F0 B1 E5 C13 B3 F2
             IPC9bits.U3IP = UART_INTERRUPT_PRIORITY;
             // interrupt when transmit buffer is empty, enable RX and TX, rx interrupt
@@ -95,10 +95,10 @@ void hal_UART_Init(uint8_t channel, uint32_t baud) {
             U3STA = 0b1001010000000000;
             break;
         case UART4_CH:
-            Set_U4Tx_PPS(UART4_TX_PIN);       // UART4_TX_PIN should be defined in system.h
+            Set_U4Tx_PPS(UART4_TX_PIN);       // UART4_TX_PIN should be defined in project_settings.h
                                               // e.g. #define UART4_TX_PIN PRB10
                                               // Options are RP: D9 G6 B8 B15 D4 B0 E3 B7 B2
-            Set_U4Rx_PPS(UART4_RX_PIN);       // UART4_RX_PIN should be defined in system.h
+            Set_U4Rx_PPS(UART4_RX_PIN);       // UART4_RX_PIN should be defined in project_settings.h
                                               // Options are RP: D1 G9 B14 D0 D8 B6 D5 B2 F3 F2
             IPC9bits.U4IP = UART_INTERRUPT_PRIORITY;
             // interrupt when transmit buffer is empty, enable RX and TX, rx interrupt

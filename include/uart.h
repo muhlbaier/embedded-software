@@ -18,7 +18,7 @@
  * -- UART_Printf() to send a formatted string
  * - UART_RegisterReceiver() to register a character receiver to process received data
  * - Call UART_Tick() as frequently as possible (every 1ms or more). Note: this happens
- * automatically if using @ref task with USE_MODULE_TASK defined in system.h
+ * automatically if using @ref task with USE_MODULE_TASK defined in project_settings.h
  * @{
  */
 
@@ -29,8 +29,8 @@
 #include <stdbool.h>
 #include <stdarg.h>
 
-// Get library configuration
-#include "system.h"
+// Get project/library configuration
+#include "project_settings.h"
 
 #ifdef USE_MODULE_SUBSYSTEM
 #include "subsystem.h"

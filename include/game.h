@@ -1,10 +1,10 @@
 #ifndef _GAME_H_
 #define _GAME_H_
 
-#include "system.h"
+#include "project_settings.h"
 
 #ifndef USE_MODULE_BUFFER_PRINTF
-#error "This module requires optional UART functionality provided by buffer_printf. Please declare USE_MODULE_BUFFER_PRINTF in system.h"
+#error "This module requires optional UART functionality provided by buffer_printf. Please declare USE_MODULE_BUFFER_PRINTF in project_settings.h"
 #endif
 
 #include "terminal.h"

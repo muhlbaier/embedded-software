@@ -3,7 +3,7 @@
 
 #include "uart.h"
 #include "hal_uart.h"
-#include "system.h"
+#include "project_settings.h"
 
 #define ROUND_2_INT(f) ((int)(f >= 0.0 ? (f + 0.5) : (f - 0.5)))
 

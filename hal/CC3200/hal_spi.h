@@ -23,7 +23,7 @@
 
 /** @brief spi settings structure
  *
- * @warning structure had to be above system.h include in order for compiler to find it ???
+ * @warning structure had to be above project_settings.h include in order for compiler to find it ???
  */
 typedef struct hal_spi_settings_t {
 	uint8_t sw_cs_control : 1; /// 0= HW Control, 1= SW Control
@@ -33,7 +33,7 @@ typedef struct hal_spi_settings_t {
 	uint8_t turbo_on : 1; /// 0= Turbo Off, 1= Turbo On
 }hal_spi_settings_t;
 
-#include "system.h"
+#include "project_settings.h"
 
 #ifdef USE_SPI
 #define USE_SPI0

@@ -6,7 +6,7 @@
 #include "inc/hw_memmap.h"
 #include "driverlib/prcm.h"
 #include "driverlib/timer.h"
-#include "system.h"
+#include "project_settings.h"
 #include "macros.h"
 #include "timing.h"
 

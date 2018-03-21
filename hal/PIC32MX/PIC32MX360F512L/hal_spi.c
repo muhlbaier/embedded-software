@@ -1,6 +1,6 @@
 #include <xc.h>
 #include <stdint.h>
-#include "system.h"
+#include "project_settings.h"
 #include "spi.h"
 
 void hal_SPI_Init(spi_settings_t* settings) {

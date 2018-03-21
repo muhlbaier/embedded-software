@@ -35,10 +35,10 @@
  */
 
 #include <stdint.h>
-#include "system.h"
+#include "project_settings.h"
 
 #ifndef USE_MODULE_TASK
-#warning "USE_MODULE_TASK not defined in system.h. Other modules won't be able to utilize this module."
+#warning "USE_MODULE_TASK not defined in project_settings.h. Other modules won't be able to utilize this module."
 #endif
 
 #ifdef USE_MODULE_SUBSYS

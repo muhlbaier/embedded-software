@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include "hal_general.h"
 #incldue "uart.h"
-#include "system.h"
+#include "project_settings.h"
 #include "macros.h"
 
 #define UART1_CH USART_ID_1
@@ -24,7 +24,7 @@
 #define Set_U5Rx_PPS(pin) PLIB_PORTS_RemapInput(PORTS_ID_0, INPUT_FUNC_U5RX, CAT2(INPUT_PIN_, pin))
 #define Set_U6Rx_PPS(pin) PLIB_PORTS_RemapInput(PORTS_ID_0, INPUT_FUNC_U6RX, CAT2(INPUT_PIN_, pin))
 
-// for uart channels used UARTx_TX_PIN and UARTx_RX_PIN must be set in system.h
+// for uart channels used UARTx_TX_PIN and UARTx_RX_PIN must be set in project_settings.h
 
 #ifndef UART_INTERRUPT_PRIORITY
 #define UART_INTERRUPT_PRIORITY 3
@@ -45,49 +45,49 @@ void hal_UART_Init(uint8_t channel, uint32_t baud) {
     switch (channel) {
 #ifdef USE_UART1
         case UART1_CH:
-            Set_U1Tx_PPS(UART1_TX_PIN);       // UART1_TX_PIN should be defined in system.h
+            Set_U1Tx_PPS(UART1_TX_PIN);       // UART1_TX_PIN should be defined in project_settings.h
                                               // e.g. #define UART1_TX_PIN PRB10
-            Set_U1Rx_PPS(UART1_RX_PIN);       // UART1_RX_PIN should be defined in system.h
+            Set_U1Rx_PPS(UART1_RX_PIN);       // UART1_RX_PIN should be defined in project_settings.h
             PLIB_INT_VectorPrioritySet(INT_ID_0, INT_VECTOR_UART1_RX, UART_INTERRUPT_PRIORITY);
             PLIB_INT_VectorPrioritySet(INT_ID_0, INT_VECTOR_UART1_TX, UART_INTERRUPT_PRIORITY);
             break;
 #endif
 #ifdef USE_UART2
         case UART2_CH:
-            Set_U2Tx_PPS(UART2_TX_PIN);       // UART2_TX_PIN should be defined in system.h
-            Set_U2Rx_PPS(UART2_RX_PIN);       // UART2_RX_PIN should be defined in system.h
+            Set_U2Tx_PPS(UART2_TX_PIN);       // UART2_TX_PIN should be defined in project_settings.h
+            Set_U2Rx_PPS(UART2_RX_PIN);       // UART2_RX_PIN should be defined in project_settings.h
             PLIB_INT_VectorPrioritySet(INT_ID_0, INT_VECTOR_UART2_RX, UART_INTERRUPT_PRIORITY);
             PLIB_INT_VectorPrioritySet(INT_ID_0, INT_VECTOR_UART2_TX, UART_INTERRUPT_PRIORITY);
             break;
 #endif
 #ifdef USE_UART3
         case UART3_CH:
-            Set_U3Tx_PPS(UART3_TX_PIN);       // UART3_TX_PIN should be defined in system.h
-            Set_U3Rx_PPS(UART3_RX_PIN);       // UART3_RX_PIN should be defined in system.h
+            Set_U3Tx_PPS(UART3_TX_PIN);       // UART3_TX_PIN should be defined in project_settings.h
+            Set_U3Rx_PPS(UART3_RX_PIN);       // UART3_RX_PIN should be defined in project_settings.h
             PLIB_INT_VectorPrioritySet(INT_ID_0, INT_VECTOR_UART3_RX, UART_INTERRUPT_PRIORITY);
             PLIB_INT_VectorPrioritySet(INT_ID_0, INT_VECTOR_UART3_TX, UART_INTERRUPT_PRIORITY);
             break;
 #endif
 #ifdef USE_UART4
         case UART4_CH:
-            Set_U4Tx_PPS(UART4_TX_PIN);       // UART4_TX_PIN should be defined in system.h
-            Set_U4Rx_PPS(UART4_RX_PIN);       // UART4_RX_PIN should be defined in system.h
+            Set_U4Tx_PPS(UART4_TX_PIN);       // UART4_TX_PIN should be defined in project_settings.h
+            Set_U4Rx_PPS(UART4_RX_PIN);       // UART4_RX_PIN should be defined in project_settings.h
             PLIB_INT_VectorPrioritySet(INT_ID_0, INT_VECTOR_UART4_RX, UART_INTERRUPT_PRIORITY);
             PLIB_INT_VectorPrioritySet(INT_ID_0, INT_VECTOR_UART4_TX, UART_INTERRUPT_PRIORITY);
             break;
 #endif
 #ifdef USE_UART5
         case UART5_CH:
-            Set_U5Tx_PPS(UART5_TX_PIN);       // UART5_TX_PIN should be defined in system.h
-            Set_U5Rx_PPS(UART5_RX_PIN);       // UART5_RX_PIN should be defined in system.h
+            Set_U5Tx_PPS(UART5_TX_PIN);       // UART5_TX_PIN should be defined in project_settings.h
+            Set_U5Rx_PPS(UART5_RX_PIN);       // UART5_RX_PIN should be defined in project_settings.h
             PLIB_INT_VectorPrioritySet(INT_ID_0, INT_VECTOR_UART5_RX, UART_INTERRUPT_PRIORITY);
             PLIB_INT_VectorPrioritySet(INT_ID_0, INT_VECTOR_UART5_TX, UART_INTERRUPT_PRIORITY);
             break;
 #endif
 #ifdef USE_UART6
         case UART6_CH:
-            Set_U6Tx_PPS(UART6_TX_PIN);       // UART6_TX_PIN should be defined in system.h
-            Set_U6Rx_PPS(UART6_RX_PIN);       // UART6_RX_PIN should be defined in system.h
+            Set_U6Tx_PPS(UART6_TX_PIN);       // UART6_TX_PIN should be defined in project_settings.h
+            Set_U6Rx_PPS(UART6_RX_PIN);       // UART6_RX_PIN should be defined in project_settings.h
             PLIB_INT_VectorPrioritySet(INT_ID_0, INT_VECTOR_UART6_RX, UART_INTERRUPT_PRIORITY);
             PLIB_INT_VectorPrioritySet(INT_ID_0, INT_VECTOR_UART6_TX, UART_INTERRUPT_PRIORITY);
             break;

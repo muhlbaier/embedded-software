@@ -9,7 +9,7 @@
 
 #include "uart.h"
 #include "hal_general.h"
-// uart.h includes system.h which would define USE_MODULE_TASK if it is used
+// uart.h includes project_settings.h which would define USE_MODULE_TASK if it is used
 #ifdef USE_MODULE_TASK
 #include "task.h"
 #endif

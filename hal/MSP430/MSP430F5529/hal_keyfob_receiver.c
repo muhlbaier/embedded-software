@@ -1,4 +1,4 @@
-#include "system.h"
+#include "project_settings.h"
 #include "hal_keyfob_receiver.h"
 
 #ifndef KEYFOB_SIGNAL_PIN

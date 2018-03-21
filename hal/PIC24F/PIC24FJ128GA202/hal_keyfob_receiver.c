@@ -1,4 +1,4 @@
-#include "system.h"
+#include "project_settings.h"
 #include "hal_general.h"
 #include "int_def.h"
 #include "hal_keyfob_receiver.h"

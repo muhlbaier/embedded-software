@@ -2,7 +2,7 @@
 #include "hal_general.h"
 #include "hal_uart.h"
 #include "uart.h"
-#include "system.h"
+#include "project_settings.h"
 #include "macros.h"
 
 #define Set_U1Tx_PPS(pin) CAT5(RPOR, OUTPUT_PIN_TO_REG_NUM(pin), bits.RP, pin, R) = 3 // U1TX

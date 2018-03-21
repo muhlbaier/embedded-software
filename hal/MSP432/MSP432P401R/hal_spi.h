@@ -14,7 +14,7 @@
 #define _HAL_SPI_H_
 
 #include <stdint.h>
-#include "system.h"
+#include "project_settings.h"
 
 /**
  * @brief Structure for additional hardware specific SPI settings

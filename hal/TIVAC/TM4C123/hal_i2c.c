@@ -8,7 +8,7 @@
 #include "driverlib/pin_map.h"
 #include "driverlib/sysctl.h"
 
-#include "system.h"
+#include "project_settings.h"
 #include "hal_i2c.h"
 
 typedef enum state_t {

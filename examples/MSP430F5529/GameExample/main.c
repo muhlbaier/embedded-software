@@ -1,5 +1,5 @@
 #include <msp430.h> 
-#include "system.h"
+#include "project_settings.h"
 #include "muh_game.h"
 #include "subsystem.h"
 #include "task.h"

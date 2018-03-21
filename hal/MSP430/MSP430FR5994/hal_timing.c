@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <msp430.h>
 #include "timing.h"
-#include "system.h"
+#include "project_settings.h"
 
 void hal_Timing_Init(void){
     TA0CCR0 = FCPU/1000;    //Set the period to 1ms

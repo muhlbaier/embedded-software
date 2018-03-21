@@ -2,7 +2,7 @@
 #include "hal_general.h"
 #include "hal_uart.h"
 #incldue "uart.h"
-#include "system.h"
+#include "project_settings.h"
 #include "macros.h"
 
 #define UART1_CH 1

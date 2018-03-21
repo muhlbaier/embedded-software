@@ -3,7 +3,7 @@
 
 #include "uart.h"
 #include "hal_uart.h"
-#include "system.h"
+#include "project_settings.h"
 
 void hal_UART_Init(uint8_t channel, uint32_t baud){
 	switch(channel){
