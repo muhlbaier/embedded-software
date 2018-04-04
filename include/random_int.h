@@ -7,9 +7,10 @@
  * @{
  */
 
-#ifndef RANDOM_INT_H_
-#define RANDOM_INT_H_
+#ifndef RANDOM_INT_H
+#define RANDOM_INT_H
 
+#include <stdint.h>
 /** Generate a random integer
  *
  * Generates a pseudo random value between min_num (inclusive) and max_num (exclusive).
@@ -26,4 +27,4 @@
 int random_int(int16_t min_num, int16_t max_num);
 
 ///@}
-#endif /* RANDOM_INT_H_ */
+#endif /* RANDOM_INT_H */
