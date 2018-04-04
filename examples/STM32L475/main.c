@@ -270,6 +270,7 @@ uint8_t Button_WaitForMultiPush(uint32_t delay)
 {
   static uint32_t timestamp = 0;
   if(TimeSince(timestamp)>delay) {
+    timestamp = TimeNow();
     if (button_flags > 1)
     {
       button_flags = 0;
