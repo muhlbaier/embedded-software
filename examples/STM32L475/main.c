@@ -45,8 +45,10 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
-
+#include "timing.h"
+#include "task.h"
+#include "uart.h"
+#include "project_settings.h"
 
 /* Global variables ---------------------------------------------------------*/
 RTC_HandleTypeDef hrtc;
@@ -70,6 +72,12 @@ static void RTC_Init(void);
 static void Button_ISR(void);
 static void cloud_test(void const *arg);
 
+// receiver for receiving data that other functions try and get via the __io_getchar method
+uint8_t data_received;
+void GetCharReceiver(uint8_t data) {
+  data_received = data;
+}
+
 /* Private functions ---------------------------------------------------------*/
 
 /**
@@ -89,6 +97,9 @@ int main(void)
   BSP_LED_Init(LED_GREEN);
   BSP_PB_Init(BUTTON_USER, BUTTON_MODE_EXTI);
   
+  Timing_Init();
+  Task_Init();
+
   /* RNG init function */
   hrng.Instance = RNG;
   if (HAL_RNG_Init(&hrng) != HAL_OK)
@@ -99,13 +110,17 @@ int main(void)
   /* RTC init */
   RTC_Init();
   /* UART console init */
-  Console_UART_Init();  
+  //Console_UART_Init();
+  UART_Init(SUBSYSTEM_UART);
+  UART_RegisterReceiver(SUBSYSTEM_UART, GetCharReceiver);
   
 #ifdef FIREWALL_MBEDLIB
   firewall_init();
 #endif
-  
-  cloud_test(0);
+  Task_Schedule((task_t)cloud_test, (void*)1, 100, 100);
+  while(1) {
+    SystemTick();
+  }
 }
 
 
@@ -253,17 +268,19 @@ uint8_t Button_WaitForPush(uint32_t delay)
   */
 uint8_t Button_WaitForMultiPush(uint32_t delay)
 {
-  HAL_Delay(delay);
-  if (button_flags > 1)
-  {
-    button_flags = 0;
-    return BP_MULTIPLE_PUSH;
-  }
+  static uint32_t timestamp = 0;
+  if(TimeSince(timestamp)>delay) {
+    if (button_flags > 1)
+    {
+      button_flags = 0;
+      return BP_MULTIPLE_PUSH;
+    }
 
-  if (button_flags == 1)
-  {
-    button_flags = 0;
-    return BP_SINGLE_PUSH;
+    if (button_flags == 1)
+    {
+      button_flags = 0;
+      return BP_SINGLE_PUSH;
+    }
   }
   return BP_NOT_PUSHED;
 }
@@ -308,10 +325,11 @@ PUTCHAR_PROTOTYPE
 {
   /* Place your implementation of fputc here */
   /* e.g. write a character to the USART2 and Loop until the end of transmission */
-  while (HAL_OK != HAL_UART_Transmit(&console_uart, (uint8_t *) &ch, 1, 30000))
-  {
-    ;
-  }
+  //while (HAL_OK != HAL_UART_Transmit(&console_uart, (uint8_t *) &ch, 1, 30000))
+  //{
+  //  ;
+  //}
+  UART_WriteByte(SUBSYSTEM_UART, ch);
   return ch;
 }
 
@@ -324,12 +342,17 @@ GETCHAR_PROTOTYPE
 {
   /* Place your implementation of fgetc here */
   /* e.g. read a character on USART and loop until the end of read */
-  uint8_t ch = 0;
-  while (HAL_OK != HAL_UART_Receive(&console_uart, (uint8_t *)&ch, 1, 30000))
-  {
-    ;
+  //uint8_t ch = 0;
+  data_received = 0;
+  while(data_received == 0) {
+    UART_Tick();
   }
-  return ch;
+
+  //while (HAL_OK != HAL_UART_Receive(&console_uart, (uint8_t *)&ch, 1, 30000))
+  //{
+  //  ;
+  //}
+  return data_received; // ch;
 }
 
 /**
@@ -356,9 +379,30 @@ static void RTC_Init(void)
 
 static void cloud_test(void const *arg)
 {
-  platform_init();
-  subscribe_publish_sensor_values();
-  platform_deinit();
+  static uint8_t state = 0;
+  int return_val;
+  switch(state) {
+    case 0:
+      // platform_init has its own state machine that will return 0 when finished, 1 when not finished, and negative when there is a problem
+      return_val = platform_init();
+      if(return_val == 0) state++;
+      break;
+    case 1:
+      // subscribe_publish_sensor_values has its own state machine that will return 0 when finished, 1 when not, and negative when there is a problem
+      return_val = subscribe_publish_sensor_values();
+      if(return_val == 0) state++;
+      else if(return_val < 0) state = 0; // restart SM if there was an error
+      break;
+    case 2:
+      platform_deinit();
+      state++;
+      break;
+    case 3:
+      break; // when done do nothing
+    default:
+      state = 0;
+      break;
+  }
 }
 
 

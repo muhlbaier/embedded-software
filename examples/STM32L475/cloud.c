@@ -164,137 +164,152 @@ const firmware_version_t version = { FW_VERSION_NAME, FW_VERSION_MAJOR, FW_VERSI
 
 int platform_init(void)
 {
+  static uint8_t state = 0;
   net_ipaddr_t ipAddr;
   net_macaddr_t macAddr;
   const firmware_version_t  *fw_version=&version;;
   unsigned int random_number = 0;
   bool skip_reconf = false;
+  int res;
   
+  switch(state){
+    case 0: // initialize stuff that doesn't take too long
 #ifdef HEAP_DEBUG
-  stack_measure_prologue();
+      stack_measure_prologue();
 #endif
-  
-  /* Initialize the seed of the stdlib rand() SW implementation from the RNG. */
-  if (HAL_RNG_GenerateRandomNumber(&hrng, (uint32_t *) &random_number) == HAL_OK)
-  {
-    srand(random_number);
-  }
-
-  printf("\n");
-  printf("*************************************************************\n");
-  printf("***   STM32 IoT Discovery kit for                         \n");
-  printf("***      STM32L475/STM32F413/STM32F769 MCU                \n");
-  printf("***   %s Cloud Connectivity Demonstration                 \n",fw_version->name);
-  printf("***   FW version %d.%d.%d - %s      \n",
-           fw_version->major, fw_version->minor, fw_version->patch, fw_version->packaged_date);
-  printf("*************************************************************\n");
-
-  
-  printf("\n*** Board personalization ***\n\n");
-  /* Network initialization */
-  if (net_init(&hnet, NET_IF, (net_if_init)) != NET_OK)
-  {
-#ifdef USE_C2C
-    CLOUD_Error_Handler(CLOUD_DEMO_C2C_INITIALIZATION_ERROR);
-#else
-    CLOUD_Error_Handler(CLOUD_DEMO_IP_ADDRESS_ERROR);
-#endif
-    return -1;
-  }
-
-  if (net_get_mac_address(hnet, &macAddr) == NET_OK)
-  {
-    msg_info("Mac address: %02x:%02x:%02x:%02x:%02x:%02x\n",
-             macAddr.mac[0], macAddr.mac[1], macAddr.mac[2], macAddr.mac[3], macAddr.mac[4], macAddr.mac[5]);
-  }
-  else
-  {
-    CLOUD_Error_Handler(CLOUD_DEMO_MAC_ADDRESS_ERROR);
-    return -1;
-  }
-    
-  /* Slight delay since the netif seems to take some time prior to being able
-   to retrieve its IP address after a connection. */
-  HAL_Delay(500);
-
-  msg_info("Retrieving the IP address.\n");
-
-  if (net_get_ip_address(hnet, &ipAddr) != NET_OK)
-  {
-    CLOUD_Error_Handler(CLOUD_DEMO_IP_ADDRESS_ERROR);
-    return -1;
-  }
-  else
-  {
-    switch(ipAddr.ipv)
-    {
-      case NET_IP_V4:
-        msg_info("IP address: %d.%d.%d.%d\n", ipAddr.ip[12], ipAddr.ip[13], ipAddr.ip[14], ipAddr.ip[15]);
-        break;
-      case NET_IP_V6:
-      default:
-        CLOUD_Error_Handler(CLOUD_DEMO_IP_ADDRESS_ERROR);
-        return -1;
-    }
-  }
-  /* End of network initialisation */
-
-  /* Security and cloud parameters definition */
-  /* Define, or allow to update if the user button is pushed. */
-  
-  
-  
-  skip_reconf = (checkTLSRootCA() == 0)
-    && ( (checkTLSDeviceConfig() == 0) || !app_needs_device_keypair() )
-    && (checkIoTDeviceConfig() == 0);
-  
-  if (skip_reconf == true)
-  {
-    printf("Push the User button (Blue) within the next 5 seconds if you want to update "
-           "the device security parameters or credentials.\n\n");
-    skip_reconf = (Button_WaitForPush(5000) == BP_NOT_PUSHED);
-  }
-  
-  if (skip_reconf == false)
-  {
-    if ((checkIoTDeviceConfig() != 0) || dialog_ask("Do you want to update your IoT device connection parameters? (y/n)\n"))
-    {
-      if (cloud_device_enter_credentials() != 0)
+      /* Initialize the seed of the stdlib rand() SW implementation from the RNG. */
+      if (HAL_RNG_GenerateRandomNumber(&hrng, (uint32_t *) &random_number) == HAL_OK)
       {
-        msg_error("Failed configuring the IoT device.\n");
+	srand(random_number);
       }
-    }
+      printf("\n");
+      printf("*************************************************************\n");
+      printf("***   STM32 IoT Discovery kit for                         \n");
+      printf("***      STM32L475/STM32F413/STM32F769 MCU                \n");
+      printf("***   %s Cloud Connectivity Demonstration                 \n",fw_version->name);
+      printf("***   FW version %d.%d.%d - %s      \n",
+	       fw_version->major, fw_version->minor, fw_version->patch, fw_version->packaged_date);
+      printf("*************************************************************\n");
+      printf("\n*** Board personalization ***\n\n");
+      state++;
+      break;
+    case 1: // network connection, this ends up blocking for a long time, worry about it later if it causes issues
+      /* Network initialization */
+      if (net_init(&hnet, NET_IF, (net_if_init)) != NET_OK)
+      {
+    #ifdef USE_C2C
+	CLOUD_Error_Handler(CLOUD_DEMO_C2C_INITIALIZATION_ERROR);
+    #else
+	CLOUD_Error_Handler(CLOUD_DEMO_IP_ADDRESS_ERROR);
+    #endif
+	state = 0; // reset SM
+	return -1;
+      }
+      if (net_get_mac_address(hnet, &macAddr) == NET_OK)
+      {
+	msg_info("Mac address: %02x:%02x:%02x:%02x:%02x:%02x\n",
+		 macAddr.mac[0], macAddr.mac[1], macAddr.mac[2], macAddr.mac[3], macAddr.mac[4], macAddr.mac[5]);
+      }
+      else
+      {
+	CLOUD_Error_Handler(CLOUD_DEMO_MAC_ADDRESS_ERROR);
+	state = 0; // reset SM
+	return -1;
+      }
+      state++;
+      break;
+    case 2: // small delay, don't care that it blocks for awhile because other things shouldn't need to run yet
+      /* Slight delay since the netif seems to take some time prior to being able
+       to retrieve its IP address after a connection. */
+      HAL_Delay(500);
+      state++;
+      break;
+    case 3:
+      msg_info("Retrieving the IP address.\n");
+      if (net_get_ip_address(hnet, &ipAddr) != NET_OK)
+      {
+	CLOUD_Error_Handler(CLOUD_DEMO_IP_ADDRESS_ERROR);
+	state = 0; // reset SM
+	return -1;
+      }
+      else
+      {
+	switch(ipAddr.ipv)
+	{
+	  case NET_IP_V4:
+	    msg_info("IP address: %d.%d.%d.%d\n", ipAddr.ip[12], ipAddr.ip[13], ipAddr.ip[14], ipAddr.ip[15]);
+	    break;
+	  case NET_IP_V6:
+	  default:
+	    CLOUD_Error_Handler(CLOUD_DEMO_IP_ADDRESS_ERROR);
+	    state = 0; // reset SM
+	    return -1;
+	}
+      }
+      /* End of network initialisation */
+      state++;
+      break;
+    case 4: // configure security
+      /* Security and cloud parameters definition */
+      /* Define, or allow to update if the user button is pushed. */
+      skip_reconf = (checkTLSRootCA() == 0)
+	&& ( (checkTLSDeviceConfig() == 0) || !app_needs_device_keypair() )
+	&& (checkIoTDeviceConfig() == 0);
+      if (skip_reconf == true)
+      {
+	printf("Push the User button (Blue) within the next 5 seconds if you want to update "
+	       "the device security parameters or credentials.\n\n");
+	skip_reconf = (Button_WaitForPush(5000) == BP_NOT_PUSHED);
+      }
+      if (skip_reconf == false)
+      {
+	if ((checkIoTDeviceConfig() != 0) || dialog_ask("Do you want to update your IoT device connection parameters? (y/n)\n"))
+	{
+	  if (cloud_device_enter_credentials() != 0)
+	  {
+	    msg_error("Failed configuring the IoT device.\n");
+	  }
+	}
 #if defined(USE_MBED_TLS) || (!defined(USE_CLEAR_TIMEDATE))
-    updateTLSCredentials();
+	updateTLSCredentials();
 #endif
-  }
-  /* End of security and cloud parameters definition */
-  
-  msg_info("Setting the RTC from the network time.\n");
+      }
+      /* End of security and cloud parameters definition */
+      state++;
+      break;
+    case 5:
+      msg_info("Setting the RTC from the network time.\n");
 #ifdef CLOUD_TIMEDATE_TLS_VERIFICATION_IGNORE
-  if (setRTCTimeDateFromNetwork(true) != TD_OK)
+      if (setRTCTimeDateFromNetwork(true) != TD_OK)
 #else   /* CLOUD_TIMEDATE_TLS_VERIFICATION_IGNORE */
-    if ( (setRTCTimeDateFromNetwork(false) != TD_OK) && (setRTCTimeDateFromNetwork(true) != TD_OK) )
+	if ( (setRTCTimeDateFromNetwork(false) != TD_OK) && (setRTCTimeDateFromNetwork(true) != TD_OK) )
 #endif  /* CLOUD_TIMEDATE_TLS_VERIFICATION_IGNORE */
-  
-  {
-    CLOUD_Error_Handler(CLOUD_DEMO_TIMEDATE_ERROR);
-    return -1;
-  }
-  
+	{
+	  CLOUD_Error_Handler(CLOUD_DEMO_TIMEDATE_ERROR);
+	  state = 0; // reset SM
+	  return -1;
+	}
 #if defined(RFU) && !defined(FIREWALL_MBEDLIB)
-    updateFirmwareVersion();
+	updateFirmwareVersion();
 #endif  /* RFU */
-  
+      state++;
+      break;
+    case 6:
 #ifdef SENSOR
-  int res = init_sensors();
-  if(0 != res)
-  {
-    msg_error("init_sensors returned error : %d\n", res);
-  }
+      res = init_sensors();
+      if(0 != res)
+      {
+	msg_error("init_sensors returned error : %d\n", res);
+      }
 #endif /* SENSOR */
-   
- return 0;
+      state++;
+      break;
+    case 7:
+      // done, reset SM and return 0
+      state = 0;
+      return 0;
+  }
+  return 1; // not done yet, return 1 to continue running SM
 }
 
 
