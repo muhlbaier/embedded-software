@@ -112,7 +112,9 @@ enum log_level {
 #define RECEIVE_MAX_LENGTH 64 ///< default length of receive line for commands
 #endif
 #define RECEIVE_START_CHAR '$' ///< start character for command lines
+#ifndef RECEIVE_STOP_CHAR
 #define RECEIVE_STOP_CHAR '\r' ///< stop character for command lines
+#endif
 #ifndef RECEIVE_MAX_ARGC
 #define RECEIVE_MAX_ARGC 8 ///< max number of arguments after the command name
 #endif

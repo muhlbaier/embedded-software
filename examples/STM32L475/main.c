@@ -49,7 +49,7 @@
 #include "task.h"
 #include "uart.h"
 #include "project_settings.h"
-
+#include "muh_game.h"
 /* Global variables ---------------------------------------------------------*/
 RTC_HandleTypeDef hrtc;
 RNG_HandleTypeDef hrng;
@@ -114,6 +114,10 @@ int main(void)
   UART_Init(SUBSYSTEM_UART);
   UART_RegisterReceiver(SUBSYSTEM_UART, GetCharReceiver);
   
+  MuhGame_Init(); // will call Subsystem_Init
+  Log_EchoOn(); // must be after Subsystem_Init has been called at least once
+  UART_printf(SUBSYSTEM_UART, "System Initialized\r\n");
+
 #ifdef FIREWALL_MBEDLIB
   firewall_init();
 #endif
