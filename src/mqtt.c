@@ -150,6 +150,15 @@ static void MQTT_Tick(void) {
     }
 }
 
+IoT_Error_t MQTT_StatusHandler(mqtt_status_callback_t callback) {
+    if(num_status_callbacks < MQTT_MAX_STATUS_CALLBACKS) {
+	status_callbacks[num_status_callbacks++] = callback;
+	return AWS_SUCCESS;
+    }else {
+	msg_error("No room for callback");
+	return FAILURE;
+    }
+}
 
 static void StatusUpdate(ClientState status) {
     int i;
