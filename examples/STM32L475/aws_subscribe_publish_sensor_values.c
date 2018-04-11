@@ -55,6 +55,7 @@
 #include "sensors_data.h"
 #include "msg.h"
 #include "timing.h"
+#include "mqtt.h"
 
 // sensor app related functions
 void init_sensor_subscribe(void);
@@ -154,8 +155,12 @@ static void disconnectCallbackHandler(AWS_IoT_Client *pClient, void *data)
 * @return AWS_SUCCESS: 0 
           FAILURE: -1
 */
+
 int subscribe_publish_sensor_values(void)
 {
+  MQTT_Init();
+  init_sensor_subscribe();
+  /* all this is handled by MQTT_Init() now
   static uint8_t state = 0;
   static bool infinitePublishFlag = true;
   const char *serverAddress = NULL;
@@ -176,16 +181,16 @@ int subscribe_publish_sensor_values(void)
 	msg_error("The length of the device name stored in the iot user configuration is larger than the AWS client MAX_SIZE_OF_THING_NAME.\n");
 	return -1;
       }
-      /*
-      IoT_Publish_Message_Params paramsQOS0;
-      IoT_Publish_Message_Params paramsQOS1;
-      */
+
+      //IoT_Publish_Message_Params paramsQOS0;
+      //IoT_Publish_Message_Params paramsQOS1;
+
       msg_info("AWS IoT SDK Version %d.%d.%d-%s\n", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH, VERSION_TAG);
       getServerAddress(&serverAddress);
       getTLSKeys(&pCaCert, &pClientCert, &pClientPrivateKey);
       mqttInitParams = iotClientInitParamsDefault;
       connectParams = iotClientConnectParamsDefault;
-      mqttInitParams.enableAutoReconnect = false; /* We enable this later below */
+      mqttInitParams.enableAutoReconnect = false; // We enable this later below
       mqttInitParams.pHostURL = (char *) serverAddress;
       mqttInitParams.port = AWS_IOT_MQTT_PORT;
       mqttInitParams.pRootCALocation = (char *) pCaCert;
@@ -235,11 +240,11 @@ int subscribe_publish_sensor_values(void)
       } else {
 	printf("Connected to %s:%d\n", mqttInitParams.pHostURL, mqttInitParams.port);
       }
-      /*
-      * Enable Auto Reconnect functionality. Minimum and Maximum time of Exponential backoff are set in aws_iot_config.h
-      *  #AWS_IOT_MQTT_MIN_RECONNECT_WAIT_INTERVAL
-      *  #AWS_IOT_MQTT_MAX_RECONNECT_WAIT_INTERVAL
-      */
+
+      // Enable Auto Reconnect functionality. Minimum and Maximum time of Exponential backoff are set in aws_iot_config.h
+      // #AWS_IOT_MQTT_MIN_RECONNECT_WAIT_INTERVAL
+      // #AWS_IOT_MQTT_MAX_RECONNECT_WAIT_INTERVAL
+      //
       rc = aws_iot_mqtt_autoreconnect_set_status(&client, true);
       if(AWS_SUCCESS != rc) {
 	msg_error("Unable to set Auto Reconnect to true - %d\n", rc);
@@ -257,7 +262,7 @@ int subscribe_publish_sensor_values(void)
     case 5: // main loop of state machine
       if((NETWORK_ATTEMPTING_RECONNECT == rc || NETWORK_RECONNECTED == rc || AWS_SUCCESS == rc) && infinitePublishFlag)
       {
-	/* Max time the yield function will wait for read messages */
+	// Max time the yield function will wait for read messages
 	rc = aws_iot_mqtt_yield(&client, 10);
 	if(NETWORK_ATTEMPTING_RECONNECT == rc)
 	{
@@ -275,17 +280,17 @@ int subscribe_publish_sensor_values(void)
       }
       break;
     case 6: // wrap things up
-      /* Wait for all the messages to be received */
+      // Wait for all the messages to be received
       aws_iot_mqtt_yield(&client, 10);
       rc = aws_iot_mqtt_disconnect(&client);
       state = 0;
       return rc;
       break;
     case 7: // reconnect
-      /* Delay to let the client reconnect */
+      // Delay to let the client reconnect
       if(TimeSince(state_machine_timestamp) > 1000) {
       	  msg_info("Attempting to reconnect\n");
-      	  /* If the client is attempting to reconnect we will skip the rest of the loop */
+      	  // If the client is attempting to reconnect we will skip the rest of the loop
       	  state = 5; // go back to the main state
       }
       break;
@@ -294,6 +299,7 @@ int subscribe_publish_sensor_values(void)
       break;
   }
   return 1; // continue SM
+  */
 }
 
 /////////////// SENSOR APPLICATION RELATED STUFF ////////////////////
@@ -318,7 +324,8 @@ void init_sensor_subscribe(void) {
   IoT_Error_t rc = FAILURE;
   snprintf(cPTopicName, sizeof(cPTopicName), AWS_DEVICE_SHADOW_PRE "%s" AWS_DEVICE_SHADOW_UPDATE_TOPIC, deviceName);
   snprintf(cSTopicName, sizeof(cSTopicName), AWS_DEVICE_SHADOW_PRE "%s" AWS_DEVICE_SHADOW_UPDATE_ACCEPTED_TOPIC, deviceName);
-  rc = aws_iot_mqtt_subscribe(&client, cSTopicName, strlen(cSTopicName), QOS0, MQTTcallbackHandler, NULL);
+  //rc = aws_iot_mqtt_subscribe(&client, cSTopicName, strlen(cSTopicName), QOS0, MQTTcallbackHandler, NULL);
+  rc = MQTT_Subscribe(cSTopicName, QOS0, MQTTcallbackHandler, NULL);
   if(AWS_SUCCESS != rc) {
     msg_error("Error subscribing : %d\n", rc);
   } else {
@@ -369,8 +376,8 @@ void service_sensor_logic(void) {
     /// @todo split this into a state machine to avoid the loop
     do
     {
-      rc = aws_iot_mqtt_publish(&client, cPTopicName, strlen(cPTopicName), &paramsQOS1);
-
+      //rc = aws_iot_mqtt_publish(&client, cPTopicName, strlen(cPTopicName), &paramsQOS1);
+	rc = MQTT_Publish(cPTopicName, QOS1, cPayload, paramsQOS1.payloadLen );
       if (rc == AWS_SUCCESS)
       {
 	printf("\nPublished to topic %s:", cPTopicName);
@@ -394,8 +401,8 @@ void service_sensor_logic(void) {
 
     do
     {
-      rc = aws_iot_mqtt_publish(&client, cPTopicName, strlen(cPTopicName), &paramsQOS1);
-
+      //rc = aws_iot_mqtt_publish(&client, cPTopicName, strlen(cPTopicName), &paramsQOS1);
+	rc = MQTT_Publish(cPTopicName, QOS1, cPayload, paramsQOS1.payloadLen);
       if (rc == AWS_SUCCESS)
       {
 	printf("\nPublished to topic %s:\n", cPTopicName);
