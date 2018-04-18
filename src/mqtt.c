@@ -12,14 +12,7 @@ static IoT_Error_t con_stat = FAILURE;
 // internal connection manager
 static void MQTT_Tick(void);
 
-// internal helper to update status handlers
-static void StatusUpdate(ClientState status);
-
 static void disconnectCallbackHandler(AWS_IoT_Client *pClient, void *data);
-
-// list for status callbacks
-static mqtt_status_callback_t status_callback[MQTT_MAX_STATUS_CALLBACKS];
-static int num_status_callbacks = 0;
 
 IoT_Error_t MQTT_Init(void){
     // use flag so module only gets initialized once
@@ -85,11 +78,6 @@ IoT_Error_t MQTT_Init(void){
 	return rc;
     }
 
-    if(rc == AWS_SUCCESS) {
-	// call list of status callbacks to let them know we are connected
-	StatusUpdate(CLIENT_STATE_CONNECTED_IDLE);
-    }
-
     // schedule a task to service the MQTT client every MQTT_YIELD_PERIOD
     Task_Schedule(MQTT_Tick, 0, MQTT_YIELD_PERIOD, MQTT_YIELD_PERIOD);
     con_stat = AWS_SUCCESS;
@@ -129,16 +117,14 @@ static void MQTT_Tick(void) {
 	    {
 	      state = 1; // reconnect state where we just wait one second
 	      timestamp = TimeNow();
-	      StatusUpdate(CLIENT_STATE_PENDING_RECONNECT);
 	      return;
 	    }
 	    if(NETWORK_RECONNECTED == con_stat)
 	    {
-	        StatusUpdate(CLIENT_STATE_CONNECTED_IDLE);
+	        msg_info("Reconnected");
 	    }
 	}else {
 	    msg_error("Something went wrong - %d\n", con_stat);
-	    StatusUpdate(CLIENT_STATE_DISCONNECTING);
 	    aws_iot_mqtt_yield(&client, 10);
 	    aws_iot_mqtt_disconnect(&client);
 	}
@@ -147,23 +133,6 @@ static void MQTT_Tick(void) {
 	    msg_info("Attempting to reconnect\n");
 	    state = 0; // go back to the main state
 	}
-    }
-}
-
-IoT_Error_t MQTT_StatusHandler(mqtt_status_callback_t callback) {
-    if(num_status_callbacks < MQTT_MAX_STATUS_CALLBACKS) {
-	status_callbacks[num_status_callbacks++] = callback;
-	return AWS_SUCCESS;
-    }else {
-	msg_error("No room for callback");
-	return FAILURE;
-    }
-}
-
-static void StatusUpdate(ClientState status) {
-    int i;
-    for(i = 0; i < num_status_callbacks; i++) {
-	status_callback[i](status);
     }
 }
 
