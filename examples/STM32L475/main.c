@@ -49,7 +49,9 @@
 #include "task.h"
 #include "uart.h"
 #include "project_settings.h"
-#include "muh_game.h"
+//#include "muh_game.h"
+#include "laser_tag.h"
+
 /* Global variables ---------------------------------------------------------*/
 RTC_HandleTypeDef hrtc;
 RNG_HandleTypeDef hrng;
@@ -114,7 +116,7 @@ int main(void)
   UART_Init(SUBSYSTEM_UART);
   UART_RegisterReceiver(SUBSYSTEM_UART, GetCharReceiver);
   
-  MuhGame_Init(); // will call Subsystem_Init
+  //MuhGame_Init(); // will call Subsystem_Init
   Log_EchoOn(); // must be after Subsystem_Init has been called at least once
   UART_printf(SUBSYSTEM_UART, "System Initialized\r\n");
 
@@ -394,9 +396,11 @@ static void cloud_test(void const *arg)
       break;
     case 1:
       // subscribe_publish_sensor_values has its own state machine that will return 0 when finished, 1 when not, and negative when there is a problem
-      return_val = subscribe_publish_sensor_values();
+      //return_val = subscribe_publish_sensor_values();
+      LaserTag_Init();
       if(return_val == 0) state++;
       else if(return_val < 0) state = 0; // restart SM if there was an error
+      Task_Remove(cloud_test, 0); // kill the state machine to let MQTT take over
       break;
     case 2:
       platform_deinit();

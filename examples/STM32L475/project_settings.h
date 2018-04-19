@@ -26,10 +26,10 @@
 
 #define RECEIVE_STOP_CHAR '\n' // this is normally \r but the STM32 app uses \n so we can override to match
 
-#define UART1_TX_BUFFER_LENGTH 1024
+#define UART1_TX_BUFFER_LENGTH 256
 #define NUM_UART1_RECEIVERS 4
 #define USE_UART1
 
-#define TASK_MAX_LENGTH 50
+#define TASK_MAX_LENGTH 20
 
 #endif /* PROJECT_SETTINGS_H_ */

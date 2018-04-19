@@ -118,8 +118,12 @@ unsigned int json_get_int(char* json){
             json++;
         }else{                      //cycles through and stores number characters to the array.
             if(*json == ',') break; //if we've hit the comma indicating the end of the number.
-            CharOfInt[i] = *json;
-            i++;
+            if(*json == '.') break; //if we've hit the decimal point indicating the end of the integer portion.
+            if(*json == '}') break; //if we hit the end of the object
+            if(*json>='0' && *json <= '9') { // make sure we are dealing with numbers
+                CharOfInt[i] = *json;
+                i++;
+            }
             json++;
         }
     }while(1);
