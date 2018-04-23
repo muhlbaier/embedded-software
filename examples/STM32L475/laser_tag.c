@@ -15,6 +15,14 @@
 #include "aws_iot_error.h"
 #include "aws_iot_mqtt_client.h"
 
+// Supported terminal commands:
+// Call LaserTag_Fire() to simulate a shot being fired:
+// $laser fire
+// Call ImHit(id) to simulate being hit by a player with id 5
+// $laser imhit 5
+// Print your current status
+// $laser status
+
 #warning "laser_comms is disabled because the UART port is the same as the terminal"
 
 /// @todo preferred teams on register
@@ -36,8 +44,8 @@ static char playerout_topic[40] = "";
 // player publish topics
 static const char register_topic[] = "$aws/things/server/lasertag/register";
 //static const char unregister_topic[] = "$aws/things/server/lasertag/unregister";
-static char shoot_topic[32] = "";
-static char hit_topic[32] = "";
+static char shoot_topic[40] = "";
+static char hit_topic[40] = "";
 
 static char * deviceName;
 
@@ -49,6 +57,9 @@ static void PlayerOut(AWS_IoT_Client *client, char *topic, uint16_t topic_len, I
 
 // IR receiver callback
 static void ImHit(uint8_t id);
+
+// callback for terminal commands
+static void TerminalCallback(int argc, char *argv[]);
 
 static laser_tag_status_t status;
 
@@ -78,9 +89,9 @@ void LaserTag_Init(void) {
   MQTT_Init();
   getIoTDeviceConfig(&deviceName);
 
-  // register subsystem
+  // register subsystem and set callback
   v.word = 0x01010002UL;
-  sys_id = Subsystem_Init("LASER", v, 0);
+  sys_id = Subsystem_Init("LASER", v, TerminalCallback);
 
   // create topic strings
   snprintf(gottem_topic, sizeof(gottem_topic), "$aws/things/%s/lasertag/gottem", deviceName);
@@ -253,6 +264,7 @@ static void Start(AWS_IoT_Client *client, char *topic, uint16_t topic_len, IoT_P
   // change status to on and alive
   status.status = GAME_ON_ALIVE;
   if(status_callback) status_callback(&status);
+  LogMsg(sys_id, "Game On!");
 }
 
 static void End(AWS_IoT_Client *client, char *topic, uint16_t topic_len, IoT_Publish_Message_Params *params, void *data) {
@@ -312,4 +324,22 @@ static void ImHit(uint8_t id) {
   }
   if(status_callback) status_callback(&status);
   LogMsg(sys_id, "ouch, player ID %d shot me", id);
+}
+
+static void TerminalCallback(int argc, char *argv[]) {
+  if(argc) {
+    if(strcasecmp(argv[0], "fire") == 0) {
+	LaserTag_Fire();
+    } else if(strcasecmp(argv[0], "imhit") == 0) {
+      if(argc >= 2) {
+	uint8_t id;
+	id = ArgToU8(argv[1]);
+	ImHit(id);
+      }
+    } else if(strcasecmp(argv[0], "status") == 0) {
+      LogMsg(sys_id, "Current Status:");
+      LogStr("Status: %d\r\nMy Score: %l\r\nTheir Score: %l\r\nHealth: %d\r\nLives: %d\r\nPlayerID: %d\r\nTeamID: %d\r\n",
+	     status.status, status.my_score, status.their_score, status.health, status.lives, status.player_id, status.team_id);
+    }
+  }
 }
