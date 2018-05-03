@@ -23,6 +23,7 @@ char* json_find_key(char *key, char *json)
     uint8_t num_correct_chars = 0;
     uint8_t open_brace_flag = 0; /* used to indicate being inside a key's list item */
     uint8_t quote_counter = 0; /* used to ignore second quote of a key that is not a struct */
+    uint8_t curly_counter = 0;
     char first_character;
     first_character = *json; /* if the first character is not a '[' then we must ignore all keys within them */
     while(*address_of_null_term != '\0')
@@ -30,8 +31,17 @@ char* json_find_key(char *key, char *json)
         address_of_null_term++; /* increase address until end */
     }
     length_of_key = address_of_null_term - key;
+
     while(num_correct_chars != length_of_key)
     {
+        if(*json == '{')
+        {
+            curly_counter++;
+        }
+        if(*json == '}')
+        {
+            curly_counter--;
+        }
         if(first_character != '[')
         {
             if(*json == '[')
@@ -43,7 +53,7 @@ char* json_find_key(char *key, char *json)
                 open_brace_flag = 0;
             }
         }
-        if((*key == *json) && (open_brace_flag == 0))
+        if((*key == *json) && (open_brace_flag == 0) && (curly_counter<2))
         {
             num_correct_chars++;
             key++;
@@ -54,6 +64,14 @@ char* json_find_key(char *key, char *json)
             json++;
             key = key - num_correct_chars; /* point back to beginning if characters stop matching*/
             num_correct_chars = 0;
+        }
+        if(curly_counter == 0) //When we hit a second curly brace
+        {
+            return 0;
+        }
+        if(*json == '\0')
+        {
+            return 0;
         }
     }
     while((*json != '{') && (*json != '[') && !(*json != '"'))
