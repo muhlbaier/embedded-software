@@ -162,8 +162,9 @@ int8_t Task_SetIdleTask(task_t fn);
  * RemoveTask() loops through the entire task management queue and schedule and 
  * removes that task from the task management system.
  *
- * If the task could be in the list more than once then you should call Task_Remove
- * as many times as you suspect the task may be in the list.
+ * If the task could be in the list more than once they will all be removed if
+ * pointer is 0. If their are multiple tasks with the same pointer then you should 
+ * call Task_Remove as many times as you suspect the task may be in the list.
  *
  * @author Aaron Johnson
  * @author David Calhoun
@@ -201,6 +202,8 @@ void WaitMs(uint32_t wait);
 uint8_t Task_IsScheduled(task_t fn);
 
 /** Update the period of an existing task
+ *
+ * @warning Not interrupt safe
  * 
  * @param fn pointer to the function whose task should be updated
  * @param period new period
