@@ -5,10 +5,9 @@
  *
  * @section getting_started Getting Started With Using the Library
  * To use this library:
- * - add the desired modules (.c files) to your project and include the
- * corresponding header files (.h files) in project_settings.h (you must create project_settings.h).
+ * - add the desired modules (.c files) to your project with any cooresponding hal_ c files.
+ * -- do not add hal_timing.c when adding timing.c (this is a single exception)
  * - add the \ include directory to the compilers include directories
- * - add the \ hal \ hal_includes directory to the compilers include directories
  * - add the \ hal \ processor_family \ processor_number directory to the
  * compilers include directories
  * - enjoy
@@ -17,7 +16,6 @@
  * seconds you would add the following c files to your project:
  * - buffer.c (used by the UART module)
  * - buffer_printf.c (optional - used by the UART module if you use UART_printf)
- * - charReceiverList.c (used by the UART module)
  * - hal_uart.c (found in the hal \ processor_family \ processor_number folder
  * - list.c (used by the task management module)
  * - task.c

@@ -1,17 +1,9 @@
 # embedded-software
 Embedded Software Library
+
 [doxygen documentation](https://muhlbaier.github.io/embedded-software/)
 
-This is a hardware agnostic library for embedded platforms.  Drivers are written in a way that references a uniform Hardware Abstraction Layer (HAL).
-
-Drivers:
-
-*  buffer
-*  list
-*  subsys
-*  task
-*  timing
-*  uart
+This is a hardware agnostic library for embedded platforms.  Modules are written in a way that references a uniform Hardware Abstraction Layer (HAL).
 
 ## Coding Style Conventions ##
 

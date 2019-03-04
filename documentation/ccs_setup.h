@@ -8,7 +8,7 @@
  * To simplify things first configure a Linked Resource Path Variable:
  * - Right-click on the project in the Project Explorer, and click Properties.
  * - Go to Resource->Linked Resources then to the Path Variables tab
- * - Click "New..." and create a Path Variable named LIB_ROOT and set the location to
+ * - Click "New..." and create a Path Variable named EMBEDDED_SOFTWARE and set the location to
  * the location of the library base.
  *
  * Next to add the actual includes:
@@ -17,8 +17,8 @@
  * - In the lower box, labeled 'Add dir to #include search path (--include_path, -l)' press the add button.
  * You need to add the following directories:
  *
- * - "${LIB_ROOT}/include"
- * - "${LIB_ROOT}/hal/ProcessorFamily/Processor" (example "${LIB_ROOT}/hal/MSP430/MSP430F5529"")
+ * - "${EMBEDDED_SOFTWARE}/include"
+ * - "${EMBEDDED_SOFTWARE}/hal/ProcessorFamily/Processor" (example "${EMBEDDED_SOFTWARE}/hal/MSP430/MSP430F5529"")
  *
  * If you have created your system.h file in the project directory, you will also need to add the project directory to the include directories.
  * To do so:
@@ -36,14 +36,16 @@
  * - Select the .c files you would like to use for your project.  For example, if you are using the timing module and the task module,
  *   select timing.c and task.c.
  * - Click Ok, you should be prompted to either copy the files or link to them. So that the library can easily be updated across all
- *   projects at once, please select link and make the link relative to LIB_ROOT
+ *   projects at once, please select link and make the link relative to EMBEDDED_SOFTWARE
  *
  * Also, note that you will need to add all dependencies for a desired library.  For example, if you use the UART module, you will need to add the charReceiver module as well.  Refer to
  * module documentation to determine dependencies.
  *
  * Once you have added the library source files to your project, you will need to follow the same procedure to add the HAL layer's source files
  * for the desired processor.  These source files are located at 'PathtoLibrary/hal/ProcessorFamily/Processor
- * (example PathtoLibrary/hal/MSP430/MSP430F5529)'. WARNING:  DO NOT ADD THE hal_timing.c FILE!  This file is automatically included through
+ * (example PathtoLibrary/hal/MSP430/MSP430F5529)'. 
+ *
+ * @warning DO NOT ADD THE hal_timing.c FILE!  This file is automatically included through
  * the timing.c file (a trick used to make the timing interrupt as efficient as possible).
  *
  * @section TIVAC/TM4C123GH6PMI

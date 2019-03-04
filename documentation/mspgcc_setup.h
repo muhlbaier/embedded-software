@@ -36,7 +36,7 @@
  * To simplify things first configure a Linked Resource Path Variable:
  * - Right-click on the project in the Project Explorer, and click Properties.
  * - Go to Resource->Linked Resources then to the Path Variables tab
- * - Click "New..." and create a Path Variable named LIB_ROOT and set the location to
+ * - Click "New..." and create a Path Variable named EMBEDDED_SOFTWARE and set the location to
  * the location of the library base.
  *
  * Next to add the actual includes:
@@ -47,9 +47,9 @@
  *
  * You need to add the following directories:
  *
- * - "${LIB_ROOT}/include"
- * - "${LIB_ROOT}/hal/ProcessorFamily/Processor" (example "${LIB_ROOT}/hal/MSP430/MSP430F5529"")
- *
+ * - "${EMBEDDED_SOFTWARE}/include"
+ * - "${EMBEDDED_SOFTWARE}/hal/ProcessorFamily/Processor" (example "${EMBEDDED_SOFTWARE}/hal/MSP430/MSP430F5529"")
+ * 
  * If you have created your system.h file in the project directory, you will also need to add the project directory to the include directories.
  * To do so:
  * - Press the add button but this time click 'Workspace' rather than 'File System'.
