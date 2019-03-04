@@ -109,6 +109,7 @@ Minor Contributors:
 - Rowan ECE Embedded Class of 2015
 - Rowan ECE Embedded Class of 2016
 - Rowan ECE Embedded Class of 2017
+- Rowan ECE Embedded Class of 2018
 
 If you have personally contributed to this work and are not listed please email muhlbaier@rowan.edu
  */
