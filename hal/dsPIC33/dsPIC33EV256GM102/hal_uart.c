@@ -21,7 +21,6 @@
  * @version 1.0.0
  */
 
-#include <stdint.h>
 #include "hal_general.h"
 #include "hal_uart.h"
 #include "uart.h"
