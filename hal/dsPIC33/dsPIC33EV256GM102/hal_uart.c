@@ -316,17 +316,19 @@ uint8_t hal_UART_DoneTransmitting(uint8_t channel)
 
 void SetBaud(uint8_t channel, uint32_t baud)
 {
-    uint8_t brgh;
+    uint8_t brg;
 
     switch(channel)
     {
         case UART1_CH:
-            brgh = ((FCPU / baud) / 16) - 1;
-            U1BRG = brgh;
+            U1MODEbits.BRGH = 1;
+            brg = ((FCPU / baud) / 4) - 1;
+            U1BRG = brg;
             break;
         case UART2_CH:
-            brgh = ((FCPU / baud) / 16) - 1;
-            U2BRG = brgh;
+            U2MODEbits.BRGH = 1;
+            brg = ((FCPU / baud) / 4) - 1;
+            U2BRG = brg;
             break;
         default:
             break;
