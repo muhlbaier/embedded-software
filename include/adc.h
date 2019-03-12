@@ -7,7 +7,14 @@
  *
  * @{
  */
- 
+/**
+ * @brief helpful typedef for call back
+ *
+ * To be used in adc.c where the call back is used without the optional pointer
+ *
+ * @author Page
+ */
+typedef void(*callback_no_input_t)(uint16_t);
 /** @brief Initialize the ADC module
  * 
  * This is the longer description which uses more words to say initializes the ADC module.
