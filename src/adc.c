@@ -20,12 +20,10 @@ static struct adc_channel * pending_measurements[ADC_QUEUE_SIZE];
 static uint8_t start, end, full;
 
 
-// Initialized the QueueMeasurement functions. Should be initialized in the header file
-// however when attempted, it didn't work, need to try again
-void QueueMeasurement(struct adc_channel * channel);
+// Initialized the QueueMeasurement functions
+static void QueueMeasurement(struct adc_channel * channel);
 
-// Initialized the CallCallback functions. Should be initialized in the header file
-// however when attempted, it didn't work, need to try again
+// Initialized the CallCallback functions
 static void CallCallback(struct adc_channel * channel_struct);
 
 void ADC_Init(void) {
@@ -46,7 +44,7 @@ void ADC_AddChannel(uint8_t channel, uint16_t period, void(*callback)(uint16_t, 
 	}
 }
 
-void QueueMeasurement(struct adc_channel * channel) {
+static void QueueMeasurement(struct adc_channel * channel) {
 	// add measurement to the queue
 	if(!full) {
 		BlockInterrupts();
@@ -79,6 +77,6 @@ static void CallCallback(struct adc_channel * channel_struct) {
 	if(channel_struct->ptr) {
 		channel_struct->callback(channel_struct->value, channel_struct->ptr);
 	}else {
-		channel_struct->callback(channel_struct->value, 0);
+		(void(*)(uint16_t))channel_struct->callback(channel_struct->value);
 	}
 }
