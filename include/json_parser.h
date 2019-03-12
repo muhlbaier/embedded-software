@@ -1,8 +1,13 @@
-/*
- * json_parser.h
+/** @file
+ * @addtogroup json_parser JSON Parser
  *
+ * @ brief Helper functions to parse a JSON string in C.
+ *
+ * 
  *  Created on: Apr 14, 2018
  *      Author: Delengowski & Szymczak
+ *
+ * @{
  */
 
 #ifndef _JSON_PARSER_H_
@@ -29,7 +34,7 @@ char* json_find_key(char *key, char *json);
  */
 char* json_find_list_item(uint16_t number, char*json);
 
-/* @author Stephen Szymczak
+/** @author Stephen Szymczak
  * @date Apr 14, 2018
  * @brief This function gets the string associated with a list item from a JSON string
  *
@@ -43,7 +48,7 @@ char* json_find_list_item(uint16_t number, char*json);
  */
 void json_get_string(char* json, char* mystring);
 
-/* @author Stephen Szymczak
+/** @author Stephen Szymczak
  * @date Apr 14, 2018
  * @brief This function gets the integer associated with a list item from a JSON string
  * 
@@ -58,5 +63,5 @@ void json_get_string(char* json, char* mystring);
 unsigned int json_get_int(char* json);
 
 
-#endif /* JSON_PARSER_H */
-
+#endif /* _JSON_PARSER_H_ */
+ /** @} */
