@@ -70,6 +70,7 @@ static void CallCallback(struct adc_channel * channel_struct) {
 	if(channel_struct->ptr) {
 		channel_struct->callback(channel_struct->value, channel_struct->ptr);
 	}else {
-		channel_struct->callback(channel_struct->value);
+		// typedef to cast callback to have only one input
+		((callback_no_input_t)channel_struct->callback)(channel_struct->value);
 	}
 }
