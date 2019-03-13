@@ -1,12 +1,11 @@
 /*
  * hal_adc.c
  *
- *  Created on: Mar 3, 2019
+ *  Created on: Mar 13, 2019
  *      Author: Lonnie Souder II
  */
 
 #include <msp430fr5994.h>
-#include "hal_adc.h"
 #include "adc.h"
 #include <stdint.h>
 
