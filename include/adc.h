@@ -1,3 +1,7 @@
+#include <stdint.h>
+#include "task.h"
+#include "hal_general.h"
+
 #ifndef _ADC_H_
 #define _ADC_H_
 /**
@@ -24,7 +28,7 @@ void ADC_Init(void);
  * @param callback Callback when measurements are complete. Can be void Function(uint16_t value) or void Function(uint16_t value, void * ptr)
  * @param ptr Optional pointer to be passed to the callback function
  */
-void ADC_AddChannel(uint8_t channel; uint16_t period, void(*callback)(uint16_t, void *), void * ptr);
+void ADC_AddChannel(uint8_t channel, uint16_t period, void(*callback)(uint16_t, void *), void * ptr);
 
 /**
  * Function to be called from the ADC interrupt in hal_adc.c with the measurement
@@ -52,4 +56,6 @@ void hal_ADC_StartChannel(uint8_t channel);
 #define ADC_MAX_CHANNELS 8
 
  /** @} */
+
+
 #endif // _ADC_H_
