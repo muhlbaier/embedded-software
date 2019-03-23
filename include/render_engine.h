@@ -41,6 +41,6 @@ struct frameBuffer {
 void Render_Engine_Init();
 void Render_Engine_RenderFrame(struct world *world, struct camera *camera,
         struct frameBuffer *frameBuffer);
-void Render_Engine_DisplayFrame(struct frameBuffer *frameBuffer);
+void Render_Engine_DisplayFrame(uint8_t channel, struct frameBuffer *frameBuffer);
 
 #endif // RENDER_ENGINE_H

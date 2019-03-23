@@ -6,6 +6,12 @@
 
 #define M_PI 3.14159265358979323846
 
+// UART helper functions
+void changeTerminalCursorLocation(uint8_t channel, uint8_t x, uint8_t y);
+void writeTerminalNumber(uint8_t channel, uint8_t number);
+void changeTerminalColor(uint8_t channel, uint8_t color);
+void writeTerminalBlock(uint8_t channel, uint8_t data);
+
 void Render_Engine_Init() {
     
 }
@@ -85,13 +91,12 @@ void Render_Engine_RenderFrame(struct world *world, struct camera *camera,
     }
 }
 
-void Render_Engine_DisplayFrame(struct frameBuffer *frame) {
+void Render_Engine_DisplayFrame(uint8_t channel, struct frameBuffer *frame) {
     // Wait for the transmit buffer to clear
-    while (UART_IsTransmitting(SUBSYSTEM_UART));
+    while (UART_IsTransmitting(channel));
     
-    // TODO Instead of scrolling the screen, reset the cursor back to the top so
-    // new content is rolled down overtop of the old content so it still
-    // remains visible
+    // Set the cursor to the origin so the new frame tiles across the old frame
+    changeTerminalCursorLocation(channel, 0, 0);
     
     uint16_t i;
     uint8_t lastColor = 0;
@@ -102,21 +107,58 @@ void Render_Engine_DisplayFrame(struct frameBuffer *frame) {
         if (lastColor != frame->buffer[i]) {
             // Change the current color
             lastColor = frame->buffer[i];
-            
-            while (!hal_UART_SpaceAvailable(SUBSYSTEM_UART));
-            hal_UART_TxByte(SUBSYSTEM_UART, 0x1B);
-            while (!hal_UART_SpaceAvailable(SUBSYSTEM_UART));
-            hal_UART_TxByte(SUBSYSTEM_UART, '[');
-            while (!hal_UART_SpaceAvailable(SUBSYSTEM_UART));
-            hal_UART_TxByte(SUBSYSTEM_UART, (frame->buffer[i] / 10) + '0');
-            while (!hal_UART_SpaceAvailable(SUBSYSTEM_UART));
-            hal_UART_TxByte(SUBSYSTEM_UART, (frame->buffer[i] % 10) + '0');
-            while (!hal_UART_SpaceAvailable(SUBSYSTEM_UART));
-            hal_UART_TxByte(SUBSYSTEM_UART, 'm');
+            changeTerminalColor(channel, frame->buffer[i]);
         }
         
         // Output a color block
-        while (!hal_UART_SpaceAvailable(SUBSYSTEM_UART));
-        hal_UART_TxByte(SUBSYSTEM_UART, ' ');
+        writeTerminalBlock(channel, ' ');
     }
+}
+
+void changeTerminalCursorLocation(uint8_t channel, uint8_t x, uint8_t y) {
+    writeTerminalBlock(channel, '\e');
+    writeTerminalBlock(channel, '[');
+    writeTerminalNumber(channel, y + 1);
+    writeTerminalBlock(channel, ';');
+    writeTerminalNumber(channel, x + 1);
+    writeTerminalBlock(channel, 'H');
+}
+
+void writeTerminalNumber(uint8_t channel, uint8_t number) {
+    uint8_t atDigits = 0;
+    
+    // Look for hundreds
+    uint8_t hundreds = (number / 100) % 10;
+    if (hundreds > 0) {
+        atDigits = 1;
+        writeTerminalBlock(channel, hundreds + '0');
+    }
+    
+    // Look for tens
+    uint8_t tens = (number / 10) % 10;
+    if ((tens > 0) || atDigits) {
+        atDigits = 1;
+        writeTerminalBlock(channel, tens + '0');
+    }
+    
+    // Look for ones
+    uint8_t ones = number % 10;
+    if ((ones > 0) || atDigits) {
+        atDigits = 1;
+        writeTerminalBlock(channel, ones + '0');
+    }
+}
+
+void changeTerminalColor(uint8_t channel, uint8_t color) {
+    // TODO Support wider range of colors than default terminal colors
+    
+    writeTerminalBlock(channel, '\e');
+    writeTerminalBlock(channel, '[');
+    writeTerminalNumber(channel, color);
+    writeTerminalBlock(channel, 'm');
+}
+
+void writeTerminalBlock(uint8_t channel, uint8_t data) {
+    while (!hal_UART_SpaceAvailable(channel));
+    hal_UART_TxByte(channel, data);
 }
