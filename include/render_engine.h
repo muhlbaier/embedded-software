@@ -9,10 +9,13 @@
 
 #include <stdint.h>
 
+// Precision of the engine
+typedef float rounding_t;
+
 struct vector {
-    float x;
-    float y;
-    float z;
+    rounding_t x;
+    rounding_t y;
+    rounding_t z;
 };
 
 struct camera {
@@ -36,8 +39,8 @@ struct frameBuffer {
 };
 
 void Render_Engine_Init();
-void Render_Engine_Render_Frame(struct world *world, struct camera *camera,
+void Render_Engine_RenderFrame(struct world *world, struct camera *camera,
         struct frameBuffer *frameBuffer);
-void Render_Engine_Display_Frame(struct frameBuffer *frameBuffer);
+void Render_Engine_DisplayFrame(struct frameBuffer *frameBuffer);
 
 #endif // RENDER_ENGINE_H
