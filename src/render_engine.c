@@ -6,6 +6,12 @@
 
 #define M_PI 3.14159265358979323846
 
+// Rendering helper functions
+point_t pointToScreen(vector_t point, vector_t camera,
+        rounding_t camHAngle, rounding_t camVAngle,
+        rounding_t angleHPixel, rounding_t angleVPixel,
+        uint8_t halfWidth, uint8_t halfHeight);
+
 // UART helper functions
 void changeTerminalCursorLocation(uint8_t channel, uint8_t x, uint8_t y);
 void writeTerminalNumber(uint8_t channel, uint8_t number);
@@ -16,18 +22,17 @@ void Render_Engine_Init() {
     
 }
 
-void Render_Engine_RenderFrame(struct world *world, struct camera *camera,
-        struct frameBuffer *frame) {
-    int bufLength = frame->width * frame->height;
-    int halfWidth = frame->width / 2;
-    int halfHeight = frame->height / 2;
+void Render_Engine_RenderFrame(world_t *world, camera_t *camera, frameBuffer_t *frame) {
+    uint16_t bufLength = frame->width * frame->height;
+    uint8_t halfWidth = frame->width / 2;
+    uint8_t halfHeight = frame->height / 2;
     rounding_t anglePerPixelHorizontal = (camera->fovHorizontal * M_PI) /
             (frame->width * 180.0);
     rounding_t anglePerPixelVertical = (camera->fovVertical * M_PI) /
             (frame->height * 180.0);
     rounding_t cameraHorizontalAngle = (camera->rotation.z * M_PI) / 180.0;
     rounding_t cameraVerticalAngle = (camera->rotation.y * M_PI) / 180.0;
-    struct vector cameraDirection = {cos(cameraHorizontalAngle),
+    vector_t cameraDirection = {cos(cameraHorizontalAngle),
             sin(cameraHorizontalAngle),
             ((cameraVerticalAngle <= -90) || (cameraVerticalAngle >= 90)) ? tan(cameraVerticalAngle) : ((cameraVerticalAngle > 0) - (cameraVerticalAngle < 0)) * 10000};
 //    Subsystem_printf("apph: %f\r\n", anglePerPixelHorizontal);
@@ -35,7 +40,7 @@ void Render_Engine_RenderFrame(struct world *world, struct camera *camera,
 //    Subsystem_printf("cha: %f\r\n", cameraHorizontalAngle);
 //    Subsystem_printf("cva: %f\r\n", cameraVerticalAngle);
 //    Subsystem_printf("cd: %f %f %f\r\n", cameraDirection.x, cameraDirection.y, cameraDirection.z);
-    int i;
+    uint16_t i;
     
     // Blank the framebuffer
     for (i = 0; i < bufLength; i++) {
@@ -46,52 +51,31 @@ void Render_Engine_RenderFrame(struct world *world, struct camera *camera,
     rounding_t pointDotCamera;
     rounding_t angleHorizontal, angleVertical;
     int16_t indexHorizontal, indexVertical, index;
-    // Go through all verticies
-    for (i = 0; i < world->numVerticies; i++) {
-        // Calculate the offset to the point from the camera
-        dx = world->verticies[i].x - camera->location.x;
-        dy = world->verticies[i].y - camera->location.y;
-        dz = world->verticies[i].z - camera->location.z;
+    // Go through all triangles
+    for (i = 0; i < world->numTriangles; i++) {
+        point_t p1 = pointToScreen(world->triangles[i].p1, camera->location,
+                cameraHorizontalAngle, cameraVerticalAngle,
+                anglePerPixelHorizontal, anglePerPixelVertical,
+                halfWidth, halfHeight);
+        point_t p2 = pointToScreen(world->triangles[i].p2, camera->location,
+                cameraHorizontalAngle, cameraVerticalAngle,
+                anglePerPixelHorizontal, anglePerPixelVertical,
+                halfWidth, halfHeight);
+        point_t p3 = pointToScreen(world->triangles[i].p3, camera->location,
+                cameraHorizontalAngle, cameraVerticalAngle,
+                anglePerPixelHorizontal, anglePerPixelVertical,
+                halfWidth, halfHeight);
         
-        // Make sure the point is in front of the camera
-        pointDotCamera = (dx * cameraDirection.x) + (dy * cameraDirection.y) +
-                (dz * cameraDirection.z);
-//        Subsystem_printf("%f\r\n", pointDotCamera);
-        if (pointDotCamera <= 0) {
-            continue;
-        }
-        
-        // Horizontal position onscreen
-        angleHorizontal = atan(dy / dx);
-//        Subsystem_printf("%f\r\n", angleHorizontal);
-        indexHorizontal = halfWidth - ((angleHorizontal - cameraHorizontalAngle)
-                / anglePerPixelHorizontal);
-        
-        // Make sure the point is visible
-        if ((indexHorizontal < 0) || (indexHorizontal >= frame->width)) {
-            continue;
-        }
-        
-        // Vertical position onscreen
-        angleVertical = atan(dz / sqrt((dx * dx) + (dy * dy)));
-//        Subsystem_printf("%f\r\n", angleVertical);
-        indexVertical = halfHeight - ((angleVertical - cameraVerticalAngle) /
-                anglePerPixelVertical);
-        
-        // Make sure the point is visible
-        if ((indexVertical < 0) || (indexVertical >= frame->height)) {
-            continue;
-        }
-        
-//        Subsystem_printf("%d %d\r\n", indexHorizontal, indexVertical);
+        indexHorizontal = p1.x;
+        indexVertical = p1.y;
         
         // Calculate the framebuffer index
         index = indexHorizontal + (indexVertical * frame->width);
-        frame->buffer[index] = BackgroundRed;
+        frame->buffer[index] = Red;
     }
 }
 
-void Render_Engine_DisplayFrame(uint8_t channel, struct frameBuffer *frame) {
+void Render_Engine_DisplayFrame(uint8_t channel, frameBuffer_t *frame) {
     // Wait for the transmit buffer to clear
     while (UART_IsTransmitting(channel));
     
@@ -115,6 +99,34 @@ void Render_Engine_DisplayFrame(uint8_t channel, struct frameBuffer *frame) {
     }
 }
 
+// Rendering helper functions
+point_t pointToScreen(vector_t point, vector_t camera,
+        rounding_t camHAngle, rounding_t camVAngle,
+        rounding_t angleHPixel, rounding_t angleVPixel,
+        uint8_t halfWidth, uint8_t halfHeight) {
+    rounding_t dx, dy, dz;
+    rounding_t angleHorizontal, angleVertical;
+    point_t screen;
+    
+    // TODO Fix calculations when the point is behind the camera
+    
+    // Calculate the offset to the point from the camera
+    dx = point.x - camera.x;
+    dy = point.y - camera.y;
+    dz = point.z - camera.z;
+    
+    // Horizontal position onscreen
+    angleHorizontal = atan(dy / dx);
+    screen.x = halfWidth - ((angleHorizontal - camHAngle) / angleHPixel);
+    
+    // Vertical position onscreen
+    angleVertical = atan(dz / sqrt((dx * dx) + (dy * dy)));
+    screen.y = halfHeight - ((angleVertical - camVAngle) / angleVPixel);
+    
+    return screen;
+}
+
+// UART helper functions
 void changeTerminalCursorLocation(uint8_t channel, uint8_t x, uint8_t y) {
     writeTerminalBlock(channel, '\e');
     writeTerminalBlock(channel, '[');
