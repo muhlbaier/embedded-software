@@ -11,6 +11,8 @@ point_t pointToScreen(vector_t point, vector_t camera,
         rounding_t camHAngle, rounding_t camVAngle,
         rounding_t angleHPixel, rounding_t angleVPixel,
         uint8_t halfWidth, uint8_t halfHeight);
+void paintPixel(frameBuffer_t *frame, uint16_t x, uint16_t y, uint8_t color);
+void paintPixelf(frameBuffer_t *frame, rounding_t x, rounding_t y, uint8_t color);
 
 // UART helper functions
 void changeTerminalCursorLocation(uint8_t channel, uint8_t x, uint8_t y);
@@ -47,31 +49,95 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, frameBuffer_t *
         frame->buffer[i] = world->backgroundColor;
     }
     
-    rounding_t dx, dy, dz;
-    rounding_t pointDotCamera;
-    rounding_t angleHorizontal, angleVertical;
-    int16_t indexHorizontal, indexVertical, index;
     // Go through all triangles
+    point_t p1, p2, p3;
+    uint8_t leftSel, rightSel;
+    point_t left, right, center;
     for (i = 0; i < world->numTriangles; i++) {
-        point_t p1 = pointToScreen(world->triangles[i].p1, camera->location,
+        // Calculate the screen coordinates
+        p1 = pointToScreen(world->triangles[i].p1, camera->location,
                 cameraHorizontalAngle, cameraVerticalAngle,
                 anglePerPixelHorizontal, anglePerPixelVertical,
                 halfWidth, halfHeight);
-        point_t p2 = pointToScreen(world->triangles[i].p2, camera->location,
+        p2 = pointToScreen(world->triangles[i].p2, camera->location,
                 cameraHorizontalAngle, cameraVerticalAngle,
                 anglePerPixelHorizontal, anglePerPixelVertical,
                 halfWidth, halfHeight);
-        point_t p3 = pointToScreen(world->triangles[i].p3, camera->location,
+        p3 = pointToScreen(world->triangles[i].p3, camera->location,
                 cameraHorizontalAngle, cameraVerticalAngle,
                 anglePerPixelHorizontal, anglePerPixelVertical,
                 halfWidth, halfHeight);
         
-        indexHorizontal = p1.x;
-        indexVertical = p1.y;
+        // Determine the left point of the triangle
+        left = p1;
+        leftSel = 1;
+        if (left.x > p2.x) {
+            left = p2;
+            leftSel = 2;
+        }
+        if (left.x > p3.x) {
+            left = p3;
+            leftSel = 3;
+        }
         
-        // Calculate the framebuffer index
-        index = indexHorizontal + (indexVertical * frame->width);
-        frame->buffer[index] = Red;
+        // Determine the right point of the triangle
+        right = p3;
+        rightSel = 3;
+        if (((right.x < p2.x) || (leftSel == 3)) && (leftSel != 2)) {
+            right = p2;
+            rightSel = 2;
+        }
+        if ((right.x < p1.x) && (leftSel != 1)) {
+            right = p1;
+            rightSel = 1;
+        }
+        
+        // Determine the center point of the triangle
+        if ((leftSel + rightSel) == 3) {
+            center = p3;
+        } else if ((leftSel + rightSel) == 4) {
+            center = p2;
+        } else if ((leftSel + rightSel) == 5) {
+            center = p1;
+        }
+        
+        Subsystem_printf("left: %f %f\r\n", left.x, left.y);
+        Subsystem_printf("center: %f %f\r\n", center.x, center.y);
+        Subsystem_printf("right: %f %f\r\n", right.x, right.y);
+        
+        // Determine the number of triangles to paint
+        if ((left.x == center.x) && (center.x == right.x)) {
+            // One vertical line
+            rounding_t max = p1.y;
+            if (max < p2.y) {
+                max = p2.y;
+            }
+            if (max < p3.y) {
+                max = p3.y;
+            }
+            rounding_t min = p1.y;
+            if (min > p2.y) {
+                min = p2.y;
+            }
+            if (min > p3.y) {
+                min = p3.y;
+            }
+            
+            rounding_t y;
+            for (y = max; y > min; y--) {
+                paintPixelf(frame, center.x, y, world->triangles[i].color);
+            }
+        } else if ((left.x == center.x) || (center.x == right.x) || (left.x == right.x)) {
+            // Two points are in line vertically
+            paintPixelf(frame, left.x, left.y, Red);
+            paintPixelf(frame, center.x, center.y, Green);
+            paintPixelf(frame, right.x, right.y, Magenta);
+        } else {
+            // Points are not directly in line vertically
+            paintPixelf(frame, left.x, left.y, Red);
+            paintPixelf(frame, center.x, center.y, Green);
+            paintPixelf(frame, right.x, right.y, Magenta);
+        }
     }
 }
 
@@ -124,6 +190,14 @@ point_t pointToScreen(vector_t point, vector_t camera,
     screen.y = halfHeight - ((angleVertical - camVAngle) / angleVPixel);
     
     return screen;
+}
+
+void paintPixel(frameBuffer_t* frame, uint16_t x, uint16_t y, uint8_t color) {
+    frame->buffer[x + (y * frame->width)] = color;
+}
+
+void paintPixelf(frameBuffer_t* frame, rounding_t x, rounding_t y, uint8_t color) {
+    paintPixel(frame, (uint16_t) x, (uint16_t) y, color);
 }
 
 // UART helper functions
