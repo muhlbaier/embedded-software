@@ -247,7 +247,7 @@ void List_RemoveFirst(list_t* list);
  * @param list a pointer to a list_t
  *
  * 
- *
+ * @warning This method does not return the item that was removed.
  */
 void List_RemoveLast(list_t* list);
 
@@ -263,7 +263,7 @@ void List_Remove(list_t* list, void* item);
  * Removes all elements of list.
  * @param list a pointer to a list_t
  *
- * 
+ * @warning This method does not return the items that were removed.
  *
  */
 void List_RemoveAll(list_t* list);
