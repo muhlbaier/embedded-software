@@ -26,7 +26,7 @@
  *
  * @author Page
  */
-typedef void(*callback_input_t)(uint16_t,void);
+typedef void(*callback_input_t)(uint16_t, void *);
 
 /** @brief Initialize the ADC module
  * 
