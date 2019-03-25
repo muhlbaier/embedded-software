@@ -19,10 +19,10 @@
  * void(*callback)(uint16_t, void *) to avoid compiler error/warning.
  *
  * For example an ADC channel with the following callback:
- * void callback(uint16_t AdcVal, uint8_t status);
+ * void callback (uint16_t value);
  * 
  * Would added as:
- * ADC_AddChannel(channel, period, (callback_input_t)callback, status);
+ * ADC_AddChannel(channel, period, (callback_input_t)callback, 0);
  *
  * @author Page
  */
