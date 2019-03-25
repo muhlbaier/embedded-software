@@ -101,10 +101,6 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, frameBuffer_t *
             center = p1;
         }
         
-        Subsystem_printf("left: %f %f\r\n", left.x, left.y);
-        Subsystem_printf("center: %f %f\r\n", center.x, center.y);
-        Subsystem_printf("right: %f %f\r\n", right.x, right.y);
-        
         // Determine the number of triangles to paint
         if ((left.x == center.x) && (center.x == right.x)) {
             // One vertical line
@@ -127,11 +123,88 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, frameBuffer_t *
             for (y = max; y > min; y--) {
                 paintPixelf(frame, center.x, y, world->triangles[i].color);
             }
-        } else if ((left.x == center.x) || (center.x == right.x) || (left.x == right.x)) {
+        } else if ((left.x == center.x) || (center.x == right.x)) {
             // Two points are in line vertically
-            paintPixelf(frame, left.x, left.y, Red);
-            paintPixelf(frame, center.x, center.y, Green);
-            paintPixelf(frame, right.x, right.y, Magenta);
+            point_t top, bottom, side;
+            uint8_t leftDirection;
+            if (left.x == center.x) {
+                if (left.y > center.y) {
+                    top = left;
+                    bottom = center;
+                } else {
+                    top = center;
+                    bottom = left;
+                }
+                side = right;
+                leftDirection = 0;
+            } else {
+                if (right.y > center.y) {
+                    top = right;
+                    bottom = center;
+                } else {
+                    top = center;
+                    bottom = right;
+                }
+                side = left;
+                leftDirection = 1;
+            }
+            
+            rounding_t upperSlope = (top.y - side.y) / (top.x - side.x);
+            rounding_t lowerSlope = (bottom.y - side.y) / (bottom.x - side.x);
+            
+            rounding_t x, y;
+            rounding_t topY, bottomY;
+            if (leftDirection) {
+                // Go through triangle horizontally
+                for (x = top.x; x > side.x; x--) {
+                    // Correct sampling to the middle of the pixel
+                    if ((x - ((uint16_t) x)) != 0.5) {
+                        x = ((uint16_t) x) + 0.5;
+                    }
+                    
+                    // Calculate the min and max y values
+                    topY = (upperSlope * (x - side.x)) + side.y;
+                    bottomY = (lowerSlope * (x - side.x)) + side.y;
+                    
+                    // Paint vertical column of triangle
+                    for (y = topY; y > bottomY; y--) {
+                        paintPixelf(frame, x, y, world->triangles[i].color);
+                    }
+                    
+                    // Catch one more paint
+                    paintPixelf(frame, x, bottomY, world->triangles[i].color);
+                }
+                
+                // Paint one more pixel over if the side is just over the edge
+                if ((side.x - ((uint16_t) side.x)) > 0.5) {
+                    paintPixelf(frame, side.x, side.y, world->triangles[i].color);
+                }
+            } else {
+                // Go through triangle horizontally
+                for (x = top.x; x < side.x; x++) {
+                    // Correct sampling to the middle of the pixel
+                    if ((x - ((uint16_t) x)) != 0.5) {
+                        x = ((uint16_t) x) + 0.5;
+                    }
+                    
+                    // Calculate the min and max y values
+                    topY = (upperSlope * (x - side.x)) + side.y;
+                    bottomY = (lowerSlope * (x - side.x)) + side.y;
+                    
+                    // Paint vertical column of triangle
+                    for (y = topY; y > bottomY; y--) {
+                        paintPixelf(frame, x, y, world->triangles[i].color);
+                    }
+                    
+                    // Catch one more paint
+                    paintPixelf(frame, x, bottomY, world->triangles[i].color);
+                }
+                
+                // Paint one more pixel over if the side is just over the edge
+                if ((side.x - ((uint16_t) side.x)) < 0.5) {
+                    paintPixelf(frame, side.x, side.y, world->triangles[i].color);
+                }
+            }
         } else {
             // Points are not directly in line vertically
             paintPixelf(frame, left.x, left.y, Red);
