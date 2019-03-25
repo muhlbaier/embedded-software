@@ -8,7 +8,7 @@
 #ifndef _I2C_H_
 #define	_I2C_H_
 
-#include "system.h"
+#include "project_settings.h"
 
 #include "hal_i2c.h"
 
