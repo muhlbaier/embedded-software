@@ -3,12 +3,15 @@
  * Author: Anthony Merlino
  *
  * Created on February 24, 2015, 11:03 PM
+ *
+ * Edited by: Nicholas Klein
+ * Edited on March 25, 2019
  */
 
 #ifndef _I2C_H_
 #define	_I2C_H_
 
-#include "system.h"
+#include "project_settings.h"
 
 #include "hal_i2c.h"
 
