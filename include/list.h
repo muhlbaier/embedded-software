@@ -247,7 +247,7 @@ void List_RemoveFirst(list_t* list);
  * @param list a pointer to a list_t
  *
  * 
- * @warning This method does not return the item that was removed.
+ * @warning This method does not return the item that was removed. Use List_UnlinkLast() if the item is to be used.
  */
 void List_RemoveLast(list_t* list);
 
