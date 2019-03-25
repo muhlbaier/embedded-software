@@ -11,8 +11,8 @@ point_t pointToScreen(vector_t point, vector_t camera,
         rounding_t camHAngle, rounding_t camVAngle,
         rounding_t angleHPixel, rounding_t angleVPixel,
         uint8_t halfWidth, uint8_t halfHeight);
-void paintPixel(frameBuffer_t *frame, uint16_t x, uint16_t y, uint8_t color);
-void paintPixelf(frameBuffer_t *frame, rounding_t x, rounding_t y, uint8_t color);
+void paintPixel(framebuffer_t *frame, uint16_t x, uint16_t y, uint8_t color);
+void paintPixelf(framebuffer_t *frame, rounding_t x, rounding_t y, uint8_t color);
 
 // UART helper functions
 void changeTerminalCursorLocation(uint8_t channel, uint8_t x, uint8_t y);
@@ -24,7 +24,7 @@ void Render_Engine_Init() {
     
 }
 
-void Render_Engine_RenderFrame(world_t *world, camera_t *camera, frameBuffer_t *frame) {
+void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *frame) {
     uint16_t bufLength = frame->width * frame->height;
     uint8_t halfWidth = frame->width / 2;
     uint8_t halfHeight = frame->height / 2;
@@ -269,7 +269,7 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, frameBuffer_t *
     }
 }
 
-void Render_Engine_DisplayFrame(uint8_t channel, frameBuffer_t *frame) {
+void Render_Engine_DisplayFrame(uint8_t channel, framebuffer_t *frame) {
     // Wait for the transmit buffer to clear
     while (UART_IsTransmitting(channel));
     
@@ -326,11 +326,11 @@ point_t pointToScreen(vector_t point, vector_t camera,
     return screen;
 }
 
-void paintPixel(frameBuffer_t* frame, uint16_t x, uint16_t y, uint8_t color) {
+void paintPixel(framebuffer_t* frame, uint16_t x, uint16_t y, uint8_t color) {
     frame->buffer[x + (y * frame->width)] = color;
 }
 
-void paintPixelf(frameBuffer_t* frame, rounding_t x, rounding_t y, uint8_t color) {
+void paintPixelf(framebuffer_t* frame, rounding_t x, rounding_t y, uint8_t color) {
     paintPixel(frame, (uint16_t) x, (uint16_t) y, color);
 }
 

@@ -9,13 +9,11 @@
 
 #include <stdint.h>
 
-// TODO Standardize variable names (e.g. my_var_x)
-
 // Precision of the engine
 typedef float rounding_t;
 
 // Colors
-enum pixelColor {
+enum pixel_color {
     Black = 40,
     Red,
     Green,
@@ -58,14 +56,14 @@ typedef struct world {
     triangle_t *triangles;
 } world_t;
 
-typedef struct frameBuffer {
+typedef struct framebuffer {
     uint16_t width;
     uint16_t height;
     uint8_t *buffer;
-} frameBuffer_t;
+} framebuffer_t;
 
 void Render_Engine_Init();
-void Render_Engine_RenderFrame(world_t *world, camera_t *camera, frameBuffer_t *frameBuffer);
-void Render_Engine_DisplayFrame(uint8_t channel, frameBuffer_t *frameBuffer);
+void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *framebuffer);
+void Render_Engine_DisplayFrame(uint8_t channel, framebuffer_t *framebuffer);
 
 #endif // RENDER_ENGINE_H
