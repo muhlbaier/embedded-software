@@ -84,7 +84,6 @@ void Terminal_HideCursor(uint8_t channel);
  * 
  * @param channel
  *
- * @todo MM check Bryan Regn's documentation
  */
 void Terminal_ShowCursor(uint8_t channel);
 
@@ -99,7 +98,6 @@ void Terminal_ShowCursor(uint8_t channel);
  * @param channel
  * @param color
  *
- * @todo MM check Bryan Regn's documentation
  */
 void Terminal_SetColor(uint8_t channel, enum term_color color);
 
@@ -110,7 +108,6 @@ void Terminal_SetColor(uint8_t channel, enum term_color color);
  * @param channel
  * @param color
  *
- * @todo MM check Bryan Regn's documentation
  */
 void Terminal_ClearScreen(uint8_t channel);
 
