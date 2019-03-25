@@ -246,7 +246,7 @@ void List_RemoveFirst(list_t* list);
  * Removes the last element of list by internally unlinking the element.
  * @param list a pointer to a list_t
  *
- * @warning This method does not return the item that was removed. Use List_UnlinkFirst() if the item is to be used.
+ * 
  *
  */
 void List_RemoveLast(list_t* list);
@@ -263,7 +263,7 @@ void List_Remove(list_t* list, void* item);
  * Removes all elements of list.
  * @param list a pointer to a list_t
  *
- * @warning This method does not return the items that were removed. Use List_UnlinkFirst() if items are to be used.
+ * 
  *
  */
 void List_RemoveAll(list_t* list);
