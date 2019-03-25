@@ -281,6 +281,12 @@ void Render_Engine_DisplayFrame(uint8_t channel, frameBuffer_t *frame) {
     
     // Access the UART through the HAL directly to get around the buffer
     for (i = 0; i < (frame->width * frame->height); i++) {
+        // Move to the next row to force where the pixels are displayed
+        if ((i > 0) && ((i % frame->width) == 0)) {
+            writeTerminalBlock(channel, '\r');
+            writeTerminalBlock(channel, '\n');
+        }
+        
         // Increase speed by only changing the selected color when needed
         if (lastColor != frame->buffer[i]) {
             // Change the current color
