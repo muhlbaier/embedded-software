@@ -95,7 +95,6 @@ uint8_t hal_UART_RxInterruptEnabled(uint8_t channel) {
             return (UCA0IE & UCRXIE) >> 0;
         case UART1:
             return (UCA1IE & UCRXIE) >> 0;
-
         default:
             return 0;
     }
@@ -135,7 +134,6 @@ uint8_t hal_UART_RxByte(uint8_t channel){
             return UCA0RXBUF;
         case UART1:
             return UCA1RXBUF;
-
         default:
             return 0;
     }
