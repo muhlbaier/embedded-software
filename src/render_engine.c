@@ -310,24 +310,11 @@ point_t pointToScreen(vector_t point, vector_t camera,
     dz = point.z - camera.z;
     
     // Horizontal position onscreen
-    angleHorizontal = atan(fabs(dy) / fabs(dx));
-    if ((dx >= 0) && (dy >= 0)) {
-        // Quad 1
-        // No correction performed
-    } else if ((dx < 0) && (dy >= 0)) {
-        // Quad 2
-        angleHorizontal = M_PI - angleHorizontal;
-    } else if ((dx < 0) && (dy < 0)) {
-        // Quad 3
-        angleHorizontal = angleHorizontal - M_PI;
-    } else {
-        // Quad 4
-        angleHorizontal = -angleHorizontal;
-    }
+    angleHorizontal = atan2(dy, dx);
     screen.x = halfWidth - ((angleHorizontal - camHAngle) / angleHPixel);
     
     // Vertical position onscreen
-    angleVertical = atan(dz / sqrt((dx * dx) + (dy * dy)));
+    angleVertical = atan2(dz, sqrt((dx * dx) + (dy * dy)));
     screen.y = halfHeight - ((angleVertical - camVAngle) / angleVPixel);
     
     return screen;
