@@ -95,6 +95,11 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
         // Determine the number of triangles to paint
         if ((left.x == center.x) && (center.x == right.x)) {
             // One vertical line
+            if ((center.x < 0) || (center.x >= frame->width)) {
+                // Skip rendering if this will not actually be displayed
+                continue;
+            }
+            
             rounding_t max = p1.y;
             if (max < p2.y) {
                 max = p2.y;
@@ -162,13 +167,13 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                     paintPixelf(frame, x, bottomY, world->triangles[i].color);
                     
                     // Correct sampling to the middle of the pixel
-                    if ((x - ((uint16_t) x)) != 0.5) {
-                        x = ((uint16_t) x) + 0.5;
+                    if ((x - fabs(x)) != 0.5) {
+                        x = fabs(x) + 0.5;
                     }
                 }
                 
                 // Paint one more pixel over if the side is just over the edge
-                if ((side.x - ((uint16_t) side.x)) > 0.5) {
+                if ((side.x - fabs(side.x)) > 0.5) {
                     paintPixelf(frame, side.x, side.y, world->triangles[i].color);
                 }
             } else {
@@ -187,13 +192,13 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                     paintPixelf(frame, x, bottomY, world->triangles[i].color);
                     
                     // Correct sampling to the middle of the pixel
-                    if ((x - ((uint16_t) x)) != 0.5) {
-                        x = ((uint16_t) x) + 0.5;
+                    if ((x - fabs(x)) != 0.5) {
+                        x = fabs(x) + 0.5;
                     }
                 }
                 
                 // Paint one more pixel over if the side is just over the edge
-                if ((side.x - ((uint16_t) side.x)) < 0.5) {
+                if ((side.x - fabs(side.x)) < 0.5) {
                     paintPixelf(frame, side.x, side.y, world->triangles[i].color);
                 }
             }
@@ -207,6 +212,11 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
             
             // Left to center
             for (x = left.x; x < center.x; x++) {
+                // Make sure rendering is only done if the point is visible
+                if ((x < 0) || (x >= frame->width)) {
+                    continue;
+                }
+                
                 // Calculate the min and max y values
                 topY = (slopeLeftCenter * (x - left.x)) + left.y;
                 bottomY = (slopeLeftRight * (x - left.x)) + left.y;
@@ -226,13 +236,18 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                 paintPixelf(frame, x, bottomY, world->triangles[i].color);
                 
                 // Correct sampling to the middle of the pixel
-                if ((x - ((uint16_t) x)) != 0.5) {
-                    x = ((uint16_t) x) + 0.5;
+                if ((x - fabs(x)) != 0.5) {
+                    x = fabs(x) + 0.5;
                 }
             }
             
             // Center to right
             for (x = center.x; x < right.x; x++) {
+                // Make sure rendering is only done if the point is visible
+                if ((x < 0) || (x >= frame->width)) {
+                    continue;
+                }
+                
                 // Calculate the min and max y values
                 topY = (slopeCenterRight * (x - right.x)) + right.y;
                 bottomY = (slopeLeftRight * (x - right.x)) + right.y;
@@ -252,14 +267,17 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                 paintPixelf(frame, x, bottomY, world->triangles[i].color);
                 
                 // Correct sampling to the middle of the pixel
-                if ((x - ((uint16_t) x)) != 0.5) {
-                    x = ((uint16_t) x) + 0.5;
+                if ((x - fabs(x)) != 0.5) {
+                    x = fabs(x) + 0.5;
                 }
             }
                 
             // Paint one more pixel over if the right is just over the edge
-            if ((right.x - ((uint16_t) right.x)) < 0.5) {
-                paintPixelf(frame, right.x, right.y, world->triangles[i].color);
+            if ((right.x - fabs(right.x)) < 0.5) {
+                // Make sure rendering is only done if the point is visible
+                if ((right.x >= 0) && (right.x < frame->width)) {
+                    paintPixelf(frame, right.x, right.y, world->triangles[i].color);
+                }
             }
         }
     }
