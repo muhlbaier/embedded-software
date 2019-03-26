@@ -106,12 +106,12 @@ typedef struct building_t{
  * If DOOR is detected, user should produce 2 movements so that the object moves through the door,
  * as the object could move upwards or downwards through the door if it stays in the doorway
  */
-enum check_collision
+typedef enum check_collision
 {
     NO_COLLISION = 0,
     COLLISION = 1,
     DOOR = 2
-};
+}check_collision;
 
 
 #ifndef TRANSPARENT_CHAR
@@ -435,7 +435,7 @@ void Game_GameOver(void);
  *
  * @param building is a building_t that stores building parameters
  */
-static void Game_DrawBuilding(building_t building);
+void Game_DrawBuilding(building_t building);
 
 /** @brief Dectects collision during downward movement
  *
@@ -443,7 +443,7 @@ static void Game_DrawBuilding(building_t building);
  *
  * @param player is any char_object_t whose position might conflict with a building
  */
-static enum check_collision Game_CollisionDown(building_t building, char_object_t player);
+enum check_collision Game_CollisionDown(building_t building, char_object_t player);
 
 /** @brief Dectects collision during upward movement
  *
@@ -451,7 +451,7 @@ static enum check_collision Game_CollisionDown(building_t building, char_object_
  *
  * @param player is any char_object_t whose position might conflict with a building
  */
-static enum check_collision Game_CollisionUp(building_t building, char_object_t player);
+enum check_collision Game_CollisionUp(building_t building, char_object_t player);
 
 /** @brief Dectects collision during leftward movement
  *
@@ -459,7 +459,7 @@ static enum check_collision Game_CollisionUp(building_t building, char_object_t 
  *
  * @param player is any char_object_t whose position might conflict with a building
  */
-static enum check_collision Game_CollisionLeft(building_t building, char_object_t player);
+enum check_collision Game_CollisionLeft(building_t building, char_object_t player);
 
 /** @brief Dectects collision during rightward movement
  *
@@ -467,7 +467,7 @@ static enum check_collision Game_CollisionLeft(building_t building, char_object_
  *
  * @param player is any char_object_t whose position might conflict with a building
  */
-static enum check_collision Game_CollisionRight(building_t building, char_object_t player);
+enum check_collision Game_CollisionRight(building_t building, char_object_t player);
 
 
 #ifdef USE_MODULE_GAME_NFR24
