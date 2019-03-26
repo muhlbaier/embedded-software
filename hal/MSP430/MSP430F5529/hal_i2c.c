@@ -143,8 +143,15 @@ void hal_I2C_SendStart(uint8_t channel){
 	}
 }
 
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_B0_VECTOR
-__interrupt void _I2C_B0_ISR(void){
+__interrupt void _I2C_B0_ISR(void)
+#elif defined(__GNUC__)
+void __attribute__ ((interrupt(USCI_B0_VECTOR))) _I2C_B0_ISR (void)
+#else
+#error Compiler not supported!
+#endif
+{
 	switch(UCB0IV){
 		case 0x04: // Nack
 			//If we received a NACK, the transaction has failed
@@ -196,7 +203,13 @@ __interrupt void _I2C_B0_ISR(void){
 	}
 }
 
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_B1_VECTOR
-__interrupt void _I2CB1_ISR(void){
-
+__interrupt void _I2CB1_ISR(void)
+#elif defined(__GNUC__)
+void __attribute__ ((interrupt(USCI_B1_VECTOR))) _I2CB1_ISR (void)
+#else
+#error Compiler not supported!
+#endif
+{
 }
