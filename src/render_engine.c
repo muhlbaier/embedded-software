@@ -167,8 +167,8 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                     paintPixelf(frame, x, bottomY, world->triangles[i].color);
                     
                     // Correct sampling to the middle of the pixel
-                    if ((x - fabs(x)) != 0.5) {
-                        x = fabs(x) + 0.5;
+                    if ((x - floor(x)) != 0.5) {
+                        x = floor(x) + 0.5;
                     }
                 }
                 
@@ -192,13 +192,13 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                     paintPixelf(frame, x, bottomY, world->triangles[i].color);
                     
                     // Correct sampling to the middle of the pixel
-                    if ((x - fabs(x)) != 0.5) {
-                        x = fabs(x) + 0.5;
+                    if ((x - floor(x)) != 0.5) {
+                        x = floor(x) + 0.5;
                     }
                 }
                 
                 // Paint one more pixel over if the side is just over the edge
-                if ((side.x - fabs(side.x)) < 0.5) {
+                if ((side.x - floor(side.x)) < 0.5) {
                     paintPixelf(frame, side.x, side.y, world->triangles[i].color);
                 }
             }
@@ -236,8 +236,8 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                 paintPixelf(frame, x, bottomY, world->triangles[i].color);
                 
                 // Correct sampling to the middle of the pixel
-                if ((x - fabs(x)) != 0.5) {
-                    x = fabs(x) + 0.5;
+                if ((x - floor(x)) != 0.5) {
+                    x = floor(x) + 0.5;
                 }
             }
             
@@ -267,13 +267,13 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                 paintPixelf(frame, x, bottomY, world->triangles[i].color);
                 
                 // Correct sampling to the middle of the pixel
-                if ((x - fabs(x)) != 0.5) {
-                    x = fabs(x) + 0.5;
+                if ((x - floor(x)) != 0.5) {
+                    x = floor(x) + 0.5;
                 }
             }
                 
             // Paint one more pixel over if the right is just over the edge
-            if ((right.x - fabs(right.x)) < 0.5) {
+            if ((right.x - floor(right.x)) < 0.5) {
                 // Make sure rendering is only done if the point is visible
                 if ((right.x >= 0) && (right.x < frame->width)) {
                     paintPixelf(frame, right.x, right.y, world->triangles[i].color);
