@@ -309,7 +309,11 @@ void Game_Printf(char * str, ...) {
 
 void Game_PrintfXY(char x, char y, char * str, ...){
     Terminal_CursorXY(SUBSYSTEM_UART, x, y);
-    Subsystem_printf(str);
+    //Subsystem_printf(str);
+    va_list vars;
+    va_start(vars, str);
+    UART_vprintf(SUBSYSTEM_UART, str, vars);
+    va_end(vars);
 }
 
 void Game_Player1Printf(char * str, ...) {
