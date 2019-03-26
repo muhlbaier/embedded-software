@@ -216,8 +216,6 @@ void Game_CharXY(char c, char x, char y);
  * @param c is the character you wish to print to the terminal
  * @param x defines where to print the character on the x axis
  * @param y defines where to print the character on the y axis
- *
- * @todo MM check Thomas Haskell documentation
  */
 void Game_Player1CharXY(char c, char x, char y);
 
@@ -228,8 +226,6 @@ void Game_Player1CharXY(char c, char x, char y);
  * @param c is the character you wish to print to the terminal
  * @param x defines where to print the character on the x axis
  * @param y defines where to print the character on the y axis
- *
- * @todo MM check Thomas Haskell documentation
  */
 void Game_Player2CharXY(char c, char x, char y);
 
