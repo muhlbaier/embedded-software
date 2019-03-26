@@ -1,5 +1,6 @@
 #include "render_engine.h"
 #include <math.h>
+#include <stdlib.h>
 #include "subsystem.h"
 #include "uart.h"
 #include "terminal.h"
@@ -11,6 +12,8 @@ point_t pointToScreen(vector_t point, vector_t camera,
         rounding_t camHAngle, rounding_t camVAngle,
         rounding_t angleHPixel, rounding_t angleVPixel,
         uint8_t halfWidth, uint8_t halfHeight);
+static camera_t compareCamera;
+int compareTriangles(const void *a, const void *b);
 void paintPixel(framebuffer_t *frame, uint16_t x, uint16_t y, uint8_t color);
 void paintPixelf(framebuffer_t *frame, rounding_t x, rounding_t y, uint8_t color);
 
@@ -44,17 +47,27 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
     point_t p1, p2, p3;
     uint8_t leftSel, rightSel;
     point_t left, right, center;
+    triangle_t triangles[world->numTriangles];
+    for (i = 0; i < world->numTriangles; i++) {
+        triangles[i].color = world->triangles[i].color;
+        triangles[i].p1 = world->triangles[i].p1;
+        triangles[i].p2 = world->triangles[i].p2;
+        triangles[i].p3 = world->triangles[i].p3;
+    }
+    
+    qsort(triangles, world->numTriangles, sizeof(triangle_t), compareTriangles);
+    
     for (i = 0; i < world->numTriangles; i++) {
         // Calculate the screen coordinates
-        p1 = pointToScreen(world->triangles[i].p1, camera->location,
+        p1 = pointToScreen(triangles[i].p1, camera->location,
                 cameraHorizontalAngle, cameraVerticalAngle,
                 anglePerPixelHorizontal, anglePerPixelVertical,
                 halfWidth, halfHeight);
-        p2 = pointToScreen(world->triangles[i].p2, camera->location,
+        p2 = pointToScreen(triangles[i].p2, camera->location,
                 cameraHorizontalAngle, cameraVerticalAngle,
                 anglePerPixelHorizontal, anglePerPixelVertical,
                 halfWidth, halfHeight);
-        p3 = pointToScreen(world->triangles[i].p3, camera->location,
+        p3 = pointToScreen(triangles[i].p3, camera->location,
                 cameraHorizontalAngle, cameraVerticalAngle,
                 anglePerPixelHorizontal, anglePerPixelVertical,
                 halfWidth, halfHeight);
@@ -117,7 +130,7 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
             
             rounding_t y;
             for (y = max; y > min; y--) {
-                paintPixelf(frame, center.x, y, world->triangles[i].color);
+                paintPixelf(frame, center.x, y, triangles[i].color);
             }
         } else if ((left.x == center.x) || (center.x == right.x)) {
             // Two points are in line vertically
@@ -160,11 +173,11 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                     
                     // Paint vertical column of triangle
                     for (y = topY; y > bottomY; y--) {
-                        paintPixelf(frame, x, y, world->triangles[i].color);
+                        paintPixelf(frame, x, y, triangles[i].color);
                     }
                     
                     // Catch one more paint
-                    paintPixelf(frame, x, bottomY, world->triangles[i].color);
+                    paintPixelf(frame, x, bottomY, triangles[i].color);
                     
                     // Correct sampling to the middle of the pixel
                     if ((x - floor(x)) != 0.5) {
@@ -174,7 +187,7 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                 
                 // Paint one more pixel over if the side is just over the edge
                 if ((side.x - fabs(side.x)) > 0.5) {
-                    paintPixelf(frame, side.x, side.y, world->triangles[i].color);
+                    paintPixelf(frame, side.x, side.y, triangles[i].color);
                 }
             } else {
                 // Go through triangle horizontally
@@ -185,11 +198,11 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                     
                     // Paint vertical column of triangle
                     for (y = topY; y > bottomY; y--) {
-                        paintPixelf(frame, x, y, world->triangles[i].color);
+                        paintPixelf(frame, x, y, triangles[i].color);
                     }
                     
                     // Catch one more paint
-                    paintPixelf(frame, x, bottomY, world->triangles[i].color);
+                    paintPixelf(frame, x, bottomY, triangles[i].color);
                     
                     // Correct sampling to the middle of the pixel
                     if ((x - floor(x)) != 0.5) {
@@ -199,7 +212,7 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                 
                 // Paint one more pixel over if the side is just over the edge
                 if ((side.x - floor(side.x)) < 0.5) {
-                    paintPixelf(frame, side.x, side.y, world->triangles[i].color);
+                    paintPixelf(frame, side.x, side.y, triangles[i].color);
                 }
             }
         } else {
@@ -229,11 +242,11 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                 
                 // Paint the vertical column of the triangle
                 for (y = topY; y > bottomY; y--) {
-                    paintPixelf(frame, x, y, world->triangles[i].color);
+                    paintPixelf(frame, x, y, triangles[i].color);
                 }
                 
                 // Catch one more paint
-                paintPixelf(frame, x, bottomY, world->triangles[i].color);
+                paintPixelf(frame, x, bottomY, triangles[i].color);
                 
                 // Correct sampling to the middle of the pixel
                 if ((x - floor(x)) != 0.5) {
@@ -260,11 +273,11 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
                 
                 // Paint the vertical column of the triangle
                 for (y = topY; y > bottomY; y--) {
-                    paintPixelf(frame, x, y, world->triangles[i].color);
+                    paintPixelf(frame, x, y, triangles[i].color);
                 }
                 
                 // Catch one more paint
-                paintPixelf(frame, x, bottomY, world->triangles[i].color);
+                paintPixelf(frame, x, bottomY, triangles[i].color);
                 
                 // Correct sampling to the middle of the pixel
                 if ((x - floor(x)) != 0.5) {
@@ -276,7 +289,7 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
             if ((right.x - floor(right.x)) < 0.5) {
                 // Make sure rendering is only done if the point is visible
                 if ((right.x >= 0) && (right.x < frame->width)) {
-                    paintPixelf(frame, right.x, right.y, world->triangles[i].color);
+                    paintPixelf(frame, right.x, right.y, triangles[i].color);
                 }
             }
         }
@@ -336,6 +349,31 @@ point_t pointToScreen(vector_t point, vector_t camera,
     screen.y = halfHeight - ((angleVertical - camVAngle) / angleVPixel);
     
     return screen;
+}
+
+int compareTriangles(const void* a, const void* b) {
+    triangle_t triA = *((triangle_t *) a);
+    triangle_t triB = *((triangle_t *) b);
+    vector_t triACenter = {(triA.p1.x + triA.p2.x + triA.p3.x) / 3,
+            (triA.p1.y + triA.p2.y + triA.p3.y) / 3,
+            (triA.p1.z + triA.p2.z + triA.p3.z) / 3};
+    vector_t triBCenter = {(triB.p1.x + triB.p2.x + triB.p3.x) / 3,
+            (triB.p1.y + triB.p2.y + triB.p3.y) / 3,
+            (triB.p1.z + triB.p2.z + triB.p3.z) / 3};
+    float distA = ((triACenter.x - compareCamera.location.x) * (triACenter.x - compareCamera.location.x)) +
+            ((triACenter.y - compareCamera.location.y) * (triACenter.y - compareCamera.location.y)) +
+            ((triACenter.z - compareCamera.location.z) * (triACenter.z - compareCamera.location.z));
+    float distB = ((triBCenter.x - compareCamera.location.x) * (triBCenter.x - compareCamera.location.x)) +
+            ((triBCenter.y - compareCamera.location.y) * (triBCenter.y - compareCamera.location.y)) +
+            ((triBCenter.z - compareCamera.location.z) * (triBCenter.z - compareCamera.location.z));
+    
+    if (distA == distB) {
+        return 0;
+    } else if (distA < distB) {
+        return 1;
+    } else {
+        return -1;
+    }
 }
 
 void paintPixel(framebuffer_t* frame, uint16_t x, uint16_t y, uint8_t color) {
