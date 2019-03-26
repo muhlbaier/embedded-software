@@ -308,15 +308,26 @@ point_t pointToScreen(vector_t point, vector_t camera,
     rounding_t angleHorizontal, angleVertical;
     point_t screen;
     
-    // TODO Fix calculations when the point is behind the camera
-    
     // Calculate the offset to the point from the camera
     dx = point.x - camera.x;
     dy = point.y - camera.y;
     dz = point.z - camera.z;
     
     // Horizontal position onscreen
-    angleHorizontal = atan(dy / dx);
+    angleHorizontal = atan(fabs(dy) / fabs(dx));
+    if ((dx >= 0) && (dy >= 0)) {
+        // Quad 1
+        // No correction performed
+    } else if ((dx < 0) && (dy >= 0)) {
+        // Quad 2
+        angleHorizontal = M_PI - angleHorizontal;
+    } else if ((dx < 0) && (dy < 0)) {
+        // Quad 3
+        angleHorizontal = angleHorizontal - M_PI;
+    } else {
+        // Quad 4
+        angleHorizontal = -angleHorizontal;
+    }
     screen.x = halfWidth - ((angleHorizontal - camHAngle) / angleHPixel);
     
     // Vertical position onscreen
@@ -327,11 +338,15 @@ point_t pointToScreen(vector_t point, vector_t camera,
 }
 
 void paintPixel(framebuffer_t* frame, uint16_t x, uint16_t y, uint8_t color) {
-    frame->buffer[x + (y * frame->width)] = color;
+    if ((x < frame->width) && (y < frame->height)) {
+        frame->buffer[x + (y * frame->width)] = color;
+    }
 }
 
 void paintPixelf(framebuffer_t* frame, rounding_t x, rounding_t y, uint8_t color) {
-    paintPixel(frame, (uint16_t) x, (uint16_t) y, color);
+    if ((x >= 0) && (y >= 0)) {
+        paintPixel(frame, (uint16_t) x, (uint16_t) y, color);
+    }
 }
 
 // UART helper functions
