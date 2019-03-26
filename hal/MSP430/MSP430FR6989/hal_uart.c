@@ -229,9 +229,6 @@ void hal_UART_Init(uint8_t channel, uint32_t baud)
 
             hal_UART_Enable(channel);
             break;
-
-
-
         default:
             return;
 
