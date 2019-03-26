@@ -13,7 +13,6 @@ void hal_UART_Enable(uint8_t channel){
         case UART1:
             UCA1CTLW0 &= ~UCSWRST;
             break;
-
         default:
             return;
     }
@@ -28,7 +27,6 @@ void hal_UART_Disable(uint8_t channel){
         case UART1:
             UCA1CTLW0 |= UCSWRST;
             break;
-
         default:
             return;
     }
@@ -43,7 +41,6 @@ void hal_UART_EnableRxInterrupt(uint8_t channel){
         case UART1:
             UCA1IE |= UCRXIE;
             break;
-
         default:
             return;
     }
@@ -58,7 +55,6 @@ void hal_UART_EnableTxInterrupt(uint8_t channel){
         case UART1:
             UCA1IE |= UCTXIE;
             break;
-
         default:
             return;
     }
@@ -73,7 +69,6 @@ void hal_UART_DisableRxInterrupt(uint8_t channel){
         case UART1:
             UCA1IE &= ~UCRXIE;
             break;
-
         default:
             return;
     }
@@ -88,7 +83,6 @@ void hal_UART_DisableTxInterrupt(uint8_t channel){
         case UART1:
             UCA1IE &= ~UCTXIE;
             break;
-
         default:
             return;
     }
@@ -114,7 +108,6 @@ uint8_t hal_UART_TxInterruptEnabled(uint8_t channel) {
             return (UCA0IE & UCTXIE) >> 1;
         case UART1:
             return (UCA1IE & UCTXIE) >> 1;
-
         default:
             return 0;
     }
@@ -130,8 +123,6 @@ void hal_UART_TxByte(uint8_t channel, uint8_t c){
         case UART1:
             UCA1TXBUF = c;
             break;
-
-
         default:
             return;
     }
@@ -159,7 +150,6 @@ void hal_UART_ClearTxIF(uint8_t channel){
         case UART1:
             UCA1IFG &= ~UCTXIFG;
             break;
-
         default:
             return;
     }
@@ -174,7 +164,6 @@ void hal_UART_ClearRxIF(uint8_t channel){
         case UART1:
             UCA1IFG &= ~UCRXIFG;
             break;
-
         default:
             return;
     }
@@ -200,7 +189,6 @@ uint8_t hal_UART_SpaceAvailable(uint8_t channel){
             return (UCA0IFG & UCTXIFG);
         case UART1:
             return (UCA1IFG & UCTXIFG);
-
         default:
             return 0;
     }
@@ -228,10 +216,7 @@ void hal_UART_Init(uint8_t channel, uint32_t baud)
 
         case UART1:
             hal_UART_Disable(channel);
-
-
-
-
+            
             P3SEL1 &= ~(BIT4 | BIT5);
             P3SEL0 |= BIT4 | BIT5;
 
