@@ -252,32 +252,36 @@ void List_RemoveFirst(list_t* list);
 void List_RemoveLast(list_t* list);
 
 /**
+ * Removes an element of list
+ * @param list a pointer to a list_t
+ * @param identifier for the item to remove in the list.
+ * @return a void pointer to the item found using the identifier. Returns 0 if not found.
  *
- * @param list
- * @param item
- *
+ * @warning This method does not return the items that were removed.
  */
 void List_Remove(list_t* list, void* item);
 
 /**
  * Removes all elements of list.
  * @param list a pointer to a list_t
- *
+ * 
  * @warning This method does not return the items that were removed.
  *
  */
 void List_RemoveAll(list_t* list);
 
 /**
+ * Unlinks an item of list.  If a valid pointer is not found an error code may be given
+ * @param lists a pointer to a list_t
+ * @param identifier for the item to unlink in the list.
+ * @return a void pointer to the item found using the identifier. Returns 0 if not found.
  *
- * @param list
- * @param item
- *
+ * @warning This method does not return the items that were unlinked.
  */
 void List_UnlinkItem(list_t* list, void* item);
 
 /**
- *
+ * 
  * @param list pointer to list structure (object)
  *
  *Function: List_UnlinkFirst(list_t* list)
