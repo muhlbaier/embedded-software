@@ -94,6 +94,12 @@ void Terminal_ShowCursor(uint8_t channel);
  */
 void Terminal_SetColor(uint8_t channel, enum term_color color);
 
+/** Function to clear the screen of the terminal
+ *
+ * This function will clear all characters written in the terminal.
+ *
+ * @param channel UART Channel
+ */
 void Terminal_ClearScreen(uint8_t channel);
 
 ///@}
