@@ -26,6 +26,9 @@ static void QueueMeasurement(struct adc_channel * channel);
 // Initialized the CallCallback functions
 static void CallCallback(struct adc_channel * channel_struct);
 
+//To be used in adc.c where the call back is used without the optional pointer
+typedef void(*callback_no_input_t)(uint16_t);
+
 void ADC_Init(void) {
 	num_channels = 0;
 	start = 0;
@@ -77,6 +80,7 @@ static void CallCallback(struct adc_channel * channel_struct) {
 	if(channel_struct->ptr) {
 		channel_struct->callback(channel_struct->value, channel_struct->ptr);
 	}else {
-		(void(*)(uint16_t))channel_struct->callback(channel_struct->value);
+		// typedef to cast callback to have only one input
+		((callback_no_input_t)channel_struct->callback)(channel_struct->value);
 	}
 }
