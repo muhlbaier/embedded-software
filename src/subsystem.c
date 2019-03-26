@@ -279,7 +279,9 @@ static void SystemCallback(int argc, char *argv[]) {
     }
 }
 
+
 uint32_t ArgToU32(char* arg){
+    // function that converts char arguments into to unsigned 32 bit numbers
     uint32_t result;
     uint32_t i;
     result = 0;
