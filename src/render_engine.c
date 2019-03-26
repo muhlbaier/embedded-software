@@ -20,10 +20,6 @@ void writeTerminalNumber(uint8_t channel, uint8_t number);
 void changeTerminalColor(uint8_t channel, uint8_t color);
 void writeTerminalBlock(uint8_t channel, uint8_t data);
 
-void Render_Engine_Init() {
-    
-}
-
 void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *frame) {
     uint16_t bufLength = frame->width * frame->height;
     uint8_t halfWidth = frame->width / 2;
