@@ -234,10 +234,9 @@ void Game_Player2CharXY(char c, char x, char y);
  * Game_CursorXY Moves the  cursor to a specified location using the Terminal_CursorXY function based off the number of players.
  *
  * @param x is the horizontal coordinate.
- *
  * @param y is the vertical coordinate.
  *
- * @warning DS 3/25/19
+ * DS 3/25/19
  */
 void Game_CursorXY(char x, char y);
 
@@ -246,10 +245,9 @@ void Game_CursorXY(char x, char y);
  * Game_Player1CursorXY Moves the  cursor to a specified location using the Terminal_CursorXY function based off the Player1UART.
  *
  * @param x is the horizontal coordinate.
- *
  * @param y is the vertical coordinate.
  *
- * @warning DS 3/25/19
+ * DS 3/25/19
  */
 void Game_Player1CursorXY(char x, char y);
 
@@ -258,10 +256,9 @@ void Game_Player1CursorXY(char x, char y);
  * Game_Player2CursorXY Moves the  cursor to a specified location using the Terminal_CursorXY function based off the Player1UART.
  *
  * @param x is the horizontal coordinate.
- *
  * @param y is the vertical coordinate.
  *
- * @warning DS 3/25/19
+ * DS 3/25/19
  */
 void Game_Player2CursorXY(char x, char y);
 
@@ -285,14 +282,11 @@ void Game_Printf(char * str, ...);
  * Game_PrintfXY prints a specified string to a certain location using terminal_cursorXY and Subsystem_printf.
  *
  * @param x is the horizontal coordinate.
- *
  * @param y is the vertical coordinate.
- *
  * @param * str points to location of the beginning of the specified string
- *
  * @param ... variable argument list to be used with any replacement flags in the string
  *
- * @warning DS 3/25/19
+ * DS 3/25/19
  */
 void Game_PrintfXY(char x, char y, char * str, ...);
 
