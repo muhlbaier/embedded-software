@@ -55,6 +55,9 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
         triangles[i].p3 = world->triangles[i].p3;
     }
     
+    compareCamera.location.x = camera->location.x;
+    compareCamera.location.y = camera->location.y;
+    compareCamera.location.z = camera->location.z;
     qsort(triangles, world->numTriangles, sizeof(triangle_t), compareTriangles);
     
     for (i = 0; i < world->numTriangles; i++) {
