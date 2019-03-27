@@ -474,5 +474,8 @@ void Game_NetworkInit(nrf24_t * nrf_ptr);
 
 #endif
 
+void Game_DrawDiamond(char c, uint8_t x, uint8_t y, uint8_t w, uint8_t h);
+
+
 ///@}
 #endif // _GAME_H_
