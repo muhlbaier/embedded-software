@@ -100,13 +100,15 @@ uint8_t hal_UART_RxOverrun(uint8_t channel){
 }
 
 #ifdef USE_UART0
-#ifdef MSPGCC
-__attribute__((interrupt(USCI_A0_VECTOR)))
-void _UART0_ISR(void) {
-#else
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_A0_VECTOR
-__interrupt void _UART0_ISR(void){
+__interrupt void _UART0_ISR(void)
+#elif defined(__GNUC__)
+void __attribute__ ((interrupt(USCI_A0_VECTOR))) _UART0_ISR (void)
+#else
+#error Compiler not supported!
 #endif
+{
 	UART_Rx_Handler(UART0);
 	hal_UART_ClearRxIF(UART0);
 	UART_Tx_Handler(UART0);

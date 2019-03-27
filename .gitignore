@@ -1,0 +1,4 @@
+output/
+.cquery_cache/
+tests/*.o
+tests/buffer

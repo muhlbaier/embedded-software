@@ -209,25 +209,58 @@ void Game_UnregisterPlayer2Receiver(void(*rx)(uint8_t));
  */
 void Game_CharXY(char c, char x, char y);
 
-/**
+/** @brief Write a character to a coordinate of the first players terminal
  *
- * @param c
- * @param x
- * @param y
+ * Game_Player1CharXY writes a character to the first player terminal
  *
- * @todo Anthony M. Document this function (when done change this line to "@todo MM check <your names> documentation"
+ * @param c is the character you wish to print to the terminal
+ * @param x defines where to print the character on the x axis
+ * @param y defines where to print the character on the y axis
  */
 void Game_Player1CharXY(char c, char x, char y);
 
-/**
+/** @brief Write a character to a coordinate of the second players terminal
  *
- * @param c
- * @param x
- * @param y
+ * Game_Player2CharXY writes a character to the second player terminal
  *
- * @todo Anthony M. Document this function (when done change this line to "@todo MM check <your names> documentation"
+ * @param c is the character you wish to print to the terminal
+ * @param x defines where to print the character on the x axis
+ * @param y defines where to print the character on the y axis
  */
 void Game_Player2CharXY(char c, char x, char y);
+
+/** @brief Cursor Position XY
+ *
+ * Game_CursorXY Moves the  cursor to a specified location using the Terminal_CursorXY function based off the number of players.
+ *
+ * @param x is the horizontal coordinate.
+ * @param y is the vertical coordinate.
+ *
+ * DS 3/25/19
+ */
+void Game_CursorXY(char x, char y);
+
+/** @brief Player 1 Cursor Position XY
+ *
+ * Game_Player1CursorXY Moves the  cursor to a specified location using the Terminal_CursorXY function based off the Player1UART.
+ *
+ * @param x is the horizontal coordinate.
+ * @param y is the vertical coordinate.
+ *
+ * DS 3/25/19
+ */
+void Game_Player1CursorXY(char x, char y);
+
+/** @brief Player 2 Cursor Position XY
+ *
+ * Game_Player2CursorXY Moves the  cursor to a specified location using the Terminal_CursorXY function based off the Player1UART.
+ *
+ * @param x is the horizontal coordinate.
+ * @param y is the vertical coordinate.
+ *
+ * DS 3/25/19
+ */
+void Game_Player2CursorXY(char x, char y);
 
 /**
  *
@@ -243,6 +276,19 @@ void Game_Player2CharXY(char c, char x, char y);
  * @warning TM 9/10
  */
 void Game_Printf(char * str, ...);
+
+/** @brief PrintfXY to screen
+ *
+ * Game_PrintfXY prints a specified string to a certain location using terminal_cursorXY and Subsystem_printf.
+ *
+ * @param x is the horizontal coordinate.
+ * @param y is the vertical coordinate.
+ * @param * str points to location of the beginning of the specified string
+ * @param ... variable argument list to be used with any replacement flags in the string
+ *
+ * DS 3/25/19
+ */
+void Game_PrintfXY(char x, char y, char * str, ...);
 
 /**
  *

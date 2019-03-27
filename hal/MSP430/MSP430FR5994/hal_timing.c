@@ -13,13 +13,15 @@ void hal_Timing_Init(void){
     TA0CCTL0 |= CCIE;
 }
 
-#ifdef MSPGCC
-__attribute__((interrupt(TIMER0_A0_VECTOR)))
-void TIMER0_A0_ISR(void) {
-#else
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=TIMER0_A0_VECTOR
-__interrupt void TIMER0_A0_ISR(void){
+__interrupt void TIMER0_A0_ISR(void)
+#elif defined(__GNUC__)
+void __attribute__ ((interrupt(TIMER0_A0_VECTOR))) TIMER0_A0_ISR (void)
+#else
+#error Compiler not supported!
 #endif
+{
     TimingISR();
     TA0CTL &= ~TAIFG;   //Clear the interrupt flag
 }

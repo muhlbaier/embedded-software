@@ -278,6 +278,20 @@ void Game_Player2CharXY(char c, char x, char y) {
     Terminal_CharXY(PLAYER2_UART, c, x, y);
 }
 
+void Game_CursorXY(char x, char y){
+    Terminal_CursorXY(PLAYER1_UART, x, y);
+        if (games[playing_id].num_players >= 2)
+            Terminal_CursorXY(PLAYER2_UART, x, y);
+}
+
+void Game_Player1CursorXY(char x, char y) {
+    Terminal_CursorXY(PLAYER1_UART, x, y);
+}
+
+void Game_Player2CursorXY(char x, char y) {
+    Terminal_CursorXY(PLAYER2_UART, x, y);
+}
+
 void Game_Printf(char * str, ...) {
     // variable argument list type
     va_list vars;
@@ -291,6 +305,15 @@ void Game_Printf(char * str, ...) {
         UART_vprintf(PLAYER2_UART, str, vars);
         va_end(vars);
     }
+}
+
+void Game_PrintfXY(char x, char y, char * str, ...){
+    Terminal_CursorXY(SUBSYSTEM_UART, x, y);
+    //Subsystem_printf(str);
+    va_list vars;
+    va_start(vars, str);
+    UART_vprintf(SUBSYSTEM_UART, str, vars);
+    va_end(vars);
 }
 
 void Game_Player1Printf(char * str, ...) {
