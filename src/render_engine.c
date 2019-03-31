@@ -344,8 +344,13 @@ point_t pointToScreen(vector_t point, vector_t camera,
     dz = point.z - camera.z;
     
     // Horizontal position onscreen
-    angleHorizontal = atan2(dy, dx);
-    screen.x = halfWidth - ((angleHorizontal - camHAngle) / angleHPixel);
+    angleHorizontal = atan2(dy, dx) - camHAngle;
+    if (angleHorizontal <= -M_PI) {
+        angleHorizontal += 2 * M_PI;
+    } else if (angleHorizontal > M_PI) {
+        angleHorizontal -= 2 * M_PI;
+    }
+    screen.x = halfWidth - (angleHorizontal / angleHPixel);
     
     // Vertical position onscreen
     angleVertical = atan2(dz, sqrt((dx * dx) + (dy * dy)));
