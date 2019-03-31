@@ -69,6 +69,27 @@ typedef struct {
 	char status; ///< Status of object. Usage depends on implementation.
 } char_object_t;
 
+/** @brief Linkable Char Object
+ *
+ * Reusable char object that can be used to create a linked list of char objects
+ * Variation of char_object_t
+ * Each object (node) will know the x and y coordinates of itself and the following node in the list
+ * Flags 'first' and 'last' are used to keep track of the starting and ending node in the list
+ * 'status' and 'data' are additional parameters used to hold misc. information, depending on the application of the list
+ * 
+ */
+typedef struct {
+    char c; ///< Displayed character ("sprite")
+    char x; ///< x position (increasing from left to right)
+    char y; ///< y position (increasing from top to bottom)
+    char x_next_node; ///< x coordinate of next node in the list
+    char y_next_node; ///< y coordinate of next node in the list
+    int first; ///< flag to keep track of the first node in the list (i.e. 1 if first 0 if not)
+    int last; ///< flag to keep track of the last node in the list (i.e. 1 if last 0 if not)
+    int data; ///< additional data the node will hold. Usage depends on implementation.
+    char status; ///< Status of object. Usage depends on implementation.
+} linked_char_object_t;
+
 /** @struct player_info_t
  *
  * @brief Player info structure to hold player settings
