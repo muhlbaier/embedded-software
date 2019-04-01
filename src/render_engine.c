@@ -12,6 +12,7 @@ point_t pointToScreen(vector_t point, vector_t camera,
         rounding_t camHAngle, rounding_t camVAngle,
         rounding_t angleHPixel, rounding_t angleVPixel,
         uint8_t halfWidth, uint8_t halfHeight);
+rounding_t dotProduct(vector_t a, vector_t b);
 static camera_t compareCamera;
 int compareTriangles(const void *a, const void *b);
 void paintPixel(framebuffer_t *frame, uint16_t x, uint16_t y, uint8_t color);
@@ -69,6 +70,13 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
     uint8_t leftSel, rightSel;
     point_t left, right, center;
     for (i = 0; i < world->numTriangles; i++) {
+        // Make sure at least one point is in front of the camera
+        if ((dotProduct(triangles[i].p1, cameraDirection) <= 0) &&
+                (dotProduct(triangles[i].p2, cameraDirection) <= 0) &&
+                (dotProduct(triangles[i].p3, cameraDirection) <= 0)) {
+            continue;
+        }
+        
         // Calculate the screen coordinates
         p1 = pointToScreen(triangles[i].p1, camera->location,
                 cameraHorizontalAngle, cameraVerticalAngle,
@@ -352,7 +360,11 @@ point_t pointToScreen(vector_t point, vector_t camera,
     dz = point.z - camera.z;
     
     // Horizontal position onscreen
-    angleHorizontal = atan2(dy, dx) - camHAngle;
+    if ((dx == 0) && (dy == 0)) {
+        angleHorizontal = 0;
+    } else {
+        angleHorizontal = atan2(dy, dx) - camHAngle;
+    }
     if (angleHorizontal <= -M_PI) {
         angleHorizontal += 2 * M_PI;
     } else if (angleHorizontal > M_PI) {
@@ -361,10 +373,18 @@ point_t pointToScreen(vector_t point, vector_t camera,
     screen.x = halfWidth - (angleHorizontal / angleHPixel);
     
     // Vertical position onscreen
-    angleVertical = atan2(dz, sqrt((dx * dx) + (dy * dy)));
-    screen.y = halfHeight - ((angleVertical - camVAngle) / angleVPixel);
+    if ((dx == 0) && (dy == 0) && (dz == 0)) {
+        angleVertical = 0;
+    } else {
+        angleVertical = atan2(dz, sqrt((dx * dx) + (dy * dy))) - camVAngle;
+    }
+    screen.y = halfHeight - (angleVertical / angleVPixel);
     
     return screen;
+}
+
+rounding_t dotProduct(vector_t a, vector_t b) {
+    return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
 }
 
 int compareTriangles(const void* a, const void* b) {
