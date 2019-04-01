@@ -81,7 +81,11 @@
         cam.location.y = 3 * sin(-rot  * (3.14159 / 180.0));
         Render_Engine_RenderFrame(&worldA, &cam, &buf);
         Render_Engine_DisplayFrame(SUBSYSTEM_UART, &buf);
-        rot--;
+        if (rot <= -179) {
+            rot = 180;
+        } else {
+            rot--;
+        }
     }
     
     while (1) {
