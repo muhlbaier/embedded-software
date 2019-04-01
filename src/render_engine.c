@@ -31,7 +31,15 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
             (frame->width * 180.0);
     rounding_t anglePerPixelVertical = (camera->fovVertical * M_PI) /
             (frame->height * 180.0);
-    rounding_t cameraHorizontalAngle = (camera->rotation.z * M_PI) / 180.0;
+    rounding_t cameraHorizontalAngle = camera->rotation.z;
+    if (camera->rotation.z < 0) {
+        cameraHorizontalAngle = -cameraHorizontalAngle;
+    }
+    cameraHorizontalAngle = fmod(cameraHorizontalAngle + 180, 360) - 180;
+    if (camera->rotation.z < 0) {
+        cameraHorizontalAngle = -cameraHorizontalAngle;
+    }
+    cameraHorizontalAngle = cameraHorizontalAngle * (M_PI / 180.0);
     rounding_t cameraVerticalAngle = (camera->rotation.y * M_PI) / 180.0;
     vector_t cameraDirection = {cos(cameraHorizontalAngle),
             sin(cameraHorizontalAngle),
@@ -43,10 +51,7 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
         frame->buffer[i] = world->backgroundColor;
     }
     
-    // Go through all triangles
-    point_t p1, p2, p3;
-    uint8_t leftSel, rightSel;
-    point_t left, right, center;
+    // Sort triangles by distance to the camera
     triangle_t triangles[world->numTriangles];
     for (i = 0; i < world->numTriangles; i++) {
         triangles[i].color = world->triangles[i].color;
@@ -54,12 +59,15 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
         triangles[i].p2 = world->triangles[i].p2;
         triangles[i].p3 = world->triangles[i].p3;
     }
-    
     compareCamera.location.x = camera->location.x;
     compareCamera.location.y = camera->location.y;
     compareCamera.location.z = camera->location.z;
     qsort(triangles, world->numTriangles, sizeof(triangle_t), compareTriangles);
     
+    // Go through all triangles
+    point_t p1, p2, p3;
+    uint8_t leftSel, rightSel;
+    point_t left, right, center;
     for (i = 0; i < world->numTriangles; i++) {
         // Calculate the screen coordinates
         p1 = pointToScreen(triangles[i].p1, camera->location,
