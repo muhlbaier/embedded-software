@@ -1,8 +1,10 @@
 /**
  * @defgroup render_engine Render Engine
  * @file render_engine.h
- * Created on March 21, 2019
  * @author Nate Hoffman
+ * @version 1
+ * 
+ * Created on March 21, 2019
  * 
  * Use this module to perform 3D rendering on the processor. Processing can take
  * quite some time and is blocking. Little error checking is performed yet.
@@ -11,6 +13,84 @@
  * terminal based output. Normal usage is:
  * - Render_Engine_RenderFrame() to populate a framebuffer with the image
  * - Render_Engine_DisplayFrame() to send a framebuffer out over a UART channel
+ * 
+ * @section Example
+ * 
+ * The following code can be used to display a pyramid onscreen. The camera
+ * rotates around it to show all the sides. This example can easily be modified
+ * to rotate the camera inside the pyramid.
+ * 
+ @code
+ int main() {
+    DisableInterrupts();
+    UART_Init(SUBSYSTEM_UART);
+    UART_ReconfigureBaud(SUBSYSTEM_UART, 115200);
+    EnableInterrupts();
+    
+    Terminal_HideCursor(SUBSYSTEM_UART);
+    Terminal_SetColor(SUBSYSTEM_UART, BackgroundBlack);
+    Terminal_ClearScreen(SUBSYSTEM_UART);
+    
+    // Test render engine
+    world_t worldA;
+    camera_t cam;
+    cam.fovHorizontal = 100;
+    cam.fovVertical = 75;
+    cam.location.x = 0;
+    cam.location.y = 0;
+    cam.location.z = 5;
+    cam.rotation.x = 0;
+    cam.rotation.y = -50;
+    cam.rotation.z = 0;
+    
+    framebuffer_t buf;
+    buf.width = 80;
+    buf.height = 24;
+    uint8_t bufAlloc[buf.width * buf.height];
+    buf.buffer = bufAlloc;
+    
+    worldA.numTriangles = 4;
+    worldA.backgroundColor = Blue;
+    vector_t backTop = {0, 0, 3};
+    vector_t back1 = {-1, -1, 0};
+    vector_t back2 = {-1, 1, 0};
+    triangle_t back = {backTop, back1, back2, Red};
+    vector_t rightTop = {0, 0, 3};
+    vector_t right1 = {-1, 1, 0};
+    vector_t right2 = {1, 1, 0};
+    triangle_t right = {rightTop, right1, right2, Cyan};
+    vector_t leftTop = {0, 0, 3};
+    vector_t left1 = {-1, -1, 0};
+    vector_t left2 = {1, -1, 0};
+    triangle_t left = {leftTop, left1, left2, Magenta};
+    vector_t frontTop = {0, 0, 3};
+    vector_t front1 = {1, 1, 0};
+    vector_t front2 = {1, -1, 0};
+    triangle_t front = {frontTop, front1, front2, Green};
+    triangle_t triangles[worldA.numTriangles];
+    triangles[0] = back;
+    triangles[1] = left;
+    triangles[2] = right;
+    triangles[3] = front;
+    worldA.triangles = triangles;
+    
+    int16_t rot = 180;
+    while (true) {
+        cam.rotation.z = rot;
+        cam.location.x = 3 * -cos(rot  * (3.14159 / 180.0));
+        cam.location.y = 3 * sin(-rot  * (3.14159 / 180.0));
+        Render_Engine_RenderFrame(&worldA, &cam, &buf);
+        Render_Engine_DisplayFrame(SUBSYSTEM_UART, &buf);
+        rot--;
+    }
+    
+    while (1) {
+        SystemTick();
+    }
+    
+    return 0;
+}
+ * @endcode
  * @{
  */
 
@@ -79,11 +159,11 @@ typedef struct framebuffer {
  * create the needed array for you. This method is blocking during the rendering
  * process.
  * 
- * @param world - World data that contains the list of triangles in 3D space to
+ * @param world World data that contains the list of triangles in 3D space to
  * render.
- * @param camera - Camera data that contains the location and direction of the
+ * @param camera Camera data that contains the location and direction of the
  * camera.
- * @param framebuffer - Output of the rendering process populates an existing
+ * @param framebuffer Output of the rendering process populates an existing
  * framebuffer.
  */
 void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *framebuffer);
@@ -96,8 +176,8 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
  * the HAL UART code to get around the buffer of the UART code. This method is
  * blocking during the writing process.
  * 
- * @param channel - UART channel to output the framebuffer over.
- * @param framebuffer - Framebuffer to display on the console.
+ * @param channel UART channel to output the framebuffer over.
+ * @param framebuffer Framebuffer to display on the console.
  */
 void Render_Engine_DisplayFrame(uint8_t channel, framebuffer_t *framebuffer);
 
