@@ -90,7 +90,7 @@
     
     return 0;
 }
- * @endcode
+@endcode
  * @{
  */
 
