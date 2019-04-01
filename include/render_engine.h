@@ -21,7 +21,16 @@
  * to rotate the camera inside the pyramid.
  * 
  @code
- int main() {
+#include "project_settings.h"
+#include "subsystem.h"
+#include "task.h"
+#include "uart.h"
+#include "terminal.h"
+#include "hal_general.h"
+#include <math.h>
+#include "render_engine.h"
+
+int main() {
     DisableInterrupts();
     UART_Init(SUBSYSTEM_UART);
     UART_ReconfigureBaud(SUBSYSTEM_UART, 115200);
