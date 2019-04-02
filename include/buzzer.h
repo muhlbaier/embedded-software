@@ -11,7 +11,10 @@
  * @{
  */
 
-/** @brief initializes the buzzer module
+/** @brief initializes the buzzer module for use
+ * 
+ * Initializes the task manager and timing modules to allow the
+ * modules to be used within the Buzzer_Sound function
  *
  */
 
