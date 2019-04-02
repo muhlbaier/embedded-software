@@ -77,23 +77,38 @@ void Terminal_CursorXY(uint8_t channel, char x, char y);
  */
 void Terminal_HideCursor(uint8_t channel);
 
-/**
- *
+/** Function to turn the cursor on
+ * 
+ * This function will make the cursor within the terminal hidden by utilizing the DECTCEM (DEC text cursor enable mode)
+ * escape sequence "%c?25h". The ASCII_ESC character is needed so the terminal knows that the above sequence is a control sequence.
+ * 
  * @param channel
  *
- * @todo Gerald V. Document this function (when done change this line to "@todo MM check <your names> documentation"
  */
 void Terminal_ShowCursor(uint8_t channel);
 
-/**
+/** Function to set color of terminal
  *
+ * This function allows you to set the color of the terminal. The function utilizes the ASCII code "%c[%dm" to implement the function. 
+ * The ASCII_ESC character is needed so the terminal knows that the above sequence is a control sequence, %c. The ASCII color represented 
+ * by %d in the ASCII code is used to change the coloring. Dependant on the value of color will depend on the change. For example: 0-9
+ * gives you different attributes such as bold/invisible/bright; using 30-39 will change the foreground coloring; using 40-49
+ * will change the background coloring. Check https://en.wikipedia.org/wiki/ANSI_escape_code for more details of the commands. 
+ * 
  * @param channel
  * @param color
  *
- * @todo Gerald V. Document this function (when done change this line to "@todo MM check <your names> documentation"
  */
 void Terminal_SetColor(uint8_t channel, enum term_color color);
 
+/** Function to clear terminal
+ *
+ * This function allows you to clear the entire terminal screen. This function creates a new terminal page through the ASCII code "\f". 
+ * 
+ * @param channel
+ * @param color
+ *
+ */
 void Terminal_ClearScreen(uint8_t channel);
 
 ///@}
