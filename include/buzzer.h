@@ -1,7 +1,4 @@
 #include <stdint.h>
-#include "hal_general.h"
-#include "hal_general.h"
-
 
 #ifndef _BUZZER_H_
 #define _BUZZER_H_
