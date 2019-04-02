@@ -24,7 +24,8 @@ void Buzzer_Sound(uint16_t frequency, uint16_t timeout);
 
 /** @brief hardware abstaction layer buzzer initialization
  *
- ** Must be implemented for each MCU in hal_buzzer.c and configure 
+ * Must be implemented for each MCU in hal_buzzer.c and configure 
+ * the pin which will utilize the buzzer
  */
  
 void hal_Buzzer_Init(void);
