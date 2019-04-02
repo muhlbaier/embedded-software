@@ -8,7 +8,7 @@
 #define M_PI 3.14159265358979323846
 
 // Rendering helper functions
-point_t pointToScreen(vector_t point, vector_t camera,
+point_t pointToScreen(vector_t delta,
         rounding_t camHAngle, rounding_t camVAngle,
         rounding_t angleHPixel, rounding_t angleVPixel,
         uint8_t halfWidth, uint8_t halfHeight);
@@ -66,27 +66,39 @@ void Render_Engine_RenderFrame(world_t *world, camera_t *camera, framebuffer_t *
     qsort(triangles, world->numTriangles, sizeof(triangle_t), compareTriangles);
     
     // Go through all triangles
+    vector_t p1Delta, p2Delta, p3Delta;
     point_t p1, p2, p3;
     uint8_t leftSel, rightSel;
     point_t left, right, center;
     for (i = 0; i < world->numTriangles; i++) {
+        // Calculate the difference between point location and camera
+        p1Delta.x = triangles[i].p1.x - camera->location.x;
+        p1Delta.y = triangles[i].p1.y - camera->location.y;
+        p1Delta.z = triangles[i].p1.z - camera->location.z;
+        p2Delta.x = triangles[i].p2.x - camera->location.x;
+        p2Delta.y = triangles[i].p2.y - camera->location.y;
+        p2Delta.z = triangles[i].p2.z - camera->location.z;
+        p3Delta.x = triangles[i].p3.x - camera->location.x;
+        p3Delta.y = triangles[i].p3.y - camera->location.y;
+        p3Delta.z = triangles[i].p3.z - camera->location.z;
+        
         // Make sure at least one point is in front of the camera
-        if ((dotProduct(triangles[i].p1, cameraDirection) <= 0) &&
-                (dotProduct(triangles[i].p2, cameraDirection) <= 0) &&
-                (dotProduct(triangles[i].p3, cameraDirection) <= 0)) {
+        if ((dotProduct(p1Delta, cameraDirection) <= 0) &&
+                (dotProduct(p2Delta, cameraDirection) <= 0) &&
+                (dotProduct(p3Delta, cameraDirection) <= 0)) {
             continue;
         }
         
         // Calculate the screen coordinates
-        p1 = pointToScreen(triangles[i].p1, camera->location,
+        p1 = pointToScreen(p1Delta,
                 cameraHorizontalAngle, cameraVerticalAngle,
                 anglePerPixelHorizontal, anglePerPixelVertical,
                 halfWidth, halfHeight);
-        p2 = pointToScreen(triangles[i].p2, camera->location,
+        p2 = pointToScreen(p2Delta,
                 cameraHorizontalAngle, cameraVerticalAngle,
                 anglePerPixelHorizontal, anglePerPixelVertical,
                 halfWidth, halfHeight);
-        p3 = pointToScreen(triangles[i].p3, camera->location,
+        p3 = pointToScreen(p3Delta,
                 cameraHorizontalAngle, cameraVerticalAngle,
                 anglePerPixelHorizontal, anglePerPixelVertical,
                 halfWidth, halfHeight);
@@ -346,24 +358,18 @@ void Render_Engine_DisplayFrame(uint8_t channel, framebuffer_t *frame) {
 }
 
 // Rendering helper functions
-point_t pointToScreen(vector_t point, vector_t camera,
+point_t pointToScreen(vector_t delta,
         rounding_t camHAngle, rounding_t camVAngle,
         rounding_t angleHPixel, rounding_t angleVPixel,
         uint8_t halfWidth, uint8_t halfHeight) {
-    rounding_t dx, dy, dz;
     rounding_t angleHorizontal, angleVertical;
     point_t screen;
     
-    // Calculate the offset to the point from the camera
-    dx = point.x - camera.x;
-    dy = point.y - camera.y;
-    dz = point.z - camera.z;
-    
     // Horizontal position onscreen
-    if ((dx == 0) && (dy == 0)) {
+    if ((delta.x == 0) && (delta.y == 0)) {
         angleHorizontal = 0;
     } else {
-        angleHorizontal = atan2(dy, dx) - camHAngle;
+        angleHorizontal = atan2(delta.y, delta.x) - camHAngle;
     }
     if (angleHorizontal <= -M_PI) {
         angleHorizontal += 2 * M_PI;
@@ -373,10 +379,11 @@ point_t pointToScreen(vector_t point, vector_t camera,
     screen.x = halfWidth - (angleHorizontal / angleHPixel);
     
     // Vertical position onscreen
-    if ((dx == 0) && (dy == 0) && (dz == 0)) {
+    if ((delta.x == 0) && (delta.y == 0) && (delta.z == 0)) {
         angleVertical = 0;
     } else {
-        angleVertical = atan2(dz, sqrt((dx * dx) + (dy * dy))) - camVAngle;
+        angleVertical = atan2(delta.z, sqrt((delta.x * delta.x) +
+                (delta.y * delta.y))) - camVAngle;
     }
     screen.y = halfHeight - (angleVertical / angleVPixel);
     
