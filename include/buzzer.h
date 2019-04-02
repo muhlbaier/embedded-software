@@ -42,6 +42,6 @@ void hal_Start_Buzzer(uint16_t frequency);
  
 void hal_Stop_Buzzer(void);
  
-
+ /** @} */
 
 #endif // _BUZZER_H_
