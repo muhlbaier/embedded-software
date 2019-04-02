@@ -7,7 +7,7 @@
 
 #ifndef GAME_BUILDING_H_
 #define GAME_BUILDING_H_
-
+#include "game.h"
 
 /**@struct building_t
  *
@@ -52,31 +52,31 @@ void Game_DrawBuilding(building_t building);
  *
  * @param player is any char_object_t whose position might conflict with a building
  */
-enum check_collision Game_CollisionDown(building_t building, player_t player);
+enum check_collision Game_CollisionDown(building_t building, char_object_t player);
 
 /** @brief Dectects collision during upward movement
  *
  * @param building is a building_t
  *
- * @param player is any player_t whose position might conflict with a building
+ * @param player is any char_object_t whose position might conflict with a building
  */
-enum check_collision Game_CollisionUp(building_t building, player_t player);
+enum check_collision Game_CollisionUp(building_t building, char_object_t player);
 
 /** @brief Dectects collision during leftward movement
  *
  * @param building is a building_t
  *
- * @param player is any player_t whose position might conflict with a building
+ * @param player is any char_object_t whose position might conflict with a building
  */
-enum check_collision Game_CollisionLeft(building_t building, player_t player);
+enum check_collision Game_CollisionLeft(building_t building, char_object_t player);
 
 /** @brief Dectects collision during rightward movement
  *
  * @param building is a building_t
  *
- * @param player is any player_t whose position might conflict with a building
+ * @param player is any char_object_t whose position might conflict with a building
  */
-enum check_collision Game_CollisionRight(building_t building, player_t player);
+enum check_collision Game_CollisionRight(building_t building, char_object_t player);
 
 
 

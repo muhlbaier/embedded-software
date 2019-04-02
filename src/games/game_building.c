@@ -1,5 +1,5 @@
 #include "game_building.h"
-
+#include "game.h"
 
 void Game_DrawBuilding(building_t building)
 {
@@ -7,7 +7,7 @@ void Game_DrawBuilding(building_t building)
     Game_CharXY(' ', building.dx, building.dy); //draws door
 }
 
-enum check_collision Game_CollisionDown(building_t building, player_t player)
+enum check_collision Game_CollisionDown(building_t building, char_object_t player)
 {
     if (player.x == building.dx && (building.dy-1 <= player.y && building.dy+1 >= player.y)) //door
     {
@@ -28,7 +28,7 @@ enum check_collision Game_CollisionDown(building_t building, player_t player)
 }
 
 
-enum check_collision Game_CollisionUp(building_t building, player_t player)
+enum check_collision Game_CollisionUp(building_t building, char_object_t player)
 {
     if (player.x == building.dx && (building.dy-1 <= player.y && building.dy+1 >= player.y)) //door
     {
@@ -50,7 +50,7 @@ enum check_collision Game_CollisionUp(building_t building, player_t player)
 }
 
 
-enum check_collision Game_CollisionLeft(building_t building, player_t player)
+enum check_collision Game_CollisionLeft(building_t building, char_object_t player)
 {
     if (player.y == building.dy && (building.dx-1 <= player.x && building.dx+1 >= player.x)) //door
     {
@@ -71,7 +71,7 @@ enum check_collision Game_CollisionLeft(building_t building, player_t player)
 }
 
 
-enum check_collision Game_CollisionRight(building_t building, player_t player)
+enum check_collision Game_CollisionRight(building_t building, char_object_t player)
 {
     if (player.y == building.dy && (building.dx-1 <= player.x && building.dx+1 >= player.x)) //door
     {
