@@ -430,6 +430,57 @@ void Game_DrawRect(char x_min, char y_min, char x_max, char y_max);
 void Game_FillRect(char c, char x_min, char y_min, char x_max, char y_max);
 
 /**
+ * This function creates (initializes) and displays a list of char objects from an
+ * uninitialized linked_char_object_t array.
+ * Can be used to make walls, multi-char enemies, sub-boundaries, etc.
+ *
+ * @param c - character that will make up nodes of list
+ * @param x_first - x position of starting node
+ * @param y_first - y position of starting node
+ * @param length - length of char list
+ * @param direction - determines direction the list will be made from starting node 0 -> up, 1 -> right, 2 -> down, 3 -> left
+ * @param list[] - uninitialized linked_char_object_t array
+ *
+ * Example code:
+ * @code
+ *
+ * linked_char_object_t testing[4]
+ * Game_LinkedChar('*', 5, 5, 4, 0, testing)
+ *
+ * output:
+ *  123456789
+ * 1
+ * 2     *
+ * 3     *
+ * 4     *
+ * 5     *
+ * 6
+ * 7
+ *
+ *@endcode
+ *
+ *@code
+ *  //initialize object arrays
+ *  linked_char_object_t testing[10];
+ *  linked_char_object_t testing1[3];
+ *  linked_char_object_t testing2[4];
+ *  linked_char_object_t testing3[9];
+ *
+ *  //call function: creates linked list and prints
+ *  Game_LinkedChar('#', 6, 6, 10, 2, testing);
+ *  Game_LinkedChar('1', 8, 6, 3, 1, testing1);
+ *  Game_LinkedChar('2', 10, 3, 4, 3, testing2);
+ *  Game_LinkedChar('3', 5, 15, 9, 0, testing3);
+ *
+ *  //shows that node values can be changed after list is created
+ *  testing[3].c = '%';
+ *  Game_CharXY(testing[3].c , testing[3].x , testing[3].y );
+ *@endcode
+ *
+ */
+void Game_LinkedChar(char c, char x_first, char y_first, int length, int direction, linked_char_object_t list[]);
+
+/**
  * @todo Gerald V. Document this function (when done change this line to "@todo MM check <your names> documentation"
  */
 void Game_ScrollDown(void);
