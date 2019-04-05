@@ -12,6 +12,22 @@
  * @{
  */
  
+/**
+ * @brief helpful typedef for adc callback with input
+ *
+ * To be used with the function ADC_AddChannel for callbacks that do not match the form 
+ * void(*callback)(uint16_t, void *) to avoid compiler error/warning.
+ *
+ * For example an ADC channel with the following callback:
+ * void callback (uint16_t value);
+ * 
+ * Would added as:
+ * ADC_AddChannel(channel, period, (callback_input_t)callback, 0);
+ *
+ * @author Page
+ */
+typedef void(*callback_input_t)(uint16_t, void *);
+
 /** @brief Initialize the ADC module
  * 
  * This is the longer description which uses more words to say initializes the ADC module.

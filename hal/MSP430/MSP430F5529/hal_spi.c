@@ -356,50 +356,58 @@ uint8_t hal_SPI_OverrunError(uint8_t channel) {
 	}
 }
 
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #ifdef USE_SPI0
-#ifdef MSPGCC
-__attribute__((interrupt(USCI_A0_VECTOR)))
-void _SPIA0_ISR(void) {
-#else
 #pragma vector=USCI_A0_VECTOR
-__interrupt void _SPIA0_ISR(void){
+__interrupt void _SPIA0_ISR(void)
+#elif defined(__GNUC__)
+void __attribute__ ((interrupt(USCI_A0_VECTOR))) _SPIA0_ISR (void)
+#else
+#error Compiler not supported!
 #endif
+{
 	SPI_ISR(SPI_A0);
 }
 #endif
 
 #ifdef USE_SPI1
-#ifdef MSPGCC
-__attribute__((interrupt(USCI_A1_VECTOR)))
-void _SPIA1_ISR(void) {
-#else
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_A1_VECTOR
-__interrupt void _SPIA1_ISR(void){
+__interrupt void _SPIA1_ISR(void)
+#elif defined(__GNUC__)
+void __attribute__ ((interrupt(USCI_A1_VECTOR))) _SPIA1_ISR (void)
+#else
+#error Compiler not supported!
 #endif
+{
 	SPI_ISR(SPI_A1);
 }
 #endif
 
 #ifdef USE_SPI2
-#ifdef MSPGCC
-__attribute__((interrupt(USCI_B0_VECTOR)))
-void _SPIB0_ISR(void) {
-#else
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_B0_VECTOR
-__interrupt void _SPIB0_ISR(void){
+__interrupt void _SPIB0_ISR(void)
+#elif defined(__GNUC__)
+void __attribute__ ((interrupt(USCI_B0_VECTOR))) _SPIB0_ISR (void)
+#else
+#error Compiler not supported!
 #endif
+{
 	SPI_ISR(SPI_B0);
 }
 #endif
 
 #ifdef USE_SPI3
-#ifdef MSPGCC
-__attribute__((interrupt(USCI_B1_VECTOR)))
-void _SPIB1_ISR(void) {
-#else
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_B1_VECTOR
-__interrupt void _SPIB1_ISR(void){
+__interrupt void _SPIB1_ISR(void)
+#elif defined(__GNUC__)
+void __attribute__ ((interrupt(USCI_B1_VECTOR))) _SPIB1_ISR (void)
+#else
+#error Compiler not supported!
 #endif
+{
 	SPI_ISR(SPI_B1);
 }
 #endif
