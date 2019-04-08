@@ -1,9 +1,11 @@
-#include <stdint.h>
-#include "timing.h"
-
 
 #ifndef _ULTRASONIC_H_
 #define _ULTRASONIC_H_
+
+
+#include <stdint.h>
+#include "timing.h"
+
 
 /**
  * @defgroup ultrasonic_module Ultrasonic Module
