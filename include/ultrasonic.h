@@ -28,5 +28,5 @@ void Ultrasonic_Deinit(uint8_t sensor_handle);
 
  
 
-
+/** @} */
 #endif // _ULTRASONIC_H_
