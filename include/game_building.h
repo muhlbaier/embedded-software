@@ -1,22 +1,32 @@
-/*
- * game_building.h
- *
- *  Created on: Apr 2, 2019
- *      Author: Alex Marino
- */
-
 #ifndef GAME_BUILDING_H_
 #define GAME_BUILDING_H_
 #include "game.h"
 
-/**@struct building_t
+/**
+ * @defgroup game_building Building Module
+ * @InGroup game
+ * @brief This module can be used in terminal-based games to add buildings and check collisions between them an any char_object_t
+ *
+ * How to Use: Create an object of type building_t in the location you want it to be printed.
+ * Every time a char_object_t moves in a specific direction, call the respective Game_Collision
+ * function on each building and the char_object_t.
+ *
+ *
+ *
+ * @author Alex Marino
+ *
+ *
+ * @{
+ */
+
+/** @struct building_t
  *
  * @brief Building info structure
  *
  * Holds building origin, dimensions, and door location
  *
  * @warning Y values start from the top. Make max_y the larger value but recall that it will be the "bottom"
- */
+*/
 typedef struct building_t{
     char x; //distance from left of screen to close wall
     char y; //distance from top of screen to close wall
@@ -46,7 +56,7 @@ typedef enum check_collision
  */
 void Game_DrawBuilding(building_t building);
 
-/** @brief Dectects collision during downward movement
+/** @brief Detects collision during downward movement
  *
  * @param building is a building_t
  *
@@ -54,7 +64,7 @@ void Game_DrawBuilding(building_t building);
  */
 enum check_collision Game_CollisionDown(building_t building, char_object_t player);
 
-/** @brief Dectects collision during upward movement
+/** @brief Detects collision during upward movement
  *
  * @param building is a building_t
  *
@@ -62,7 +72,7 @@ enum check_collision Game_CollisionDown(building_t building, char_object_t playe
  */
 enum check_collision Game_CollisionUp(building_t building, char_object_t player);
 
-/** @brief Dectects collision during leftward movement
+/** @brief Detects collision during leftward movement
  *
  * @param building is a building_t
  *
@@ -70,14 +80,14 @@ enum check_collision Game_CollisionUp(building_t building, char_object_t player)
  */
 enum check_collision Game_CollisionLeft(building_t building, char_object_t player);
 
-/** @brief Dectects collision during rightward movement
+/** @brief Detects collision during rightward movement
  *
  * @param building is a building_t
  *
  * @param player is any char_object_t whose position might conflict with a building
  */
 enum check_collision Game_CollisionRight(building_t building, char_object_t player);
-
-
+/** @} */
 
 #endif /* GAME_BUILDING_H_ */
+
