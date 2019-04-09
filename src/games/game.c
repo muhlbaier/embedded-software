@@ -278,6 +278,20 @@ void Game_Player2CharXY(char c, char x, char y) {
     Terminal_CharXY(PLAYER2_UART, c, x, y);
 }
 
+void Game_CursorXY(char x, char y){
+    Terminal_CursorXY(PLAYER1_UART, x, y);
+        if (games[playing_id].num_players >= 2)
+            Terminal_CursorXY(PLAYER2_UART, x, y);
+}
+
+void Game_Player1CursorXY(char x, char y) {
+    Terminal_CursorXY(PLAYER1_UART, x, y);
+}
+
+void Game_Player2CursorXY(char x, char y) {
+    Terminal_CursorXY(PLAYER2_UART, x, y);
+}
+
 void Game_Printf(char * str, ...) {
     // variable argument list type
     va_list vars;
@@ -291,6 +305,15 @@ void Game_Printf(char * str, ...) {
         UART_vprintf(PLAYER2_UART, str, vars);
         va_end(vars);
     }
+}
+
+void Game_PrintfXY(char x, char y, char * str, ...){
+    Terminal_CursorXY(SUBSYSTEM_UART, x, y);
+    //Subsystem_printf(str);
+    va_list vars;
+    va_start(vars, str);
+    UART_vprintf(SUBSYSTEM_UART, str, vars);
+    va_end(vars);
 }
 
 void Game_Player1Printf(char * str, ...) {
@@ -373,6 +396,94 @@ void Game_FillRect(char c, char x_min, char y_min, char x_max, char y_max) {
             UART_WriteByte(PLAYER1_UART, c);
             if(games[playing_id].num_players >= 2) UART_WriteByte(PLAYER2_UART, c);
         }
+    }
+}
+
+void Game_LinkedChar(char c, char x_first, char y_first, int length, int direction, linked_char_object_t list[]){
+    volatile uint8_t i = 1;
+
+    //pointers to nodes in linked_char_object_t nodes
+    linked_char_object_t * node;
+    linked_char_object_t * prev_node;
+
+    //defines head node
+    node = &list[0];
+    node->c = c;
+    node->x = x_first;
+    node->y = y_first;
+    node->first = 1;
+
+    //prints head node
+    Game_CharXY(node->c, node->x, node->y);
+
+    //switch depending on direct list is being created
+    //populates and prints list
+    switch(direction)
+    {
+    case 0://up
+        node->x_next_node = x_first;
+        node->y_next_node = y_first - 1;
+        for(i = 1; i < length; i++)
+        {
+            node = &list[i];
+            prev_node = &list[i - 1];
+            node->c = c;
+            node->x = prev_node->x_next_node;
+            node->y = prev_node->y_next_node;
+            node->x_next_node = x_first;
+            node->y_next_node = y_first - (i + 1);
+            node->first = 0;
+            Game_CharXY(node->c, node->x, node->y);
+        }
+        break;
+    case 1://right
+        node->x_next_node = x_first + 1;
+        node->y_next_node = y_first;
+        for(i = 1; i < length; i++)
+        {
+            node = &list[i];
+            prev_node = &list[i - 1];
+            node->c = c;
+            node->x = prev_node->x_next_node;
+            node->y = prev_node->y_next_node;
+            node->x_next_node = x_first + (i + 1);
+            node->y_next_node = y_first;
+            node->first = 0;
+            Game_CharXY(node->c, node->x, node->y);
+        }
+        break;
+    case 2://down
+        node->x_next_node = x_first;
+        node->y_next_node = y_first + 1;
+        for(i = 1; i < length; i++)
+        {
+            node = &list[i];
+            prev_node = &list[i - 1];
+            node->c = c;
+            node->x = prev_node->x_next_node;
+            node->y = prev_node->y_next_node;
+            node->x_next_node = x_first;
+            node->y_next_node = y_first + (i + 1);
+            node->first = 0;
+            Game_CharXY(node->c, node->x, node->y);
+        }
+        break;
+    case 3://left
+        node->x_next_node = x_first - 1;
+        node->y_next_node = y_first;
+        for(i = 1; i < length; i++)
+        {
+            node = &list[i];
+            prev_node = &list[i - 1];
+            node->c = c;
+            node->x = prev_node->x_next_node;
+            node->y = prev_node->y_next_node;
+            node->x_next_node = x_first - (i + 1);
+            node->y_next_node = y_first;
+            node->first = 0;
+            Game_CharXY(node->c, node->x, node->y);
+        }
+        break;
     }
 }
 
