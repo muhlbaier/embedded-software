@@ -15,6 +15,7 @@
 /** @brief Initialization of ultrasonic module, returns a uint8_t sensor_handle
  * @param period Period between the end of one measurement and the beginning of another
  * @param filter An optional paramater for to filter any data
+ * @param callback A function that is exucuted at the end of the Init function that tells the program the Init was successful
  */
 
 uint8_t Ultrasonic_Init(uint16_t period, filter_t * filter, void(*callback)(uint16_t));
