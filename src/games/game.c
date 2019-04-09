@@ -399,6 +399,94 @@ void Game_FillRect(char c, char x_min, char y_min, char x_max, char y_max) {
     }
 }
 
+void Game_LinkedChar(char c, char x_first, char y_first, int length, int direction, linked_char_object_t list[]){
+    volatile uint8_t i = 1;
+
+    //pointers to nodes in linked_char_object_t nodes
+    linked_char_object_t * node;
+    linked_char_object_t * prev_node;
+
+    //defines head node
+    node = &list[0];
+    node->c = c;
+    node->x = x_first;
+    node->y = y_first;
+    node->first = 1;
+
+    //prints head node
+    Game_CharXY(node->c, node->x, node->y);
+
+    //switch depending on direct list is being created
+    //populates and prints list
+    switch(direction)
+    {
+    case 0://up
+        node->x_next_node = x_first;
+        node->y_next_node = y_first - 1;
+        for(i = 1; i < length; i++)
+        {
+            node = &list[i];
+            prev_node = &list[i - 1];
+            node->c = c;
+            node->x = prev_node->x_next_node;
+            node->y = prev_node->y_next_node;
+            node->x_next_node = x_first;
+            node->y_next_node = y_first - (i + 1);
+            node->first = 0;
+            Game_CharXY(node->c, node->x, node->y);
+        }
+        break;
+    case 1://right
+        node->x_next_node = x_first + 1;
+        node->y_next_node = y_first;
+        for(i = 1; i < length; i++)
+        {
+            node = &list[i];
+            prev_node = &list[i - 1];
+            node->c = c;
+            node->x = prev_node->x_next_node;
+            node->y = prev_node->y_next_node;
+            node->x_next_node = x_first + (i + 1);
+            node->y_next_node = y_first;
+            node->first = 0;
+            Game_CharXY(node->c, node->x, node->y);
+        }
+        break;
+    case 2://down
+        node->x_next_node = x_first;
+        node->y_next_node = y_first + 1;
+        for(i = 1; i < length; i++)
+        {
+            node = &list[i];
+            prev_node = &list[i - 1];
+            node->c = c;
+            node->x = prev_node->x_next_node;
+            node->y = prev_node->y_next_node;
+            node->x_next_node = x_first;
+            node->y_next_node = y_first + (i + 1);
+            node->first = 0;
+            Game_CharXY(node->c, node->x, node->y);
+        }
+        break;
+    case 3://left
+        node->x_next_node = x_first - 1;
+        node->y_next_node = y_first;
+        for(i = 1; i < length; i++)
+        {
+            node = &list[i];
+            prev_node = &list[i - 1];
+            node->c = c;
+            node->x = prev_node->x_next_node;
+            node->y = prev_node->y_next_node;
+            node->x_next_node = x_first - (i + 1);
+            node->y_next_node = y_first;
+            node->first = 0;
+            Game_CharXY(node->c, node->x, node->y);
+        }
+        break;
+    }
+}
+
 void Game_ScrollDown(void) {
     Game_Printf("%cD", ASCII_ESC);
 }
