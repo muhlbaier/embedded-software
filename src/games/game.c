@@ -819,12 +819,7 @@ void Game_AllStart(game_network_payload_t * input) {
 
 #endif
 void Game_DrawDiamond(char c, uint8_t x, uint8_t y, uint8_t w, uint8_t h){
-    //@param x: x coordinate of top corner of invisible square that bounds the diamond
-    //@param y: y coordinate of top corner of invisible square that bounds the diamond
-    //@param w: width of diamond that only 1/2 of the full diamond in order for the diamond to look symmetrical
-    //@param h: height of diamond from top to bottom
-
-    uint8_t xPos, yPos; //used for the looping and used as starting points
+    uint8_t xPos, yPos;
 
     for(xPos = x; xPos <= x + w*2; xPos++){
         for(yPos = 0; yPos <= y + h / 2; (xPos > x + w) ? yPos--: yPos++){
