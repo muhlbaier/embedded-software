@@ -33,6 +33,8 @@
  * - IRQ  pin9/A2
  *
  * Created on April 7, 2015, 6:24 PM
+ *
+ * @{
  */
 
 #ifndef NRF24NETWORK_H
@@ -89,6 +91,7 @@ enum nrf24_msg_id {
     CHAT_MSG, ///< built-in / Jon W.
     TEST_MSG, ///<Used for testing the network
     KILL_MSG, ///< Used to remotely kill (reset) a node on the network
+    THIEF_MSG, ///< Used to support the Theif class project
     LAST_MSG_ID ///< reserved name to determine number of message IDs supported
 };
 
@@ -112,9 +115,40 @@ enum nrf24_sensor_msg {
     LAST_SENSOR_ID ///< reserved name to determine number of sensors supported
 };
 
+enum nrf24_thief_msg {
+    ARM_MSG, ///< data is difficulty
+    DISARM_MSG, ///< data is difficulty
+    TRIP_MSG, ///< data is score (1 barely tripped)
+    ACCESS_MSG, ///< data is score (1 great job)
+    ERROR_MSG, ///< data is error code (TBD)
+    DIFFICULTY_MSG, ///< data is difficulty
+    LAST_THIEF_ID ///< reserved name to determine number of messages supported
+};
+
 enum nrf24_address {
     // assign fixed node addresses
-    MASTER = 0x00,
+    MASTER = 0x00, ///< Brainframe / Scrumshank Redemption
+    SCRUM_PUN = 0x08, ///< Branch 1 - ScrumPun
+    BALL_TRAP,
+    TOMS_PAD,
+    NOODLE,
+    MOUSE_TRAP = 0x10, ///< Branch 2 - RedBulls
+    ULTRASONIC = 0x18, ///< Branch 3 - SmartHomies
+    DAN,
+    CAM,
+    JAKE,
+    SUPREME = 0x20, ///< Branch 4 - TeamSupreme
+    BOT,
+    SNEAK,
+    LASER,
+    SIMON,
+    OGLAZERBOIZ = 0x28, ///< Branch 5 - Muhlbaier's Fav. Clinic
+    OGLAZ2,
+    LOCK_PICK,
+    PIEZO,
+    MIKE = 0x30, ///< Branch 6 - Scrumshank Redemption
+    SORCE,
+    MALONEY,
 	MUHLBAIER,
 	LAST_ADDRESS,
     ALL_ALL = 0x3F
@@ -253,6 +287,8 @@ char * NameFromAddress(uint8_t address);
  */
 uint8_t AddressFromName(char * name);
 
+ /** @} */
+ 
 // possible additions:
 // - add method to send a control message
 // - add method to request sensor data
