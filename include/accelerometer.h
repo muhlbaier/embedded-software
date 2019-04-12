@@ -1,16 +1,23 @@
 /**
  * @defgroup accelerometer Accelerometer module
- * 
- * 
+ *
+ *
  *  Created on: March 25, 2019
- *      Author: Stephen Glass
+ *  Updated on: April 12, 2019
+ *      Author: Stephen Glass, Lonnie Souder
  *
  * @{
  * @ brief Code to read data from an accelerometer. Designed for
  * SparkFun Triple Axis Accelerometer Breakout (MMA8452Q)
  * @author Stephen Glass
- * @version 0.1
- */ 
+ * @author Lonnie Souder
+ * @version 1.0
+ *
+ *
+ * following macros should be defined project_settings
+ *   #define I2C_MAX_TX_SIZE 2
+ *   #define I2C_MAX_RX_SIZE 6
+ */
 
 #ifndef _ACCELEROMETER_H_
 #define _ACCELEROMETER_H_
@@ -28,8 +35,9 @@
  *
  * @param period period to check data from accelerometer (milliseconds)
  * @param period function pointer for callback where data is returned
+ * @return returns success of initialization, (< 0 is error)
  */
-void Accelerometer_Init(uint16_t period, void(*callback)(uint16_t x, uint16_t y, uint16_t z));
+int8_t Accelerometer_Init(uint16_t period, void(*callback)(float x, float y, float z));
 
 /** @brief Deinitialize the accelerometer task scheduler
  */
