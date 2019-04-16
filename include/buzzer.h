@@ -35,7 +35,7 @@ void Buzzer_Init(void);
 
 /** @brief 
  *
- * @param frequency Frequency of the buzzer
+ * @param frequency Frequency of the buzzer. The maximum value can be 65535, or 65.535 kHz
  * @param timeout Length at which the buzzer is active
  */
 
