@@ -2,9 +2,10 @@
 #include "project_settings.h"
 #include "nrf24network.h"
 #include "task.h"
-#include "subsys.h"
+#include "subsystem.h"
 #include "hal_general.h"
 #include "uart.h"
+#include <strings.h>
 
 #ifndef THIS_NODE
 //#error "Please add #define THIS_NODE <ADDRESS> in system.h where ADDRESS is your nrf24_address"
@@ -114,7 +115,7 @@ static void AddDataForPipe(nrfnet_t * net, uint8_t pipe, uint8_t * data, uint8_t
 static void FreeMsg(nrfnet_msg_t * msg);
 
 static void SubsysCallback(int argc, char *argv[]);
-static void CharReceiver(char c);
+static void UART_Receiver(uint8_t c);
 
 void nrf24_NetworkInit(void (*ce)(uint8_t), void (*csn)(uint8_t), uint8_t spi_channel) {
     nrf24_NetworkInitN(&default_net, ce, csn, spi_channel, THIS_NODE);
@@ -156,7 +157,7 @@ void nrf24_NetworkInitN(nrfnet_t * net, void (*ce)(uint8_t), void (*csn)(uint8_t
 		net->radio.ReceivedPayload = ProcessPayloadCallback;
 		net->radio.AckPayloadSent = AckPayloadSentCallback;
 		// register char receiver for chat
-		UART_RegisterReceiver(SUBSYS_UART, CharReceiver);
+		UART_RegisterReceiver(SUBSYS_UART, UART_Receiver);
     }else{
         net->radio.AckReceived = TxAckCallback2;
         net->radio.AckPayloadReceived = TxAckPayloadCallback2;
@@ -177,8 +178,8 @@ void nrf24_NetworkInitN(nrfnet_t * net, void (*ce)(uint8_t), void (*csn)(uint8_t
 	net->node = node;
 	ConfigureNetwork(net);
     // schedule task to keep network timing on point
-    Task_Schedule((task_fn_t)NetworkTick, net, NRF24_TICK_MS, NRF24_TICK_MS);
-    MuteSys(net->sys_id);
+    Task_Schedule((task_t)NetworkTick, net, NRF24_TICK_MS, NRF24_TICK_MS);
+    Log_MuteSys(net->sys_id);
 }
 
 void nrf24_RegisterMsgHandler(enum nrf24_msg_id msg_id, nrf24_handler_fn_t fn_ptr) {
@@ -434,11 +435,11 @@ static void SubsysCallback(int argc, char *argv[]) {
             }
         }
     }else if(strcasecmp(argv[0], "who") == 0) {
-        UART_Printf(SUBSYS_UART, "You are %s\r\n", NameFromAddress(default_net.node));
+        UART_printf(SUBSYS_UART, "You are %s\r\n", NameFromAddress(default_net.node));
     }
 }
 
-tint_t ping_time;
+uint32_t ping_time;
 static void SystemHandler(nrfnet_t * net, uint8_t * data, uint8_t len, uint8_t from) {
     // System handler to be implemented in future
     // Most system features are just hard coded for now
@@ -453,12 +454,12 @@ static void SystemHandler(nrfnet_t * net, uint8_t * data, uint8_t len, uint8_t f
             nrf24_SendMsgN(net, from, SYSTEM_MSG, data, len);
             break;
         case PING_RESPONSE_MSG:
-            UART_Printf(SUBSYS_UART, "time: %dms\r\n", TimeSince(ping_time));
+            UART_printf(SUBSYS_UART, "time: %dms\r\n", TimeSince(ping_time));
             break;
         case SPAM_MSG:
             n = *data++;
             for(i = 0; i < n; i++) {
-                UART_Write(SUBSYS_UART, (char *)data, len-2);
+                UART_Write(SUBSYS_UART, data, len-2);
             }
             break;
     }
@@ -469,7 +470,7 @@ void nrf24_Ping(uint8_t to) {
     data[0] = PING_MSG;
     ping_time = TimeNow();
     nrf24_SendMsgN(&default_net, to, SYSTEM_MSG, &data[0], 28);
-    UART_Printf(SUBSYS_UART, "32 bytes sent: ");
+    UART_printf(SUBSYS_UART, "32 bytes sent: ");
 }
 
 static void ControlHandler(nrfnet_t * net, uint8_t * data, uint8_t len, uint8_t from) {
@@ -511,16 +512,16 @@ uint8_t AddressFromName(char * name) {
 void PrintNames(void) {
 	uint8_t i;
 	for(i = 0; i < ADDRESS_TO_INDEX(LAST_ADDRESS); i++) {
-		UART_Printf(SUBSYS_UART, "%s\r\n", &names[i][0]);
+		UART_printf(SUBSYS_UART, "%s\r\n", &names[i][0]);
 	}
 }
 
 static void ChatHandler(nrfnet_t * net, uint8_t * data, uint8_t len, uint8_t from) {
     // to be implemented by Jon W.
-	UART_Printf(SUBSYS_UART, "%s: %s", NameFromAddress(from), data);
+	UART_printf(SUBSYS_UART, "%s: %s", NameFromAddress(from), data);
 }
 
-static void CharReceiver(char c) {
+static void UART_Receiver(uint8_t c) {
 	static uint8_t state = 0;
 	static uint8_t address;
 	static char name[4];
