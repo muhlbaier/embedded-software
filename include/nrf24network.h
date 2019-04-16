@@ -184,8 +184,8 @@ typedef struct nrfnet_s {
     enum nrfrole_e role;
     enum nrfstate_e state;
     volatile uint8_t current_child;
-    tint_t child_time[6];
-    tint_t switch_to_tx_time;
+    uint32_t child_time[6];
+    uint32_t switch_to_tx_time;
     enum pipe_status_e child_status[6];
     uint8_t channel[6];
     nrfnet_msg_t msg_buf[NRFNET_MSG_BUFFER_LENGTH];

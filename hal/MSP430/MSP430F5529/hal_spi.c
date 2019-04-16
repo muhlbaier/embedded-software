@@ -356,8 +356,8 @@ uint8_t hal_SPI_OverrunError(uint8_t channel) {
 	}
 }
 
-#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #ifdef USE_SPI0
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_A0_VECTOR
 __interrupt void _SPIA0_ISR(void)
 #elif defined(__GNUC__)

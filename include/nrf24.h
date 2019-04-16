@@ -130,7 +130,7 @@ void nRF24_OpenTxPipe(nrf24_t * nrf_object, uint64_t address);
  * changes for the IRQ pin.
  */
 void nRF24_EventHandler(nrf24_t * nrf_object);
-#define nRF24_ISR(nrf_object) Task_Queue( (task_fn_t)nRF24_EventHandler, nrf_object)
+#define nRF24_ISR(nrf_object) Task_Queue( (task_t)nRF24_EventHandler, nrf_object)
 
 /** Start listening on primary RX node */
 void nRF24_StartListening(nrf24_t * nrf_object);
