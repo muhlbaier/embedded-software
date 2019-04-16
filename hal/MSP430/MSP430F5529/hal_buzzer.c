@@ -17,7 +17,7 @@ void hal_Buzzer_Init(void){
 }
  
 void hal_Start_Buzzer(uint16_t frequency){
-	if (frequency < 16384) {
+	if (frequency < 2048) {
         TA0CTL = TASSEL_1 + ID_0 + MC_1 + TACLR;    // ACLK, up mode, clear TAR
         TA0CCR0 = 32768 / frequency;
     } else {
