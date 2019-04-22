@@ -41,7 +41,7 @@ char names[ADDRESS_TO_INDEX(LAST_ADDRESS)][5] = {
 		{"xxxx"},
 		{"xxxx"},
 		{"xxxx"},
-		{"Mtrap"},
+		{"Mtrp"},
 		{"xxxx"},
 		{"xxxx"},
 		{"xxxx"},
@@ -190,10 +190,12 @@ void nrf24_NetworkInitN(nrfnet_t * net, void (*ce)(uint8_t), void (*csn)(uint8_t
     // if this is the default net then set it up. Otherwise wait til the user
     // sets the node address
 	net->node = node;
+	// configure network will open a TX pipe on channel 1 for master and send a blank message to get things going
+	// or open an RX pipe for the appropriate branch if not master
 	ConfigureNetwork(net);
     // schedule task to keep network timing on point
     Task_Schedule((task_t)NetworkTick, net, NRF24_TICK_MS, NRF24_TICK_MS);
-    Log_MuteSys(net->sys_id);
+    //Log_MuteSys(net->sys_id);
 }
 
 void nrf24_RegisterMsgHandler(enum nrf24_msg_id msg_id, nrf24_handler_fn_t fn_ptr) {
@@ -387,6 +389,7 @@ void ProcessMessage(nrfnet_t * net, uint8_t * data, uint8_t length) {
     address.b[0] = *data++;
     uint8_t id;
     id = *data++;
+    if(id) LogMsg(net->sys_id, "msg rx %d", id);
     if(id < LAST_MSG_ID) {
         if(net->handler[id]) {
             if(id <= CHAT_MSG) {
@@ -401,8 +404,7 @@ void ProcessMessage(nrfnet_t * net, uint8_t * data, uint8_t length) {
 void NetworkTick(nrfnet_t * net) {
     switch(net->role) {
         case ROLE_MASTER:
-            // if we are waiting on the window time then check and send if time
-            // is up
+            // if we are waiting on the window time then check and send if time is up
             if(net->state == NRFNET_WAITING_FOR_MIN_WINDOW) {
                 if(TimeSince(net->child_time[net->current_child]) > NRF24_MIN_WINDOW_MS) {
                     nrfnet_msg_t * msg;
@@ -413,10 +415,15 @@ void NetworkTick(nrfnet_t * net) {
                     if(msg) {
                         nRF24_Write(&net->radio, &msg->data[0], msg->length);
                         FreeMsg(msg);
+                        LogMsg(net->sys_id, "msg tx0 %d", msg->data[2]);
                     }else {
                         TxEmptyPacket(net);
                     }
                 }
+            }else if(TimeSince(net->child_time[net->current_child]) > NRF24_MIN_WINDOW_MS*12) {
+                LogMsg(net->sys_id, "timeout, flushing TX");
+                nRF24_FlushTx(&net->radio);
+                TxToNextChild(net);
             }
             break;
         case ROLE_BRANCH:
@@ -630,6 +637,7 @@ void TxToNextChild(nrfnet_t * net) {
                 if(msg) {
                     nRF24_Write(&net->radio, &msg->data[0], msg->length);
                     FreeMsg(msg);
+                    LogMsg(net->sys_id, "msg tx1 %d", msg->data[2]);
                 }else {
                     TxEmptyPacket(net);
                 }
@@ -663,6 +671,7 @@ void TxToNextChild(nrfnet_t * net) {
                 if(msg) {
                     nRF24_Write(&net->radio, &msg->data[0], msg->length);
                     FreeMsg(msg);
+                    LogMsg(net->sys_id, "msg tx2 %d", msg->data[2]);
                 }else {
                     TxEmptyPacket(net);
                 }
@@ -726,6 +735,7 @@ void ProcessPayloadCallbackN(nrfnet_t * net, uint8_t * data, uint8_t length) {
         if(msg) {
             nRF24_Write(&net->radio, &msg->data[0], msg->length);
             FreeMsg(msg);
+            LogMsg(net->sys_id, "msg tx3 %d", msg->data[2]);
         }else {
             TxEmptyPacket(net);
         }
@@ -745,7 +755,7 @@ void AckPayloadSentCallbackN(nrfnet_t * net) {
             nrfnet_address_t address;
             address.b[1] = msg->data[0];
             address.b[0] = msg->data[1];
-            LogMsg(net->sys_id, "AckPayWr, to:%d%d, from:%d%d", address.to_branch, address.to_leaf, address.from_branch, address.from_leaf);
+            LogMsg(net->sys_id, "AckPayWr1, to:%d%d, from:%d%d", address.to_branch, address.to_leaf, address.from_branch, address.from_leaf);
             FreeMsg(msg);
         }
     }
@@ -768,7 +778,7 @@ void QueueMsgToParent(nrfnet_t * net, uint8_t * data, uint8_t length) {
             nrfnet_address_t address;
 			address.b[1] = *data;
 			address.b[0] = *(data+1);
-			LogMsg(net->sys_id, "AckPayWr, to:%d%d, from:%d%d", address.to_branch, address.to_leaf, address.from_branch, address.from_leaf);
+			LogMsg(net->sys_id, "AckPayWr2, to:%d%d, from:%d%d", address.to_branch, address.to_leaf, address.from_branch, address.from_leaf);
     }
 }
 
@@ -784,7 +794,7 @@ void CheckAckMessage(nrfnet_t * net) {
 		if(address.from != net->node){
 			Nop();
 		}
-		LogMsg(net->sys_id, "AckPayWr, to:%d%d, from:%d%d", address.to_branch, address.to_leaf, address.from_branch, address.from_leaf);
+		LogMsg(net->sys_id, "AckPayWr3, to:%d%d, from:%d%d", address.to_branch, address.to_leaf, address.from_branch, address.from_leaf);
         FreeMsg(msg);
     }
 }
