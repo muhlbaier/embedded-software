@@ -106,6 +106,7 @@ int main(void) {
 
     Timing_Init();
     Task_Init();
+	UART_Init(UART0);
     UART_Init(UART1);
 
     // Setup the SPI channel to be used by the NRF nodes

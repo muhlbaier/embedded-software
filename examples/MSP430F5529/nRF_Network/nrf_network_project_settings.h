@@ -27,7 +27,7 @@
 #define USE_MODULE_SUBSYSTEM
 #define USE_MODULE_BUFFER_PRINTF
 
-#define SUBSYSTEM_UART 0
+#define SUBSYSTEM_UART 1  // UART1 is the application UART
 
 #define UART0_TX_BUFFER_LENGTH 512
 
