@@ -179,7 +179,7 @@ int16_t MovingAvgFilter(int16_t *values, uint16_t index, uint16_t size, int16_t 
 
 /**
 *
-* @brief Method that allows user to pass a function to a pointer a different type of filter (i.e IIR, FIR)
+* @brief Method that allows user to pass a function pointer to change the type of filter used by the module
 *
 * @param new_filter * -  function pointer to the new filter
 *
