@@ -406,7 +406,7 @@ void NetworkTick(nrfnet_t * net) {
         case ROLE_MASTER:
             // if we are waiting on the window time then check and send if time is up
             if(net->state == NRFNET_WAITING_FOR_MIN_WINDOW) {
-                if(TimeSince(net->child_time[net->current_child]) > NRF24_MIN_WINDOW_MS) {
+                if(TimeSince(net->switch_to_tx_time) > NRF24_MIN_WINDOW_MS) {
                     nrfnet_msg_t * msg;
                     net->state = NRFNET_NORMAL_STATE;
                     nRF24_SetChannel(&net->radio, net->channel[net->current_child]);
@@ -420,8 +420,8 @@ void NetworkTick(nrfnet_t * net) {
                         TxEmptyPacket(net);
                     }
                 }
-            }else if(TimeSince(net->child_time[net->current_child]) > NRF24_MIN_WINDOW_MS*12) {
-                LogMsg(net->sys_id, "timeout, flushing TX");
+            }else if(TimeSince(net->switch_to_tx_time) > NRF24_MIN_WINDOW_MS*12) {
+                LogMsg(net->sys_id, "timeout branch %d, flushing TX", net->current_child);
                 nRF24_FlushTx(&net->radio);
                 TxToNextChild(net);
             }
@@ -642,6 +642,7 @@ void TxToNextChild(nrfnet_t * net) {
                     TxEmptyPacket(net);
                 }
             }else net->state = NRFNET_WAITING_FOR_MIN_WINDOW;
+            net->switch_to_tx_time = TimeNow(); // in master mode use this to know when we last sent to the new pipe
             break;
         case ROLE_BRANCH:
             // set pipe to next pipe
