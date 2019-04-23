@@ -78,10 +78,10 @@ typedef union {
 
 #define NRF24_ADDRESS_MASK 0x6C6C6C7800
 
-#define NRF24_MIN_WINDOW_MS 100 //TODO change this to 4
-#define NRF24_BRANCH_WINDOW_MS 80 //TODO change this to 4
+#define NRF24_MIN_WINDOW_MS 8 //TODO change this to 4
+#define NRF24_BRANCH_WINDOW_MS 7 //TODO change this to 4
 #define NRF24_TICK_MS 2 //TODO change this to 1
-#define NRF24_MISSING_NODE_TIMEOUT 0
+#define NRF24_MISSING_NODE_TIMEOUT 100 //TODO make this larger
 
 // The third payload byte (after the two address bytes) will be the message ID
 enum nrf24_msg_id {
@@ -116,13 +116,13 @@ enum nrf24_sensor_msg {
 };
 
 enum nrf24_thief_msg {
-    ARM_MSG, ///< data is difficulty
-    DISARM_MSG, ///< data is difficulty
-    TRIP_MSG, ///< data is score (1 barely tripped)
-    ACCESS_MSG, ///< data is score (1 great job)
-    ERROR_MSG, ///< data is error code (TBD)
-    DIFFICULTY_MSG, ///< data is difficulty
-    LAST_THIEF_ID ///< reserved name to determine number of messages supported
+    ARM_MSG,        ///< Brainframe->Thing, data is difficulty
+    DISARM_MSG,     ///< Brainframe->Thing, data is difficulty
+    TRIP_MSG,       ///< Thing->Brainframe, data is score (1 barely tripped)
+    ACCESS_MSG,     ///< Thing->Brainframe, data is score (1 great job)
+    ERROR_MSG,      ///< Thing->Brainframe, data is error code (TBD)
+    DIFFICULTY_MSG, ///< Brainframe->Thing, data is difficulty
+    LAST_THIEF_ID   ///< reserved name to determine number of messages supported
 };
 
 enum nrf24_address {
