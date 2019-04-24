@@ -143,6 +143,7 @@ void hal_I2C_SendStart(uint8_t channel){
 	}
 }
 
+#ifdef USE_I2C0
 #if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_B0_VECTOR
 __interrupt void _I2C_B0_ISR(void)
@@ -202,7 +203,9 @@ void __attribute__ ((interrupt(USCI_B0_VECTOR))) _I2C_B0_ISR (void)
 			break;
 	}
 }
+#endif //USE_I2C0
 
+#ifdef USE_I2C1
 #if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=USCI_B1_VECTOR
 __interrupt void _I2CB1_ISR(void)
@@ -213,3 +216,4 @@ void __attribute__ ((interrupt(USCI_B1_VECTOR))) _I2CB1_ISR (void)
 #endif
 {
 }
+#endif //USE_I2C1
