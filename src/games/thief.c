@@ -1,5 +1,9 @@
 #include "project_settings.h"
 #include "nrf24network.h"
+#include "subsystem.h"
+#include "hal_general.h"
+#include "spi.h"
+#include "string.h"
 
 static uint8_t initialized = 0;
 static uint8_t sys_id;
@@ -125,13 +129,3 @@ static void TerminalCallback(int argc, char *argv[]) {
 		LogMsg(sys_id, "Missing command argument");
 	}
 }
-
-
-
-
-
-
-
-
-
-
