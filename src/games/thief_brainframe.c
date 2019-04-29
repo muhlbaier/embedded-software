@@ -26,7 +26,11 @@ void Thief_Arm(uint8_t difficulty, uint8_t address) {
 		uint8_t msg[2];
 		msg[0] = ARM_MSG;
 		msg[1] = difficulty;
+#ifndef THIEF_BRAINFRAME_NETWORK
 		nrf24_SendMsg(address, THIEF_MSG, msg, 2);
+#else
+		nrf24_SendMsgN(&Brainframe_Net, address, THIEF_MSG, msg, 2);
+#endif
 		LogMsg(sys_id, "ARM sent to %d, difficulty %d", address, difficulty);
 	}
 }
@@ -36,7 +40,11 @@ void Thief_Disarm(uint8_t difficulty, uint8_t address) {
 		uint8_t msg[2];
 		msg[0] = DISARM_MSG;
 		msg[1] = difficulty;
-		nrf24_SendMsg(address, THIEF_MSG, msg, 2);
+#ifndef THIEF_BRAINFRAME_NETWORK
+        nrf24_SendMsg(address, THIEF_MSG, msg, 2);
+#else
+        nrf24_SendMsgN(&Brainframe_Net, address, THIEF_MSG, msg, 2);
+#endif
 		LogMsg(sys_id, "DISARM sent to %d, difficulty %d", address, difficulty);
 	}
 }
@@ -46,7 +54,11 @@ void Thief_Difficulty(uint8_t difficulty, uint8_t address) {
 		uint8_t msg[2];
 		msg[0] = DIFFICULTY_MSG;
 		msg[1] = difficulty;
-		nrf24_SendMsg(address, THIEF_MSG, msg, 2);
+#ifndef THIEF_BRAINFRAME_NETWORK
+        nrf24_SendMsg(address, THIEF_MSG, msg, 2);
+#else
+        nrf24_SendMsgN(&Brainframe_Net, address, THIEF_MSG, msg, 2);
+#endif
 		LogMsg(sys_id, "DIFFICULTY sent to %d, difficulty %d", address, difficulty);
 	}
 }
