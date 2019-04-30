@@ -13,10 +13,6 @@
 void Filter_Init(filter_t * f_ptr, int16_t offset, float scale)
 {
 
-  
-  
-
-
   f_ptr->offset = offset;
   
  
@@ -99,8 +95,6 @@ void Filter_Update(int16_t raw_value, filter_t * f_ptr)
 }
 
 
-
-
 int16_t Filter_Get(filter_t * f_ptr ) 
 {
         const int16_t get_val = 0;
@@ -113,17 +107,12 @@ int16_t Filter_Get(filter_t * f_ptr )
 }
 
 
-
-
 void Filter_SetMin(filter_t * f_ptr, int16_t threshold, void(*callback)(int16_t))
 {       
   
     f_ptr->min = threshold;
     f_ptr->min_callback = callback;
-    
-
-  
-    
+       
 }
 
 
@@ -135,13 +124,8 @@ void Filter_SetMax(filter_t * f_ptr, int16_t threshold, void(*callback)(int16_t)
     
     f_ptr->max = threshold;
     f_ptr->max_callback = callback;
-
-    
-
   
 }
-
-
 
 
 
