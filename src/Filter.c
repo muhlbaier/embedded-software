@@ -1,40 +1,23 @@
-#include <msp430>
 #include "filter.h"
 #include <int_def.h>
+#include "hal_general.h"
+#include <string.h>
+#include <stdio.h>
 
-
-#define MAX 65536       //2^16 = 65536
+#define MAX 32768       
 #define FILTER_BUFFER_SIZE 10
 
 
 
-typed def struct  {
-    
-int16_t   offset ;
-uint32_t   scale;
-uint16_t   shift ;
-int16_t   min;
-int16_t   max ;
-void (*min_callback)(int16_t);
-void (*max_callback)(int16_t); 
-int16_t (*filter) (int 16_t x values, uint16_t index ,uint16_t size, int16_t Last_Value);
-uint16_t raw_values[FILTER_BUFFER_SIZE];   
-uint16_t index;
-int16_t value;  
-void (*set_filter)(filter_t * , new_filter *);      
-                                                                                                    
-} filter_t;
 
-
-// convert flot scale value that to integer scale 
-
-
-
-
-void Filter_Init(filter_t *, int16_t offset, float scale)
+void Filter_Init(filter_t * f_ptr, int16_t offset, float scale)
 {
 
-  filter_t->offset = offset;
+  
+  
+
+
+  f_ptr->offset = offset;
   
  
     uint16_t counter = 0 ;
@@ -44,73 +27,73 @@ void Filter_Init(filter_t *, int16_t offset, float scale)
             counter++;
   }
     
-        filter_t->shift = counter ;     
+        f_ptr->shift = counter ;     
   
-        filter_t->scale = scale;
+        f_ptr->scale = scale;
   
   //set min/max to zero
-    filter_t->min = 0;
-    filter_t->max = 0; 
+    f_ptr->min = 0;
+    f_ptr->max = 0; 
   
   //set min max call back functions null pointer
-  filter_t->min_callback = NULL;
-  filter_t->max_callback = NULL;
+  f_ptr->min_callback = NULL;
+  f_ptr->max_callback = NULL;
   
     //set index and value to 0 
-    filter_t->index = 0;
-    filter_t->value = 0;
-  //initiliaze array to 0
-    filter_t->raw_values = 0;
-    //default set filter to moving avg filter
-    filter_t->set_filter = &MovingAvgFilter; //not sure if this line is correct 
+    f_ptr->index = 0;
+    f_ptr->value = 0;
+  
+  //initialize array to 0
+  memset(f_ptr->raw_values,0,sizeof(f_ptr->raw_values));
+
+   //point filter to MovingAvgFilter function
+    f_ptr->filter = MovingAvgFilter;
                                                                                                                                                                                                                                 
 
 }
 
 
-
-
-
-void Filter_Update(uint16_t raw_value, filter_t * )    
+void Filter_Update(int16_t raw_value, filter_t * f_ptr)
 {
  
-  raw_value = (raw_value)*(filter_t->scale);   //scale the value
+  raw_value = (raw_value)*(f_ptr->scale);   //scale the value
   
-  raw_value = raw_value >> filter_t->shift; // shift the value
+  raw_value = raw_value >> f_ptr->shift; // shift the value
   
-  raw_value = raw_value + filter_t->offset; //offset if needed
+  raw_value = raw_value + f_ptr->offset; //offset if needed
   
-  filter_t->raw_values = raw_value;    //input value into buffer array 
-  
- 
 
-    
+  for (int i = 0 ; i < FILTER_BUFFER_SIZE ; i++)    //input value into buffer array
+  {
+      f_ptr->raw_values[i] = raw_value;
+  }
+
+
+  
     //  int16_t MovingAvgFilter (int16_t *values, uint16_t index ,uint16_t size, int16_t Last_Value)
     //need to input those parameters
-        new_value = MovingAvgFilter();
+       int16_t new_value = MovingAvgFilter(&raw_value,f_ptr->index,FILTER_BUFFER_SIZE, FILTER_BUFFER_SIZE - 1);
         
   
   
-  //update filter with 
-  //check against thresholds
 
-    if (filter_t->min_callback) //call back is set
-            
-        if ( new_value < filter_t->min && filter_t->value >= filter_t->min  ) {
+    if (f_ptr->min_callback) //call back is set
+            //new value is less than fmin and fvalue >= fmin 
+        if ( new_value < f_ptr->min && f_ptr->value >= f_ptr->min  ) {
           
-          filter_t->min_callback(new_value);   //call the callback with current value
+          f_ptr->min_callback(new_value);   //call the callback with current value
                                                     
         }
             
-        if (filter_t->max_callback) //call back is set
+        if (f_ptr->max_callback) //call back is set
+            //new value is greater  than fmax and fvalue <= fmax
+        if ( new_value > f_ptr->max && f_ptr->value <= f_ptr->max  ) {
           
-        if ( new_value > filter_t->max && filter_t->value <= filter_t->max  ) {
-          
-          filter_t->max_callback(new_value);   //call the callback with current value
+          f_ptr->max_callback(new_value);   //call the callback with current value
                                                     
         }
   
-  filter_t->value = new_value;     //sets the value to the new value
+  f_ptr->value = new_value;     //sets the value to the new value
   
   
 }
@@ -118,11 +101,11 @@ void Filter_Update(uint16_t raw_value, filter_t * )
 
 
 
-int16_t Filter_Get(filter_t * ) 
+int16_t Filter_Get(filter_t * f_ptr ) 
 {
-        int16_t get_val;
+        const int16_t get_val = 0;
     
-    filter_t->value = get_val;
+    f_ptr->value = get_val;
 
     return get_val;
   
@@ -132,11 +115,11 @@ int16_t Filter_Get(filter_t * )
 
 
 
-void Filter_SetMin(filter_t *, int16_t threshold, void(*callback)(int16_t))
+void Filter_SetMin(filter_t * f_ptr, int16_t threshold, void(*callback)(int16_t))
 {       
   
-    filter_t->min = threshold;
-    filter_t->min_callback = callback;
+    f_ptr->min = threshold;
+    f_ptr->min_callback = callback;
     
 
   
@@ -147,11 +130,11 @@ void Filter_SetMin(filter_t *, int16_t threshold, void(*callback)(int16_t))
 
 
 
-void Filter_SetMax(filter_t *, int16_t threshold, void(*callback)(int16_t))
+void Filter_SetMax(filter_t * f_ptr, int16_t threshold, void(*callback)(int16_t))
 {
     
-    filter_t->max = threshold;
-    filter_t->max_callback = callback;
+    f_ptr->max = threshold;
+    f_ptr->max_callback = callback;
 
     
 
@@ -164,36 +147,34 @@ void Filter_SetMax(filter_t *, int16_t threshold, void(*callback)(int16_t))
 
 int16_t MovingAvgFilter (int16_t *values, uint16_t index ,uint16_t size, int16_t Last_Value)
 {
-  
-  	int32_t sum;
-  	
-        values[index];
-  
-            //deceremnt index to get the next value
-           
 
-  			for (int i = 0 ; i < size; i++)
+    int32_t sum, avg_value;
+
+        volatile int i;
+
+  			for ( i = 0 ; i < FILTER_BUFFER_SIZE; i++)
         {
           			sum+= values[index];
           				
-                 if(index > 0)       // don't decrement if index is 0 
+                 if(index > 0)
                      index--;				
                   else
-                    index = size - 1;
+                    index = FILTER_BUFFER_SIZE - 1;
         }
   		
-  	avg_value = sum/size;
+  	avg_value = sum/FILTER_BUFFER_SIZE;
   
   return avg_value;
 }
 
 
-void set_filter (filter_t * , new_filter * )
+
+void Filter_SetFilter(filter_t * f_ptr, int16_t (*new_filter)(int16_t *values, uint16_t index ,uint16_t size, int16_t last_value))
 {
-        //pass pointer to instance of struct and a function pointer 
-        // set filter to the new filter 
-   filter_t->set_filter = new_filter ;
   
+  
+     f_ptr->filter = new_filter ;
   
 }
+
 
