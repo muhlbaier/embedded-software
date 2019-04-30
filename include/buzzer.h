@@ -1,14 +1,14 @@
-#include <stdint.h>
-#include "task.h"
-#include "timing.h"
-
-
 #ifndef _BUZZER_H_
 #define _BUZZER_H_
+
+#include <stdint.h>
 
 /**
  * @defgroup buzzer_module Buzzer Module
  * 
+ * Created on: Mar 26, 2019
+ *    Authors: Nikola Kosaric, Nate Hoffman, Brian Harlow, DJ Stahlberger 
+ *
  * The following module utilizes the task manager and timing module
  * in order to inact a buzzer to produce a sound at a determined frequency.
  * The timing module is used to control the frequency of the sound produced
@@ -35,7 +35,7 @@ void Buzzer_Init(void);
 
 /** @brief 
  *
- * @param frequency Frequency of the buzzer
+ * @param frequency Frequency of the buzzer. The maximum value can be 65535, or 65.535 kHz
  * @param timeout Length at which the buzzer is active
  */
 
