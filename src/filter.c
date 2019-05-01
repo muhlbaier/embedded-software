@@ -58,8 +58,8 @@ void Filter_Update(int16_t raw_value, filter_t * f_ptr)
   
   raw_value = raw_value + f_ptr->offset; //offset if needed
   
-
-  for (int i = 0 ; i < FILTER_BUFFER_SIZE ; i++)    //input value into buffer array
+  int i;
+  for (i = 0 ; i < FILTER_BUFFER_SIZE ; i++)    //input value into buffer array
   {
       f_ptr->raw_values[i] = raw_value;
   }
