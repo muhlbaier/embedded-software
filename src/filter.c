@@ -58,18 +58,14 @@ void Filter_Update(int16_t raw_value, filter_t * f_ptr)
   
   raw_value = raw_value + f_ptr->offset; //offset if needed
   
-  int i;
-  for (i = 0 ; i < FILTER_BUFFER_SIZE ; i++)    //input value into buffer array
-  {
-      f_ptr->raw_values[i] = raw_value;
-  }
+ f_ptr->raw_values[f_ptr->index] = raw_value;
+
+  f_ptr->index += 1;
+
+   int16_t new_value = f_ptr->filter(&raw_value,f_ptr->index,FILTER_BUFFER_SIZE, f_ptr->value);
 
 
-  
-    //  int16_t MovingAvgFilter (int16_t *values, uint16_t index ,uint16_t size, int16_t Last_Value)
-    //need to input those parameters
-       int16_t new_value = MovingAvgFilter(&raw_value,f_ptr->index,FILTER_BUFFER_SIZE, FILTER_BUFFER_SIZE - 1);
-        
+
   
   
 
@@ -95,16 +91,17 @@ void Filter_Update(int16_t raw_value, filter_t * f_ptr)
 }
 
 
+
+
 int16_t Filter_Get(filter_t * f_ptr ) 
 {
-        const int16_t get_val = 0;
-    
-    f_ptr->value = get_val;
 
-    return get_val;
+    return f_ptr->value;
   
 
 }
+
+
 
 
 void Filter_SetMin(filter_t * f_ptr, int16_t threshold, void(*callback)(int16_t))
@@ -112,7 +109,10 @@ void Filter_SetMin(filter_t * f_ptr, int16_t threshold, void(*callback)(int16_t)
   
     f_ptr->min = threshold;
     f_ptr->min_callback = callback;
-       
+    
+
+  
+    
 }
 
 
@@ -124,8 +124,13 @@ void Filter_SetMax(filter_t * f_ptr, int16_t threshold, void(*callback)(int16_t)
     
     f_ptr->max = threshold;
     f_ptr->max_callback = callback;
+
+    
+
   
 }
+
+
 
 
 
