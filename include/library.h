@@ -3,6 +3,8 @@
  
 /** @mainpage Embedded Library
  *
+ * <img src="../images/embedded-software.jpg">
+ *
  * @section getting_started Getting Started With Using the Library
  * To use this library:
  * - add the desired modules (.c files) to your project with any cooresponding hal_ c files.
@@ -83,13 +85,14 @@ int32_t main(void)
  *
 @section Contributors 
 Major Contributors:
-- Anthony Merlino
-- Michael Muhlbaier
+- <a href="https://www.linkedin.com/in/anthony-merlino-5327a062">Anthony Merlino</a>
+- <a href="https://www.linkedin.com/in/michael-muhlbaier-2a7b65a/">Michael Muhlbaier</a>
 
 Minor Contributors:
 - Mike Bucceroni
 - Rob Capo
 - Charlotte Cecere
+- Matt Delengowksi
 - Bradley Ebinger
 - James Ethridge
 - Nick Felker
@@ -100,6 +103,7 @@ Minor Contributors:
 - George Lecakes
 - Matthew Lizzio
 - Ryan Patterson
+- Stephen Szymczak
 - Jonathan Whalen
 - Rowan ECE Embedded Class of 2012
 - Rowan ECE Embedded Class of 2013
