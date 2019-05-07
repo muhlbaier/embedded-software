@@ -24,6 +24,8 @@
 #define ADDRESS_TO_INDEX(x) (x)//(((x?(x-1):0) >> 3) * 7 + (x % 8) + 1)
 #define INDEX_TO_ADDRESS(x) (x)//((((x-1)/7) << 3) + ((x-1)%7))
 
+static uint32_t last_comm[ADDRESS_TO_INDEX(LAST_ADDRESS)];
+
 char names[ADDRESS_TO_INDEX(LAST_ADDRESS)][5] = {
 		{"Mast"},
 		{"xxxx"},
@@ -315,6 +317,8 @@ void ProcessReceivedMsg(nrfnet_t * net, uint8_t * data, uint8_t length) {
     address.b[1] = *data;
     address.b[0] = *(data+1);
     
+    last_comm[address.from] = TimeNow();
+
     switch(net->role) {
         case ROLE_MASTER:
             // check if we are the destination or if the message is to everyone
@@ -456,7 +460,13 @@ static void SubsysCallback(int argc, char *argv[]) {
             }
         }
     }else if(strcasecmp(argv[0], "who") == 0) {
-        UART_printf(SUBSYS_UART, "You are %s\r\n", NameFromAddress(default_net.node));
+        LogMsg(default_net.sys_id, "You are %s\r\n", NameFromAddress(default_net.node));
+    }else if(strcasecmp(argv[0], "connected") == 0) {
+        for(address = 0; address < ADDRESS_TO_INDEX(LAST_ADDRESS)) {
+            if(last_comm[address]) {
+                LogStr("Name: %s, Last Rx: %d\r\n", NameFromAddress(address), TimeSince(last_comm[address]));
+            }
+        }
     }
 }
 
