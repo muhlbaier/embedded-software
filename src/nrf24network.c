@@ -237,7 +237,7 @@ void nrf24_SendMsgN(nrfnet_t * net, uint8_t to, enum nrf24_msg_id msg_id, uint8_
             if(to == ALL_ALL) {
                 // queue to send to all children
                 uint8_t i;
-                for(i = 1; i < 6; i++) {
+                for(i = 1; i <= 6; i++) {
                     // skip sending to who it was from
                     if(i == address.from_branch) continue;
                     QueueMsgToChild(net, i-1, &msg[0], len);
@@ -251,7 +251,7 @@ void nrf24_SendMsgN(nrfnet_t * net, uint8_t to, enum nrf24_msg_id msg_id, uint8_
             // if the message is to everyone then send to all children and to parent
             if(to == ALL_ALL) {
                 uint8_t i;
-                for(i = 1; i < 6; i++) {
+                for(i = 1; i <= 6; i++) {
                     QueueMsgToChild(net, i-1, &msg[0], len);
                 }
                 QueueMsgToParent(net, &msg[0], len);
@@ -328,7 +328,7 @@ void ProcessReceivedMsg(nrfnet_t * net, uint8_t * data, uint8_t length) {
                 if(address.to == ALL_ALL) {
                     // queue to send to all other children
                     volatile uint8_t i;
-                    for(i = 1; i < 6; i++) {
+                    for(i = 1; i <= 6; i++) {
                         // skip sending to who it was from
                         if(i == address.from_branch) continue;
                         QueueMsgToChild(net, i-1, data, length);
@@ -349,7 +349,7 @@ void ProcessReceivedMsg(nrfnet_t * net, uint8_t * data, uint8_t length) {
                     if(GET_THIS_BRANCH(net->node) == address.from_branch) {
                         // queue to send to all other children
                         volatile uint8_t i;
-                        for(i = 1; i < 6; i++) {
+                        for(i = 1; i <= 6; i++) {
                             // skip sending to who it was from
                             if(i == address.from_leaf) continue;
                             QueueMsgToChild(net, i-1, data, length);
@@ -358,7 +358,7 @@ void ProcessReceivedMsg(nrfnet_t * net, uint8_t * data, uint8_t length) {
                     }else {
                         // if it is from the parent then queue to send to all children
                         volatile uint8_t i;
-                        for(i = 1; i < 6; i++) {
+                        for(i = 1; i <= 6; i++) {
                             QueueMsgToChild(net, i-1, data, length);
                         }
                     }
