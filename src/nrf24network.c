@@ -464,7 +464,7 @@ static void SubsysCallback(int argc, char *argv[]) {
     }else if(strcasecmp(argv[0], "connected") == 0) {
         for(address = 0; address < ADDRESS_TO_INDEX(LAST_ADDRESS); address++) {
             if(last_comm[address]) {
-                LogStr("Name: %s, Last Rx: %d\r\n", NameFromAddress(address), TimeSince(last_comm[address]));
+                LogStr("Name: %s, Last Rx: %l\r\n", NameFromAddress(address), TimeSince(last_comm[address]));
             }
         }
     }
@@ -536,6 +536,10 @@ uint8_t AddressFromName(char * name) {
 		if(strncmp(name, &names[i][0], 4) == 0) {
 			return INDEX_TO_ADDRESS(i);
 		}
+	}
+	// check if name was just an address number
+	if(*name >= '0' && *name <= '9') {
+	    return ArgToU8(name);
 	}
 	return 1;
 }
