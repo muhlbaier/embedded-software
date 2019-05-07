@@ -462,7 +462,7 @@ static void SubsysCallback(int argc, char *argv[]) {
     }else if(strcasecmp(argv[0], "who") == 0) {
         LogMsg(default_net.sys_id, "You are %s\r\n", NameFromAddress(default_net.node));
     }else if(strcasecmp(argv[0], "connected") == 0) {
-        for(address = 0; address < ADDRESS_TO_INDEX(LAST_ADDRESS)) {
+        for(address = 0; address < ADDRESS_TO_INDEX(LAST_ADDRESS); address++) {
             if(last_comm[address]) {
                 LogStr("Name: %s, Last Rx: %d\r\n", NameFromAddress(address), TimeSince(last_comm[address]));
             }
