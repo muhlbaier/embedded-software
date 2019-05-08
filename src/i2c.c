@@ -182,7 +182,7 @@ static void FinishTransaction(i2c_transaction_t* transaction){
         // If there is a callback, unlink it from the transaction list and add it to the callback buffer
         List_UnlinkFirst(&i2c[transaction->channel].transactionList);
         transaction->finished = 1;
-        Task_Queue(HandleCallback, transaction);
+        Task_Queue((task_t)HandleCallback, transaction);
     } else {
         //If there is no callback and this is not a blocking call, then remove it
         List_RemoveFirst(&i2c[transaction->channel].transactionList);
@@ -212,10 +212,14 @@ uint8_t I2C_GetRxSize(uint8_t channel){
     return i2c[channel].bytesToRead;
 }
 
+uint8_t I2C_GetStayActive(uint8_t channel) {
+    return i2c[channel].currentTransaction_ptr->stayActive;
+}
+
 void I2C_TransactionSuccess(uint8_t channel){
     i2c[channel].currentTransaction_ptr->error = TRANSACTION_SUCCESSFUL;
     // Queue task to finish task
-    Task_Queue(FinishTransaction, i2c[channel].currentTransaction_ptr);
+    Task_Queue((task_t)FinishTransaction, i2c[channel].currentTransaction_ptr);
 }
 
 void I2C_TransactionFail(uint8_t channel){
@@ -232,6 +236,6 @@ void I2C_TransactionFail(uint8_t channel){
         }
     } else {
         i2c[channel].currentTransaction_ptr->error = TRANSACTION_FAILED;
-        Task_Queue(FinishTransaction, i2c[channel].currentTransaction_ptr);
+        Task_Queue((task_t)FinishTransaction, i2c[channel].currentTransaction_ptr);
     }
 }

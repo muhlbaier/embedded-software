@@ -82,4 +82,6 @@ void ESP8266_HTTP_GET(char * hostname, int port, char * uri, char * payload)
  */
 int ESP8266_CalcLength(const char * s);
 
+ /** @} */
+
 #endif
