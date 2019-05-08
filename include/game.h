@@ -69,6 +69,27 @@ typedef struct {
 	char status; ///< Status of object. Usage depends on implementation.
 } char_object_t;
 
+/** @brief Linkable Char Object
+ *
+ * Reusable char object that can be used to create a linked list of char objects
+ * Variation of char_object_t
+ * Each object (node) will know the x and y coordinates of itself and the following node in the list
+ * Flags 'first' and 'last' are used to keep track of the starting and ending node in the list
+ * 'status' and 'data' are additional parameters used to hold misc. information, depending on the application of the list
+ * 
+ */
+typedef struct {
+    char c; ///< Displayed character ("sprite")
+    char x; ///< x position (increasing from left to right)
+    char y; ///< y position (increasing from top to bottom)
+    char x_next_node; ///< x coordinate of next node in the list
+    char y_next_node; ///< y coordinate of next node in the list
+    int first; ///< flag to keep track of the first node in the list (i.e. 1 if first 0 if not)
+    int last; ///< flag to keep track of the last node in the list (i.e. 1 if last 0 if not)
+    int data; ///< additional data the node will hold. Usage depends on implementation.
+    char status; ///< Status of object. Usage depends on implementation.
+} linked_char_object_t;
+
 /** @struct player_info_t
  *
  * @brief Player info structure to hold player settings
@@ -209,25 +230,58 @@ void Game_UnregisterPlayer2Receiver(void(*rx)(uint8_t));
  */
 void Game_CharXY(char c, char x, char y);
 
-/**
+/** @brief Write a character to a coordinate of the first players terminal
  *
- * @param c
- * @param x
- * @param y
+ * Game_Player1CharXY writes a character to the first player terminal
  *
- * @todo Anthony M. Document this function (when done change this line to "@todo MM check <your names> documentation"
+ * @param c is the character you wish to print to the terminal
+ * @param x defines where to print the character on the x axis
+ * @param y defines where to print the character on the y axis
  */
 void Game_Player1CharXY(char c, char x, char y);
 
-/**
+/** @brief Write a character to a coordinate of the second players terminal
  *
- * @param c
- * @param x
- * @param y
+ * Game_Player2CharXY writes a character to the second player terminal
  *
- * @todo Anthony M. Document this function (when done change this line to "@todo MM check <your names> documentation"
+ * @param c is the character you wish to print to the terminal
+ * @param x defines where to print the character on the x axis
+ * @param y defines where to print the character on the y axis
  */
 void Game_Player2CharXY(char c, char x, char y);
+
+/** @brief Cursor Position XY
+ *
+ * Game_CursorXY Moves the  cursor to a specified location using the Terminal_CursorXY function based off the number of players.
+ *
+ * @param x is the horizontal coordinate.
+ * @param y is the vertical coordinate.
+ *
+ * DS 3/25/19
+ */
+void Game_CursorXY(char x, char y);
+
+/** @brief Player 1 Cursor Position XY
+ *
+ * Game_Player1CursorXY Moves the  cursor to a specified location using the Terminal_CursorXY function based off the Player1UART.
+ *
+ * @param x is the horizontal coordinate.
+ * @param y is the vertical coordinate.
+ *
+ * DS 3/25/19
+ */
+void Game_Player1CursorXY(char x, char y);
+
+/** @brief Player 2 Cursor Position XY
+ *
+ * Game_Player2CursorXY Moves the  cursor to a specified location using the Terminal_CursorXY function based off the Player1UART.
+ *
+ * @param x is the horizontal coordinate.
+ * @param y is the vertical coordinate.
+ *
+ * DS 3/25/19
+ */
+void Game_Player2CursorXY(char x, char y);
 
 /**
  *
@@ -243,6 +297,19 @@ void Game_Player2CharXY(char c, char x, char y);
  * @warning TM 9/10
  */
 void Game_Printf(char * str, ...);
+
+/** @brief PrintfXY to screen
+ *
+ * Game_PrintfXY prints a specified string to a certain location using terminal_cursorXY and Subsystem_printf.
+ *
+ * @param x is the horizontal coordinate.
+ * @param y is the vertical coordinate.
+ * @param * str points to location of the beginning of the specified string
+ * @param ... variable argument list to be used with any replacement flags in the string
+ *
+ * DS 3/25/19
+ */
+void Game_PrintfXY(char x, char y, char * str, ...);
 
 /**
  *
@@ -361,6 +428,57 @@ void Game_DrawRect(char x_min, char y_min, char x_max, char y_max);
  *
  */
 void Game_FillRect(char c, char x_min, char y_min, char x_max, char y_max);
+
+/**
+ * This function creates (initializes) and displays a list of char objects from an
+ * uninitialized linked_char_object_t array.
+ * Can be used to make walls, multi-char enemies, sub-boundaries, etc.
+ *
+ * @param c - character that will make up nodes of list
+ * @param x_first - x position of starting node
+ * @param y_first - y position of starting node
+ * @param length - length of char list
+ * @param direction - determines direction the list will be made from starting node 0 -> up, 1 -> right, 2 -> down, 3 -> left
+ * @param list[] - uninitialized linked_char_object_t array
+ *
+ * Example code:
+ * @code
+ *
+ * linked_char_object_t testing[4]
+ * Game_LinkedChar('*', 5, 5, 4, 0, testing)
+ *
+ * output:
+ *  123456789
+ * 1
+ * 2     *
+ * 3     *
+ * 4     *
+ * 5     *
+ * 6
+ * 7
+ *
+ *@endcode
+ *
+ *@code
+ *  //initialize object arrays
+ *  linked_char_object_t testing[10];
+ *  linked_char_object_t testing1[3];
+ *  linked_char_object_t testing2[4];
+ *  linked_char_object_t testing3[9];
+ *
+ *  //call function: creates linked list and prints
+ *  Game_LinkedChar('#', 6, 6, 10, 2, testing);
+ *  Game_LinkedChar('1', 8, 6, 3, 1, testing1);
+ *  Game_LinkedChar('2', 10, 3, 4, 3, testing2);
+ *  Game_LinkedChar('3', 5, 15, 9, 0, testing3);
+ *
+ *  //shows that node values can be changed after list is created
+ *  testing[3].c = '%';
+ *  Game_CharXY(testing[3].c , testing[3].x , testing[3].y );
+ *@endcode
+ *
+ */
+void Game_LinkedChar(char c, char x_first, char y_first, int length, int direction, linked_char_object_t list[]);
 
 /**
  * @todo Gerald V. Document this function (when done change this line to "@todo MM check <your names> documentation"

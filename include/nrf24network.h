@@ -33,6 +33,8 @@
  * - IRQ  pin9/A2
  *
  * Created on April 7, 2015, 6:24 PM
+ *
+ * @{
  */
 
 #ifndef NRF24NETWORK_H
@@ -76,10 +78,10 @@ typedef union {
 
 #define NRF24_ADDRESS_MASK 0x6C6C6C7800
 
-#define NRF24_MIN_WINDOW_MS 100 //TODO change this to 4
-#define NRF24_BRANCH_WINDOW_MS 80 //TODO change this to 4
+#define NRF24_MIN_WINDOW_MS 8 //TODO change this to 4
+#define NRF24_BRANCH_WINDOW_MS 7 //TODO change this to 4
 #define NRF24_TICK_MS 2 //TODO change this to 1
-#define NRF24_MISSING_NODE_TIMEOUT 0
+#define NRF24_MISSING_NODE_TIMEOUT 100 //TODO make this larger
 
 // The third payload byte (after the two address bytes) will be the message ID
 enum nrf24_msg_id {
@@ -89,6 +91,7 @@ enum nrf24_msg_id {
     CHAT_MSG, ///< built-in / Jon W.
     TEST_MSG, ///<Used for testing the network
     KILL_MSG, ///< Used to remotely kill (reset) a node on the network
+    THIEF_MSG, ///< Used to support the Theif class project
     LAST_MSG_ID ///< reserved name to determine number of message IDs supported
 };
 
@@ -112,9 +115,40 @@ enum nrf24_sensor_msg {
     LAST_SENSOR_ID ///< reserved name to determine number of sensors supported
 };
 
+enum nrf24_thief_msg {
+    ARM_MSG,        ///< Brainframe->Thing, data is difficulty
+    DISARM_MSG,     ///< Brainframe->Thing, data is difficulty
+    TRIP_MSG,       ///< Thing->Brainframe, data is score (1 barely tripped)
+    ACCESS_MSG,     ///< Thing->Brainframe, data is score (1 great job)
+    ERROR_MSG,      ///< Thing->Brainframe, data is error code (TBD)
+    DIFFICULTY_MSG, ///< Brainframe->Thing, data is difficulty
+    LAST_THIEF_ID   ///< reserved name to determine number of messages supported
+};
+
 enum nrf24_address {
     // assign fixed node addresses
-    MASTER = 0x00,
+    MASTER = 0x00, ///< Brainframe / Scrumshank Redemption
+    SCRUM_PUN = 0x08, ///< Branch 1 - ScrumPun
+    BALL_TRAP,
+    TOMS_PAD,
+    NOODLE,
+    MOUSE_TRAP = 0x10, ///< Branch 2 - RedBulls
+    ULTRASONIC = 0x18, ///< Branch 3 - SmartHomies
+    DAN,
+    CAM,
+    JAKE,
+    SUPREME = 0x20, ///< Branch 4 - TeamSupreme
+    BOT,
+    SNEAK,
+    LASER,
+    SIMON,
+    OGLAZERBOIZ = 0x28, ///< Branch 5 - Muhlbaier's Fav. Clinic
+    OGLAZ2,
+    LOCK_PICK,
+    PIEZO,
+    MIKE = 0x30, ///< Branch 6 - Scrumshank Redemption
+    SORCE,
+    MALONEY,
 	MUHLBAIER,
 	LAST_ADDRESS,
     ALL_ALL = 0x3F
@@ -150,8 +184,8 @@ typedef struct nrfnet_s {
     enum nrfrole_e role;
     enum nrfstate_e state;
     volatile uint8_t current_child;
-    tint_t child_time[6];
-    tint_t switch_to_tx_time;
+    uint32_t child_time[6];
+    uint32_t switch_to_tx_time;
     enum pipe_status_e child_status[6];
     uint8_t channel[6];
     nrfnet_msg_t msg_buf[NRFNET_MSG_BUFFER_LENGTH];
@@ -253,6 +287,8 @@ char * NameFromAddress(uint8_t address);
  */
 uint8_t AddressFromName(char * name);
 
+ /** @} */
+ 
 // possible additions:
 // - add method to send a control message
 // - add method to request sensor data

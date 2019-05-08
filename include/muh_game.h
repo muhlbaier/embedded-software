@@ -19,8 +19,8 @@
  * When you hit an enemy the bell dings and a massive explosion happens
  * indicated by '*'. The '*' will remain until a shot or enemy pass over it.
  *
- * "$MUH play" will start the game.
- * "$MUH help" will print information about the game.
+ * "$game MUH play" will start the game.
+ * "$game MUH help" will print information about the game.
  *
  * Enjoy!
  *

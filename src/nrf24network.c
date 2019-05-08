@@ -2,9 +2,10 @@
 #include "project_settings.h"
 #include "nrf24network.h"
 #include "task.h"
-#include "subsys.h"
+#include "subsystem.h"
 #include "hal_general.h"
 #include "uart.h"
+#include <strings.h>
 
 #ifndef THIS_NODE
 //#error "Please add #define THIS_NODE <ADDRESS> in system.h where ADDRESS is your nrf24_address"
@@ -23,6 +24,8 @@
 #define ADDRESS_TO_INDEX(x) (x)//(((x?(x-1):0) >> 3) * 7 + (x % 8) + 1)
 #define INDEX_TO_ADDRESS(x) (x)//((((x-1)/7) << 3) + ((x-1)%7))
 
+static uint32_t last_comm[ADDRESS_TO_INDEX(LAST_ADDRESS)];
+
 char names[ADDRESS_TO_INDEX(LAST_ADDRESS)][5] = {
 		{"Mast"},
 		{"xxxx"},
@@ -32,40 +35,54 @@ char names[ADDRESS_TO_INDEX(LAST_ADDRESS)][5] = {
 		{"xxxx"},
 		{"xxxx"},
 		{"xxxx"},
-		{"Leca"},
-		{"Aley"},
-		{"Amri"},
-		{"Cand"},
-		{"Carl"},
-		{"LecA"},
-		{"LecB"},
-		{"xxxx"},
-		{"Blaz"},
-		{"Haas"},
-		{"Harr"},
-		{"Hens"},
-		{"Jaco"},
-		{"Klod"},
-        {"Dono"},
-		{"xxxx"},
-		{"Morr"},
-		{"LaBa"},
-		{"LiuJ"},
-		{"Wolf"},
-		{"Rupp"},
-		{"Russ"},
-		{"xxxx"},
-		{"xxxx"},
-		{"Traf"},
-		{"Whal"},
-		{"Wibl"},
-		{"Macc"},
-		{"Vott"},
+		{"Spun"},
+		{"Btrp"},
+		{"Tpad"},
+		{"Nood"},
 		{"xxxx"},
 		{"xxxx"},
 		{"xxxx"},
-		{"Merl"},
-		{"Good"},
+		{"xxxx"},
+		{"Mtrp"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},
+		{"USon"},
+		{"Dan_"},
+		{"Cam_"},
+		{"Jake"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},
+		{"Supr"},
+		{"Bot_"},
+		{"Snek"},
+		{"Lasr"},
+		{"Simo"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},
+		{"OGLA"},
+		{"OGL2"},
+		{"LkPk"},
+		{"PIEZ"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},
+		{"Mike"},
+		{"SRCE"},
+		{"Maln"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},
+		{"xxxx"},		
 		{"Muhl"},
 };
 
@@ -114,7 +131,7 @@ static void AddDataForPipe(nrfnet_t * net, uint8_t pipe, uint8_t * data, uint8_t
 static void FreeMsg(nrfnet_msg_t * msg);
 
 static void SubsysCallback(int argc, char *argv[]);
-static void CharReceiver(char c);
+static void UART_Receiver(uint8_t c);
 
 void nrf24_NetworkInit(void (*ce)(uint8_t), void (*csn)(uint8_t), uint8_t spi_channel) {
     nrf24_NetworkInitN(&default_net, ce, csn, spi_channel, THIS_NODE);
@@ -156,7 +173,7 @@ void nrf24_NetworkInitN(nrfnet_t * net, void (*ce)(uint8_t), void (*csn)(uint8_t
 		net->radio.ReceivedPayload = ProcessPayloadCallback;
 		net->radio.AckPayloadSent = AckPayloadSentCallback;
 		// register char receiver for chat
-		UART_RegisterReceiver(SUBSYS_UART, CharReceiver);
+		UART_RegisterReceiver(SUBSYS_UART, UART_Receiver);
     }else{
         net->radio.AckReceived = TxAckCallback2;
         net->radio.AckPayloadReceived = TxAckPayloadCallback2;
@@ -175,10 +192,12 @@ void nrf24_NetworkInitN(nrfnet_t * net, void (*ce)(uint8_t), void (*csn)(uint8_t
     // if this is the default net then set it up. Otherwise wait til the user
     // sets the node address
 	net->node = node;
+	// configure network will open a TX pipe on channel 1 for master and send a blank message to get things going
+	// or open an RX pipe for the appropriate branch if not master
 	ConfigureNetwork(net);
     // schedule task to keep network timing on point
-    Task_Schedule((task_fn_t)NetworkTick, net, NRF24_TICK_MS, NRF24_TICK_MS);
-    MuteSys(net->sys_id);
+    Task_Schedule((task_t)NetworkTick, net, NRF24_TICK_MS, NRF24_TICK_MS);
+    //Log_MuteSys(net->sys_id);
 }
 
 void nrf24_RegisterMsgHandler(enum nrf24_msg_id msg_id, nrf24_handler_fn_t fn_ptr) {
@@ -218,7 +237,7 @@ void nrf24_SendMsgN(nrfnet_t * net, uint8_t to, enum nrf24_msg_id msg_id, uint8_
             if(to == ALL_ALL) {
                 // queue to send to all children
                 uint8_t i;
-                for(i = 1; i < 6; i++) {
+                for(i = 1; i <= 6; i++) {
                     // skip sending to who it was from
                     if(i == address.from_branch) continue;
                     QueueMsgToChild(net, i-1, &msg[0], len);
@@ -232,7 +251,7 @@ void nrf24_SendMsgN(nrfnet_t * net, uint8_t to, enum nrf24_msg_id msg_id, uint8_
             // if the message is to everyone then send to all children and to parent
             if(to == ALL_ALL) {
                 uint8_t i;
-                for(i = 1; i < 6; i++) {
+                for(i = 1; i <= 6; i++) {
                     QueueMsgToChild(net, i-1, &msg[0], len);
                 }
                 QueueMsgToParent(net, &msg[0], len);
@@ -298,6 +317,8 @@ void ProcessReceivedMsg(nrfnet_t * net, uint8_t * data, uint8_t length) {
     address.b[1] = *data;
     address.b[0] = *(data+1);
     
+    last_comm[address.from] = TimeNow();
+
     switch(net->role) {
         case ROLE_MASTER:
             // check if we are the destination or if the message is to everyone
@@ -307,7 +328,7 @@ void ProcessReceivedMsg(nrfnet_t * net, uint8_t * data, uint8_t length) {
                 if(address.to == ALL_ALL) {
                     // queue to send to all other children
                     volatile uint8_t i;
-                    for(i = 1; i < 6; i++) {
+                    for(i = 1; i <= 6; i++) {
                         // skip sending to who it was from
                         if(i == address.from_branch) continue;
                         QueueMsgToChild(net, i-1, data, length);
@@ -328,7 +349,7 @@ void ProcessReceivedMsg(nrfnet_t * net, uint8_t * data, uint8_t length) {
                     if(GET_THIS_BRANCH(net->node) == address.from_branch) {
                         // queue to send to all other children
                         volatile uint8_t i;
-                        for(i = 1; i < 6; i++) {
+                        for(i = 1; i <= 6; i++) {
                             // skip sending to who it was from
                             if(i == address.from_leaf) continue;
                             QueueMsgToChild(net, i-1, data, length);
@@ -337,7 +358,7 @@ void ProcessReceivedMsg(nrfnet_t * net, uint8_t * data, uint8_t length) {
                     }else {
                         // if it is from the parent then queue to send to all children
                         volatile uint8_t i;
-                        for(i = 1; i < 6; i++) {
+                        for(i = 1; i <= 6; i++) {
                             QueueMsgToChild(net, i-1, data, length);
                         }
                     }
@@ -372,6 +393,7 @@ void ProcessMessage(nrfnet_t * net, uint8_t * data, uint8_t length) {
     address.b[0] = *data++;
     uint8_t id;
     id = *data++;
+    if(id) LogMsg(net->sys_id, "msg rx %d", id);
     if(id < LAST_MSG_ID) {
         if(net->handler[id]) {
             if(id <= CHAT_MSG) {
@@ -386,10 +408,9 @@ void ProcessMessage(nrfnet_t * net, uint8_t * data, uint8_t length) {
 void NetworkTick(nrfnet_t * net) {
     switch(net->role) {
         case ROLE_MASTER:
-            // if we are waiting on the window time then check and send if time
-            // is up
+            // if we are waiting on the window time then check and send if time is up
             if(net->state == NRFNET_WAITING_FOR_MIN_WINDOW) {
-                if(TimeSince(net->child_time[net->current_child]) > NRF24_MIN_WINDOW_MS) {
+                if(TimeSince(net->switch_to_tx_time) > NRF24_MIN_WINDOW_MS) {
                     nrfnet_msg_t * msg;
                     net->state = NRFNET_NORMAL_STATE;
                     nRF24_SetChannel(&net->radio, net->channel[net->current_child]);
@@ -398,10 +419,15 @@ void NetworkTick(nrfnet_t * net) {
                     if(msg) {
                         nRF24_Write(&net->radio, &msg->data[0], msg->length);
                         FreeMsg(msg);
+                        LogMsg(net->sys_id, "msg tx0 %d", msg->data[2]);
                     }else {
                         TxEmptyPacket(net);
                     }
                 }
+            }else if(TimeSince(net->switch_to_tx_time) > NRF24_MIN_WINDOW_MS*12) {
+                LogMsg(net->sys_id, "timeout branch %d, flushing TX", net->current_child);
+                nRF24_FlushTx(&net->radio);
+                TxToNextChild(net);
             }
             break;
         case ROLE_BRANCH:
@@ -434,11 +460,17 @@ static void SubsysCallback(int argc, char *argv[]) {
             }
         }
     }else if(strcasecmp(argv[0], "who") == 0) {
-        UART_Printf(SUBSYS_UART, "You are %s\r\n", NameFromAddress(default_net.node));
+        LogMsg(default_net.sys_id, "You are %s\r\n", NameFromAddress(default_net.node));
+    }else if(strcasecmp(argv[0], "connected") == 0) {
+        for(address = 0; address < ADDRESS_TO_INDEX(LAST_ADDRESS); address++) {
+            if(last_comm[address]) {
+                LogStr("Name: %s, Last Rx: %l\r\n", NameFromAddress(address), TimeSince(last_comm[address]));
+            }
+        }
     }
 }
 
-tint_t ping_time;
+uint32_t ping_time;
 static void SystemHandler(nrfnet_t * net, uint8_t * data, uint8_t len, uint8_t from) {
     // System handler to be implemented in future
     // Most system features are just hard coded for now
@@ -453,12 +485,12 @@ static void SystemHandler(nrfnet_t * net, uint8_t * data, uint8_t len, uint8_t f
             nrf24_SendMsgN(net, from, SYSTEM_MSG, data, len);
             break;
         case PING_RESPONSE_MSG:
-            UART_Printf(SUBSYS_UART, "time: %dms\r\n", TimeSince(ping_time));
+            UART_printf(SUBSYS_UART, "time: %dms\r\n", TimeSince(ping_time));
             break;
         case SPAM_MSG:
             n = *data++;
             for(i = 0; i < n; i++) {
-                UART_Write(SUBSYS_UART, (char *)data, len-2);
+                UART_Write(SUBSYS_UART, data, len-2);
             }
             break;
     }
@@ -469,7 +501,7 @@ void nrf24_Ping(uint8_t to) {
     data[0] = PING_MSG;
     ping_time = TimeNow();
     nrf24_SendMsgN(&default_net, to, SYSTEM_MSG, &data[0], 28);
-    UART_Printf(SUBSYS_UART, "32 bytes sent: ");
+    UART_printf(SUBSYS_UART, "32 bytes sent: ");
 }
 
 static void ControlHandler(nrfnet_t * net, uint8_t * data, uint8_t len, uint8_t from) {
@@ -505,22 +537,26 @@ uint8_t AddressFromName(char * name) {
 			return INDEX_TO_ADDRESS(i);
 		}
 	}
+	// check if name was just an address number
+	if(*name >= '0' && *name <= '9') {
+	    return ArgToU8(name);
+	}
 	return 1;
 }
 
 void PrintNames(void) {
 	uint8_t i;
 	for(i = 0; i < ADDRESS_TO_INDEX(LAST_ADDRESS); i++) {
-		UART_Printf(SUBSYS_UART, "%s\r\n", &names[i][0]);
+		UART_printf(SUBSYS_UART, "%s\r\n", &names[i][0]);
 	}
 }
 
 static void ChatHandler(nrfnet_t * net, uint8_t * data, uint8_t len, uint8_t from) {
     // to be implemented by Jon W.
-	UART_Printf(SUBSYS_UART, "%s: %s", NameFromAddress(from), data);
+	UART_printf(SUBSYS_UART, "%s: %s", NameFromAddress(from), data);
 }
 
-static void CharReceiver(char c) {
+static void UART_Receiver(uint8_t c) {
 	static uint8_t state = 0;
 	static uint8_t address;
 	static char name[4];
@@ -615,10 +651,12 @@ void TxToNextChild(nrfnet_t * net) {
                 if(msg) {
                     nRF24_Write(&net->radio, &msg->data[0], msg->length);
                     FreeMsg(msg);
+                    LogMsg(net->sys_id, "msg tx1 %d", msg->data[2]);
                 }else {
                     TxEmptyPacket(net);
                 }
             }else net->state = NRFNET_WAITING_FOR_MIN_WINDOW;
+            net->switch_to_tx_time = TimeNow(); // in master mode use this to know when we last sent to the new pipe
             break;
         case ROLE_BRANCH:
             // set pipe to next pipe
@@ -648,6 +686,7 @@ void TxToNextChild(nrfnet_t * net) {
                 if(msg) {
                     nRF24_Write(&net->radio, &msg->data[0], msg->length);
                     FreeMsg(msg);
+                    LogMsg(net->sys_id, "msg tx2 %d", msg->data[2]);
                 }else {
                     TxEmptyPacket(net);
                 }
@@ -711,6 +750,7 @@ void ProcessPayloadCallbackN(nrfnet_t * net, uint8_t * data, uint8_t length) {
         if(msg) {
             nRF24_Write(&net->radio, &msg->data[0], msg->length);
             FreeMsg(msg);
+            LogMsg(net->sys_id, "msg tx3 %d", msg->data[2]);
         }else {
             TxEmptyPacket(net);
         }
@@ -730,7 +770,7 @@ void AckPayloadSentCallbackN(nrfnet_t * net) {
             nrfnet_address_t address;
             address.b[1] = msg->data[0];
             address.b[0] = msg->data[1];
-            LogMsg(net->sys_id, "AckPayWr, to:%d%d, from:%d%d", address.to_branch, address.to_leaf, address.from_branch, address.from_leaf);
+            LogMsg(net->sys_id, "AckPayWr1, to:%d%d, from:%d%d", address.to_branch, address.to_leaf, address.from_branch, address.from_leaf);
             FreeMsg(msg);
         }
     }
@@ -753,7 +793,7 @@ void QueueMsgToParent(nrfnet_t * net, uint8_t * data, uint8_t length) {
             nrfnet_address_t address;
 			address.b[1] = *data;
 			address.b[0] = *(data+1);
-			LogMsg(net->sys_id, "AckPayWr, to:%d%d, from:%d%d", address.to_branch, address.to_leaf, address.from_branch, address.from_leaf);
+			LogMsg(net->sys_id, "AckPayWr2, to:%d%d, from:%d%d", address.to_branch, address.to_leaf, address.from_branch, address.from_leaf);
     }
 }
 
@@ -769,7 +809,7 @@ void CheckAckMessage(nrfnet_t * net) {
 		if(address.from != net->node){
 			Nop();
 		}
-		LogMsg(net->sys_id, "AckPayWr, to:%d%d, from:%d%d", address.to_branch, address.to_leaf, address.from_branch, address.from_leaf);
+		LogMsg(net->sys_id, "AckPayWr3, to:%d%d, from:%d%d", address.to_branch, address.to_leaf, address.from_branch, address.from_leaf);
         FreeMsg(msg);
     }
 }
