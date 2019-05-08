@@ -3,7 +3,7 @@
  
 /** @mainpage Embedded Library
  *
- * <img src="../images/embedded-software.jpg">
+ * @image html embedded-software.jpg
  *
  * @section getting_started Getting Started With Using the Library
  * To use this library:
@@ -97,12 +97,23 @@ Minor Contributors:
 - James Ethridge
 - Nick Felker
 - Chris Fredrickson
-- Josh Klodnicki
+- Stephen Glass
+- Nathan Hoffman
 - Joshua Haas
+- Tom Haskell
 - Jehandad Kahn
+- Nicholas Klein
+- Josh Klodnicki
+- Nikola Kosaric
 - George Lecakes
 - Matthew Lizzio
+- Alex Marino
+- Johnathan McAvoy
+- Robert Page
 - Ryan Patterson
+- Lonnie Souder
+- Michael Source
+- DJ Stahnberger
 - Stephen Szymczak
 - Jonathan Whalen
 - Rowan ECE Embedded Class of 2012
@@ -112,6 +123,7 @@ Minor Contributors:
 - Rowan ECE Embedded Class of 2016
 - Rowan ECE Embedded Class of 2017
 - Rowan ECE Embedded Class of 2018
+- Rowan ECE Embedded Class of 2019
 
 If you have personally contributed to this work and are not listed please email muhlbaier@rowan.edu
  */
