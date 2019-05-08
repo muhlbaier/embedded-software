@@ -906,3 +906,20 @@ void Game_AllStart(game_network_payload_t * input) {
 }
 
 #endif
+void Game_DrawDiamond(char c, uint8_t x, uint8_t y, uint8_t w, uint8_t h){
+    uint8_t xPos, yPos;
+
+    for(xPos = x; xPos <= x + w*2; xPos++){
+        for(yPos = 0; yPos <= y + h / 2; (xPos > x + w) ? yPos--: yPos++){
+            //draws the matching pairs of each point
+            Game_CharXY(c, xPos, yPos + y + h / 2);
+            Game_CharXY(c, xPos, (h + y) - (yPos + h / 2));
+            xPos++;
+            //draws the second x point to make it equal to 1 'y' point = 2 'x' points
+            Game_CharXY(c, xPos, yPos+ y + h / 2);
+            Game_CharXY(c, xPos, (h+ y) - (yPos + h / 2));
+            xPos++;
+        }
+    }
+
+}
