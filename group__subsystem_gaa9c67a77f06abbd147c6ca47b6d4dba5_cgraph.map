@@ -1,0 +1,5 @@
+<map id="Subsystem_Write" name="Subsystem_Write">
+<area shape="rect" id="node2" href="$group__subsystem.html#ga8d72986122b9aafe83e0065057872ebe" title="Log_Header" alt="" coords="182,31,274,57"/>
+<area shape="rect" id="node3" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="359,5,438,32"/>
+<area shape="rect" id="node4" href="$group__subsystem.html#ga94eda851f544a17e133d2abbaea9d4c4" title="Subsystem_GetName" alt="" coords="323,56,474,83"/>
+</map>

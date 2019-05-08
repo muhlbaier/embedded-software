@@ -1,0 +1,7 @@
+<map id="Task_Remove" name="Task_Remove">
+<area shape="rect" id="node2" href="$aws__subscribe__publish__sensor__values_8c.html#a29c6aa4a06b5921a00d8576904b552e6" title="service_sensor_logic" alt="" coords="161,12,305,39"/>
+<area shape="rect" id="node5" href="$group__accelerometer.html#gae22be8908e6faff9d8ea3e54adfb31f0" title="Deinitialize the accelerometer task scheduler. " alt="" coords="160,63,307,89"/>
+<area shape="rect" id="node6" href="$group__buzzer__module.html#gadb528b6b5565a5d92f1ce6334bdeac02" title="Buzzer_Sound" alt="" coords="180,113,287,140"/>
+<area shape="rect" id="node3" href="$aws__subscribe__publish__sensor__values_8c.html#a357271d7b0f646c0b09f776d90639219" title="init_sensor_subscribe" alt="" coords="355,12,503,39"/>
+<area shape="rect" id="node4" href="$aws__subscribe__publish__sensor__values_8c.html#a0ae7b5ce0916e42969f36cdb39396201" title="subscribe_publish_sensor\l_values" alt="" coords="553,5,725,46"/>
+</map>

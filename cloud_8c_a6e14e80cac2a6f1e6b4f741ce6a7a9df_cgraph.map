@@ -1,0 +1,8 @@
+<map id="platform_init" name="platform_init">
+<area shape="rect" id="node2" href="$cloud_8c.html#ad5abc15467a9dcf039b78c5775002e62" title="net_if_init" alt="" coords="197,5,275,32"/>
+<area shape="rect" id="node3" href="$cloud_8c.html#ad5d36fbe43fc70bb7721bb069d934e31" title="This function is executed in case of error occurrence. " alt="" coords="158,56,314,83"/>
+<area shape="rect" id="node4" href="$aws__subscribe__publish__sensor__values_8c.html#ab0196d46b481cd582c52eb3651a554fb" title="app_needs_device_keypair" alt="" coords="147,107,325,133"/>
+<area shape="rect" id="node5" href="$_s_t_m32_l475_2main_8c.html#a0e3d0642092900add950a33fa065d1c7" title="Waiting for button to be pushed. " alt="" coords="165,157,307,184"/>
+<area shape="rect" id="node6" href="$cloud_8c.html#ae70c6f90633693f55c4e52f77a211f38" title="Ask yes/no question. " alt="" coords="194,208,278,235"/>
+<area shape="rect" id="node7" href="$aws__subscribe__publish__sensor__values_8c.html#a015e87ed4debfc1c04d947c52bb52874" title="cloud_device_enter\l_credentials" alt="" coords="169,259,303,301"/>
+</map>

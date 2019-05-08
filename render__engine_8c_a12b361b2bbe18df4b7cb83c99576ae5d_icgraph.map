@@ -1,0 +1,6 @@
+<map id="writeTerminalBlock" name="writeTerminalBlock">
+<area shape="rect" id="node2" href="$render__engine_8c.html#ad24a4a8bf3b21b6b9e2c0b3b27dcf604" title="Display a frame. " alt="" coords="633,26,831,53"/>
+<area shape="rect" id="node3" href="$render__engine_8c.html#a92b03118b310c0e4b2a7aa62b9936756" title="changeTerminalCursorLocation" alt="" coords="381,26,584,53"/>
+<area shape="rect" id="node4" href="$render__engine_8c.html#a022e36066c33a90f521b500ed1b5026e" title="writeTerminalNumber" alt="" coords="187,77,333,103"/>
+<area shape="rect" id="node5" href="$render__engine_8c.html#ae8a9f1793bd739977111eac98e6e913d" title="changeTerminalColor" alt="" coords="410,77,555,103"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Buffer_int16" name="Buffer_int16">
+<area shape="rect" id="node2" href="$group__buffer__printf.html#ga16338dfb2900461bb027bf40815b2897" title="vprintf implementation to char buffer " alt="" coords="289,5,389,32"/>
+<area shape="rect" id="node4" href="$group__buffer__printf.html#ga1f1a2db71df2dff8d5619fe152eff280" title="Cheap implementation of float to char buffer. " alt="" coords="147,31,240,57"/>
+<area shape="rect" id="node3" href="$group__buffer__printf.html#gafabeb712c1aa0b8211cb4a77d38a0e39" title="printf implementation to char buffer " alt="" coords="437,5,531,32"/>
+</map>

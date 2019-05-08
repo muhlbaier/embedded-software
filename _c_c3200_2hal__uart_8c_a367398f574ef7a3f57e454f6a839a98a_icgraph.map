@@ -1,0 +1,6 @@
+<map id="hal_UART_Init" name="hal_UART_Init">
+<area shape="rect" id="node2" href="$uart_8c.html#ace506ef2867a6ee30406b132eb624ed8" title="UART_Init" alt="" coords="205,5,289,32"/>
+<area shape="rect" id="node5" href="$uart_8c.html#a9b7cb4f8330a77c863cb92f24f3c411d" title="Change baud rate. " alt="" coords="163,56,330,83"/>
+<area shape="rect" id="node3" href="$_m_s_p430_f5529_2_game_example_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="416,5,467,32"/>
+<area shape="rect" id="node4" href="$laser__comms_8h.html#aedffc10b3a2c95e1f1e3af96a9db2941" title="LaserComms_Init" alt="" coords="379,56,504,83"/>
+</map>

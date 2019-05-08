@@ -1,0 +1,16 @@
+<map id="I2C1_IntHandler" name="I2C1_IntHandler">
+<area shape="rect" id="node2" href="$i2c_8h.html#aaaef3a860a7e3b889cbcb68674f26fd1" title="I2C_TransactionFail" alt="" coords="187,31,325,57"/>
+<area shape="rect" id="node10" href="$i2c_8h.html#a147ba57b31175418241c0abb7fcdf864" title="I2C_GetTxByte" alt="" coords="199,81,313,108"/>
+<area shape="rect" id="node11" href="$i2c_8h.html#abc19f34cf43ee55af95b439386bdd058" title="I2C_GetTxSize" alt="" coords="200,132,312,159"/>
+<area shape="rect" id="node12" href="$i2c_8h.html#ab74693bbfaad41fc41d9fb10912a0321" title="I2C_GetRxSize" alt="" coords="199,183,313,209"/>
+<area shape="rect" id="node13" href="$i2c_8h.html#afb942cc37be00ecd3865f3ac5fdee58a" title="I2C_TransactionSuccess" alt="" coords="171,233,341,260"/>
+<area shape="rect" id="node14" href="$i2c_8h.html#a577120aa1805d66914426aaae451e969" title="I2C_GetSlaveAddress" alt="" coords="180,284,332,311"/>
+<area shape="rect" id="node15" href="$i2c_8h.html#af374787210c5717ce5591ddb49968253" title="I2C_Rx_Handler" alt="" coords="197,335,315,361"/>
+<area shape="rect" id="node3" href="$_m_s_p430_2_m_s_p430_f5529_2hal__i2c_8c.html#a7493828162acc239928108be6150295b" title="hal_I2C_SendStart" alt="" coords="390,5,522,32"/>
+<area shape="rect" id="node4" href="$group__list.html#ga36dab9276628d1025b55b1fb43a3d0d6" title="List_ResortFirst" alt="" coords="399,56,513,83"/>
+<area shape="rect" id="node5" href="$group__task.html#ga369f11dc366a40af2255cef77706b56f" title="Adds a function to the task queue. " alt="" coords="408,157,504,184"/>
+<area shape="rect" id="node6" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="571,132,687,159"/>
+<area shape="rect" id="node9" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="590,183,669,209"/>
+<area shape="rect" id="node7" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="742,107,853,133"/>
+<area shape="rect" id="node8" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="736,157,859,184"/>
+</map>

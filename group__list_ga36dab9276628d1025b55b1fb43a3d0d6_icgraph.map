@@ -1,0 +1,8 @@
+<map id="List_ResortFirst" name="List_ResortFirst">
+<area shape="rect" id="node2" href="$i2c_8c.html#aaaef3a860a7e3b889cbcb68674f26fd1" title="I2C_TransactionFail" alt="" coords="168,81,307,108"/>
+<area shape="rect" id="node3" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#a2d731865dd77bfeef6e6b6fb8ebea45b" title="I2C0_IntHandler" alt="" coords="355,5,472,32"/>
+<area shape="rect" id="node5" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#ace4817aeeb61a1fda02dd0c907b6bd57" title="I2C1_IntHandler" alt="" coords="355,56,472,83"/>
+<area shape="rect" id="node6" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#a8ff66ef9de83d7a303dca64cbd6d40d8" title="I2C2_IntHandler" alt="" coords="355,107,472,133"/>
+<area shape="rect" id="node7" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#abe2ac25bc1a07e333b26e853b7277ca0" title="I2C3_IntHandler" alt="" coords="355,157,472,184"/>
+<area shape="rect" id="node4" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#ab3ed2134b647ccb3ca01d69fe398381e" title="hal_I2C_Init" alt="" coords="521,81,613,108"/>
+</map>

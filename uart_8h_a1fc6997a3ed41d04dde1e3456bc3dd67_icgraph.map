@@ -1,0 +1,5 @@
+<map id="UART_UnregisterReceiver" name="UART_UnregisterReceiver">
+<area shape="rect" id="node2" href="$group__game.html#gac8514340d9305764d4ca12ea55968cf4" title="Unregister Player 1 UART Channel receiver. " alt="" coords="233,5,453,32"/>
+<area shape="rect" id="node3" href="$group__game.html#ga693537c135b65d0a4476e32cb32f9992" title="Unregister Player 2 UART Channel receiver. " alt="" coords="233,56,453,83"/>
+<area shape="rect" id="node4" href="$group__subsystem.html#ga3a1c44fc384e6a144b6ba55f7884f105" title="Subsystem_SystemDisable" alt="" coords="251,107,435,133"/>
+</map>

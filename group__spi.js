@@ -1,0 +1,48 @@
+var group__spi =
+[
+    [ "SPI Hardware Abstraction Layer for MSP432P401R", "group__hal__spi__msp432p401r.html", null ],
+    [ "spi_settings_t", "structspi__settings__t.html", [
+      [ "bit_rate", "structspi__settings__t.html#a3c420d1dec274a2ff6cd553376b2bdeb", null ],
+      [ "channel", "structspi__settings__t.html#a715f5cb061d11eb75981741eda4dafcd", null ],
+      [ "hal_settings", "structspi__settings__t.html#a252b8374ae6ee35dffa3b27e7ebae82f", null ],
+      [ "mode", "structspi__settings__t.html#a37e90f5e3bd99fac2021fb3a326607d4", null ]
+    ] ],
+    [ "spi_transaction", "structspi__transaction.html", [
+      [ "blocking", "structspi__transaction.html#a05c37579215e33034d270cbd163a6719", null ],
+      [ "callback", "structspi__transaction.html#a81446f28ef8310fb56eb5bc3367715d2", null ],
+      [ "channel", "structspi__transaction.html#a4b613adf1dc9edfbc9951cf9b86ec2e3", null ],
+      [ "cs_control", "structspi__transaction.html#a53c8d8236d293dffe24c833da9ac83b9", null ],
+      [ "data", "structspi__transaction.html#ac066d3cc02649ab1be933bd325bc79e9", null ],
+      [ "finished", "structspi__transaction.html#a5bade18b296a5e313fa16465375dd4e1", null ],
+      [ "flags", "structspi__transaction.html#af4f50ce9d138f61ed184996d36e91696", null ],
+      [ "overrun", "structspi__transaction.html#a9beebb8282888c84596e32d4cf99e36a", null ],
+      [ "readDelay", "structspi__transaction.html#ad0c555ff440afa2f1efe608d01c8c908", null ],
+      [ "readLength", "structspi__transaction.html#ad39432f5cc4c77411e6b16e188b05a25", null ],
+      [ "unused", "structspi__transaction.html#acf2eb4751aa4ab31d4de2165267d6fd5", null ],
+      [ "writeLength", "structspi__transaction.html#a4e43051b470a675afd15606971cb9831", null ]
+    ] ],
+    [ "SPI_MAX_SIZE", "group__spi.html#ga204c5f9cd51f9f0b85c75920b3413f93", null ],
+    [ "SPI_MAX_TRANSACTIONS", "group__spi.html#gab7fc233cca84512bf96a90aaf471041d", null ],
+    [ "spi_settings_t", "group__spi.html#ga1731515d1a4b25ea340d724447e01ca6", null ],
+    [ "spi_transaction_t", "group__spi.html#ga50108679229a2afcb965418f57c4afc6", null ],
+    [ "hal_SPI_ClearRxIF", "group__spi.html#ga4af8a5a063aff7bf9980ad4595fd6782", null ],
+    [ "hal_SPI_ClearTxIF", "group__spi.html#gaca551e69ffadbdc7320053fecdfb47f2", null ],
+    [ "hal_SPI_DataAvailable", "group__spi.html#ga1f11eb143032f9f16412f0b273f111d8", null ],
+    [ "hal_SPI_Disable", "group__spi.html#gae2197bfc4cf1afc71801c9e437fc1b1e", null ],
+    [ "hal_SPI_DisableRxInterrupt", "group__spi.html#ga608c86ce4ba822ab908382bdcf918139", null ],
+    [ "hal_SPI_DisableTxInterrupt", "group__spi.html#gae30fb4ff34d9ce7d511877e68d427c8d", null ],
+    [ "hal_SPI_Enable", "group__spi.html#gad56cd978c61e6a082c7418363912e0a0", null ],
+    [ "hal_SPI_EnableRxInterrupt", "group__spi.html#ga5979b61b06304955e2cd60edef1642f2", null ],
+    [ "hal_SPI_EnableTxInterrupt", "group__spi.html#ga4b66b8c185c78789a036fe96bceed572", null ],
+    [ "hal_SPI_Init", "group__spi.html#ga824224a68996f3c030c61f90b2ff1c98", null ],
+    [ "hal_SPI_IsTxIntEnabled", "group__spi.html#ga64ff157708f68ee78fd42ce8a42e57cf", null ],
+    [ "hal_SPI_OverrunError", "group__spi.html#ga33513fed4274407ca47c5d2c7fee0b37", null ],
+    [ "hal_SPI_RxByte", "group__spi.html#gac2e7f0795709f8710645b6e2ede1e5ca", null ],
+    [ "hal_SPI_RxIntStatus", "group__spi.html#ga5078dd0b79c2181464c72cde54fb4fb3", null ],
+    [ "hal_SPI_SpaceAvailable", "group__spi.html#ga2cbe05c3760513c419ecc06ba836e8ab", null ],
+    [ "hal_SPI_TxByte", "group__spi.html#ga6e8d357d0bdfd4154e4d9c4ab86d12eb", null ],
+    [ "hal_SPI_TxIntStatus", "group__spi.html#ga5c19f3bc8825c4a266d7ac6b5b3196a9", null ],
+    [ "SPI_Init", "group__spi.html#ga228893cd88fc2abe6c0166c1690430dc", null ],
+    [ "SPI_ISR", "group__spi.html#gabe3f409c649093162623744405567eec", null ],
+    [ "SPI_Transact", "group__spi.html#ga770b3b0f2da8e4992076628d08c4a0e2", null ]
+];

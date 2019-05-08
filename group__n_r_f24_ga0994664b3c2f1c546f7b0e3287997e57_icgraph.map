@@ -1,0 +1,5 @@
+<map id="nRF24_Standby" name="nRF24_Standby">
+<area shape="rect" id="node2" href="$group__n_r_f24.html#ga5ec52c6b7f3b0f93877cfda381014db9" title="nRF24_StartListening" alt="" coords="171,5,319,32"/>
+<area shape="rect" id="node4" href="$group__n_r_f24.html#gaf59c16021cbb5500d198e1f9e22db157" title="nRF24_OpenTxPipe" alt="" coords="175,56,315,83"/>
+<area shape="rect" id="node3" href="$nrf__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="368,31,419,57"/>
+</map>

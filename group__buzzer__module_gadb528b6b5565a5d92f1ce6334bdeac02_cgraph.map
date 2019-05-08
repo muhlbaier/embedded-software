@@ -1,0 +1,11 @@
+<map id="Buzzer_Sound" name="Buzzer_Sound">
+<area shape="rect" id="node2" href="$group__task.html#gacd7cea229f4ff2d572cfd743f0334f95" title="Removes Task. " alt="" coords="168,5,275,32"/>
+<area shape="rect" id="node4" href="$group__buzzer__module.html#gaaf497367284509a7d6b854686d7f20d0" title="hardware abstraction layer to stop buzzer " alt="" coords="161,56,282,83"/>
+<area shape="rect" id="node5" href="$group__buzzer__module.html#ga9f890efb01e4f79337754aa6573a43dd" title="hardware abstraction layer to start buzzer and set the frequency " alt="" coords="160,107,283,133"/>
+<area shape="rect" id="node6" href="$group__task.html#ga7fc124db459cf9e6f4b0ffb4083eff7e" title="Adds task to be scheduled for execution. " alt="" coords="165,157,277,184"/>
+<area shape="rect" id="node3" href="$group__list.html#ga80fa129ff1dfe7cc85d164d5a6fccf42" title="List_Remove" alt="" coords="340,5,439,32"/>
+<area shape="rect" id="node7" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="331,132,447,159"/>
+<area shape="rect" id="node10" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="350,183,429,209"/>
+<area shape="rect" id="node8" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="502,107,613,133"/>
+<area shape="rect" id="node9" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="496,157,619,184"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="hal_UART_Init" name="hal_UART_Init">
+<area shape="rect" id="node2" href="$ds_p_i_c33_2ds_p_i_c33_e_v256_g_m102_2hal__uart_8c.html#a651a4405064835d9282a22ac9d4e786a" title="Disable UART peripheral for given channel. " alt="" coords="193,5,327,32"/>
+<area shape="rect" id="node3" href="$ds_p_i_c33_2ds_p_i_c33_e_v256_g_m102_2hal__uart_8c.html#a51e09f880cd9eab647d5ab06259bce69" title="Enable UART peripheral for given channel. " alt="" coords="195,56,325,83"/>
+<area shape="rect" id="node4" href="$ds_p_i_c33_2ds_p_i_c33_e_v256_g_m102_2hal__uart_8c.html#a1c75c020ed0b780a231a93c15cd20799" title="enable the UART rx interrupt " alt="" coords="163,107,357,133"/>
+<area shape="rect" id="node5" href="$ds_p_i_c33_2ds_p_i_c33_e_v256_g_m102_2hal__uart_8c.html#a2ab59157d12084ca2df5cf171707477b" title="enable the UART tx interrupt " alt="" coords="163,157,357,184"/>
+</map>

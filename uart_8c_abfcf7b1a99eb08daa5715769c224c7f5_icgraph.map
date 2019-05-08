@@ -1,0 +1,6 @@
+<map id="UART_IsTransmitting" name="UART_IsTransmitting">
+<area shape="rect" id="node2" href="$group__game.html#ga653ec340f21a75532be89415cf923c6f" title="Game_IsTransmitting" alt="" coords="229,5,376,32"/>
+<area shape="rect" id="node5" href="$render__engine_8c.html#ad24a4a8bf3b21b6b9e2c0b3b27dcf604" title="Display a frame. " alt="" coords="203,56,402,83"/>
+<area shape="rect" id="node3" href="$group__game.html#ga42906baf18e9fcf43d0a139c4832c39e" title="Game_DrawRect" alt="" coords="451,5,573,32"/>
+<area shape="rect" id="node4" href="$group__game__building.html#gadaba6a5cee410b18b7328c7fc3e22475" title="Function to draw buildings with doors. " alt="" coords="621,5,763,32"/>
+</map>

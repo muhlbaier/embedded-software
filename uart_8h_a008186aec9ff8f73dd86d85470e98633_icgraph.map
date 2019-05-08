@@ -1,0 +1,6 @@
+<map id="UART_Tick" name="UART_Tick">
+<area shape="rect" id="node2" href="$_s_t_m32_l475_2main_8c.html#a0ccade7b71b774de5752203d3ea8021b" title="while" alt="" coords="161,5,213,32"/>
+<area shape="rect" id="node3" href="$uart_8c.html#ace506ef2867a6ee30406b132eb624ed8" title="UART_Init" alt="" coords="145,56,229,83"/>
+<area shape="rect" id="node4" href="$_m_s_p430_f5529_2_game_example_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="315,31,365,57"/>
+<area shape="rect" id="node5" href="$laser__comms_8h.html#aedffc10b3a2c95e1f1e3af96a9db2941" title="LaserComms_Init" alt="" coords="277,81,403,108"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Game_CharXY" name="Game_CharXY">
+<area shape="rect" id="node2" href="$group__game.html#ga6ac9654d6336ac9948ae387c8d24adfa" title="Game_DrawTile" alt="" coords="173,5,289,32"/>
+<area shape="rect" id="node3" href="$group__game.html#ga42906baf18e9fcf43d0a139c4832c39e" title="Game_DrawRect" alt="" coords="169,56,292,83"/>
+<area shape="rect" id="node4" href="$group__game__building.html#gadaba6a5cee410b18b7328c7fc3e22475" title="Function to draw buildings with doors. " alt="" coords="344,81,485,108"/>
+<area shape="rect" id="node5" href="$group__game.html#ga9ceb81df99ed4f60be3b71c0c40021fb" title="Game_FillRect" alt="" coords="176,157,285,184"/>
+<area shape="rect" id="node6" href="$group__game.html#ga2898994f81f002640f15be7cc93a46b7" title="Game_LinkedChar" alt="" coords="165,208,296,235"/>
+</map>

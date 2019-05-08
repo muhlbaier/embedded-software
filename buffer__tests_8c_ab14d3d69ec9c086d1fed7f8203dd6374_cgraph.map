@@ -1,0 +1,9 @@
+<map id="buffer_init_enqueue_callback" name="buffer_init_enqueue_callback">
+<area shape="rect" id="node2" href="$group__buffer.html#ga6077dfcd01f43b27628836d814c53e7a" title="Buffer_Init" alt="" coords="216,5,299,32"/>
+<area shape="rect" id="node3" href="$group__buffer.html#ga773175cd0794ef6b6bb96d2fe161c846" title="Buffer_GetSize" alt="" coords="202,56,313,83"/>
+<area shape="rect" id="node4" href="$group__buffer.html#gacdb68b530470d939294d0dc2581019a9" title="Buffer_SetCallback" alt="" coords="190,107,325,133"/>
+<area shape="rect" id="node5" href="$buffer__tests_8c.html#a439bbc1df351d32194707bdc341adfff" title="buffer_callback" alt="" coords="202,157,313,184"/>
+<area shape="rect" id="node6" href="$group__buffer.html#gac399f2bb7bfaa376ad14813e4b2ae288" title="Buffer_Enqueue" alt="" coords="200,208,315,235"/>
+<area shape="rect" id="node7" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="379,183,490,209"/>
+<area shape="rect" id="node8" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="373,233,496,260"/>
+</map>

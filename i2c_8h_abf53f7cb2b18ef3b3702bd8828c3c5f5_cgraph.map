@@ -1,0 +1,13 @@
+<map id="I2C_Transact" name="I2C_Transact">
+<area shape="rect" id="node2" href="$group__list.html#gace91195eb28d548f091202d8a8fff06b" title="List_AddAndLink" alt="" coords="157,114,277,141"/>
+<area shape="rect" id="node3" href="$group__task.html#gafd2aa563748d1ede229e5867753ead5d" title="SystemTick" alt="" coords="171,165,263,191"/>
+<area shape="rect" id="node12" href="$group__list.html#gafae6d0ac526e5f6e3234953e57230cb7" title="List_RemoveFirst" alt="" coords="155,215,280,242"/>
+<area shape="rect" id="node4" href="$group__list.html#ga645d81a49b82c4009487089fd4f98338" title="List_Link" alt="" coords="348,38,423,65"/>
+<area shape="rect" id="node5" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="497,38,607,65"/>
+<area shape="rect" id="node6" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="491,89,613,115"/>
+<area shape="rect" id="node7" href="$group__list.html#ga8d33461dcffd998d929eff432f32949d" title="List_GetFirst" alt="" coords="337,190,434,217"/>
+<area shape="rect" id="node8" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="346,241,425,267"/>
+<area shape="rect" id="node9" href="$group__list.html#ga71bd31a42180cf44b8ee3186c77765a8" title="List_UnlinkFirst" alt="" coords="329,291,442,318"/>
+<area shape="rect" id="node10" href="$group__list.html#gab6f45e11004da187e5637ab46831d39b" title="List_LinkItem" alt="" coords="335,89,435,115"/>
+<area shape="rect" id="node11" href="$group__list.html#ga80fa129ff1dfe7cc85d164d5a6fccf42" title="List_Remove" alt="" coords="336,342,435,369"/>
+</map>

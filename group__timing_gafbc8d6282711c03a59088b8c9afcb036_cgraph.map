@@ -1,0 +1,4 @@
+<map id="DelayUs" name="DelayUs">
+<area shape="rect" id="node2" href="$group__timing.html#ga3c465b40925885f213cbdf7a7b153e42" title="TimeNowUs" alt="" coords="131,5,226,32"/>
+<area shape="rect" id="node3" href="$group__timing.html#ga5aacedb842fbe5581cc2a5612d72d815" title="TimeSinceUs" alt="" coords="128,56,229,83"/>
+</map>

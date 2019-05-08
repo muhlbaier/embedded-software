@@ -1,0 +1,5 @@
+<map id="Subsystem_GetName" name="Subsystem_GetName">
+<area shape="rect" id="node2" href="$group__subsystem.html#ga8d72986122b9aafe83e0065057872ebe" title="Log_Header" alt="" coords="206,31,298,57"/>
+<area shape="rect" id="node3" href="$group__game.html#gaa41a428b1407ce21b62339d304f46e98" title="Game_Log" alt="" coords="368,5,453,32"/>
+<area shape="rect" id="node4" href="$group__subsystem.html#gaa9c67a77f06abbd147c6ca47b6d4dba5" title="Subsystem_Write" alt="" coords="347,56,474,83"/>
+</map>

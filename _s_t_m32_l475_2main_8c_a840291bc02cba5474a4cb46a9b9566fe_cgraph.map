@@ -1,0 +1,29 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$group__timing.html#ga6a7bd5705bafa4dd205b38a13e50263c" title="Initialize the timing module. " alt="" coords="515,5,602,32"/>
+<area shape="rect" id="node5" href="$group__task.html#gaa6ab5350efe602f7bdfdca42aa57aff2" title="Task_Init" alt="" coords="337,107,413,133"/>
+<area shape="rect" id="node8" href="$group__task.html#ga7fc124db459cf9e6f4b0ffb4083eff7e" title="Adds task to be scheduled for execution. " alt="" coords="503,157,615,184"/>
+<area shape="rect" id="node13" href="$_s_t_m32_l475_2main_8c.html#a1730ffe1e560465665eb47d9264826f9" title="This function is executed in case of error occurrence. " alt="" coords="137,309,239,336"/>
+<area shape="rect" id="node14" href="$uart_8h.html#ace506ef2867a6ee30406b132eb624ed8" title="UART_Init" alt="" coords="146,259,230,285"/>
+<area shape="rect" id="node20" href="$uart_8h.html#a212b0b61f7a394620421e8726d5e7cd7" title="register a character receiver for a UART channel to receive data " alt="" coords="105,360,271,387"/>
+<area shape="rect" id="node21" href="$_s_t_m32_l475_2main_8c.html#ad0ff57f4285b7aed5a58460cf8ef6f2a" title="GetCharReceiver" alt="" coords="127,411,249,437"/>
+<area shape="rect" id="node22" href="$group__subsystem.html#ga0788adbc985fe17ec878d3c0f9f06bff" title="Log_EchoOn" alt="" coords="139,461,237,488"/>
+<area shape="rect" id="node23" href="$group__task.html#gafd2aa563748d1ede229e5867753ead5d" title="SystemTick" alt="" coords="513,284,605,311"/>
+<area shape="rect" id="node3" href="$group__hal__timing.html#ga2ae272e43fc73c8dc8718cb1adb723bf" title="hal_Timing_Init" alt="" coords="691,5,802,32"/>
+<area shape="rect" id="node4" href="$_c_c3200_2hal__timing_8c.html#aaf13d809db0ab35d0fcadbe9b6ec400b" title="hal_timing_isr" alt="" coords="863,5,966,32"/>
+<area shape="rect" id="node6" href="$group__list.html#ga61c9a347e890a26159c3fa0cb567ae68" title="List_SetSortFunction" alt="" coords="487,56,631,83"/>
+<area shape="rect" id="node7" href="$group__list.html#ga41266aadaf8ad04a1bf043637bb6eb86" title="List_SetIdentifyFunction" alt="" coords="477,107,640,133"/>
+<area shape="rect" id="node9" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="689,81,805,108"/>
+<area shape="rect" id="node12" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="707,132,786,159"/>
+<area shape="rect" id="node10" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="859,512,970,539"/>
+<area shape="rect" id="node11" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="853,411,976,437"/>
+<area shape="rect" id="node15" href="$uart_8c.html#a008186aec9ff8f73dd86d85470e98633" title="Main UART routine which calls subscribers and handles errors. " alt="" coords="513,588,604,615"/>
+<area shape="rect" id="node18" href="$_c_c3200_2hal__uart_8c.html#a367398f574ef7a3f57e454f6a839a98a" title="initialize UART channel at specified baud rate " alt="" coords="321,309,429,336"/>
+<area shape="rect" id="node19" href="$group__buffer.html#ga6077dfcd01f43b27628836d814c53e7a" title="Buffer_Init" alt="" coords="333,360,416,387"/>
+<area shape="rect" id="node16" href="$group__buffer.html#ga773175cd0794ef6b6bb96d2fe161c846" title="Buffer_GetSize" alt="" coords="691,639,802,665"/>
+<area shape="rect" id="node17" href="$group__buffer.html#gad122bcd1cf8fc3bd5e803ce1372d6227" title="Buffer_Dequeue" alt="" coords="689,588,805,615"/>
+<area shape="rect" id="node24" href="$group__list.html#ga645d81a49b82c4009487089fd4f98338" title="List_Link" alt="" coords="709,487,784,513"/>
+<area shape="rect" id="node25" href="$group__list.html#ga8d33461dcffd998d929eff432f32949d" title="List_GetFirst" alt="" coords="698,233,795,260"/>
+<area shape="rect" id="node26" href="$group__list.html#ga71bd31a42180cf44b8ee3186c77765a8" title="List_UnlinkFirst" alt="" coords="690,284,803,311"/>
+<area shape="rect" id="node27" href="$group__list.html#gab6f45e11004da187e5637ab46831d39b" title="List_LinkItem" alt="" coords="697,385,797,412"/>
+<area shape="rect" id="node28" href="$group__list.html#ga80fa129ff1dfe7cc85d164d5a6fccf42" title="List_Remove" alt="" coords="697,335,796,361"/>
+</map>

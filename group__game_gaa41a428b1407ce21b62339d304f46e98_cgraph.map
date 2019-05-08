@@ -1,0 +1,6 @@
+<map id="Game_Log" name="Game_Log">
+<area shape="rect" id="node2" href="$group__subsystem.html#ga8d72986122b9aafe83e0065057872ebe" title="Log_Header" alt="" coords="139,31,231,57"/>
+<area shape="rect" id="node5" href="$group__subsystem.html#gad5c93d1d78ea66a8e631957653e03a74" title="LogStr" alt="" coords="155,81,215,108"/>
+<area shape="rect" id="node3" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="317,5,395,32"/>
+<area shape="rect" id="node4" href="$group__subsystem.html#ga94eda851f544a17e133d2abbaea9d4c4" title="Subsystem_GetName" alt="" coords="281,56,431,83"/>
+</map>

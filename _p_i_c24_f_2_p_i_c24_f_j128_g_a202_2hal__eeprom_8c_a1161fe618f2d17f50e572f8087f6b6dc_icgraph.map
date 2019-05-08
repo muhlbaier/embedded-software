@@ -1,0 +1,13 @@
+<map id="ReadPMHigh" name="ReadPMHigh">
+<area shape="rect" id="node2" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a1c129f7a39a230827defc35f96126261" title="GetPageStatus" alt="" coords="167,5,278,32"/>
+<area shape="rect" id="node3" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#abf5b506401a992cd64ab2a2bf77e36bc" title="GetNextAvailCount" alt="" coords="155,56,290,83"/>
+<area shape="rect" id="node4" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a209163a72819391e12409d16a7f167c8" title="PackEE" alt="" coords="375,107,446,133"/>
+<area shape="rect" id="node7" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#ad477c22070011743275574076b0a91aa" title="DataEEWrite" alt="" coords="531,183,629,209"/>
+<area shape="rect" id="node10" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#ac2e6924048931f3c2019bb7dee441ff0" title="DataEERead" alt="" coords="173,157,272,184"/>
+<area shape="rect" id="node5" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a214389938aab303bcc9c377d07e17d1d" title="DataEEInit" alt="" coords="537,31,623,57"/>
+<area shape="rect" id="node6" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#ad882484b0940c424876a768a1fc197f9" title="hal_EEPROM_Init" alt="" coords="685,31,814,57"/>
+<area shape="rect" id="node8" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a558e2f2707576588a192533e07bebb40" title="hal_EEPROM_Write" alt="" coords="678,132,821,159"/>
+<area shape="rect" id="node9" href="$_p_i_c32_m_m_2_p_i_c32_m_m0128_g_p_m028_2hal__eeprom_8c.html#a95ce4a9807b86058eee7ff440a9ec807" title="DataEEWriteArray" alt="" coords="684,183,815,209"/>
+<area shape="rect" id="node11" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a996fc6bfe501c774fa446b204d7e0f7a" title="hal_EEPROM_Read" alt="" coords="339,157,482,184"/>
+<area shape="rect" id="node12" href="$_p_i_c32_m_m_2_p_i_c32_m_m0128_g_p_m028_2hal__eeprom_8c.html#adb2ba04666b8ff568c1053aa5c470eef" title="DataEEReadArray" alt="" coords="345,259,476,285"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="Game_DrawBuilding" name="Game_DrawBuilding">
+<area shape="rect" id="node2" href="$group__game.html#ga42906baf18e9fcf43d0a139c4832c39e" title="Game_DrawRect" alt="" coords="195,56,317,83"/>
+<area shape="rect" id="node3" href="$group__game.html#ga070bf853c75425ee8da4ad6b1580d78d" title="Write a character to a coordinate of the terminal. " alt="" coords="383,5,494,32"/>
+<area shape="rect" id="node5" href="$group__game.html#ga653ec340f21a75532be89415cf923c6f" title="Game_IsTransmitting" alt="" coords="365,56,512,83"/>
+<area shape="rect" id="node8" href="$group__timing.html#ga6158e669fa36ba48f9d1eb7141b07083" title="Delay a specific number of milliseconds. " alt="" coords="401,132,476,159"/>
+<area shape="rect" id="node4" href="$group__terminal.html#gaed7f10e424df1b9c1dd1794c0acdb359" title="Terminal_CharXY" alt="" coords="572,5,697,32"/>
+<area shape="rect" id="node6" href="$uart_8h.html#abfcf7b1a99eb08daa5715769c224c7f5" title="Returns 0 or num bytes to indicate if the UART is transmitting. " alt="" coords="560,56,709,83"/>
+<area shape="rect" id="node7" href="$group__buffer.html#ga773175cd0794ef6b6bb96d2fe161c846" title="Buffer_GetSize" alt="" coords="758,56,869,83"/>
+<area shape="rect" id="node9" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="595,107,674,133"/>
+<area shape="rect" id="node10" href="$group__timing.html#ga31f3e90fa9c8120c90afc34ada69604f" title="Get the elapsed time. " alt="" coords="593,157,677,184"/>
+<area shape="rect" id="node11" href="$group__hal__general.html#gafa1a759cf4c14527ae0b170fa66129f9" title="No oporation. " alt="" coords="611,208,658,235"/>
+</map>

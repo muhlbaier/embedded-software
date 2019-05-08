@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['sample_5fphase',['sample_phase',['../structhal__spi__settings__t.html#a66994ecea14d612587df49202d3a78a2',1,'hal_spi_settings_t']]],
+  ['scale',['scale',['../structfilter__t.html#a05ad646128fc9b8f8d73656367f076ff',1,'filter_t']]],
+  ['score',['score',['../structgame__t.html#a5314337f1ccea14451e8875a32302b3e',1,'game_t::score()'],['../structmuh__game__t.html#aef160b7437d94056f1dc59646cd5b87d',1,'muh_game_t::score()']]],
+  ['second_5fnet_5fptr',['second_net_ptr',['../nrf24network_8c.html#aa48cc5ce6db8abca111fab62deb6e9a4',1,'nrf24network.c']]],
+  ['sensor_5fhandler',['sensor_handler',['../structnrfnet__s.html#a403040a041195cef1197ab458e2ff373',1,'nrfnet_s']]],
+  ['settings',['settings',['../structnrf24__radio__t.html#aeb35fba31fb45682da67b7b7ea64f8c0',1,'nrf24_radio_t::settings()'],['../structsystem__t.html#aa6e5c4747e2317c976efe8f8bb00559e',1,'system_t::settings()']]],
+  ['shift',['shift',['../structfilter__t.html#a8f20d77488fe485aaf9ea8e9c5d7d35e',1,'filter_t']]],
+  ['shot_5fdamage',['shot_damage',['../structlaser__tag__rules__t.html#af186fe92b3f8f18aa407b92125461064',1,'laser_tag_rules_t']]],
+  ['shots_5ffired',['shots_fired',['../structmuh__game__t.html#ad5863e2323fa6f2a0c3cf4b6574650cb',1,'muh_game_t']]],
+  ['size',['size',['../structbuffer__t.html#aaba88b24a21a6c70c895c0d55f4a69a0',1,'buffer_t::size()'],['../structreceiver__list__t.html#aaba88b24a21a6c70c895c0d55f4a69a0',1,'receiver_list_t::size()']]],
+  ['skill',['skill',['../structplayer__info__t.html#a065c16398b653d90c88b997ccb7e419f',1,'player_info_t']]],
+  ['slave_5faddress',['slave_address',['../structi2c__transaction.html#a176d10e486d8515ce93ae67bdbcebbe1',1,'i2c_transaction']]],
+  ['sort_5ffn',['sort_fn',['../structlist__t.html#a356af98cdf525b917606c7a739b4c1c7',1,'list_t']]],
+  ['spi',['spi',['../spi_8c.html#a2522b5d7622ff659a953a95ee27e26fb',1,'spi.c']]],
+  ['spi_5fchannel',['spi_channel',['../structnrf24__radio__t.html#a23ea59840061c42b17947883a2f5d382',1,'nrf24_radio_t']]],
+  ['ssid',['ssid',['../structnetwork__settings.html#a0974771b2fba5718eed6eecd656aac59',1,'network_settings']]],
+  ['state',['state',['../structnrf24__radio__t.html#a0b57aa10271a66f3dc936bba1d2f3830',1,'nrf24_radio_t::state()'],['../structnrfnet__s.html#a5649d3fb896a1b597369be9cf10856a9',1,'nrfnet_s::state()'],['../structi2c.html#ad0e48081cc06dd41ee8c130894dd8b4e',1,'i2c::state()'],['../structspi.html#a9c9a6f2e170849b366f0b8db0333474e',1,'spi::state()'],['../_m_s_p430_2_m_s_p430_f5529_2hal__i2c_8c.html#a869c3a04d4a4817fbb2619df10f2cdf9',1,'state():&#160;hal_i2c.c'],['../_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#ab198891aabd84d82eb02c497068e6a62',1,'state():&#160;hal_i2c.c']]],
+  ['status',['status',['../structlaser__tag__status__t.html#ac9dbad2500092dc5283c42ccd9d90cc4',1,'laser_tag_status_t::status()'],['../structchar__object__t.html#a051c9e198ee930358372c407a17e8b78',1,'char_object_t::status()'],['../structlinked__char__object__t.html#a051c9e198ee930358372c407a17e8b78',1,'linked_char_object_t::status()'],['../structcamera.html#a5393c99e246925076b1dfd69a64177ef',1,'camera::status()']]],
+  ['stayactive',['stayActive',['../structi2c__transaction.html#a246bbf7082a56bde2cdcf87bc1665a7a',1,'i2c_transaction']]],
+  ['subsystem',['subsystem',['../structsystem__t.html#ad43fe3cf1c5e9944d8e0b98f8be0c5a4',1,'system_t']]],
+  ['sw_5fcs_5fcontrol',['sw_cs_control',['../structhal__spi__settings__t.html#ae8aea40b397231a535d48f91a6a97d5b',1,'hal_spi_settings_t']]],
+  ['switch_5fto_5ftx_5ftime',['switch_to_tx_time',['../structnrfnet__s.html#ac8fa6a458df3e904c7ea537b0f9cca6d',1,'nrfnet_s']]],
+  ['sys',['sys',['../subsystem_8c.html#a5c487665c5fed819e0062555da2db68f',1,'subsystem.c']]],
+  ['sys_5fid',['sys_id',['../structnrfnet__s.html#a3a96e9e81db35080e3024631bd924969',1,'nrfnet_s']]],
+  ['systemcoreclock',['SystemCoreClock',['../_s_a_m3_2_s_a_m3_n4_a_2hal__uart_8c.html#aa3cd3e43291e81e795d642b79b6088e6',1,'SystemCoreClock():&#160;hal_uart.c'],['../_s_a_m3_2_s_a_m3_s4_a_2hal__uart_8c.html#aa3cd3e43291e81e795d642b79b6088e6',1,'SystemCoreClock():&#160;hal_uart.c']]]
+];

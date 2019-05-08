@@ -1,0 +1,5 @@
+<map id="UART Module" name="UART Module">
+<area shape="rect" id="node1" href="$group__hal__uart.html" title="HAL UART Module" alt="" coords="187,5,322,32"/>
+<area shape="rect" id="node2" href="$group__hal__uart__msp432p401r.html" title="UART Hardware Abstraction\l Layer for MSP432P401R" alt="" coords="160,57,349,98"/>
+<area shape="rect" id="node4" href="$group__hal__uart__dspic33ev256gm102.html" title="HAL UART Module for\l dsPIC33EV256GM102" alt="" coords="175,122,334,163"/>
+</map>

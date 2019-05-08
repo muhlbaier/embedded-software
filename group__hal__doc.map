@@ -1,0 +1,7 @@
+<map id="Hardware Abstraction Layer" name="Hardware Abstraction Layer">
+<area shape="rect" id="node1" href="$group__hal__pic32mx250f128b.html" title="PIC32MX250F128B Documentation" alt="" coords="203,5,434,32"/>
+<area shape="rect" id="node2" href="$group__hal__msp430f5529.html" title="MSP430F5529 Documentation" alt="" coords="219,56,419,83"/>
+<area shape="rect" id="node3" href="$group__hal__cpu.html" title="Microcontroller Specific\l Documentation" alt="" coords="239,107,398,149"/>
+<area shape="rect" id="node5" href="$group__hal__general.html" title="Hardware Abstraction\l Layer General Fucntions" alt="" coords="235,173,403,214"/>
+<area shape="rect" id="node6" href="$group__hal__clock.html" title="Clock Configuration" alt="" coords="250,239,387,265"/>
+</map>

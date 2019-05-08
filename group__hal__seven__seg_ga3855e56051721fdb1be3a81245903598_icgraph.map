@@ -1,0 +1,6 @@
+<map id="hal_Display" name="hal_Display">
+<area shape="rect" id="node2" href="$group__seven__seg.html#ga7fe2177a0b8bc1a6015875f505a01fbd" title="Displays value on seven seg in Hex. " alt="" coords="147,5,304,32"/>
+<area shape="rect" id="node3" href="$group__seven__seg.html#gabdd894ce51bb2a08f9446a8e7532ac6a" title="Displays individual parameters on up to four seven segment displays. " alt="" coords="145,56,305,83"/>
+<area shape="rect" id="node4" href="$group__seven__seg.html#gae05c981e3d752236aa49bf5829592ad9" title="Displays float value on seven seg in decimal. " alt="" coords="144,107,307,133"/>
+<area shape="rect" id="node5" href="$group__seven__seg.html#gace58ee95637a8f220527dc8b20dbb662" title="updates static variables and displays on hex task&#45;compatible function void function to easily display..." alt="" coords="171,157,279,184"/>
+</map>

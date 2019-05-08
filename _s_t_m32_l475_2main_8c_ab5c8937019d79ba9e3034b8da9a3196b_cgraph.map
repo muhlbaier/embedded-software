@@ -1,0 +1,4 @@
+<map id="Button_WaitForMultiPush" name="Button_WaitForMultiPush">
+<area shape="rect" id="node2" href="$group__timing.html#ga31f3e90fa9c8120c90afc34ada69604f" title="Get the elapsed time. " alt="" coords="225,5,309,32"/>
+<area shape="rect" id="node3" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="227,56,306,83"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="Buffer_vprintf" name="Buffer_vprintf">
+<area shape="rect" id="node2" href="$group__buffer.html#gac399f2bb7bfaa376ad14813e4b2ae288" title="Buffer_Enqueue" alt="" coords="589,184,704,211"/>
+<area shape="rect" id="node5" href="$group__buffer__printf.html#ga5af51f7d541876c97393761c9cdb62f4" title="Push long to char buffer. " alt="" coords="155,58,247,84"/>
+<area shape="rect" id="node6" href="$group__buffer__printf.html#ga894d0b01c2412babde947608818f367e" title="Push unsigned long integer to char buffer. " alt="" coords="296,108,395,135"/>
+<area shape="rect" id="node7" href="$group__buffer__printf.html#gab94b7f86abcc80b6b14a35c96bc012c5" title="Push integer to char buffer. " alt="" coords="299,159,391,186"/>
+<area shape="rect" id="node8" href="$group__buffer__printf.html#gae81a12b586e1f8df3736ba326246278d" title="Push unsigned integer to char buffer. " alt="" coords="443,210,541,236"/>
+<area shape="rect" id="node9" href="$group__buffer__printf.html#ga1f1a2db71df2dff8d5619fe152eff280" title="Cheap implementation of float to char buffer. " alt="" coords="155,260,248,287"/>
+<area shape="rect" id="node10" href="$group__buffer__printf.html#ga07605350ce76ff0b2b46740c201d8f68" title="Push 32 bit value to char buffer in hex format. " alt="" coords="443,362,541,388"/>
+<area shape="rect" id="node11" href="$group__buffer__printf.html#ga330d945e8e99265f5cd1e18ad6a13114" title="Push char array (string) to char buffer. " alt="" coords="305,412,386,439"/>
+<area shape="rect" id="node3" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="758,159,869,186"/>
+<area shape="rect" id="node4" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="752,210,875,236"/>
+</map>

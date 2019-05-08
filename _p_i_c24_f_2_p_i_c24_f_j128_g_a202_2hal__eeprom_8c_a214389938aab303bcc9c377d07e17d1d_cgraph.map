@@ -1,0 +1,13 @@
+<map id="DataEEInit" name="DataEEInit">
+<area shape="rect" id="node2" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#accca6f4bc164c91f6824718cea186dc4" title="GetPageStatus" alt="" coords="446,461,557,488"/>
+<area shape="rect" id="node3" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a8f9ef2d836f15d6d2437ec8afd7cc6cc" title="ErasePage" alt="" coords="286,30,373,57"/>
+<area shape="rect" id="node4" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a0a0833fa85b5acee668a9abdac7c1d92" title="WritePMLow" alt="" coords="453,81,550,108"/>
+<area shape="rect" id="node5" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a15ce5aa17487e056e7c9c6d337198f3a" title="UnlockWrite" alt="" coords="454,30,549,57"/>
+<area shape="rect" id="node7" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#ac3f31b1dfaac281ffc908aa715c783c8" title="WritePMHigh" alt="" coords="279,132,379,158"/>
+<area shape="rect" id="node8" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#abf5b506401a992cd64ab2a2bf77e36bc" title="GetNextAvailCount" alt="" coords="262,436,397,462"/>
+<area shape="rect" id="node10" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a209163a72819391e12409d16a7f167c8" title="PackEE" alt="" coords="142,258,213,285"/>
+<area shape="rect" id="node6" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a21801f1ab8cb0bb2677fa075f17a01e1" title="UnlockPM" alt="" coords="605,30,688,57"/>
+<area shape="rect" id="node9" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a1161fe618f2d17f50e572f8087f6b6dc" title="ReadPMHigh" alt="" coords="451,385,551,412"/>
+<area shape="rect" id="node11" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#ac2e6924048931f3c2019bb7dee441ff0" title="DataEERead" alt="" coords="280,385,379,412"/>
+<area shape="rect" id="node12" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a4d97bd00e735702a84c66e1d4b174777" title="ReadPMLow" alt="" coords="453,309,550,336"/>
+</map>

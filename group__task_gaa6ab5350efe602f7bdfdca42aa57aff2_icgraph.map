@@ -1,0 +1,11 @@
+<map id="Task_Init" name="Task_Init">
+<area shape="rect" id="node2" href="$_m_s_p430_f5529_2_game_example_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="352,157,403,184"/>
+<area shape="rect" id="node3" href="$group__nrf24network.html#gad5df492fc217aa17be260f4d6946fa08" title="nrf24_NetworkInitN" alt="" coords="131,69,266,96"/>
+<area shape="rect" id="node9" href="$uart_8c.html#ace506ef2867a6ee30406b132eb624ed8" title="UART_Init" alt="" coords="157,196,241,223"/>
+<area shape="rect" id="node4" href="$nrf__network__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="532,107,583,133"/>
+<area shape="rect" id="node5" href="$group__thief__brainframe.html#ga9a9be1f1330ceab71417b4f6896c6596" title="initialize the nRF24 Network module for the Thief Brainframe and set callbacks " alt="" coords="488,5,627,32"/>
+<area shape="rect" id="node7" href="$group__nrf24network.html#gaa7e9ed6799603db4a6e08f36cd7f1230" title="Initialize nRF24 Network Module. " alt="" coords="315,56,440,83"/>
+<area shape="rect" id="node6" href="$thief__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="675,31,725,57"/>
+<area shape="rect" id="node8" href="$group__thief.html#ga46dd5608b4e5e77b04ef07a9a390cb8f" title="initialize the nRF24 Network module for the Thief node and set callbacks " alt="" coords="519,56,595,83"/>
+<area shape="rect" id="node10" href="$laser__comms_8h.html#aedffc10b3a2c95e1f1e3af96a9db2941" title="LaserComms_Init" alt="" coords="315,208,440,235"/>
+</map>

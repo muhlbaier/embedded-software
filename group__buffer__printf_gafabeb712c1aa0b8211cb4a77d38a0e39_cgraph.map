@@ -1,0 +1,13 @@
+<map id="Buffer_printf" name="Buffer_printf">
+<area shape="rect" id="node2" href="$group__buffer__printf.html#ga16338dfb2900461bb027bf40815b2897" title="vprintf implementation to char buffer " alt="" coords="147,184,247,211"/>
+<area shape="rect" id="node3" href="$group__buffer.html#gac399f2bb7bfaa376ad14813e4b2ae288" title="Buffer_Enqueue" alt="" coords="731,184,845,211"/>
+<area shape="rect" id="node6" href="$group__buffer__printf.html#ga5af51f7d541876c97393761c9cdb62f4" title="Push long to char buffer. " alt="" coords="297,58,389,84"/>
+<area shape="rect" id="node7" href="$group__buffer__printf.html#ga894d0b01c2412babde947608818f367e" title="Push unsigned long integer to char buffer. " alt="" coords="437,108,536,135"/>
+<area shape="rect" id="node8" href="$group__buffer__printf.html#gab94b7f86abcc80b6b14a35c96bc012c5" title="Push integer to char buffer. " alt="" coords="441,159,533,186"/>
+<area shape="rect" id="node9" href="$group__buffer__printf.html#gae81a12b586e1f8df3736ba326246278d" title="Push unsigned integer to char buffer. " alt="" coords="584,210,683,236"/>
+<area shape="rect" id="node10" href="$group__buffer__printf.html#ga1f1a2db71df2dff8d5619fe152eff280" title="Cheap implementation of float to char buffer. " alt="" coords="296,260,389,287"/>
+<area shape="rect" id="node11" href="$group__buffer__printf.html#ga07605350ce76ff0b2b46740c201d8f68" title="Push 32 bit value to char buffer in hex format. " alt="" coords="584,362,683,388"/>
+<area shape="rect" id="node12" href="$group__buffer__printf.html#ga330d945e8e99265f5cd1e18ad6a13114" title="Push char array (string) to char buffer. " alt="" coords="446,412,527,439"/>
+<area shape="rect" id="node4" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="899,159,1010,186"/>
+<area shape="rect" id="node5" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="893,210,1016,236"/>
+</map>

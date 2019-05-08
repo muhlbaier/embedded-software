@@ -1,0 +1,25 @@
+<map id="nRF24_WriteReg" name="nRF24_WriteReg">
+<area shape="rect" id="node2" href="$group__n_r_f24.html#ga24a0ec145b273d5b8308b2a23fcf0b3d" title="nRF24_Init" alt="" coords="455,248,542,275"/>
+<area shape="rect" id="node12" href="$group__n_r_f24.html#ga5ec52c6b7f3b0f93877cfda381014db9" title="nRF24_StartListening" alt="" coords="425,414,573,440"/>
+<area shape="rect" id="node13" href="$group__n_r_f24.html#ga40b59dcaa6fbde431ffec4be01fbf117" title="nRF24_Write" alt="" coords="449,466,548,492"/>
+<area shape="rect" id="node17" href="$group__n_r_f24.html#gab94ab5390625527c95577405773607d2" title="nRF24_SetPowerAmplification\lLevel" alt="" coords="176,198,376,240"/>
+<area shape="rect" id="node18" href="$group__n_r_f24.html#ga29f2ccbda30b330903c902b53da962e6" title="nRF24_SetRetries" alt="" coords="211,46,341,72"/>
+<area shape="rect" id="node19" href="$group__n_r_f24.html#ga0e2504e9271cfc8ef4e1b3cfcbfb8e92" title="nRF24_SetDataRate" alt="" coords="204,264,348,291"/>
+<area shape="rect" id="node20" href="$group__n_r_f24.html#gaf0bcdb53e8aae16a4d3ac41255fec46c" title="nRF24_SetCRCMode" alt="" coords="201,315,351,342"/>
+<area shape="rect" id="node21" href="$group__n_r_f24.html#ga54157419f51f351530deb6fcabeabf8c" title="nRF24_SetChannel" alt="" coords="208,366,344,392"/>
+<area shape="rect" id="node22" href="$group__n_r_f24.html#ga6a700fe579ce6ff5bcea5cf8f62fb9b7" title="nRF24_OpenRxPipe" alt="" coords="427,96,570,123"/>
+<area shape="rect" id="node23" href="$group__n_r_f24.html#gaf5e17e21ba8597f625e19b33ce328ce4" title="nRF24_EventHandler" alt="" coords="203,518,349,544"/>
+<area shape="rect" id="node24" href="$group__n_r_f24.html#gac35e1563efe6e6606b5897721e8f9d07" title="nRF24_SetActive" alt="" coords="213,96,339,123"/>
+<area shape="rect" id="node3" href="$thief__example_8c.html#a9387a6aa9dce14b7a6982d5f99812a31" title="RF1_Init" alt="" coords="653,299,725,326"/>
+<area shape="rect" id="node5" href="$thief__example_8c.html#a663703a112758bd898ce9fefd797a49d" title="RF2_Init" alt="" coords="653,248,725,275"/>
+<area shape="rect" id="node6" href="$group__nrf24network.html#gad5df492fc217aa17be260f4d6946fa08" title="nrf24_NetworkInitN" alt="" coords="622,71,757,98"/>
+<area shape="rect" id="node4" href="$nrf__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="843,350,893,376"/>
+<area shape="rect" id="node7" href="$nrf__network__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="1023,20,1073,47"/>
+<area shape="rect" id="node8" href="$group__thief__brainframe.html#ga9a9be1f1330ceab71417b4f6896c6596" title="initialize the nRF24 Network module for the Thief Brainframe and set callbacks " alt="" coords="979,122,1117,148"/>
+<area shape="rect" id="node10" href="$group__nrf24network.html#gaa7e9ed6799603db4a6e08f36cd7f1230" title="Initialize nRF24 Network Module. " alt="" coords="805,71,931,98"/>
+<area shape="rect" id="node9" href="$thief__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="1165,96,1216,123"/>
+<area shape="rect" id="node11" href="$group__thief.html#ga46dd5608b4e5e77b04ef07a9a390cb8f" title="initialize the nRF24 Network module for the Thief node and set callbacks " alt="" coords="1010,71,1086,98"/>
+<area shape="rect" id="node14" href="$nrf__example_8c.html#ac1259de3e926dde7437a2660e000f9aa" title="RF_Test" alt="" coords="653,451,726,478"/>
+<area shape="rect" id="node15" href="$nrf__example_8c.html#afc319abed3fc135d81e36971b100fad7" title="RF_TX1" alt="" coords="654,502,725,528"/>
+<area shape="rect" id="node16" href="$nrf__example_8c.html#a42b325e082a042e341a46730c35355f2" title="RF_TX2" alt="" coords="654,400,725,427"/>
+</map>

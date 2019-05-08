@@ -1,0 +1,4 @@
+<map id="Game_IsTransmitting" name="Game_IsTransmitting">
+<area shape="rect" id="node2" href="$group__game.html#ga42906baf18e9fcf43d0a139c4832c39e" title="Game_DrawRect" alt="" coords="200,5,323,32"/>
+<area shape="rect" id="node3" href="$group__game__building.html#gadaba6a5cee410b18b7328c7fc3e22475" title="Function to draw buildings with doors. " alt="" coords="371,5,512,32"/>
+</map>

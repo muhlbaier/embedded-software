@@ -1,0 +1,8 @@
+<map id="service_sensor_logic" name="service_sensor_logic">
+<area shape="rect" id="node2" href="$_s_t_m32_l475_2main_8c.html#ab5c8937019d79ba9e3034b8da9a3196b" title="Waiting for button to be pushed. " alt="" coords="197,43,368,69"/>
+<area shape="rect" id="node3" href="$group__timing.html#ga31f3e90fa9c8120c90afc34ada69604f" title="Get the elapsed time. " alt="" coords="423,5,507,32"/>
+<area shape="rect" id="node4" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="426,81,505,108"/>
+<area shape="rect" id="node5" href="$group__task.html#gacd7cea229f4ff2d572cfd743f0334f95" title="Removes Task. " alt="" coords="229,144,336,171"/>
+<area shape="rect" id="node7" href="$mqtt_8h.html#a81058448d7405bcfa90828324df3f37a" title="MQTT_Publish" alt="" coords="228,195,337,221"/>
+<area shape="rect" id="node6" href="$group__list.html#ga80fa129ff1dfe7cc85d164d5a6fccf42" title="List_Remove" alt="" coords="416,144,515,171"/>
+</map>

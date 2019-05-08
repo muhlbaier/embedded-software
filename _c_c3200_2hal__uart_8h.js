@@ -1,0 +1,28 @@
+var _c_c3200_2hal__uart_8h =
+[
+    [ "hal_UART_ClearBreakErrorIF", "_c_c3200_2hal__uart_8h.html#ab84f84b082316514a1eb5a95e71bc317", null ],
+    [ "hal_UART_ClearFrameErrorIF", "_c_c3200_2hal__uart_8h.html#ab8a38c540f7e5b692631e2fa7ede4d40", null ],
+    [ "hal_UART_ClearOverrunErrorIF", "_c_c3200_2hal__uart_8h.html#a9fc80fd10523c54219c8d385aa4d9d07", null ],
+    [ "hal_UART_ClearParityErrorIF", "_c_c3200_2hal__uart_8h.html#af4702a0dcede97a53fe63f90d0753a0f", null ],
+    [ "hal_UART_ClearRxIF", "_c_c3200_2hal__uart_8h.html#a5848f27802bd44b033a1864a95f2e72c", null ],
+    [ "hal_UART_ClearTxIF", "_c_c3200_2hal__uart_8h.html#a4a3f61df8df0979c36e2d16a5b16e0b8", null ],
+    [ "hal_UART_DataAvailable", "_c_c3200_2hal__uart_8h.html#aad571da071d76ed27627247ec6f30549", null ],
+    [ "hal_UART_Disable", "_c_c3200_2hal__uart_8h.html#a8c2affd437abc1922dca82d63eaf9068", null ],
+    [ "hal_UART_DisableErrorInterrupts", "_c_c3200_2hal__uart_8h.html#a3188a5c68aaba0ded4c35ad006b60f1d", null ],
+    [ "hal_UART_DisableRxInterrupt", "_c_c3200_2hal__uart_8h.html#ae97bb75b63926d93738c79d8f4b8e95e", null ],
+    [ "hal_UART_DisableTxInterrupt", "_c_c3200_2hal__uart_8h.html#acbe3340956df2bf567f824deab7f8363", null ],
+    [ "hal_UART_Enable", "_c_c3200_2hal__uart_8h.html#a3d1e05032a25d9513a966f4bdf44ccc0", null ],
+    [ "hal_UART_EnableErrorInterrupts", "_c_c3200_2hal__uart_8h.html#af12173ce81bc7c9e0951caf88f2f211f", null ],
+    [ "hal_UART_EnableRxInterrupt", "_c_c3200_2hal__uart_8h.html#aa4dfc2174910afb8e20d5d8a4deb5f97", null ],
+    [ "hal_UART_EnableTxInterrupt", "_c_c3200_2hal__uart_8h.html#a981f166901a69e7d1acdbc57f4c95805", null ],
+    [ "hal_UART_RxByte", "_c_c3200_2hal__uart_8h.html#a6c94936401817921bb60ce94a6ec9259", null ],
+    [ "hal_UART_RxInterruptEnabled", "_c_c3200_2hal__uart_8h.html#a8d88bf80c9fffebe5c46c1457baf5946", null ],
+    [ "hal_UART_SpaceAvailable", "_c_c3200_2hal__uart_8h.html#a142e73cd08a9cc40517f3bef1572aaf0", null ],
+    [ "hal_UART_TxByte", "_c_c3200_2hal__uart_8h.html#a4e0a00d10fef38773062e2a5167cc0e0", null ],
+    [ "hal_UART_TxInterruptEnabled", "_c_c3200_2hal__uart_8h.html#a9c5ee8e271591550f053ce6e3b9686f3", null ],
+    [ "UART0", "_c_c3200_2hal__uart_8h.html#a0508661f121639ffdee7de2353a0def2", null ],
+    [ "UART0_BASE", "_c_c3200_2hal__uart_8h.html#a7a07348b4332ff6b88abf6092347deba", null ],
+    [ "UART1", "_c_c3200_2hal__uart_8h.html#a8d69bf04d07af4fbbab5a8bd291f65ff", null ],
+    [ "UART1_BASE", "_c_c3200_2hal__uart_8h.html#a383bf0c4670c3a7fa72df80f66331a46", null ],
+    [ "UART_BASE", "_c_c3200_2hal__uart_8h.html#ab5e517c61eec761df7084b5d966f4b0d", null ]
+];

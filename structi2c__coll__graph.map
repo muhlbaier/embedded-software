@@ -1,0 +1,5 @@
+<map id="i2c" name="i2c">
+<area shape="rect" id="node2" href="$structlist__t.html" title="list_t" alt="" coords="19,157,69,184"/>
+<area shape="rect" id="node3" href="$structlist__link__t.html" title="list_link_t" alt="" coords="5,7,81,33"/>
+<area shape="rect" id="node4" href="$structi2c__transaction.html" title="i2c_transaction" alt="" coords="109,157,219,184"/>
+</map>

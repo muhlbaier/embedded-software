@@ -1,0 +1,7 @@
+<map id="Game_Printf" name="Game_Printf">
+<area shape="rect" id="node2" href="$group__game.html#ga6ac9654d6336ac9948ae387c8d24adfa" title="Game_DrawTile" alt="" coords="159,5,275,32"/>
+<area shape="rect" id="node3" href="$group__game.html#ga2d21a9b4231406d52264531e1216ea50" title="Game_ClearScreen" alt="" coords="149,56,285,83"/>
+<area shape="rect" id="node4" href="$group__game.html#ga8ad929ccf80562a42b190b75859b1297" title="Game_ScrollDown" alt="" coords="152,107,283,133"/>
+<area shape="rect" id="node5" href="$group__game.html#ga1cd80b8fd2a269957011bdfb2ce006df" title="Game_ScrollUp" alt="" coords="160,157,275,184"/>
+<area shape="rect" id="node6" href="$group__game.html#ga794e415fdbce01d016ae1c3c45af4e03" title="Game_Bell" alt="" coords="174,208,261,235"/>
+</map>

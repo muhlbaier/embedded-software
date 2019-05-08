@@ -1,0 +1,12 @@
+<map id="RF1_MaxRetriesHandler" name="RF1_MaxRetriesHandler">
+<area shape="rect" id="node2" href="$group__n_r_f24.html#gac26a4f7b836760442756d298089a2101" title="nRF24_FlushTx" alt="" coords="221,107,336,133"/>
+<area shape="rect" id="node10" href="$uart_8h.html#a33a9b6cfd274cdbbd7887a8924d48fcb" title="Write chunk of data to UART tx buffer. " alt="" coords="230,56,327,83"/>
+<area shape="rect" id="node3" href="$group__spi.html#ga770b3b0f2da8e4992076628d08c4a0e2" title="send a SPI transaction " alt="" coords="385,107,487,133"/>
+<area shape="rect" id="node4" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="550,208,666,235"/>
+<area shape="rect" id="node7" href="$group__list.html#gab6f45e11004da187e5637ab46831d39b" title="List_LinkItem" alt="" coords="558,56,658,83"/>
+<area shape="rect" id="node8" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="569,157,647,184"/>
+<area shape="rect" id="node9" href="$group__timing.html#ga31f3e90fa9c8120c90afc34ada69604f" title="Get the elapsed time. " alt="" coords="566,107,650,133"/>
+<area shape="rect" id="node5" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="734,31,845,57"/>
+<area shape="rect" id="node6" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="728,81,851,108"/>
+<area shape="rect" id="node11" href="$group__buffer.html#gae1d8418dfea8c2aa4152f3cd44c33cd6" title="Buffer_EnqueueData" alt="" coords="537,5,679,32"/>
+</map>

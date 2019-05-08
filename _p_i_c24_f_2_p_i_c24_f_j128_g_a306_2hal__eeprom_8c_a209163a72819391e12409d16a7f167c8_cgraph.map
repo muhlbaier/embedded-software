@@ -1,0 +1,12 @@
+<map id="PackEE" name="PackEE">
+<area shape="rect" id="node2" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#accca6f4bc164c91f6824718cea186dc4" title="GetPageStatus" alt="" coords="310,38,421,65"/>
+<area shape="rect" id="node3" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#abf5b506401a992cd64ab2a2bf77e36bc" title="GetNextAvailCount" alt="" coords="126,38,261,65"/>
+<area shape="rect" id="node4" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a1161fe618f2d17f50e572f8087f6b6dc" title="ReadPMHigh" alt="" coords="315,89,415,116"/>
+<area shape="rect" id="node5" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a0a0833fa85b5acee668a9abdac7c1d92" title="WritePMLow" alt="" coords="317,266,414,293"/>
+<area shape="rect" id="node6" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#ac3f31b1dfaac281ffc908aa715c783c8" title="WritePMHigh" alt="" coords="143,393,243,420"/>
+<area shape="rect" id="node7" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#ac2e6924048931f3c2019bb7dee441ff0" title="DataEERead" alt="" coords="144,140,243,166"/>
+<area shape="rect" id="node8" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a4d97bd00e735702a84c66e1d4b174777" title="ReadPMLow" alt="" coords="317,165,414,192"/>
+<area shape="rect" id="node9" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a15ce5aa17487e056e7c9c6d337198f3a" title="UnlockWrite" alt="" coords="318,317,413,344"/>
+<area shape="rect" id="node11" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a8f9ef2d836f15d6d2437ec8afd7cc6cc" title="ErasePage" alt="" coords="150,292,237,318"/>
+<area shape="rect" id="node10" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a21801f1ab8cb0bb2677fa075f17a01e1" title="UnlockPM" alt="" coords="469,317,552,344"/>
+</map>

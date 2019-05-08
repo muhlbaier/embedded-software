@@ -1,0 +1,4 @@
+<map id="List_RemoveFirst" name="List_RemoveFirst">
+<area shape="rect" id="node2" href="$i2c_8c.html#abf53f7cb2b18ef3b3702bd8828c3c5f5" title="I2C_Transact" alt="" coords="179,5,280,32"/>
+<area shape="rect" id="node3" href="$group__accelerometer.html#gabb5dc31f52b4c94babb890afe85fdc29" title="Initialize the accelerometer to read data at a period returning to a callback. " alt="" coords="328,5,459,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="UART_WriteByte" name="UART_WriteByte">
+<area shape="rect" id="node2" href="$group__buffer.html#gac399f2bb7bfaa376ad14813e4b2ae288" title="Buffer_Enqueue" alt="" coords="179,31,293,57"/>
+<area shape="rect" id="node3" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="347,5,458,32"/>
+<area shape="rect" id="node4" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="341,56,464,83"/>
+</map>

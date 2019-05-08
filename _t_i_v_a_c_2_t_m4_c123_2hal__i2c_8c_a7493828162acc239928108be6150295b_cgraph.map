@@ -1,0 +1,12 @@
+<map id="hal_I2C_SendStart" name="hal_I2C_SendStart">
+<area shape="rect" id="node2" href="$i2c_8h.html#a577120aa1805d66914426aaae451e969" title="I2C_GetSlaveAddress" alt="" coords="196,5,348,32"/>
+<area shape="rect" id="node3" href="$i2c_8h.html#abc19f34cf43ee55af95b439386bdd058" title="I2C_GetTxSize" alt="" coords="216,56,328,83"/>
+<area shape="rect" id="node4" href="$i2c_8h.html#ab74693bbfaad41fc41d9fb10912a0321" title="I2C_GetRxSize" alt="" coords="215,107,329,133"/>
+<area shape="rect" id="node5" href="$i2c_8h.html#afb942cc37be00ecd3865f3ac5fdee58a" title="I2C_TransactionSuccess" alt="" coords="187,157,357,184"/>
+<area shape="rect" id="node11" href="$i2c_8h.html#a147ba57b31175418241c0abb7fcdf864" title="I2C_GetTxByte" alt="" coords="215,208,329,235"/>
+<area shape="rect" id="node6" href="$group__task.html#ga369f11dc366a40af2255cef77706b56f" title="Adds a function to the task queue. " alt="" coords="405,157,501,184"/>
+<area shape="rect" id="node7" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="550,132,666,159"/>
+<area shape="rect" id="node10" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="569,183,647,209"/>
+<area shape="rect" id="node8" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="721,107,831,133"/>
+<area shape="rect" id="node9" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="715,157,837,184"/>
+</map>

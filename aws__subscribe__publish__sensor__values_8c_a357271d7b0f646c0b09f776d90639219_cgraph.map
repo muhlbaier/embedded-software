@@ -1,0 +1,16 @@
+<map id="init_sensor_subscribe" name="init_sensor_subscribe">
+<area shape="rect" id="node2" href="$mqtt_8h.html#ab8e9e11c94123af42a38711a375ba41d" title="MQTT_Subscribe" alt="" coords="217,5,341,32"/>
+<area shape="rect" id="node3" href="$aws__subscribe__publish__sensor__values_8c.html#aeac141dbe55bfb723d9e97eed4fc3b12" title="MQTT subscriber callback hander. " alt="" coords="203,56,355,83"/>
+<area shape="rect" id="node5" href="$group__task.html#ga7fc124db459cf9e6f4b0ffb4083eff7e" title="Adds task to be scheduled for execution. " alt="" coords="223,107,335,133"/>
+<area shape="rect" id="node10" href="$aws__subscribe__publish__sensor__values_8c.html#a29c6aa4a06b5921a00d8576904b552e6" title="service_sensor_logic" alt="" coords="207,259,351,285"/>
+<area shape="rect" id="node4" href="$_s_t_m32_l475_2main_8c.html#a518c018147fd116e0c64a3a8ec4e75df" title="Set LED state. " alt="" coords="437,31,539,57"/>
+<area shape="rect" id="node6" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="430,81,546,108"/>
+<area shape="rect" id="node9" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="643,183,722,209"/>
+<area shape="rect" id="node7" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="627,56,738,83"/>
+<area shape="rect" id="node8" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="621,107,744,133"/>
+<area shape="rect" id="node11" href="$_s_t_m32_l475_2main_8c.html#ab5c8937019d79ba9e3034b8da9a3196b" title="Waiting for button to be pushed. " alt="" coords="403,233,573,260"/>
+<area shape="rect" id="node12" href="$group__timing.html#ga31f3e90fa9c8120c90afc34ada69604f" title="Get the elapsed time. " alt="" coords="641,259,725,285"/>
+<area shape="rect" id="node13" href="$group__task.html#gacd7cea229f4ff2d572cfd743f0334f95" title="Removes Task. " alt="" coords="435,335,541,361"/>
+<area shape="rect" id="node15" href="$mqtt_8h.html#a81058448d7405bcfa90828324df3f37a" title="MQTT_Publish" alt="" coords="433,385,543,412"/>
+<area shape="rect" id="node14" href="$group__list.html#ga80fa129ff1dfe7cc85d164d5a6fccf42" title="List_Remove" alt="" coords="633,335,732,361"/>
+</map>

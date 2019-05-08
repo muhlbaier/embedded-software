@@ -1,0 +1,5 @@
+<map id="List_Add" name="List_Add">
+<area shape="rect" id="node2" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="129,31,245,57"/>
+<area shape="rect" id="node3" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="299,5,410,32"/>
+<area shape="rect" id="node4" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="293,56,416,83"/>
+</map>

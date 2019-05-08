@@ -1,0 +1,10 @@
+<map id="nRF24_WriteMultReg" name="nRF24_WriteMultReg">
+<area shape="rect" id="node2" href="$group__n_r_f24.html#ga5ec52c6b7f3b0f93877cfda381014db9" title="nRF24_StartListening" alt="" coords="395,5,543,32"/>
+<area shape="rect" id="node4" href="$group__n_r_f24.html#ga40b59dcaa6fbde431ffec4be01fbf117" title="nRF24_Write" alt="" coords="225,113,324,140"/>
+<area shape="rect" id="node8" href="$group__n_r_f24.html#ga6a700fe579ce6ff5bcea5cf8f62fb9b7" title="nRF24_OpenRxPipe" alt="" coords="203,171,346,197"/>
+<area shape="rect" id="node9" href="$group__n_r_f24.html#gaf59c16021cbb5500d198e1f9e22db157" title="nRF24_OpenTxPipe" alt="" coords="205,233,345,260"/>
+<area shape="rect" id="node3" href="$nrf__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="592,132,643,159"/>
+<area shape="rect" id="node5" href="$nrf__example_8c.html#ac1259de3e926dde7437a2660e000f9aa" title="RF_Test" alt="" coords="433,56,506,83"/>
+<area shape="rect" id="node6" href="$nrf__example_8c.html#afc319abed3fc135d81e36971b100fad7" title="RF_TX1" alt="" coords="434,107,505,133"/>
+<area shape="rect" id="node7" href="$nrf__example_8c.html#a42b325e082a042e341a46730c35355f2" title="RF_TX2" alt="" coords="434,157,505,184"/>
+</map>

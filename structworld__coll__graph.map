@@ -1,0 +1,4 @@
+<map id="world" name="world">
+<area shape="rect" id="node2" href="$structtriangle.html" title="triangle" alt="" coords="5,125,69,152"/>
+<area shape="rect" id="node3" href="$structvector.html" title="vector" alt="" coords="8,5,65,32"/>
+</map>

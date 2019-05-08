@@ -1,0 +1,23 @@
+<map id="hal_I2C_Init" name="hal_I2C_Init">
+<area shape="rect" id="node2" href="$_m_s_p430_2_m_s_p430_f5529_2hal__i2c_8c.html#a51d2a5e4a644eb730fec49e670a058d9" title="hal_I2C_Disable" alt="" coords="173,5,291,32"/>
+<area shape="rect" id="node3" href="$_m_s_p430_2_m_s_p430_f5529_2hal__i2c_8c.html#ac77da456b29de453f0348aea0711b723" title="hal_I2C_Enable" alt="" coords="175,56,289,83"/>
+<area shape="rect" id="node4" href="$_m_s_p430_2_m_s_p430_f5529_2hal__i2c_8c.html#aeb7963a4ca570e98f01e98832033243a" title="hal_I2C_EnableInterrupts" alt="" coords="147,107,317,133"/>
+<area shape="rect" id="node5" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#a2d731865dd77bfeef6e6b6fb8ebea45b" title="I2C0_IntHandler" alt="" coords="173,309,291,336"/>
+<area shape="rect" id="node20" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#ace4817aeeb61a1fda02dd0c907b6bd57" title="I2C1_IntHandler" alt="" coords="173,157,291,184"/>
+<area shape="rect" id="node21" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#a8ff66ef9de83d7a303dca64cbd6d40d8" title="I2C2_IntHandler" alt="" coords="173,208,291,235"/>
+<area shape="rect" id="node22" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#abe2ac25bc1a07e333b26e853b7277ca0" title="I2C3_IntHandler" alt="" coords="173,259,291,285"/>
+<area shape="rect" id="node6" href="$i2c_8h.html#aaaef3a860a7e3b889cbcb68674f26fd1" title="I2C_TransactionFail" alt="" coords="381,81,520,108"/>
+<area shape="rect" id="node14" href="$i2c_8h.html#a147ba57b31175418241c0abb7fcdf864" title="I2C_GetTxByte" alt="" coords="394,132,507,159"/>
+<area shape="rect" id="node15" href="$i2c_8h.html#abc19f34cf43ee55af95b439386bdd058" title="I2C_GetTxSize" alt="" coords="395,183,507,209"/>
+<area shape="rect" id="node16" href="$i2c_8h.html#ab74693bbfaad41fc41d9fb10912a0321" title="I2C_GetRxSize" alt="" coords="393,233,508,260"/>
+<area shape="rect" id="node17" href="$i2c_8h.html#afb942cc37be00ecd3865f3ac5fdee58a" title="I2C_TransactionSuccess" alt="" coords="366,385,535,412"/>
+<area shape="rect" id="node18" href="$i2c_8h.html#a577120aa1805d66914426aaae451e969" title="I2C_GetSlaveAddress" alt="" coords="375,284,527,311"/>
+<area shape="rect" id="node19" href="$i2c_8h.html#af374787210c5717ce5591ddb49968253" title="I2C_Rx_Handler" alt="" coords="391,335,510,361"/>
+<area shape="rect" id="node7" href="$_m_s_p430_2_m_s_p430_f5529_2hal__i2c_8c.html#a7493828162acc239928108be6150295b" title="hal_I2C_SendStart" alt="" coords="585,107,717,133"/>
+<area shape="rect" id="node8" href="$group__list.html#ga36dab9276628d1025b55b1fb43a3d0d6" title="List_ResortFirst" alt="" coords="593,56,708,83"/>
+<area shape="rect" id="node9" href="$group__task.html#ga369f11dc366a40af2255cef77706b56f" title="Adds a function to the task queue. " alt="" coords="603,259,699,285"/>
+<area shape="rect" id="node10" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="766,233,882,260"/>
+<area shape="rect" id="node13" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="785,284,863,311"/>
+<area shape="rect" id="node11" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="937,208,1047,235"/>
+<area shape="rect" id="node12" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="931,259,1053,285"/>
+</map>

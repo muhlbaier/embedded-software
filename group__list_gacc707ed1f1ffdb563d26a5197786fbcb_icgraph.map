@@ -1,0 +1,6 @@
+<map id="List_Init" name="List_Init">
+<area shape="rect" id="node2" href="$i2c_8c.html#a91e920a8b4ea820781519688c4539bb4" title="I2C_Init" alt="" coords="123,5,191,32"/>
+<area shape="rect" id="node4" href="$group__spi.html#ga228893cd88fc2abe6c0166c1690430dc" title="initialize a SPI channel " alt="" coords="123,56,192,83"/>
+<area shape="rect" id="node3" href="$group__accelerometer.html#gabb5dc31f52b4c94babb890afe85fdc29" title="Initialize the accelerometer to read data at a period returning to a callback. " alt="" coords="240,5,371,32"/>
+<area shape="rect" id="node5" href="$nrf__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="280,56,331,83"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Game_IsTransmitting" name="Game_IsTransmitting">
+<area shape="rect" id="node2" href="$uart_8h.html#abfcf7b1a99eb08daa5715769c224c7f5" title="Returns 0 or num bytes to indicate if the UART is transmitting. " alt="" coords="200,5,349,32"/>
+<area shape="rect" id="node3" href="$group__buffer.html#ga773175cd0794ef6b6bb96d2fe161c846" title="Buffer_GetSize" alt="" coords="398,5,509,32"/>
+</map>

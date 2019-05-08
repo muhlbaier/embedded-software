@@ -1,0 +1,7 @@
+<map id="nrf24_RegisterMsgHandlerN" name="nrf24_RegisterMsgHandlerN">
+<area shape="rect" id="node2" href="$nrf__network__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="511,5,561,32"/>
+<area shape="rect" id="node3" href="$group__thief__brainframe.html#ga9a9be1f1330ceab71417b4f6896c6596" title="initialize the nRF24 Network module for the Thief Brainframe and set callbacks " alt="" coords="467,107,605,133"/>
+<area shape="rect" id="node5" href="$group__nrf24network.html#gadff9d474a15b6768e45c7007159556a8" title="nrf24_RegisterMsgHandler" alt="" coords="241,56,418,83"/>
+<area shape="rect" id="node4" href="$thief__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="653,81,704,108"/>
+<area shape="rect" id="node6" href="$group__thief.html#ga46dd5608b4e5e77b04ef07a9a390cb8f" title="initialize the nRF24 Network module for the Thief node and set callbacks " alt="" coords="498,56,574,83"/>
+</map>

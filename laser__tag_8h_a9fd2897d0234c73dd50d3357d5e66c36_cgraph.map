@@ -1,0 +1,11 @@
+<map id="LaserTag_Init" name="LaserTag_Init">
+<area shape="rect" id="node2" href="$mqtt_8h.html#a5cc7a21e4683f47241b21cb6974d5d15" title="MQTT_Init" alt="" coords="175,56,259,83"/>
+<area shape="rect" id="node8" href="$group__subsystem.html#ga4af744f35168691bbcdf5abe0b5ff4ca" title="Subsystem_Init" alt="" coords="161,107,274,133"/>
+<area shape="rect" id="node9" href="$mqtt_8h.html#ab8e9e11c94123af42a38711a375ba41d" title="MQTT_Subscribe" alt="" coords="155,157,279,184"/>
+<area shape="rect" id="node10" href="$mqtt_8h.html#a81058448d7405bcfa90828324df3f37a" title="MQTT_Publish" alt="" coords="163,208,272,235"/>
+<area shape="rect" id="node3" href="$group__task.html#ga7fc124db459cf9e6f4b0ffb4083eff7e" title="Adds task to be scheduled for execution. " alt="" coords="328,56,440,83"/>
+<area shape="rect" id="node4" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="489,31,605,57"/>
+<area shape="rect" id="node7" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="507,81,586,108"/>
+<area shape="rect" id="node5" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="659,5,770,32"/>
+<area shape="rect" id="node6" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="653,56,776,83"/>
+</map>

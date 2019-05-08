@@ -1,0 +1,5 @@
+<map id="Button_WaitForMultiPush" name="Button_WaitForMultiPush">
+<area shape="rect" id="node2" href="$aws__subscribe__publish__sensor__values_8c.html#a29c6aa4a06b5921a00d8576904b552e6" title="service_sensor_logic" alt="" coords="224,12,368,39"/>
+<area shape="rect" id="node3" href="$aws__subscribe__publish__sensor__values_8c.html#a357271d7b0f646c0b09f776d90639219" title="init_sensor_subscribe" alt="" coords="417,12,565,39"/>
+<area shape="rect" id="node4" href="$aws__subscribe__publish__sensor__values_8c.html#a0ae7b5ce0916e42969f36cdb39396201" title="subscribe_publish_sensor\l_values" alt="" coords="614,5,786,46"/>
+</map>

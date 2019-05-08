@@ -1,0 +1,5 @@
+<map id="nrfnet_s" name="nrfnet_s">
+<area shape="rect" id="node2" href="$structnrf24__radio__t.html" title="nrf24_radio_t" alt="" coords="5,96,101,123"/>
+<area shape="rect" id="node3" href="$structnrf24__radio__t_1_1settings.html" title="settings" alt="" coords="19,5,87,32"/>
+<area shape="rect" id="node4" href="$structnrfnet__msg__t.html" title="nrfnet_msg_t" alt="" coords="127,96,225,123"/>
+</map>

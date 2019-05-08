@@ -1,0 +1,4 @@
+<map id="SevenSeg_DisplayFloat" name="SevenSeg_DisplayFloat">
+<area shape="rect" id="node2" href="$group__seven__seg.html#gadd2cb1a95aac94e5c14bd38421502f71" title="Converts binary number (uint16_t) to BCD format. " alt="" coords="217,5,335,32"/>
+<area shape="rect" id="node3" href="$group__hal__seven__seg.html#ga3855e56051721fdb1be3a81245903598" title="Displays parameters on 4x7 seg display. " alt="" coords="231,56,321,83"/>
+</map>

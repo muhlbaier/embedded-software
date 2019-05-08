@@ -1,0 +1,6 @@
+<map id="SystemTick" name="SystemTick">
+<area shape="rect" id="node2" href="$_m_s_p430_f5529_2_game_example_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="172,5,223,32"/>
+<area shape="rect" id="node3" href="$i2c_8c.html#abf53f7cb2b18ef3b3702bd8828c3c5f5" title="I2C_Transact" alt="" coords="147,56,248,83"/>
+<area shape="rect" id="node5" href="$group__task.html#ga1b47b1c6f5dc133b3b6134474783f6f1" title="WaitMs" alt="" coords="164,107,231,133"/>
+<area shape="rect" id="node4" href="$group__accelerometer.html#gabb5dc31f52b4c94babb890afe85fdc29" title="Initialize the accelerometer to read data at a period returning to a callback. " alt="" coords="296,56,427,83"/>
+</map>

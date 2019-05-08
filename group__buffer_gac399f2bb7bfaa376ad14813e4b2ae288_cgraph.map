@@ -1,0 +1,4 @@
+<map id="Buffer_Enqueue" name="Buffer_Enqueue">
+<area shape="rect" id="node2" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="174,5,285,32"/>
+<area shape="rect" id="node3" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="168,56,291,83"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Game_DrawTile" name="Game_DrawTile">
+<area shape="rect" id="node2" href="$group__game.html#ga070bf853c75425ee8da4ad6b1580d78d" title="Write a character to a coordinate of the terminal. " alt="" coords="171,5,282,32"/>
+<area shape="rect" id="node4" href="$group__game.html#gab2ffdb3de2dcad5cc38099e879ffcf0d" title="Game_Printf" alt="" coords="179,56,274,83"/>
+<area shape="rect" id="node3" href="$group__terminal.html#gaed7f10e424df1b9c1dd1794c0acdb359" title="Terminal_CharXY" alt="" coords="331,5,456,32"/>
+</map>

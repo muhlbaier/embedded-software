@@ -1,0 +1,5 @@
+<map id="Game_Register" name="Game_Register">
+<area shape="rect" id="node2" href="$game_8c.html#a1231eb5cbd48e2a5dcaeef7de8ff9e81" title="Game_Init" alt="" coords="168,31,251,57"/>
+<area shape="rect" id="node3" href="$group__subsystem.html#ga4af744f35168691bbcdf5abe0b5ff4ca" title="Subsystem_Init" alt="" coords="306,5,419,32"/>
+<area shape="rect" id="node4" href="$group__game.html#ga054fb145c85a13eaaa043b339a4de581" title="let the game management module know that your game is over. " alt="" coords="299,56,426,83"/>
+</map>

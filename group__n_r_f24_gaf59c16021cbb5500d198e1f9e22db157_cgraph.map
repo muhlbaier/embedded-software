@@ -1,0 +1,13 @@
+<map id="nRF24_OpenTxPipe" name="nRF24_OpenTxPipe">
+<area shape="rect" id="node2" href="$group__n_r_f24.html#ga0994664b3c2f1c546f7b0e3287997e57" title="nRF24_Standby" alt="" coords="211,81,327,108"/>
+<area shape="rect" id="node12" href="$group__n_r_f24.html#gaec3066d169a31a4abd0ac2cc19866d71" title="nRF24_WriteMultReg" alt="" coords="195,132,343,159"/>
+<area shape="rect" id="node3" href="$group__n_r_f24.html#gab77de623b342cb3b47745fc1eab53979" title="nRF24_FlushRx" alt="" coords="392,81,509,108"/>
+<area shape="rect" id="node11" href="$group__n_r_f24.html#gac26a4f7b836760442756d298089a2101" title="nRF24_FlushTx" alt="" coords="393,31,508,57"/>
+<area shape="rect" id="node4" href="$group__spi.html#ga770b3b0f2da8e4992076628d08c4a0e2" title="send a SPI transaction " alt="" coords="558,81,661,108"/>
+<area shape="rect" id="node5" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="710,5,826,32"/>
+<area shape="rect" id="node8" href="$group__list.html#gab6f45e11004da187e5637ab46831d39b" title="List_LinkItem" alt="" coords="718,56,818,83"/>
+<area shape="rect" id="node9" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="729,107,807,133"/>
+<area shape="rect" id="node10" href="$group__timing.html#ga31f3e90fa9c8120c90afc34ada69604f" title="Get the elapsed time. " alt="" coords="726,157,810,184"/>
+<area shape="rect" id="node6" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="881,5,991,32"/>
+<area shape="rect" id="node7" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="875,56,997,83"/>
+</map>

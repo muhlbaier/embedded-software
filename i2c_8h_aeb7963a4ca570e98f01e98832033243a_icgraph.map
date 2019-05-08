@@ -1,0 +1,5 @@
+<map id="hal_I2C_EnableInterrupts" name="hal_I2C_EnableInterrupts">
+<area shape="rect" id="node2" href="$i2c_8h.html#ab3ed2134b647ccb3ca01d69fe398381e" title="hal_I2C_Init" alt="" coords="225,5,317,32"/>
+<area shape="rect" id="node3" href="$i2c_8c.html#a91e920a8b4ea820781519688c4539bb4" title="I2C_Init" alt="" coords="366,5,434,32"/>
+<area shape="rect" id="node4" href="$group__accelerometer.html#gabb5dc31f52b4c94babb890afe85fdc29" title="Initialize the accelerometer to read data at a period returning to a callback. " alt="" coords="483,5,613,32"/>
+</map>

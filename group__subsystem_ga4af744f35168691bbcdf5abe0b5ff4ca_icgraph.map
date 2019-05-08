@@ -1,0 +1,13 @@
+<map id="Subsystem_Init" name="Subsystem_Init">
+<area shape="rect" id="node2" href="$laser__tag_8h.html#a9fd2897d0234c73dd50d3357d5e66c36" title="LaserTag_Init" alt="" coords="185,5,287,32"/>
+<area shape="rect" id="node3" href="$game_8c.html#a1231eb5cbd48e2a5dcaeef7de8ff9e81" title="Game_Init" alt="" coords="195,56,277,83"/>
+<area shape="rect" id="node7" href="$group__thief.html#ga46dd5608b4e5e77b04ef07a9a390cb8f" title="initialize the nRF24 Network module for the Thief node and set callbacks " alt="" coords="557,157,633,184"/>
+<area shape="rect" id="node9" href="$group__thief__brainframe.html#ga9a9be1f1330ceab71417b4f6896c6596" title="initialize the nRF24 Network module for the Thief Brainframe and set callbacks " alt="" coords="525,208,664,235"/>
+<area shape="rect" id="node10" href="$group__nrf24network.html#gad5df492fc217aa17be260f4d6946fa08" title="nrf24_NetworkInitN" alt="" coords="169,233,303,260"/>
+<area shape="rect" id="node4" href="$group__game.html#gaebf791c12f2109c3aa6e330d8d3f6073" title="Game_Register registers a game by adding it to the games[] array. " alt="" coords="358,56,471,83"/>
+<area shape="rect" id="node5" href="$group__muh__game.html#gae2461a5a8df2bf24086251b83a6d3af2" title="MuhGame_Init" alt="" coords="541,56,648,83"/>
+<area shape="rect" id="node6" href="$_m_s_p430_f5529_2_game_example_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="712,56,763,83"/>
+<area shape="rect" id="node8" href="$thief__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="712,183,763,209"/>
+<area shape="rect" id="node11" href="$nrf__network__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="569,284,620,311"/>
+<area shape="rect" id="node12" href="$group__nrf24network.html#gaa7e9ed6799603db4a6e08f36cd7f1230" title="Initialize nRF24 Network Module. " alt="" coords="352,208,477,235"/>
+</map>

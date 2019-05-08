@@ -1,0 +1,5 @@
+<map id="DelayMs" name="DelayMs">
+<area shape="rect" id="node2" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="131,5,210,32"/>
+<area shape="rect" id="node3" href="$group__timing.html#ga31f3e90fa9c8120c90afc34ada69604f" title="Get the elapsed time. " alt="" coords="129,56,213,83"/>
+<area shape="rect" id="node4" href="$group__hal__general.html#gafa1a759cf4c14527ae0b170fa66129f9" title="No oporation. " alt="" coords="147,107,194,133"/>
+</map>

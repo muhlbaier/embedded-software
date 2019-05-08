@@ -1,0 +1,12 @@
+<map id="Task_Init" name="Task_Init">
+<area shape="rect" id="node2" href="$group__timing.html#ga6a7bd5705bafa4dd205b38a13e50263c" title="Initialize the timing module. " alt="" coords="169,5,255,32"/>
+<area shape="rect" id="node5" href="$group__list.html#ga61c9a347e890a26159c3fa0cb567ae68" title="List_SetSortFunction" alt="" coords="140,56,284,83"/>
+<area shape="rect" id="node6" href="$group__list.html#ga41266aadaf8ad04a1bf043637bb6eb86" title="List_SetIdentifyFunction" alt="" coords="131,107,293,133"/>
+<area shape="rect" id="node7" href="$group__task.html#ga7fc124db459cf9e6f4b0ffb4083eff7e" title="Adds task to be scheduled for execution. " alt="" coords="156,157,268,184"/>
+<area shape="rect" id="node3" href="$group__hal__timing.html#ga2ae272e43fc73c8dc8718cb1adb723bf" title="hal_Timing_Init" alt="" coords="345,5,455,32"/>
+<area shape="rect" id="node4" href="$_c_c3200_2hal__timing_8c.html#aaf13d809db0ab35d0fcadbe9b6ec400b" title="hal_timing_isr" alt="" coords="517,5,619,32"/>
+<area shape="rect" id="node8" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="342,119,458,145"/>
+<area shape="rect" id="node11" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="361,169,439,196"/>
+<area shape="rect" id="node9" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="513,81,623,108"/>
+<area shape="rect" id="node10" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="507,132,629,159"/>
+</map>

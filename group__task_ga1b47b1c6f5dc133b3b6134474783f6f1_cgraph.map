@@ -1,0 +1,12 @@
+<map id="WaitMs" name="WaitMs">
+<area shape="rect" id="node2" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="279,5,358,32"/>
+<area shape="rect" id="node3" href="$group__timing.html#ga31f3e90fa9c8120c90afc34ada69604f" title="Get the elapsed time. " alt="" coords="125,208,209,235"/>
+<area shape="rect" id="node4" href="$group__task.html#gafd2aa563748d1ede229e5867753ead5d" title="SystemTick" alt="" coords="121,157,213,184"/>
+<area shape="rect" id="node5" href="$group__list.html#ga645d81a49b82c4009487089fd4f98338" title="List_Link" alt="" coords="281,259,356,285"/>
+<area shape="rect" id="node6" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="430,259,541,285"/>
+<area shape="rect" id="node7" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="424,309,547,336"/>
+<area shape="rect" id="node8" href="$group__list.html#ga8d33461dcffd998d929eff432f32949d" title="List_GetFirst" alt="" coords="270,56,367,83"/>
+<area shape="rect" id="node9" href="$group__list.html#ga71bd31a42180cf44b8ee3186c77765a8" title="List_UnlinkFirst" alt="" coords="262,107,375,133"/>
+<area shape="rect" id="node10" href="$group__list.html#gab6f45e11004da187e5637ab46831d39b" title="List_LinkItem" alt="" coords="269,309,369,336"/>
+<area shape="rect" id="node11" href="$group__list.html#ga80fa129ff1dfe7cc85d164d5a6fccf42" title="List_Remove" alt="" coords="269,157,368,184"/>
+</map>

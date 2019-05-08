@@ -1,0 +1,7 @@
+<map id="List_Link" name="List_Link">
+<area shape="rect" id="node2" href="$group__task.html#gafd2aa563748d1ede229e5867753ead5d" title="SystemTick" alt="" coords="129,56,221,83"/>
+<area shape="rect" id="node3" href="$_m_s_p430_f5529_2_game_example_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="295,5,345,32"/>
+<area shape="rect" id="node4" href="$i2c_8c.html#abf53f7cb2b18ef3b3702bd8828c3c5f5" title="I2C_Transact" alt="" coords="269,56,371,83"/>
+<area shape="rect" id="node6" href="$group__task.html#ga1b47b1c6f5dc133b3b6134474783f6f1" title="WaitMs" alt="" coords="287,107,353,133"/>
+<area shape="rect" id="node5" href="$group__accelerometer.html#gabb5dc31f52b4c94babb890afe85fdc29" title="Initialize the accelerometer to read data at a period returning to a callback. " alt="" coords="419,56,549,83"/>
+</map>

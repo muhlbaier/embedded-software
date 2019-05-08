@@ -1,0 +1,6 @@
+<map id="Terminal_CursorXY" name="Terminal_CursorXY">
+<area shape="rect" id="node2" href="$group__game.html#ga95e7599c50a780812c1c7d38ed8fd65e" title="Cursor Position XY. " alt="" coords="211,5,333,32"/>
+<area shape="rect" id="node3" href="$group__game.html#ga4e8e437205bb579da736d438b2ec45f2" title="Player 1 Cursor Position XY. " alt="" coords="189,56,355,83"/>
+<area shape="rect" id="node4" href="$group__game.html#gab85a8580dc84ac4f6501f24d9a7e11df" title="Player 2 Cursor Position XY. " alt="" coords="189,107,355,133"/>
+<area shape="rect" id="node5" href="$group__game.html#gae9860c4e1a96e961ad8fc7d06ffefdca" title="PrintfXY to screen. " alt="" coords="215,157,329,184"/>
+</map>

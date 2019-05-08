@@ -1,0 +1,13 @@
+<map id="SPI_Rx_Handler" name="SPI_Rx_Handler">
+<area shape="rect" id="node2" href="$_p_i_c32_m_x_2_p_i_c32_m_x360_f512_l_2hal__spi_8c.html#aa59e6c3a3cdbcaca0d83926b77c91a50" title="__attribute__" alt="" coords="174,56,271,83"/>
+<area shape="rect" id="node3" href="$group__spi.html#gabe3f409c649093162623744405567eec" title="Interrupt service routine to be called from the HAL. " alt="" coords="185,107,260,133"/>
+<area shape="rect" id="node4" href="$_c_c3200_2hal__spi_8c.html#a6f09c62863ceecf6a50f6b669df5614c" title="hal_SPI_ISR" alt="" coords="320,5,419,32"/>
+<area shape="rect" id="node8" href="$_t_i_v_a_c_2_t_m4_c123_2hal__spi_8c.html#a0ab79e051fe3684a6fcb68349f7c0c3f" title="SPI_ISR0" alt="" coords="329,107,410,133"/>
+<area shape="rect" id="node10" href="$_t_i_v_a_c_2_t_m4_c123_2hal__spi_8c.html#afce5adeee2fb3ea9c07c952a20dc0ea0" title="SPI_ISR1" alt="" coords="329,157,410,184"/>
+<area shape="rect" id="node11" href="$_t_i_v_a_c_2_t_m4_c123_2hal__spi_8c.html#ae8baa209519c9497994a20c552ce9162" title="SPI_ISR2" alt="" coords="329,208,410,235"/>
+<area shape="rect" id="node12" href="$_t_i_v_a_c_2_t_m4_c123_2hal__spi_8c.html#a823aea02e2189555596e9cec4fa7d9f9" title="SPI_ISR3" alt="" coords="329,56,410,83"/>
+<area shape="rect" id="node5" href="$group__spi.html#ga824224a68996f3c030c61f90b2ff1c98" title="hal_SPI_Init" alt="" coords="477,107,571,133"/>
+<area shape="rect" id="node6" href="$group__spi.html#ga228893cd88fc2abe6c0166c1690430dc" title="initialize a SPI channel " alt="" coords="629,107,699,133"/>
+<area shape="rect" id="node7" href="$nrf__example_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="747,107,797,133"/>
+<area shape="rect" id="node9" href="$group__spi.html#gad56cd978c61e6a082c7418363912e0a0" title="hal_SPI_Enable" alt="" coords="467,157,581,184"/>
+</map>

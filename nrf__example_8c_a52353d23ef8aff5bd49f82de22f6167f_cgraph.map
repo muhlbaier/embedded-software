@@ -1,0 +1,4 @@
+<map id="RF1_PollIRQ" name="RF1_PollIRQ">
+<area shape="rect" id="node2" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="158,5,237,32"/>
+<area shape="rect" id="node3" href="$group__timing.html#ga31f3e90fa9c8120c90afc34ada69604f" title="Get the elapsed time. " alt="" coords="155,56,239,83"/>
+</map>

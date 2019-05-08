@@ -1,0 +1,6 @@
+<map id="LaserComms_Fire" name="LaserComms_Fire">
+<area shape="rect" id="node2" href="$uart_8h.html#a072b94388001bbdaf98f1a566632cec6" title="Write a single byte to UART. " alt="" coords="185,31,309,57"/>
+<area shape="rect" id="node3" href="$group__buffer.html#gac399f2bb7bfaa376ad14813e4b2ae288" title="Buffer_Enqueue" alt="" coords="357,31,472,57"/>
+<area shape="rect" id="node4" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="526,5,637,32"/>
+<area shape="rect" id="node5" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="520,56,643,83"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="UART_Tick" name="UART_Tick">
+<area shape="rect" id="node2" href="$group__buffer.html#ga773175cd0794ef6b6bb96d2fe161c846" title="Buffer_GetSize" alt="" coords="147,5,258,32"/>
+<area shape="rect" id="node3" href="$group__buffer.html#gad122bcd1cf8fc3bd5e803ce1372d6227" title="Buffer_Dequeue" alt="" coords="145,107,261,133"/>
+<area shape="rect" id="node4" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="315,81,426,108"/>
+<area shape="rect" id="node5" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="309,144,432,171"/>
+</map>

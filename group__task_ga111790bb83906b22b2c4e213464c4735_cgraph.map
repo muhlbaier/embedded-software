@@ -1,0 +1,7 @@
+<map id="Task_ChangePeriod" name="Task_ChangePeriod">
+<area shape="rect" id="node2" href="$group__list.html#ga546288a184f0ac8d5a44e4eb8fb9aab6" title="List_GetItem" alt="" coords="203,5,301,32"/>
+<area shape="rect" id="node3" href="$group__list.html#ga215870e22beacb7be2d84aebcaf23e01" title="List_UnlinkItem" alt="" coords="195,56,309,83"/>
+<area shape="rect" id="node4" href="$group__list.html#gab6f45e11004da187e5637ab46831d39b" title="List_LinkItem" alt="" coords="202,107,302,133"/>
+<area shape="rect" id="node5" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="363,81,474,108"/>
+<area shape="rect" id="node6" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="357,132,480,159"/>
+</map>

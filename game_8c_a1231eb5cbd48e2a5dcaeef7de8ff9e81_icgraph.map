@@ -1,0 +1,5 @@
+<map id="Game_Init" name="Game_Init">
+<area shape="rect" id="node2" href="$group__game.html#gaebf791c12f2109c3aa6e330d8d3f6073" title="Game_Register registers a game by adding it to the games[] array. " alt="" coords="137,5,250,32"/>
+<area shape="rect" id="node3" href="$group__muh__game.html#gae2461a5a8df2bf24086251b83a6d3af2" title="MuhGame_Init" alt="" coords="299,5,405,32"/>
+<area shape="rect" id="node4" href="$_m_s_p430_f5529_2_game_example_2main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="453,5,504,32"/>
+</map>

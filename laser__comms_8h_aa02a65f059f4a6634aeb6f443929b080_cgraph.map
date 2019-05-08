@@ -1,0 +1,8 @@
+<map id="LaserComms_HitFilter" name="LaserComms_HitFilter">
+<area shape="rect" id="node2" href="$group__task.html#ga7fc124db459cf9e6f4b0ffb4083eff7e" title="Adds task to be scheduled for execution. " alt="" coords="208,56,320,83"/>
+<area shape="rect" id="node7" href="$laser__comms_8c.html#adb380455ad06e728441f80c14cea013b" title="ClearFlag" alt="" coords="225,107,303,133"/>
+<area shape="rect" id="node3" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="369,31,485,57"/>
+<area shape="rect" id="node6" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="387,81,466,108"/>
+<area shape="rect" id="node4" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="539,5,650,32"/>
+<area shape="rect" id="node5" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="533,56,656,83"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="DataEERead" name="DataEERead">
+<area shape="rect" id="node2" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#accca6f4bc164c91f6824718cea186dc4" title="GetPageStatus" alt="" coords="153,5,263,32"/>
+<area shape="rect" id="node3" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a1161fe618f2d17f50e572f8087f6b6dc" title="ReadPMHigh" alt="" coords="158,56,258,83"/>
+<area shape="rect" id="node4" href="$_p_i_c24_f_2_p_i_c24_f_j128_g_a202_2hal__eeprom_8c.html#a4d97bd00e735702a84c66e1d4b174777" title="ReadPMLow" alt="" coords="159,107,257,133"/>
+</map>

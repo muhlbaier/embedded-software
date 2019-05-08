@@ -1,0 +1,11 @@
+<map id="nRF24_SetDataRate" name="nRF24_SetDataRate">
+<area shape="rect" id="node2" href="$group__n_r_f24.html#gad4ca69c919b538e8e17b428e88b88ce3" title="nRF24_ReadReg" alt="" coords="197,56,320,83"/>
+<area shape="rect" id="node10" href="$group__n_r_f24.html#ga0f389e3b3a12efdb2e509aed96c95650" title="nRF24_WriteReg" alt="" coords="197,107,320,133"/>
+<area shape="rect" id="node3" href="$group__spi.html#ga770b3b0f2da8e4992076628d08c4a0e2" title="send a SPI transaction " alt="" coords="369,81,471,108"/>
+<area shape="rect" id="node4" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="521,5,637,32"/>
+<area shape="rect" id="node7" href="$group__list.html#gab6f45e11004da187e5637ab46831d39b" title="List_LinkItem" alt="" coords="529,56,629,83"/>
+<area shape="rect" id="node8" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="539,107,618,133"/>
+<area shape="rect" id="node9" href="$group__timing.html#ga31f3e90fa9c8120c90afc34ada69604f" title="Get the elapsed time. " alt="" coords="537,157,621,184"/>
+<area shape="rect" id="node5" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="691,5,802,32"/>
+<area shape="rect" id="node6" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="685,56,808,83"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="LaserTag_Fire" name="LaserTag_Fire">
+<area shape="rect" id="node2" href="$group__timing.html#ga31f3e90fa9c8120c90afc34ada69604f" title="Get the elapsed time. " alt="" coords="173,5,257,32"/>
+<area shape="rect" id="node3" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="175,56,254,83"/>
+<area shape="rect" id="node4" href="$mqtt_8h.html#a81058448d7405bcfa90828324df3f37a" title="MQTT_Publish" alt="" coords="160,107,269,133"/>
+</map>

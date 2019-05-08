@@ -1,0 +1,9 @@
+<map id="__attribute__" name="__attribute__">
+<area shape="rect" id="node2" href="$group__adc__module.html#ga2e9322a25239ab1adf88a7114f098707" title="ADC_ProcessMeasurementFromISR" alt="" coords="153,81,391,108"/>
+<area shape="rect" id="node3" href="$group__task.html#ga369f11dc366a40af2255cef77706b56f" title="Adds a function to the task queue. " alt="" coords="472,56,568,83"/>
+<area shape="rect" id="node8" href="$group__adc__module.html#gad7ec6010822154738d73f1f4139245da" title="hardware abstaction layer start ADC measurement for a channel " alt="" coords="441,107,599,133"/>
+<area shape="rect" id="node4" href="$group__list.html#ga1a8339a388bfff7c959d5487ac829cd1" title="List_AddIndirect is used to obtain a valid position for which an item can be saved to..." alt="" coords="649,31,765,57"/>
+<area shape="rect" id="node7" href="$group__timing.html#gad33d57773db985176e2722aeebfee9cc" title="Returns the current system time in milliseconds. " alt="" coords="667,81,746,108"/>
+<area shape="rect" id="node5" href="$group__hal__general.html#ga5a740c360e0109e7336adef05ef253a5" title="Backup the interrupt status (i.e. IPL) and block interrupts. " alt="" coords="819,5,930,32"/>
+<area shape="rect" id="node6" href="$group__hal__general.html#ga54ccac0b414f39b6d7d031e4be945a99" title="RestoreInterrupts after blocking interrupts (BlockInterrupts()) " alt="" coords="813,56,936,83"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="I2C_GetTxByte" name="I2C_GetTxByte">
+<area shape="rect" id="node2" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#a7493828162acc239928108be6150295b" title="hal_I2C_SendStart" alt="" coords="169,5,301,32"/>
+<area shape="rect" id="node3" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#a2d731865dd77bfeef6e6b6fb8ebea45b" title="I2C0_IntHandler" alt="" coords="176,56,293,83"/>
+<area shape="rect" id="node5" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#ace4817aeeb61a1fda02dd0c907b6bd57" title="I2C1_IntHandler" alt="" coords="176,107,293,133"/>
+<area shape="rect" id="node6" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#a8ff66ef9de83d7a303dca64cbd6d40d8" title="I2C2_IntHandler" alt="" coords="176,157,293,184"/>
+<area shape="rect" id="node7" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#abe2ac25bc1a07e333b26e853b7277ca0" title="I2C3_IntHandler" alt="" coords="176,208,293,235"/>
+<area shape="rect" id="node4" href="$_t_i_v_a_c_2_t_m4_c123_2hal__i2c_8c.html#ab3ed2134b647ccb3ca01d69fe398381e" title="hal_I2C_Init" alt="" coords="350,132,442,159"/>
+</map>
