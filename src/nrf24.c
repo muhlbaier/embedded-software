@@ -256,18 +256,19 @@ void nRF24_EventHandler(nrf24_t * nrf_object){
 		while ((temp_status & RX_DR) || ((temp_status & 0x0E) <= 0x0A)){
 			// Find out how long the payload is
 			payload_length = nRF24_GetPayloadLength(nrf_object);
+			if(payload_length) {
+                transaction.flags.blocking = 1;
+                transaction.cs_control = nrf_object->csn;
+                transaction.writeLength = 1;
+                transaction.readLength = payload_length;
+                transaction.readDelay = 1;
+                transaction.data[0] = R_RX_PAYLOAD;
+                transaction.flags.channel = nrf_object->spi_channel;
 
-			transaction.flags.blocking = 1;
-			transaction.cs_control = nrf_object->csn;
-			transaction.writeLength = 1;
-			transaction.readLength = payload_length;
-			transaction.readDelay = 1;
-			transaction.data[0] = R_RX_PAYLOAD;
-			transaction.flags.channel = nrf_object->spi_channel;
-
-			SPI_Transact(&transaction);
-			if(nrf_object->AckPayloadReceived) {
-				nrf_object->AckPayloadReceived(&transaction.data[1], payload_length);
+                SPI_Transact(&transaction);
+                if(nrf_object->AckPayloadReceived) {
+                    nrf_object->AckPayloadReceived(&transaction.data[1], payload_length);
+                }
 			}
 			temp_status = nRF24_ReadReg(nrf_object, STATUS);
 		}
@@ -386,5 +387,9 @@ uint8_t nRF24_GetPayloadLength(nrf24_t * nrf_object){
 	transaction.flags.channel = nrf_object->spi_channel;
 
 	SPI_Transact(&transaction);
+	if(transaction.data[1] > 32) {
+	    // error invalid payload size
+	    return 0;
+	}
 	return transaction.data[1];
 }
