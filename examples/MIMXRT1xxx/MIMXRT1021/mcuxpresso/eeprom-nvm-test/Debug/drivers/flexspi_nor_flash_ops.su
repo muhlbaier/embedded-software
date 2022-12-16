@@ -1,0 +1,11 @@
+../drivers/flexspi_nor_flash_ops.c:36:6:flexspi_nor_disable_cache	32	static
+../drivers/flexspi_nor_flash_ops.c:77:6:flexspi_nor_enable_cache	16	static
+../drivers/flexspi_nor_flash_ops.c:119:10:flexspi_nor_write_enable	24	static
+../drivers/flexspi_nor_flash_ops.c:136:10:flexspi_nor_wait_bus_busy	40	static
+../drivers/flexspi_nor_flash_ops.c:188:10:flexspi_nor_enable_quad_mode	64	static
+../drivers/flexspi_nor_flash_ops.c:285:10:flexspi_nor_flash_erase_sector	56	static
+../drivers/flexspi_nor_flash_ops.c:333:10:flexspi_nor_flash_program	64	static
+../drivers/flexspi_nor_flash_ops.c:384:10:flexspi_nor_flash_page_program	64	static
+../drivers/flexspi_nor_flash_ops.c:445:10:flexspi_nor_get_vendor_id	40	static
+../drivers/flexspi_nor_flash_ops.c:473:10:flexspi_nor_erase_chip	56	static
+../drivers/flexspi_nor_flash_ops.c:618:6:flexspi_nor_flash_init	304	static

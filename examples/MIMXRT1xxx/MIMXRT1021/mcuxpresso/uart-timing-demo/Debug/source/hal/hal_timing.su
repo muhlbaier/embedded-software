@@ -1,0 +1,4 @@
+/home/asmir/Documents/MCUXpresso_11.6.1_8255/workspace/uart-timing-demo/CMSIS/core_cm7.h:2041:22:__NVIC_SetPriority	16	static
+/home/asmir/Documents/MCUXpresso_11.6.1_8255/workspace/uart-timing-demo/CMSIS/core_cm7.h:2259:26:SysTick_Config	16	static
+../source/hal/hal_timing.c:14:6:hal_Timing_Init	8	static
+../source/hal/hal_timing.c:22:6:SysTick_Handler	8	static

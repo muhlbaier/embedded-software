@@ -1,0 +1,12 @@
+../source/hal/task.c:22:16:SortTask	0	static
+../source/hal/task.c:30:16:IdentifyTask	0	static
+../source/hal/task.c:206:13:RollTimer	16	static
+../source/hal/task.c:38:6:Task_Init	24	static
+../source/hal/task.c:55:6:SystemTick	16	static
+../source/hal/task.c:101:6:Task_Queue	16	static
+../source/hal/task.c:111:8:Task_Schedule	24	static
+../source/hal/task.c:125:8:Task_SetIdleTask	0	static
+../source/hal/task.c:135:6:Task_Remove	32	static
+../source/hal/task.c:169:6:WaitMs	16	static
+../source/hal/task.c:180:9:Task_IsScheduled	16	static
+../source/hal/task.c:187:6:Task_ChangePeriod	24	static

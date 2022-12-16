@@ -1,0 +1,10 @@
+../source/hal/buffer_printf.c:12:6:Buffer_printf	28	static
+../source/hal/buffer_printf.c:22:6:Buffer_vprintf	32	static
+../source/hal/buffer_printf.c:114:6:Buffer_uint16	32	static
+../source/hal/buffer_printf.c:127:6:Buffer_Binary16	24	static
+../source/hal/buffer_printf.c:135:6:Buffer_int16	16	static
+../source/hal/buffer_printf.c:143:6:Buffer_int32	16	static
+../source/hal/buffer_printf.c:151:6:Buffer_uint32	32	static
+../source/hal/buffer_printf.c:164:6:Buffer_Str	16	static
+../source/hal/buffer_printf.c:170:6:Buffer_HexN	40	static
+../source/hal/buffer_printf.c:188:6:Buffer_Float	24	static

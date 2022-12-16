@@ -1,0 +1,7 @@
+../drivers/fsl_common_arm.h:210:20:_SDK_AtomicLocalClearAndSet4Byte	48	static
+../drivers/fsl_clock.h:1298:20:CLOCK_ControlGate	32	static
+../drivers/fsl_clock.h:1315:20:CLOCK_EnableClock	16	static
+../drivers/fsl_iomuxc.h:859:20:IOMUXC_SetPinMux	24	static
+../drivers/fsl_iomuxc.h:891:20:IOMUXC_SetPinConfig	24	static
+../drivers/pin_mux.c:34:6:BOARD_InitBootPins	8	static
+../drivers/pin_mux.c:55:6:BOARD_InitPins	16	static

@@ -1,0 +1,17 @@
+../source/hal/uart.c:233:6:UART_Init	16	static
+../source/hal/uart.c:374:6:UART_Tick	32	static
+../source/hal/uart.c:427:6:UART_ReconfigureBaud	16	static
+../source/hal/uart.c:431:6:UART_WriteByte	16	static
+../source/hal/uart.c:437:8:UART_Write	16	static
+../source/hal/uart.c:449:6:UART_printf	28	static
+../source/hal/uart.c:463:6:UART_vprintf	24	static
+../source/hal/uart.c:470:8:UART_RegisterReceiver	24	static
+../source/hal/uart.c:485:6:UART_UnregisterReceiver	24	static
+../source/hal/uart.c:505:9:UART_IsTransmitting	16	static
+../source/hal/uart.c:511:6:UART_Tx_Handler	16	static
+../source/hal/uart.c:525:6:UART_Tx_Start	16	static
+../source/hal/uart.c:547:6:UART_Rx_Handler	24	static
+../source/hal/uart.c:554:6:UART_Error_Handler	16	static
+../source/hal/uart.c:562:6:UART_RegisterErrorCallback	16	static
+../source/hal/uart.c:566:6:UART_RegisterTxOverwriteCallback	16	static
+../source/hal/uart.c:570:6:UART_RegisterRxOverwriteCallback	16	static

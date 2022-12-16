@@ -1,0 +1,7 @@
+ExitOnError 1
+r
+h
+loadfile "/home/asmir/Documents/MCUXpresso_11.6.1_8255/workspace/uart-timing-demo/Debug/uart-timing-demo.hex"
+qc
+
+qc

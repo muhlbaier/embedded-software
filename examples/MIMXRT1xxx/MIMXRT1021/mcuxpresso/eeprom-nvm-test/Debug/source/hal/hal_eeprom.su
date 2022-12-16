@@ -1,0 +1,9 @@
+../source/hal/hal_eeprom.c:95:6:hal_EEPROM_Init	24	static
+../source/hal/hal_eeprom.c:205:10:hal_EEPROM_Read	8	static
+../source/hal/hal_eeprom.c:224:6:hal_EEPROM_Write	48	static
+../source/hal/hal_eeprom.c:309:10:hal_EEPROM_ErasePage	16	static
+../source/hal/hal_eeprom.c:322:10:hal_EEPROM_EraseAll	24	static
+../source/hal/hal_eeprom.c:342:10:hal_EEPROM_WritePartialPage	16	static
+../source/hal/hal_eeprom.c:354:10:hal_EEPROM_WritePage	16	static
+../source/hal/hal_eeprom.c:367:18:GetActivePage	0	static
+../source/hal/hal_eeprom.c:385:5:GetNextLocation	0	static

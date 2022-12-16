@@ -1,0 +1,8 @@
+/home/asmir/Documents/MCUXpresso_11.6.1_8255/workspace/eeprom-nvm-test/CMSIS/mpu_armv7.h:191:22:ARM_MPU_Enable	16	static
+/home/asmir/Documents/MCUXpresso_11.6.1_8255/workspace/eeprom-nvm-test/CMSIS/mpu_armv7.h:204:22:ARM_MPU_Disable	4	static
+../drivers/fsl_clock.h:1236:24:CLOCK_GetMux	16	static
+../drivers/fsl_clock.h:1287:24:CLOCK_GetDiv	16	static
+../drivers/fsl_clock.h:1348:24:CLOCK_GetOscFreq	4	static
+../drivers/board.c:25:10:BOARD_DebugConsoleSrcFreq	24	static
+../drivers/board.c:44:6:BOARD_InitDebugConsole	4	static
+../drivers/board.c:52:6:BOARD_ConfigMPU	48	static

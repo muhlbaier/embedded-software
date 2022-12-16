@@ -1,0 +1,107 @@
+include Makefile.variable
+# Put your stlink folder here so make burn will work.
+
+# Binaries will be generated with this name (.elf, .bin, .hex, etc)
+PROJ_NAME=main
+
+SDPHOST=../../flashloader/Tools/sdphost/linux/amd64/sdphost
+BLHOST=../../flashloader/Tools/blhost/linux/amd64/blhost
+
+# Put your source files here (or *.c, etc)
+#SRCS = main.c ./sdk/system_stm32wbxx.c 
+#SRCS += usart.c misc.c debug.c
+
+
+SRCS = main.c system.c
+SRCS += ./drivers/*.c
+
+SRCS += delay.c
+SRCS += debug.c misc.c uart.c
+#SRCS += lpspi.c
+#SRCS += flexpwm.c
+#SRCS += encoder.c
+#SRCS += i2c.c
+
+
+
+
+# Normally you shouldn't need to change anything below this line!
+#######################################################################################
+CC = $(GNUGCC)/arm-none-eabi-gcc
+OBJCOPY = $(GNUGCC)/arm-none-eabi-objcopy
+SIZE =  $(GNUGCC)/arm-none-eabi-size
+
+CFLAGS  = -g -O2 -Wfatal-errors -fmax-errors=1 -T./sdk/MIMXRT1021xxxxx_flexspi_nor.ld 
+CFLAGS += -DCPU_MIMXRT1021DAG5A -DCPU_MIMXRT1021DAG5A_cm7  -DXIP_EXTERNAL_FLASH=1
+CFLAGS += -DXIP_BOOT_HEADER_ENABLE=1 -D__USE_CMSIS
+CFLAGS += -D__FPU_PRESENT -DDISABLE_WDOG=0 -D__ICACHE_PRESENT
+#CFLAGS += -DNDEBUG -D__STARTUP_CLEAR_BSS -D__STARTUP_INITIALIZE_NONCACHEDATA 
+CFLAGS += -mlittle-endian -mthumb -mcpu=cortex-m7 -std=gnu99
+CFLAGS += -mfloat-abi=hard -mfpu=fpv5-d16 -ffreestanding -fno-builtin -mapcs
+CFLAGS += -fno-common -fdata-sections -ffunction-sections -Wl,--gc-sections
+
+
+CFLAGS += -I./
+CFLAGS += -I./sdk
+CFLAGS += -I./drivers
+
+# add startup file to build
+SRCS += ./sdk/startup_MIMXRT1021.s 
+OBJS = $(SRCS:.c=.o)
+
+
+.PHONY: proj
+
+all: $(PROJ_NAME).elf 
+
+$(PROJ_NAME).elf: $(SRCS)
+	@python2 fwinfo.py
+	$(CC) $(CFLAGS) $^ -lm -lc -lnosys -o $@ 
+	$(CC) $(CFLAGS) -S $< $^
+	$(OBJCOPY) -O ihex $(PROJ_NAME).elf $(PROJ_NAME).hex
+	$(OBJCOPY) -O binary $(PROJ_NAME).elf $(PROJ_NAME).bin
+	$(SIZE) -B  $(PROJ_NAME).elf
+#	@python2 fwgen.py
+	rm *.s
+	ls -l $(PROJ_NAME).bin
+
+clean:
+	rm -rf *.o $(PROJ_NAME).elf $(PROJ_NAME).hex $(PROJ_NAME).bin *.s
+	ls
+
+#
+restore:
+	$(SDPHOST) -u 0x1fc9,0x0130 -V -- write-file 0x60000000 ./jlink/rescue.bin
+	$(SDPHOST) -u 0x1fc9,0x0130 -V -- jump-address 0x20208400
+	@sleep 2
+	$(BLHOST) -u 0x15a2,0x0073  -- fill-memory 0x2000 4 0xC0000006
+	$(BLHOST) -u 0x15a2,0x0073 -- configure-memory 9 0x2000
+	
+load:
+	$(SDPHOST) -u 0x1fc9,0x0130 -V -- write-file 0x20208000 ./sdk/ivt_flashloader.bin
+	@sleep 1
+	$(SDPHOST) -u 0x1fc9,0x0130 -V -- jump-address 0x20208400
+	@sleep 2
+	$(BLHOST) -u 0x15a2,0x0073  -- fill-memory 0x2000 4 0xC0000006
+	$(BLHOST) -u 0x15a2,0x0073 -- configure-memory 9 0x2000
+#	$(BLHOST)  -u 0x15a2,0x0073 -V -- write-file 0x20208400 ./sdk/iled_blinky.bin
+#	$(BLHOST) -u 0x15a2,0x0073 -- flash-image ./sdk/iled_blinky.bin erase 9
+	
+
+upload:
+	JLinkExe -autoconnect 1 -device MIMXRT1021XXX5A -if SWD -speed 4000 -CommandFile jlink/upload.jlink
+
+
+
+connect:
+	JLinkExe -NoGui -autoconnect 1 -device MIMXRT1021XXX5A -if SWD -speed 4000 	
+
+elf2hexbin:
+	$(OBJCOPY) -O ihex demo2.axf demo2.hex
+	
+
+
+style:
+	astyle --style=allman --indent-switches --indent=tab=4 --indent-col1-comments --recursive "*.c"
+
+

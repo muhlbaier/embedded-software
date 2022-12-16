@@ -1,0 +1,5 @@
+r
+h
+loadfile build/m7fw.hex
+rnh
+exit
