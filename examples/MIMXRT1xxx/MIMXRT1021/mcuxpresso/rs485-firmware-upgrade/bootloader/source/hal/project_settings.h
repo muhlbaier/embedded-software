@@ -1,0 +1,88 @@
+#ifndef PROJECT_SETTINGS_H_
+#define PROJECT_SETTINGS_H_
+
+#include "mcuid.h"
+
+#define FCPU 500000000
+
+#define UART1_TX_kIOMUXC_SW_MUX_CTL_PAD_GPIO				kIOMUXC_SW_MUX_CTL_PAD_GPIO_AD_B0_06
+#define UART1_TX_kIOMUXC_SW_PAD_CTL_PAD_GPIO				kIOMUXC_SW_PAD_CTL_PAD_GPIO_AD_B0_06
+#define UART1_TX_kIOMUXC_SW_MUX_CTL_PAD_GPIO_MUX_MODE 		2
+#define UART1_TX_kIOMUXC_SW_PAD_CTL_PAD_GPIO_FIELDS			8
+
+#define UART1_RX_kIOMUXC_SW_MUX_CTL_PAD_GPIO				kIOMUXC_SW_MUX_CTL_PAD_GPIO_AD_B0_07
+#define UART1_RX_kIOMUXC_SW_PAD_CTL_PAD_GPIO				kIOMUXC_SW_PAD_CTL_PAD_GPIO_AD_B0_07
+#define UART1_RX_kIOMUXC_SW_MUX_CTL_PAD_GPIO_MUX_MODE 		2
+#define UART1_RX_kIOMUXC_SW_PAD_CTL_PAD_GPIO_FIELDS			8
+
+#define UART2_TX_kIOMUXC_SW_MUX_CTL_PAD_GPIO				kIOMUXC_SW_MUX_CTL_PAD_GPIO_AD_B1_08
+#define UART2_TX_kIOMUXC_SW_PAD_CTL_PAD_GPIO				kIOMUXC_SW_PAD_CTL_PAD_GPIO_AD_B1_08
+#define UART2_TX_kIOMUXC_SW_MUX_CTL_PAD_GPIO_MUX_MODE 		2
+#define UART2_TX_kIOMUXC_SW_PAD_CTL_PAD_GPIO_FIELDS			8
+
+#define UART2_RX_kIOMUXC_SW_MUX_CTL_PAD_GPIO				kIOMUXC_SW_MUX_CTL_PAD_GPIO_AD_B1_09
+#define UART2_RX_kIOMUXC_SW_PAD_CTL_PAD_GPIO				kIOMUXC_SW_PAD_CTL_PAD_GPIO_AD_B1_09
+#define UART2_RX_kIOMUXC_SW_MUX_CTL_PAD_GPIO_MUX_MODE 		2
+#define UART2_RX_kIOMUXC_SW_PAD_CTL_PAD_GPIO_FIELDS			8
+
+// include the library header
+#include "library.h"
+// let the system know which lower level modules are in use
+// this way higher modules can selectively utilize their resources
+#define USE_MODULE_TASK
+#define USE_MODULE_SUBSYSTEM
+#define USE_MODULE_BUFFER_PRINTF
+
+
+#define SUBSYSTEM_UART 1
+
+#define RECEIVE_STOP_CHAR '\n' // this is normally \r but the STM32 app uses \n so we can override to match
+
+#define UART1_TX_BUFFER_LENGTH 256
+#define NUM_UART1_RECEIVERS 4
+#define UART2_TX_BUFFER_LENGTH 256
+#define NUM_UART2_RECEIVERS 4
+#define TASK_MAX_LENGTH 20
+
+
+
+
+#define TASK_MAX_LENGTH 20
+
+
+#define NVM_OBJECT_WRITE_SIZE	256
+
+#define USE_UART1
+#define USE_UART2
+
+
+/*** UART/RS485 ***/
+#define BOARD_RS485_UART_INSTANCE 							2
+#define BOARD_ALT_RS485_UART_INSTANCE 						0
+#define UART1_BAUD											115200
+
+#define RS485RE_PIN											9
+#define RS485RE_PIN_SW_MUX									kIOMUXC_SW_MUX_CTL_PAD_GPIO_AD_B0_09
+#define RS485RE_PIN_SW_PAD									kIOMUXC_SW_PAD_CTL_PAD_GPIO_AD_B0_09
+#define RS485RE_INIT										{\
+																IOMUXC->SW_MUX_CTL_PAD[RS485RE_PIN_SW_MUX] = 0x00000005;\
+																IOMUXC->SW_PAD_CTL_PAD[RS485RE_PIN_SW_PAD] = 0x00000008;\
+																GPIO1->GDIR |= (1<<(RS485RE_PIN));\
+															}						 
+#define RS485RE_OFF											GPIO1->DR_CLEAR = (1<<(RS485RE_PIN));
+#define RS485RE_ON											GPIO1->DR_SET = (1<<(RS485RE_PIN));      					
+
+#define RS485DE_PIN											7
+#define RS485DE_PIN_SW_MUX									kIOMUXC_SW_MUX_CTL_PAD_GPIO_AD_B0_07
+#define RS485DE_PIN_SW_PAD									kIOMUXC_SW_PAD_CTL_PAD_GPIO_AD_B0_07
+#define RS485DE_INIT										{\
+																IOMUXC->SW_MUX_CTL_PAD[RS485DE_PIN_SW_MUX] = 0x00000005;\
+																IOMUXC->SW_PAD_CTL_PAD[RS485DE_PIN_SW_PAD] = 0x00000008;\
+																GPIO1->GDIR |= (1<<(RS485DE_PIN));\
+															}						 
+#define RS485DE_OFF											GPIO1->DR_CLEAR = (1<<(RS485DE_PIN));
+#define RS485DE_ON											GPIO1->DR_SET = (1<<(RS485DE_PIN));      					
+
+
+
+#endif /* PROJECT_SETTINGS_H_ */

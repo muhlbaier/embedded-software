@@ -1,0 +1,15 @@
+AlenconModbus.c:63:6:Modbus_Routine	24	static
+AlenconModbus.c:114:6:AlenconModbus_Stop	8	static
+AlenconModbus.c:120:6:Modbus_SetBaudRate	0	static
+AlenconModbus.c:126:6:Modbus_ChangeSlaveAddress	16	static
+AlenconModbus.c:140:6:Modbus_Reset	8	static
+AlenconModbus.c:150:9:Modbus_GetSlaveAddress	0	static
+AlenconModbus.c:154:6:Modbus_AddInputSource	8	static
+AlenconModbus.c:167:6:Modbus_AddHoldingRegister	20	static
+AlenconModbus.c:184:14:eMBRegInputCB	16	static
+AlenconModbus.c:208:14:eMBRegHoldingCB	56	static
+AlenconModbus.c:268:14:eMBRegCoilsCB	0	static
+AlenconModbus.c:274:14:eMBRegDiscreteCB	0	static
+AlenconModbus.c:279:6:Modbus_LongToRegisters	0	static
+AlenconModbus.c:284:6:Modbus_FloatToRegisters	24	static
+AlenconModbus.c:291:7:Modbus_RegistersToFloat	16	static

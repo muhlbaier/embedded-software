@@ -1,0 +1,5 @@
+r
+h 
+SaveBin build/m7fw-read.bin 60100000 0x6690
+rnh
+exit

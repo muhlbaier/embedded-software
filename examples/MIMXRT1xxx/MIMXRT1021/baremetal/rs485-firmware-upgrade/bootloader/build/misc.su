@@ -1,0 +1,10 @@
+misc.c:3:6:getDNumMISC	16	static
+misc.c:20:6:putDNumMISC	12	static
+misc.c:44:6:getStr4NumMISC	64	static
+misc.c:285:6:getStrMISC	88	static
+misc.c:572:6:cpyStrMISC	4	static
+misc.c:584:6:catStrMISC	8	static
+misc.c:603:10:lenStrMISC	0	static
+misc.c:615:9:cmpStrMISC	16	static
+misc.c:633:9:cmpStrWithLenMISC	4	static
+misc.c:649:6:getStr4AddrMISC	56	static

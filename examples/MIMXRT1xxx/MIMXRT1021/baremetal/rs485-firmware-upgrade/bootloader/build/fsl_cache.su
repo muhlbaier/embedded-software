@@ -1,0 +1,5 @@
+fsl_cache.c:496:6:L1CACHE_InvalidateICacheByRange	0	static
+fsl_cache.c:527:6:ICACHE_InvalidateByRange	0	static
+fsl_cache.c:550:6:DCACHE_InvalidateByRange	0	static
+fsl_cache.c:572:6:DCACHE_CleanByRange	0	static
+fsl_cache.c:594:6:DCACHE_CleanInvalidateByRange	0	static

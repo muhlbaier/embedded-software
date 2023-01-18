@@ -1,0 +1,15 @@
+DROPBOX:=/home/asmir/Desktop/Dropbox/MCU
+BMODULES:=$(DROPBOX)/modules
+BSCRIPT:=$(DROPBOX)/scripts
+
+STM32CUBEPROG:= $(DROPBOX)/st-microelectronics/stmcubeprog/bin/STM32_Programmer.sh -vb 1 -q -c port=SWD 
+
+GNUGCC = $(DROPBOX)/gcc/gcc-arm-none-eabi-7-2018-q2-update/bin
+CC = $(GNUGCC)/arm-none-eabi-gcc
+OBJCOPY = $(GNUGCC)/arm-none-eabi-objcopy
+SIZE =  $(GNUGCC)/arm-none-eabi-size
+OBJDUMP = $(GNUGCC)/arm-none-eabi-objdump
+
+include $(DROPBOX)/modules/makefile-templates/Makefile.in
+
+

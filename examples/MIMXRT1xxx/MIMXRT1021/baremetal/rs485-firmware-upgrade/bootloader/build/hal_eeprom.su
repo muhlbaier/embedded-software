@@ -1,0 +1,11 @@
+hal_eeprom.c:387:5:GetNextLocation.part.1	0	static
+hal_eeprom.c:207:10:hal_EEPROM_Read.part.2	8	static
+hal_eeprom.c:207:10:hal_EEPROM_Read	0	static
+hal_eeprom.c:311:10:hal_EEPROM_ErasePage	16	static
+hal_eeprom.c:96:6:hal_EEPROM_Init	16	static
+hal_eeprom.c:324:10:hal_EEPROM_EraseAll	24	static
+hal_eeprom.c:344:10:hal_EEPROM_WritePartialPage	16	static
+hal_eeprom.c:226:6:hal_EEPROM_Write	48	static
+hal_eeprom.c:356:10:hal_EEPROM_WritePage	16	static
+hal_eeprom.c:369:18:GetActivePage	0	static
+hal_eeprom.c:387:5:GetNextLocation	0	static

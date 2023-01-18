@@ -1,0 +1,17 @@
+uart.c:375:6:UART_Tick	40	static
+uart.c:528:6:UART_Tx_Start	16	static
+uart.c:234:6:UART_Init	16	static
+uart.c:428:6:UART_ReconfigureBaud	0	static
+uart.c:432:6:UART_WriteByte	8	static
+uart.c:438:8:UART_Write	16	static
+uart.c:452:6:UART_printf	20	static
+uart.c:466:6:UART_vprintf	8	static
+uart.c:474:8:UART_RegisterReceiver	8	static
+uart.c:489:6:UART_UnregisterReceiver	24	static
+uart.c:509:9:UART_IsTransmitting	8	static
+uart.c:514:6:UART_Tx_Handler	16	static
+uart.c:550:6:UART_Rx_Handler	24	static
+uart.c:557:6:UART_Error_Handler	12	static
+uart.c:565:6:UART_RegisterErrorCallback	0	static
+uart.c:569:6:UART_RegisterTxOverwriteCallback	0	static
+uart.c:573:6:UART_RegisterRxOverwriteCallback	0	static

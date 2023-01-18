@@ -1,0 +1,2 @@
+RS485Packet.c:76:6:RS485Packet_init	16	static
+RS485Packet.c:93:10:RS485Packet_calc_crc	8	static

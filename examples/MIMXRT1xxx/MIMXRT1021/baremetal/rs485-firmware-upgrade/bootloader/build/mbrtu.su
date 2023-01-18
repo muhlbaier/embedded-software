@@ -1,0 +1,8 @@
+mbrtu.c:81:1:eMBRTUInit	16	static
+mbrtu.c:126:1:eMBRTUStart	8	static
+mbrtu.c:142:1:eMBRTUStop	8	static
+mbrtu.c:151:1:eMBRTUReceive	24	static
+mbrtu.c:187:1:eMBRTUSend	24	static
+mbrtu.c:226:1:xMBRTUReceiveFSM	24	static
+mbrtu.c:286:1:xMBRTUTransmitFSM	24	static
+mbrtu.c:324:1:xMBRTUTimerT35Expired	16	static

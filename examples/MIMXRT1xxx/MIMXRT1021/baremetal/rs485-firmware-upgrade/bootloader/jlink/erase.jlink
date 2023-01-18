@@ -1,0 +1,5 @@
+r
+h
+erase 0x60000000 0x60100000
+rnh
+exit

@@ -1,0 +1,5 @@
+bootloader.c:69:6:JumpToUserApplication	8	static
+bootloader.c:79:6:Bootloader_DontLoadApp	0	static
+bootloader.c:84:6:Bootloader_DeinitAppModules	8	static
+bootloader.c:97:6:JumpToAppStateMachine	8	static
+bootloader.c:201:6:Bootloader_Init	32	static

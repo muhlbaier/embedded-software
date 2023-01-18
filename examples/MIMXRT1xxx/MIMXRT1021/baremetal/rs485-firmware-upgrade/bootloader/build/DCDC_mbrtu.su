@@ -1,0 +1,11 @@
+DCDC_mbrtu.c:85:13:TxCompleteCallback	0	static
+DCDC_mbrtu.c:90:6:xMBPortSerialInit	8	static
+DCDC_mbrtu.c:99:14:eMBRTUInit	8	static
+DCDC_mbrtu.c:128:1:eMBRTUStart	8	static
+DCDC_mbrtu.c:142:6:vMBPortSerialClose	0	static
+DCDC_mbrtu.c:146:6:eMBRTUStop	8	static
+DCDC_mbrtu.c:157:1:eMBRTUReceive	24	static
+DCDC_mbrtu.c:193:1:eMBRTUSend	24	static
+DCDC_mbrtu.c:230:6:xMBRTUReceiveFSM	24	static
+DCDC_mbrtu.c:293:6:xMBRTUTransmitFSM	0	static
+DCDC_mbrtu.c:298:1:xMBRTUTimerT35Expired	16	static

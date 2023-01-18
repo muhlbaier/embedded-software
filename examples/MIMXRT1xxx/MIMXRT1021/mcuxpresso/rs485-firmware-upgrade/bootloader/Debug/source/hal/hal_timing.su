@@ -1,0 +1,2 @@
+../source/hal/hal_timing.c:14:6:hal_Timing_Init	4	static
+../source/hal/hal_timing.c:22:6:SysTick_Handler	0	static

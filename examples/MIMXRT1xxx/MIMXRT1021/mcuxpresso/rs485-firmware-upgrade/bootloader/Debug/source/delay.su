@@ -1,0 +1,6 @@
+../source/delay.c:3:6:delay_ms	4	static
+../source/delay.c:16:6:delay_us	4	static
+../source/delay.c:29:6:initSYSTIM	0	static
+../source/delay.c:39:10:getSYSTIM	0	static
+../source/delay.c:44:9:chk4TimeoutSYSTIM	0	static
+../source/delay.c:65:10:getElapsedTimeSYSTIM	0	static

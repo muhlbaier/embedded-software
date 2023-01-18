@@ -1,0 +1,8 @@
+lpuart.c:4:6:initLPUART1	8	static
+lpuart.c:77:6:txLPUART2	4	static
+lpuart.c:112:6:putcharLPUART2	0	static
+lpuart.c:128:6:deinitLPUART1	0	static
+lpuart.c:133:6:putcharLPUART1	0	static
+lpuart.c:318:6:sprintLPUART1	12	static
+lpuart.c:148:6:printLPUART1	80	static
+lpuart.c:39:6:initLPUART2	8	static

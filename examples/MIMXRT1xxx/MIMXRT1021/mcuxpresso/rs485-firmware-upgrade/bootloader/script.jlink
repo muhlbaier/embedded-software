@@ -1,0 +1,7 @@
+ExitOnError 1
+r
+h
+loadfile "/home/asmir/Desktop/Dropbox/MCU/nxp/RT1021/projects/alencon-systems/mcu-expresso/eeprom-nvm-test/Debug/eeprom-nvm-test.hex"
+qc
+
+qc

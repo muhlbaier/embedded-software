@@ -1,0 +1,9 @@
+RS485Serial.c:988:6:RS485_Rx_Push	0	static
+RS485Serial.c:1008:10:RS485_ReadByte	0	static
+RS485Serial.c:1027:10:RS485_Get_Buffer_Size	0	static
+RS485Serial.c:1045:6:RS485_Serial_RegisterTxCompleteCallback	0	static
+RS485Serial.c:1062:12:RS485_Serial_init	24	static
+RS485Serial.c:1129:12:RS485_Serial_Write	16	static
+RS485Serial.c:1159:12:RS485_Serial_Read	16	static
+RS485Serial.c:1249:12:RS485_Serial_Close	0	static
+RS485Serial.c:1264:12:RS485_Serial_Get_Tx_Fifo_length	0	static

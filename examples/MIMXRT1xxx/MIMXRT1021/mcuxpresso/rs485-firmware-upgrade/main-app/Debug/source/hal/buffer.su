@@ -1,0 +1,7 @@
+../source/hal/buffer.c:5:6:Buffer_Enqueue	16	static
+../source/hal/buffer.c:42:9:Buffer_Dequeue	8	static
+../source/hal/buffer.c:58:10:Buffer_GetSize	0	static
+../source/hal/buffer.c:62:6:Buffer_Init	4	static
+../source/hal/buffer.c:71:6:Buffer_SetCallback	0	static
+../source/hal/buffer.c:78:6:Buffer_ClearCallback	0	static
+../source/hal/buffer.c:82:9:Buffer_EnqueueData	24	static

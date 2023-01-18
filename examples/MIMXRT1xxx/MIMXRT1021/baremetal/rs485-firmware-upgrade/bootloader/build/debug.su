@@ -1,0 +1,8 @@
+debug.c:17:6:initDEBUG	32	static
+debug.c:62:6:printDEBUG	80	static
+debug.c:358:6:NMI_Handler	8	static
+debug.c:366:6:HardFault_Handler	0	static
+debug.c:382:6:HardFault_HandlerC	48	static
+debug.c:446:6:MemManage_Handler	8	static
+debug.c:454:6:BusFault_Handler	8	static
+debug.c:462:6:UsageFault_Handler	8	static

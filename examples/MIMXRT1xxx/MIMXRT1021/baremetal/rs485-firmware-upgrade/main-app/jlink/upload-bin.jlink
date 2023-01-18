@@ -1,0 +1,5 @@
+r
+h
+loadbin build/m7fw.bin 60100000
+rnh
+exit

@@ -1,0 +1,3 @@
+../source/hal/eeprom.c:10:6:EEPROM_Init	8	static
+../source/hal/eeprom.c:23:10:EEPROM_Read	0	static
+../source/hal/eeprom.c:27:6:EEPROM_Write	0	static

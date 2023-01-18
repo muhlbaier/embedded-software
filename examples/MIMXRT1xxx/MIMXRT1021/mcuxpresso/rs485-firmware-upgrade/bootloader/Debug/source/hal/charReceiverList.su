@@ -1,0 +1,4 @@
+../source/hal/charReceiverList.c:7:6:CharReceiverList_Init	0	static
+../source/hal/charReceiverList.c:13:8:CharReceiverList_Add	8	static
+../source/hal/charReceiverList.c:27:6:CharReceiverList_Remove	24	static
+../source/hal/charReceiverList.c:44:6:CharReceiverList_Run	24	static

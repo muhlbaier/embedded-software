@@ -1,0 +1,4 @@
+charReceiverList.c:7:6:CharReceiverList_Init	0	static
+charReceiverList.c:13:8:CharReceiverList_Add	12	static
+charReceiverList.c:27:6:CharReceiverList_Remove	24	static
+charReceiverList.c:44:6:CharReceiverList_Run	24	static

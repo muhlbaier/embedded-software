@@ -1,0 +1,13 @@
+../source/hal/timing.c:15:6:TimingISR	0	static
+../source/hal/timing.c:30:6:Timing_Init	8	static
+../source/hal/timing.c:40:10:TimeNow	0	static
+../source/hal/timing.c:44:10:TimeSince	0	static
+../source/hal/timing.c:53:6:DelayMs	8	static
+../source/hal/timing.c:62:6:Timing_Roll	0	static
+../source/hal/timing.c:67:10:TimeNowUs	0	static
+../source/hal/timing.c:71:6:DelayUs	4	static
+../source/hal/timing.c:78:10:TimeSinceUs	0	static
+../source/hal/timing.c:90:6:Timing_EnableTimer	0	static
+../source/hal/timing.c:94:6:Timing_DisableTimer	0	static
+../source/hal/timing.c:98:9:Timing_IsEnabled	0	static
+../source/hal/timing.c:102:10:TimeNowUngated	0	static

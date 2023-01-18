@@ -1,0 +1,2 @@
+fsl_misc_utilities.c:58:1:_sbrk	8	static
+fsl_misc_utilities.c:93:6:assert_func	0	static

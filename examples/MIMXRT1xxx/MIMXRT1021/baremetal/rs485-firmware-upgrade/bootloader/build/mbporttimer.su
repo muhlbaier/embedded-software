@@ -1,0 +1,6 @@
+mbporttimer.c:79:1:xMBPortTimersInit	8	static
+mbporttimer.c:95:1:vMBPortTimersEnable	8	static
+mbporttimer.c:102:1:vMBPortTimersDisable	0	static
+mbporttimer.c:88:1:vMBPortTimerClose	0	static
+mbporttimer.c:109:1:vMBPortTimersDelay	0	static
+mbporttimer.c:115:1:vMBPortTimersService	8	static

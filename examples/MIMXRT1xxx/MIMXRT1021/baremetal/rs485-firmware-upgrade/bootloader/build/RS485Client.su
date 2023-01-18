@@ -1,0 +1,12 @@
+RS485Client.c:90:13:rs485_default_callback	0	static
+RS485Client.c:251:23:RS485Client_Create	0	static
+RS485Client.c:257:6:RS485Client_init	16	static
+RS485Client.c:280:6:RS485Client_Destroy	8	static
+RS485Client.c:287:6:RS485Client_register_callback	0	static
+RS485Client.c:293:15:RS485Client_get_callback	0	static
+RS485Client.c:299:6:RS485Client_send_packet	0	static
+RS485Client.c:306:6:RS485Client_run	40	static
+RS485Client.c:352:10:RS485Client_get_id	0	static
+RS485Client.c:358:9:RS485Client_get_client_state	0	static
+RS485Client.c:364:6:RS485Client_set_client_state	0	static
+RS485Client.c:373:6:RS485Client_reset	16	static

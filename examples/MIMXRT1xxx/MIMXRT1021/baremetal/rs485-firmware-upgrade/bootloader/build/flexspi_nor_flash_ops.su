@@ -1,0 +1,11 @@
+flexspi_nor_flash_ops.c:37:6:flexspi_nor_disable_cache	20	static
+flexspi_nor_flash_ops.c:78:6:flexspi_nor_enable_cache	24	static
+flexspi_nor_flash_ops.c:120:10:flexspi_nor_write_enable	24	static
+flexspi_nor_flash_ops.c:137:10:flexspi_nor_wait_bus_busy	40	static
+flexspi_nor_flash_ops.c:189:10:flexspi_nor_enable_quad_mode	48	static
+flexspi_nor_flash_ops.c:286:10:flexspi_nor_flash_erase_sector	40	static
+flexspi_nor_flash_ops.c:334:10:flexspi_nor_flash_program	48	static
+flexspi_nor_flash_ops.c:385:10:flexspi_nor_flash_page_program	48	static
+flexspi_nor_flash_ops.c:446:10:flexspi_nor_get_vendor_id	40	static
+flexspi_nor_flash_ops.c:474:10:flexspi_nor_erase_chip	40	static
+flexspi_nor_flash_ops.c:619:6:flexspi_nor_flash_init	304	static

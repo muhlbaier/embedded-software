@@ -1,0 +1,6 @@
+../source/hal/nvm_objects.c:18:13:NVM_Object_Init.part.0	264	static
+../source/hal/nvm_objects.c:53:6:NVM_Object_EraseAll	264	static
+../source/hal/nvm_objects.c:78:8:NVM_Object_Get	24	static
+../source/hal/nvm_objects.c:208:9:RepackObjects.isra	568	static
+../source/hal/nvm_objects.c:117:6:NVM_Object_Set	32	static
+../source/hal/nvm_objects.c:262:8:NVM_Object_Get_AltBank	24	static

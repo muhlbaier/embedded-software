@@ -1,0 +1,2 @@
+/home/asmir/Documents/MCUXpresso_11.6.1_8255/workspace/evkmimxrt1020_igpio_led_output/drivers/fsl_gpio.h:160:20:GPIO_PortToggle	16	static
+../source/gpio_led_output.c:36:5:main	16	static

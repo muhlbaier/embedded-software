@@ -1,0 +1,9 @@
+../source/hal/timing.c:10:6:TimingISR	0	static
+../source/hal/timing.c:19:6:Timing_Init	8	static
+../source/hal/timing.c:29:10:TimeNow	0	static
+../source/hal/timing.c:33:10:TimeSince	0	static
+../source/hal/timing.c:42:6:DelayMs	8	static
+../source/hal/timing.c:51:6:Timing_Roll	0	static
+../source/hal/timing.c:56:10:TimeNowUs	0	static
+../source/hal/timing.c:60:6:DelayUs	4	static
+../source/hal/timing.c:67:10:TimeSinceUs	0	static

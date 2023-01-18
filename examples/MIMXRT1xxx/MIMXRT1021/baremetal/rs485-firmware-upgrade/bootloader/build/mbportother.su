@@ -1,0 +1,3 @@
+mbportother.c:46:1:vMBPortEnterCritical	0	static
+mbportother.c:68:1:vMBPortExitCritical	0	static
+mbportother.c:80:1:vMBPortClose	8	static

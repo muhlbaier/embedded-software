@@ -1,0 +1,6 @@
+nvm_objects.c:19:13:NVM_Object_Init.part.0	264	static
+nvm_objects.c:54:6:NVM_Object_EraseAll	264	static
+nvm_objects.c:79:8:NVM_Object_Get	24	static
+nvm_objects.c:209:9:RepackObjects	568	static
+nvm_objects.c:118:6:NVM_Object_Set	32	static
+nvm_objects.c:263:8:NVM_Object_Get_AltBank	24	static

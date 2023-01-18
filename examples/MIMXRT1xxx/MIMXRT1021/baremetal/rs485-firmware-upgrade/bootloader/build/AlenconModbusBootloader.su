@@ -1,0 +1,17 @@
+core_cm7.h:2156:34:__NVIC_SystemReset	0	static
+AlenconModbusBootloader.c:372:13:UpdateFirmwareVersion	0	static
+AlenconModbusBootloader.c:521:13:ResetMCUCallback	8	static
+AlenconModbusBootloader.c:535:13:BlockDataCallback	4	static
+AlenconModbusBootloader.c:528:13:ResetUpdateState	4	static
+AlenconModbusBootloader.c:367:13:UpdateIndecies	8	static
+AlenconModbusBootloader.c:352:13:ReadProvisioning	40	static
+AlenconModbusBootloader.c:449:13:UpdateBlockCRC	24	static
+AlenconModbusBootloader.c:329:13:WriteProvisioning	24	static
+AlenconModbusBootloader.c:401:13:WriteFirmwareBlock	32	static
+AlenconModbusBootloader.c:677:13:DiagnosticCallback	16	static
+AlenconModbusBootloader.c:657:13:ErrorHandler.isra.3	8	static
+AlenconModbusBootloader.c:467:13:EndOfFirmware	8	static
+AlenconModbusBootloader.c:376:13:StartFirmwareUpdate	16	static
+AlenconModbusBootloader.c:164:6:AlenconModbus_Init	32	static
+AlenconModbusBootloader.c:297:9:AlenconModbus_InitBootloader	24	static
+AlenconModbusBootloader.c:563:6:ModbusBootloader_Task	16	static

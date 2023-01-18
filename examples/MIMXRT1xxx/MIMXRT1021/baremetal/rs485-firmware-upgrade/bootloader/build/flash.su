@@ -1,0 +1,3 @@
+flash.c:30:10:FLASH_Init	8	static
+flash.c:37:10:FLASH_EraseSector	16	static
+flash.c:57:10:FLASH_Program	16	static

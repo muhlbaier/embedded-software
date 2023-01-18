@@ -1,0 +1,16 @@
+hal_uart.c:98:6:hal_UART_EnableInterrupts	0	static
+hal_uart.c:13:6:hal_UART_Init	64	static
+hal_uart.c:141:15:UART_GetInstance	0	static
+hal_uart.c:177:6:hal_UART_Enable	0	static
+hal_uart.c:190:6:hal_UART_Disable	0	static
+hal_uart.c:201:6:hal_UART_EnableRxInterrupt	0	static
+hal_uart.c:212:6:hal_UART_EnableTxInterrupt	0	static
+hal_uart.c:224:6:hal_UART_DisableRxInterrupt	0	static
+hal_uart.c:235:6:hal_UART_DisableTxInterrupt	0	static
+hal_uart.c:246:6:hal_UART_TxByte	0	static
+hal_uart.c:257:9:hal_UART_RxByte	0	static
+hal_uart.c:268:9:hal_UART_DataAvailable	0	static
+hal_uart.c:284:9:hal_UART_SpaceAvailable	0	static
+hal_uart.c:302:9:hal_UART_TxInterruptEnabled	0	static
+hal_uart.c:322:6:LPUART1_IRQHandler	8	static
+hal_uart.c:329:6:LPUART2_IRQHandler	8	static

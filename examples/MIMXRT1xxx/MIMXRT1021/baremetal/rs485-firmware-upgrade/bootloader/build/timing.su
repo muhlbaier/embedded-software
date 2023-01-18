@@ -1,0 +1,15 @@
+timing.c:15:6:TimingISR	0	static
+hal_timing.c:13:6:hal_Timing_Init	8	static
+hal_timing.c:21:6:SysTick_Handler	0	static
+timing.c:30:6:Timing_Init	16	static
+timing.c:40:10:TimeNow	0	static
+timing.c:44:10:TimeSince	0	static
+timing.c:53:6:DelayMs	8	static
+timing.c:62:6:Timing_Roll	0	static
+timing.c:67:10:TimeNowUs	0	static
+timing.c:71:6:DelayUs	8	static
+timing.c:78:10:TimeSinceUs	0	static
+timing.c:90:6:Timing_EnableTimer	0	static
+timing.c:94:6:Timing_DisableTimer	0	static
+timing.c:98:9:Timing_IsEnabled	0	static
+timing.c:102:10:TimeNowUngated	0	static

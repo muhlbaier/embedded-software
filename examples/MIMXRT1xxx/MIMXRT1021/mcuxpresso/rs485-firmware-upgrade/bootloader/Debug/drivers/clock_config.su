@@ -1,0 +1,13 @@
+../drivers/fsl_common_arm.h:210:20:_SDK_AtomicLocalClearAndSet4Byte	48	static
+../drivers/fsl_clock.h:1210:20:CLOCK_SetMux	24	static
+../drivers/fsl_clock.h:1262:20:CLOCK_SetDiv	24	static
+../drivers/fsl_clock.h:1298:20:CLOCK_ControlGate	32	static
+../drivers/fsl_clock.h:1315:20:CLOCK_EnableClock	16	static
+../drivers/fsl_clock.h:1325:20:CLOCK_DisableClock	16	static
+../drivers/fsl_clock.h:1465:20:CLOCK_SetXtalFreq	16	static
+../drivers/fsl_clock.h:1475:20:CLOCK_SetRtcXtalFreq	16	static
+../drivers/fsl_clock.h:1519:20:CLOCK_SetPllBypass	24	static
+../drivers/fsl_iomuxc.h:934:20:IOMUXC_SetSaiMClkClockSource	24	static
+../drivers/fsl_iomuxc.h:994:20:IOMUXC_MQSConfig	24	static
+../drivers/clock_config.c:48:6:BOARD_InitBootClocks	8	static
+../drivers/clock_config.c:162:6:BOARD_BootClockRUN	8	static
